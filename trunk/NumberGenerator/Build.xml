@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="NumberGenerator" default="run-app" basedir=".">
-	<property name="src.dir"  				value="${basedir}/src/main/java" />
-	<property name="test.dir"  				value="${basedir}/src/test/java" />
-	<property name="build-classes.dir"  	value="${basedir}/build/classes" />
-	<property name="build-tests.dir"  		value="${basedir}/build/tests" />
-	<property name="pack-app.dir"  			value="${basedir}/build/pack" />
-	<property name="lib.path" 				value="C:/Users/Catalin.Strimbei/.m2/repository" />
-	
+<project name="NumberGenerator" default="build-app" basedir=".">
+	<property name="src.dir" value="${basedir}/src/main/java" />
+	<property name="test.dir" value="${basedir}/src/test/java" />
+	<property name="build-classes.dir" value="${basedir}/build/classes" />
+	<property name="build-tests.dir" value="${basedir}/build/tests" />
+	<property name="pack-app.dir" value="${basedir}/build/pack" />
+	<property name="lib.path" value="C:/Users/Catalin.Strimbei/.m2/repository" />
+
 	<!-- Main target point  -->
-	<target name="run-app">
+	<target name="build-app">
 		<echo>
-			NumberGenerator Run Ant Test
+			Build process: compile-app, run-tests
 		</echo>
-	</target>	
-	
-	
+		<antcall target="package" />
+	</target>
+
 	<target name="compile-app">
 		<path id="buildClasspath">
 			<fileset dir="${lib.path}">
 				<include name="**/*.jar" />
-			</fileset>		
+			</fileset>
 		</path>
-			
 		<!-- Compile  -->
-		<mkdir dir="${basedir}/build"/>
-		<mkdir dir="${basedir}/build/classes"/>
-		<mkdir dir="${basedir}/build/tests"/>
-		<javac 	srcdir="${src.dir}" 
-			destdir="${build-classes.dir}" 
-			optimize="off" debug="on" encoding="UTF-8">			
-			<classpath refid="buildClasspath"/>
-		</javac>		
-	</target>	
-	
-	<target name="compile-tests">
-		<path id="buildClasspath">
+		<delete dir="${basedir}/build/classes" />
+		<mkdir dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build/classes" />
+		<mkdir dir="${basedir}/build/tests" />
+		<javac srcdir="${src.dir}" destdir="${build-classes.dir}" optimize="off" debug="on" encoding="UTF-8">
+			<classpath refid="buildClasspath" />
+		</javac>
+	</target>
+
+	<target name="compile-tests" depends="compile-app">
+		<path id="buildTestsClasspath">
 			<fileset dir="${lib.path}">
 				<include name="**/*.jar" />
-			</fileset>		
-			<fileset dir="${build-classes.dir}/">
-				<include name="*" />
-			</fileset>			
+			</fileset>
+			<pathelement location="${build-classes.dir}" />
 		</path>
-			
 		<!-- Compile  -->
-		<mkdir dir="${basedir}/build/tests"/>
-		<javac 	srcdir="${test.dir}" 
-			destdir="${build-tests.dir}" 
-			optimize="off" debug="on" encoding="UTF-8">			
-			<classpath refid="buildClasspath"/>
-		</javac>		
-	</target>		
+		<delete dir="${build-tests.dir}" />
+		<mkdir dir="${basedir}/build/tests" />
+		<javac srcdir="${test.dir}" destdir="${build-tests.dir}" optimize="off" debug="on" encoding="UTF-8">
+			<classpath refid="buildTestsClasspath" />
+		</javac>
+	</target>
+
+	<target name="run-tests" depends="compile-tests">
+		<path id="runTestsClasspath">
+			<fileset dir="${lib.path}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${build-classes.dir}" />
+			<pathelement location="${build-tests.dir}" />
+		</path>
+		<junit>
+			<classpath refid="runTestsClasspath" />
+			<formatter type="brief" usefile="false" />
+			<test name="org.app.AppTest" />
+		</junit>
+	</target>
+
+	<target name="package" depends="run-tests">
+		<jar destfile="${pack-app.dir}/NumberGenerator.jar" duplicate="preserve" compress="false">
+			<fileset dir="${build-classes.dir}" />
+		</jar>
+	</target>
 </project>
