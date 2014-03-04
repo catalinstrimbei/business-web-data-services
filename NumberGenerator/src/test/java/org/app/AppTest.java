@@ -1,7 +1,8 @@
-package com.mkyong;
+package org.app;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.tests.App;
  
 public class AppTest {
  
