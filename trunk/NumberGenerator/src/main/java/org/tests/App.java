@@ -1,4 +1,4 @@
-package com.mkyong;
+package org.tests;
  
 import java.util.UUID;
  
