@@ -1,0 +1,214 @@
+package org.app.patterns;
+
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+/**
+ * 
+ * @author catalin
+ */
+public class EntityRepository<T extends Object> {
+
+	private Logger logger = Logger.getLogger(this.getClass().getName());
+
+	protected EntityManager em;
+	protected Class<T> repositoryType;
+	protected String genericSQL;
+
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+
+	public EntityRepository(EntityManager em, Class<T> t) {
+		this.em = em;
+		repositoryType = t;
+		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
+				+ " o";
+		logger.info("generic JPAQL: " + genericSQL);
+	}
+
+	// Repository query implementation
+	public T getById(Object id) {
+		return (T) em.find(repositoryType, id);
+	}
+
+	// QBExample
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Collection<T> get(T entitySample) {
+
+		Map<String, Object> sqlCriterias = new HashMap<String, Object>();
+		try {
+			// get all properties and transform them into sqlCriterias
+			PropertyDescriptor[] properties = Introspector.getBeanInfo(repositoryType).getPropertyDescriptors();
+			Object propertyValue;
+			Method readMethod;
+			for (PropertyDescriptor property : properties) {
+				readMethod = property.getReadMethod();
+				if (readMethod != null) {
+					logger.info("readMethod = " + readMethod);
+					propertyValue = readMethod.invoke(entitySample);
+					logger.info("propertyValue = " + propertyValue);
+					if (propertyValue == null || property.getName().equals("class")) {
+						continue;
+					}
+					if (propertyValue instanceof Collection && ((Collection) propertyValue).size() == 0) {
+						continue;
+					}
+					sqlCriterias.put(property.getName(), propertyValue);
+				}
+			}
+		} catch (IllegalAccessException ex) {
+			Logger.getLogger(EntityRepository.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IllegalArgumentException ex) {
+			Logger.getLogger(EntityRepository.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (InvocationTargetException ex) {
+			Logger.getLogger(EntityRepository.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IntrospectionException ex) {
+			Logger.getLogger(EntityRepository.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		if (sqlCriterias.isEmpty()) {
+			return null;
+		}
+
+		String queryString = genericSQL + " WHERE ";
+		for (String criteria : sqlCriterias.keySet()) {
+			if (sqlCriterias.get(criteria) instanceof Collection) {
+				queryString += "o." + criteria + " IN (:" + criteria + ") AND ";
+			} else {
+				queryString += "o." + criteria + " = :" + criteria + " AND ";
+			}
+		}
+		queryString += " 1 = 1";
+
+		logger.info("JPAQL: " + queryString);
+
+		Query query = em.createQuery(queryString);
+		for (String criteria : sqlCriterias.keySet()) {
+			query = query.setParameter(criteria, sqlCriterias.get(criteria));
+		}
+		return query.getResultList();
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public Collection<T> toCollection() {
+		logger.info("JPAQL: " + genericSQL);
+
+		return em.createQuery(genericSQL).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public T[] toArray() {
+		logger.info("JPAQL: " + genericSQL);
+
+		List<T> entities = em.createQuery(genericSQL).getResultList();
+		if (entities == null) {
+			return null;
+		}
+
+		return (T[]) entities.toArray();
+	}
+
+	// Repository transaction implementation
+	public T add(T entity) {
+		// em.getTransaction().begin();
+		try {
+//			provideUri(entity);
+			em.merge(entity);
+			// em.getTransaction().commit();
+			return entity;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// em.getTransaction().rollback();
+			return null;
+		} finally {
+			// em.close();
+		}
+	}
+
+	public Collection<T> addAll(Collection<T> entities) {
+		em.getTransaction().begin();
+		try {
+			for (T entity : entities) {
+//				provideUri(entity);
+				em.merge(entity);
+			}
+			em.getTransaction().commit();
+			return entities;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			return null;
+		}
+	}
+
+	public boolean remove(T entity) {
+		em.getTransaction().begin();
+		try {
+			entity = em.merge(entity);
+			em.remove(entity);
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			return false;
+		} finally {
+			// em.close();
+		}
+	}
+
+	public boolean removeAll(Collection<T> entities) {
+		em.getTransaction().begin();
+		try {
+			for (Object c : entities) {
+				em.remove(c);
+			}
+			em.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			return false;
+		}
+	}
+
+	// Others
+	public int size() {
+		String sqlCount = "SELECT count(o) FROM "
+				+ repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1) + " o";
+
+		logger.info("JPAQL: " + sqlCount);
+
+		Long size = (Long) em.createQuery(sqlCount).getSingleResult();
+		return size.intValue();
+	}
+
+	public T refresh(T entity) {
+		entity = em.merge(entity);
+		em.refresh(entity);
+		return entity;
+	}
+
+	// Private
+//	protected void provideUri(T entity) {
+//		if (entity.getUri() != null && !entity.getUri().isEmpty()) {
+//			return;
+//		}
+//		String uri = entity.getClass().getSimpleName().concat("/").concat(entity.getIdentifier());
+//		entity.setUri(uri);
+//	}
+}
