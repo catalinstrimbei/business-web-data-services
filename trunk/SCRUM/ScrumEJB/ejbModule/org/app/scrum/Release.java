@@ -28,7 +28,7 @@ public class Release {
 	
 	// Added
 	@ManyToOne
-	private Proiect proiect;
+	private Project proiect;
 	
 	@OneToMany(cascade = ALL)
 	private List<Cerinta> cerinte = new ArrayList<>();
@@ -66,10 +66,10 @@ public class Release {
 	public void setIndicativ(String indicativ) {
 		this.indicativ = indicativ;
 	}
-	public Proiect getProiect() {
+	public Project getProiect() {
 		return proiect;
 	}
-	public void setProiect(Proiect proiect) {
+	public void setProiect(Project proiect) {
 		this.proiect = proiect;
 	}
 	
@@ -83,7 +83,7 @@ public class Release {
 		super();
 	}
 	public Release(Integer idRelease, String numeCod, String indicativ,
-			String descriere, Date dataPublicare, Proiect proiect) {
+			String descriere, Date dataPublicare, Project proiect) {
 		super();
 		this.idRelease = idRelease;
 		this.numeCod = numeCod;
@@ -95,7 +95,7 @@ public class Release {
 	
 	
 	public Release(Integer idRelease, String indicativ, Date dataPublicare,
-			Proiect proiect) {
+			Project proiect) {
 		super();
 		this.idRelease = idRelease;
 		this.indicativ = indicativ;

@@ -19,7 +19,7 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-public class Proiect {
+public class Project {
 	@Id
 	private Integer nrProiect;
 	
@@ -64,13 +64,13 @@ public class Proiect {
 		this.dataStart = dataStart;
 	}
 	
-	public Proiect(Integer nrProiect, String numeProiect, Date dataStart) {
+	public Project(Integer nrProiect, String numeProiect, Date dataStart) {
 		super();
 		this.nrProiect = nrProiect;
 		this.numeProiect = numeProiect;
 		this.dataStart = dataStart;
 	}
-	public Proiect() {
+	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -104,7 +104,7 @@ public class Proiect {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Proiect other = (Proiect) obj;
+		Project other = (Project) obj;
 		if (nrProiect == null) {
 			if (other.nrProiect != null)
 				return false;
@@ -112,7 +112,7 @@ public class Proiect {
 			return false;
 		return true;
 	}
-	public Proiect(Integer nrProiect, String numeProiect) {
+	public Project(Integer nrProiect, String numeProiect) {
 		super();
 		this.nrProiect = nrProiect;
 		this.numeProiect = numeProiect;

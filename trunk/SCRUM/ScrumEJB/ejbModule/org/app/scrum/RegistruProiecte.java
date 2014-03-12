@@ -16,26 +16,26 @@ public class RegistruProiecte implements Repository{
 
     //-------------------------------------------------------------//    
     /* Operatii de cautare conventionale */
-    public Set<Proiect> getAll() {
-        List<Proiect> result = this.entityManager
+    public Set<Project> getAll() {
+        List<Project> result = this.entityManager
                 .createQuery(this.sqlContDefaultText)
                 .getResultList();
 
-        TreeSet<Proiect> conturiOrdonate = new TreeSet<Proiect>();
+        TreeSet<Project> conturiOrdonate = new TreeSet<Project>();
         conturiOrdonate.addAll(result);
 
         return conturiOrdonate;
     }    
 
-    public Proiect getProiectDupaNr(Integer nr){
-    	Proiect c = this.entityManager.find(Proiect.class, nr);
+    public Project getProiectDupaNr(Integer nr){
+    	Project c = this.entityManager.find(Project.class, nr);
     	this.entityManager.refresh(c);
     	return c;
     }
     
     //-------------------------------------------------------------//    
     /* Operatii CRUD */
-    public void add(Proiect proiect){
+    public void add(Project proiect){
     	try{
     		entityManager.getTransaction().begin();
             if (this.entityManager.contains(proiect))
@@ -50,7 +50,7 @@ public class RegistruProiecte implements Repository{
     	}        
     }
 
-    public void remove(Proiect proiect){
+    public void remove(Project proiect){
     	try{
     		entityManager.getTransaction().begin();
             if (this.entityManager.contains(proiect))
@@ -64,14 +64,14 @@ public class RegistruProiecte implements Repository{
     }
 
 
-    public void refresh(Proiect proiect){
+    public void refresh(Project proiect){
     	this.entityManager.refresh(proiect);
     }
     
     //-------------------------------------------------------------//
     /* Operatii de cautare specifice */
-    public Proiect getContDupaDenumire(String numeProiect){
-        return (Proiect) this.entityManager
+    public Project getContDupaDenumire(String numeProiect){
+        return (Project) this.entityManager
                 .createQuery(sqlContDefaultText + " WHERE o.numeProiect = :numeProiect")
                 .setParameter("numeProiect", numeProiect)
                 .getSingleResult();

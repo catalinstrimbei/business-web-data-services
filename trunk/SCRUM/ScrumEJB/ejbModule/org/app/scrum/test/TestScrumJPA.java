@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.app.scrum.Proiect;
+import org.app.scrum.Project;
 import org.app.scrum.ProiectBuilder;
 
 public class TestScrumJPA {
@@ -14,7 +14,7 @@ public class TestScrumJPA {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		
-		Proiect proiect;
+		Project proiect;
 		for(int i=1; i <= 4; i++){
 			proiect = new ProiectBuilder().buildProiect(i, "Proiect Test", i+2);
 			em.persist(proiect);
