@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public class ProiectBuilder implements EntityFactory{
-	public Proiect buildProiect(Integer idProiect, String denumire, Integer nrReleases){
+	public Project buildProiect(Integer idProiect, String denumire, Integer nrReleases){
 		
-		Proiect proiect = new Proiect(idProiect, denumire + "." + idProiect , new Date());
+		Project proiect = new Project(idProiect, denumire + "." + idProiect , new Date());
 		List<Release> releasesProiect = new ArrayList<>();
 		
 		Date dataPublicare = new Date();

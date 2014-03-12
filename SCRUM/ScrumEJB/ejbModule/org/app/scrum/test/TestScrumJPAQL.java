@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.app.scrum.Proiect;
+import org.app.scrum.Project;
 import org.app.scrum.ProiectBuilder;
 import org.app.scrum.ProiectView;
 

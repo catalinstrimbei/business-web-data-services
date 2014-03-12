@@ -19,7 +19,7 @@ import javax.persistence.Query;
  * 
  * @author catalin
  */
-public class EntityRepository<T extends Object> {
+public class EntityRepository<T extends Object> implements EntityRepositoryService<T> {
 
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -27,8 +27,16 @@ public class EntityRepository<T extends Object> {
 	protected Class<T> repositoryType;
 	protected String genericSQL;
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#setEm(javax.persistence.EntityManager)
+	 */
+	@Override
 	public void setEm(EntityManager em) {
 		this.em = em;
+	}
+	
+	// Empty constructor
+	public EntityRepository() {
 	}
 
 	public EntityRepository(EntityManager em, Class<T> t) {
@@ -40,11 +48,19 @@ public class EntityRepository<T extends Object> {
 	}
 
 	// Repository query implementation
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
+	 */
+	@Override
 	public T getById(Object id) {
 		return (T) em.find(repositoryType, id);
 	}
 
 	// QBExample
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#get(T)
+	 */
+	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection<T> get(T entitySample) {
 
@@ -103,6 +119,10 @@ public class EntityRepository<T extends Object> {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#toCollection()
+	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<T> toCollection() {
 		logger.info("JPAQL: " + genericSQL);
@@ -110,6 +130,10 @@ public class EntityRepository<T extends Object> {
 		return em.createQuery(genericSQL).getResultList();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#toArray()
+	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
 		logger.info("JPAQL: " + genericSQL);
@@ -123,6 +147,10 @@ public class EntityRepository<T extends Object> {
 	}
 
 	// Repository transaction implementation
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#add(T)
+	 */
+	@Override
 	public T add(T entity) {
 		// em.getTransaction().begin();
 		try {
@@ -139,6 +167,10 @@ public class EntityRepository<T extends Object> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#addAll(java.util.Collection)
+	 */
+	@Override
 	public Collection<T> addAll(Collection<T> entities) {
 		em.getTransaction().begin();
 		try {
@@ -155,6 +187,10 @@ public class EntityRepository<T extends Object> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#remove(T)
+	 */
+	@Override
 	public boolean remove(T entity) {
 		em.getTransaction().begin();
 		try {
@@ -171,6 +207,10 @@ public class EntityRepository<T extends Object> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#removeAll(java.util.Collection)
+	 */
+	@Override
 	public boolean removeAll(Collection<T> entities) {
 		em.getTransaction().begin();
 		try {
@@ -187,6 +227,10 @@ public class EntityRepository<T extends Object> {
 	}
 
 	// Others
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#size()
+	 */
+	@Override
 	public int size() {
 		String sqlCount = "SELECT count(o) FROM "
 				+ repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1) + " o";
@@ -197,6 +241,10 @@ public class EntityRepository<T extends Object> {
 		return size.intValue();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.app.patterns.EntityRepositoryService#refresh(T)
+	 */
+	@Override
 	public T refresh(T entity) {
 		entity = em.merge(entity);
 		em.refresh(entity);

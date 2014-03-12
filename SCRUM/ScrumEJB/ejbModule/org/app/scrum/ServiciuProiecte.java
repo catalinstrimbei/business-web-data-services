@@ -7,7 +7,7 @@ public class ServiciuProiecte implements IServiciuProiecte {
 	 * @see org.app.scrum.IServiciuProiecte#calculZileEfortProiect(org.app.scrum.Proiect)
 	 */
 	@Override
-	public Integer calculZileEfortProiect(Proiect proiect){
+	public Integer calculZileEfortProiect(Project proiect){
 		Integer nrZile;
 		Long intervalZi = 24l * 60 * 60 * 1000;
 		

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import org.app.scrum.sprint.Task;
 import org.app.scrum.team.Membru;
@@ -27,6 +28,7 @@ public class Cerinta implements Comparable<Cerinta>
 	@Enumerated
 	protected CategorieCerinta categorie;
 	
+	@Transient
 	private List<Task> taskuri = new ArrayList<>();
 	
 	public List<Task> getTaskuri() {
