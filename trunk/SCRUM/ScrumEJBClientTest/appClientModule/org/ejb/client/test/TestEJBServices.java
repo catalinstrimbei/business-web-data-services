@@ -25,7 +25,7 @@ public class TestEJBServices {
 	}
 
 	// Test simplu invocare EJB
-//	@Test
+	@Test
 	public void testEJBService() throws Exception{
 		logger.info("Begin test: ..." );
 		
@@ -36,8 +36,8 @@ public class TestEJBServices {
 	
 	/*--- Utils: Obtinere referinta serviciu EJB ----------------------------------------------------*/
 	private static String serviceInterface = ScrumProjectRepositoryService.class.getName();
-	private static String serviceName = "Test1Bean";
-	private static String serviceModule = "EJBServices";	
+	private static String serviceName = "ScrumProjectRepositoryEJB";
+	private static String serviceModule = "ScrumEJB";	
 	
     private static <T> T lookupEJBService() throws NamingException {
         final Hashtable jndiProperties = new Hashtable();
