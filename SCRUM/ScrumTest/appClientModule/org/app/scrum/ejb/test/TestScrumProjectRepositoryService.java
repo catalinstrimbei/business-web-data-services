@@ -24,7 +24,7 @@ public class TestScrumProjectRepositoryService {
 		
 		assertTrue("Fail to add new project in repository", service.size() == 1);
 		
-		//service.remove(project);
+		service.remove(project);
 		
 		assertTrue("Fail to delete project in repository", service.size() == 0);
 	}
