@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_wtyPoJ4lEeOW5Y0paOh18g" name="MODEL-SVN">
+  <packagedElement xmi:type="uml:Node" xmi:id="_WWzA4J49EeOTB6fRW-RHRA" clientDependency="_Jva0MJ4-EeOTB6fRW-RHRA _NNCxoJ4-EeOTB6fRW-RHRA" name="SVN-Server">
+    <nestedClassifier xmi:type="uml:Artifact" xmi:id="_mfzEwJ49EeOTB6fRW-RHRA" name="Central-Repository" fileName="Artifact1.file"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Node" xmi:id="_Yav1oJ49EeOTB6fRW-RHRA" clientDependency="_gXLgsJ49EeOTB6fRW-RHRA" name="SVN-Client-1">
+    <nestedClassifier xmi:type="uml:Artifact" xmi:id="_6qA7UJ49EeOTB6fRW-RHRA" name="Local-Working-Copy-1" fileName="Artifact1.file"/>
+    <nestedClassifier xmi:type="uml:Artifact" xmi:id="_AW6zwJ4-EeOTB6fRW-RHRA" name="Local-Working-Copy-2" fileName="Artifact1.file"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Node" xmi:id="_Z5AjYJ49EeOTB6fRW-RHRA" clientDependency="_hTO5QJ49EeOTB6fRW-RHRA" name="SVN-Client-2"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_gXLgsJ49EeOTB6fRW-RHRA" name="Update/Commit" client="_Yav1oJ49EeOTB6fRW-RHRA" supplier="_WWzA4J49EeOTB6fRW-RHRA"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_hTO5QJ49EeOTB6fRW-RHRA" name="Update/Commit" client="_Z5AjYJ49EeOTB6fRW-RHRA" supplier="_WWzA4J49EeOTB6fRW-RHRA"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Jva0MJ4-EeOTB6fRW-RHRA" name="Dependency1" client="_WWzA4J49EeOTB6fRW-RHRA" supplier="_Yav1oJ49EeOTB6fRW-RHRA"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_NNCxoJ4-EeOTB6fRW-RHRA" name="Dependency2" client="_WWzA4J49EeOTB6fRW-RHRA" supplier="_Z5AjYJ49EeOTB6fRW-RHRA"/>
+</uml:Model>

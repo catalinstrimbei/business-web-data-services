@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_TCh_wKnuEeO496RmD1mO7Q" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_TCh_wanuEeO496RmD1mO7Q">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_f_as8KnuEeO496RmD1mO7Q" clientDependency="_lfUrMKnuEeO496RmD1mO7Q" name="Entity">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_y1cXwKnuEeO496RmD1mO7Q" name="id"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_imzl8KnuEeO496RmD1mO7Q" name="entityProperty" type="_hYVnsKnuEeO496RmD1mO7Q" association="_im0NAKnuEeO496RmD1mO7Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_imzl8anuEeO496RmD1mO7Q" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_imzl8qnuEeO496RmD1mO7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wMvQIKnuEeO496RmD1mO7Q" name="voProperty" type="_kYtocKnuEeO496RmD1mO7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hYVnsKnuEeO496RmD1mO7Q" name="Entity">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1Ecl8KnuEeO496RmD1mO7Q" name="id"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_im0NAKnuEeO496RmD1mO7Q" name="entity_entity_1" memberEnd="_im0NAanuEeO496RmD1mO7Q _imzl8KnuEeO496RmD1mO7Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_im0NAanuEeO496RmD1mO7Q" name="entity" type="_f_as8KnuEeO496RmD1mO7Q" association="_im0NAKnuEeO496RmD1mO7Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_im0NAqnuEeO496RmD1mO7Q" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_im0NA6nuEeO496RmD1mO7Q" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kYtocKnuEeO496RmD1mO7Q" name="ValueObject"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_lfUrMKnuEeO496RmD1mO7Q" name="Dependency1" client="_f_as8KnuEeO496RmD1mO7Q" supplier="_kYtocKnuEeO496RmD1mO7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_n7mD46nvEeO496RmD1mO7Q" name="entityRoot_entityComponent_1" memberEnd="_n7mD5KnvEeO496RmD1mO7Q _n7mD4KnvEeO496RmD1mO7Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_n7mD5KnvEeO496RmD1mO7Q" name="entityRoot" type="_RCiBcKnvEeO496RmD1mO7Q" association="_n7mD46nvEeO496RmD1mO7Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n7mD5anvEeO496RmD1mO7Q" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n7mD5qnvEeO496RmD1mO7Q" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_stDnwKnvEeO496RmD1mO7Q" name="Dependency2" client="_Wig4MKnvEeO496RmD1mO7Q" supplier="_fhzHYKnvEeO496RmD1mO7Q"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GK1NMKnxEeO496RmD1mO7Q" name="ExternalEntity"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_SQc7MKnxEeO496RmD1mO7Q" name="rootEntity_externalEntity_1" memberEnd="_SQc7ManxEeO496RmD1mO7Q _SQbGAKnxEeO496RmD1mO7Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SQc7ManxEeO496RmD1mO7Q" name="rootEntity" type="_RCiBcKnvEeO496RmD1mO7Q" association="_SQc7MKnxEeO496RmD1mO7Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SQc7MqnxEeO496RmD1mO7Q" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SQc7M6nxEeO496RmD1mO7Q" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_YB1D8KnxEeO496RmD1mO7Q" name="Aggregate Namespace">
+    <packagedElement xmi:type="uml:Class" xmi:id="_fhzHYKnvEeO496RmD1mO7Q" name="ComponentValueObject"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Wig4MKnvEeO496RmD1mO7Q" clientDependency="_stDnwKnvEeO496RmD1mO7Q" name="ComponentEntity">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eAu9QKnvEeO496RmD1mO7Q" name="localID"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_kKP5MKnvEeO496RmD1mO7Q" name="voProperty" type="_fhzHYKnvEeO496RmD1mO7Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RCiBcKnvEeO496RmD1mO7Q" name="RootEntity">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cRIn4KnvEeO496RmD1mO7Q" name="aggregateID"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n7mD4KnvEeO496RmD1mO7Q" name="entityComponents" type="_Wig4MKnvEeO496RmD1mO7Q" association="_n7mD46nvEeO496RmD1mO7Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n7mD4anvEeO496RmD1mO7Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n7mD4qnvEeO496RmD1mO7Q" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SQbGAKnxEeO496RmD1mO7Q" name="externalEntity" type="_GK1NMKnxEeO496RmD1mO7Q" association="_SQc7MKnxEeO496RmD1mO7Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SQbGAanxEeO496RmD1mO7Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SQbGAqnxEeO496RmD1mO7Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
