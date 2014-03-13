@@ -41,7 +41,7 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 
 	public EntityRepository(EntityManager em, Class<T> t) {
 		this.em = em;
-		repositoryType = t;
+		this.repositoryType = t;
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("generic JPAQL: " + genericSQL);
@@ -172,17 +172,17 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 	 */
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		try {
 			for (T entity : entities) {
 //				provideUri(entity);
 				em.merge(entity);
 			}
-			em.getTransaction().commit();
+//			em.getTransaction().commit();
 			return entities;
 		} catch (Exception e) {
 			e.printStackTrace();
-			em.getTransaction().rollback();
+//			em.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -192,15 +192,15 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 	 */
 	@Override
 	public boolean remove(T entity) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		try {
 			entity = em.merge(entity);
 			em.remove(entity);
-			em.getTransaction().commit();
+//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			em.getTransaction().rollback();
+//			em.getTransaction().rollback();
 			return false;
 		} finally {
 			// em.close();
@@ -212,16 +212,16 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 	 */
 	@Override
 	public boolean removeAll(Collection<T> entities) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		try {
 			for (Object c : entities) {
 				em.remove(c);
 			}
-			em.getTransaction().commit();
+//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			em.getTransaction().rollback();
+//			em.getTransaction().rollback();
 			return false;
 		}
 	}

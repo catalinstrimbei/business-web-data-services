@@ -15,8 +15,7 @@ import org.app.scrum.Project;
  */
 // 1. Remote interface
 @Stateless
-@LocalBean
-@Remote(ScrumProjectRepositoryService.class)
+//@LocalBean
 public class ScrumProjectRepositoryEJB extends EntityRepository<Project> implements ScrumProjectRepositoryService{
 
 	// 2. Inject resource
@@ -26,7 +25,13 @@ public class ScrumProjectRepositoryEJB extends EntityRepository<Project> impleme
     // 3. Init with injected EntityManager
     @PostConstruct
 	public void init(){
+    	System.out.println(">>>>>>>>>>>>>>>>>>> INIT ScrumProjectRepositoryEJB >>>>>>>>>>>>>>>>>>>>>>");
 		this.em = scrumEM;
+		this.repositoryType = Project.class;
+		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
+				+ " o";
+//		logger.info("generic JPAQL: " + genericSQL);
+		
 	}	
 	
     /**
@@ -38,6 +43,12 @@ public class ScrumProjectRepositoryEJB extends EntityRepository<Project> impleme
 
 	public ScrumProjectRepositoryEJB() {
 		super();
+	}
+
+	@Override
+	public String sayMessage(String m) {
+		// TODO Auto-generated method stub
+		return m + " ... from remote EJB!";
 	}
 
     
