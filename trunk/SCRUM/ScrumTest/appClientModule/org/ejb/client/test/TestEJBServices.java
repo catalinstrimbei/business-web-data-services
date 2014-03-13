@@ -16,12 +16,12 @@ public class TestEJBServices {
 	/* Resurse test*/
 	private static Logger logger = Logger.getLogger(TestEJBServices.class.getName());
 
-	private static ScrumProjectRepositoryService serviceEJB_Test1Bean;
+	private static ScrumProjectRepositoryService serviceEJB;
 	
 	/* Set up */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		serviceEJB_Test1Bean = lookupEJBService();
+		serviceEJB = lookupEJBService();
 	}
 
 	// Test simplu invocare EJB
@@ -29,7 +29,7 @@ public class TestEJBServices {
 	public void testEJBService() throws Exception{
 		logger.info("Begin test: ..." );
 		
-		logger.info(serviceEJB_Test1Bean.sayMessage("Hello!"));
+		logger.info(serviceEJB.sayMessage("Hello!"));
 		
 		logger.info("End test: ...");
 	}
