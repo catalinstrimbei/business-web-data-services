@@ -21,7 +21,7 @@
   
   
 	<!-- Loggers -->
-	<logger name="org.app.scrum.ejb.test">
+	<logger name="org.app.scrum.ejb">
 		<level value="debug"/> 
 	</logger>  
 	<!-- Root Logger -->

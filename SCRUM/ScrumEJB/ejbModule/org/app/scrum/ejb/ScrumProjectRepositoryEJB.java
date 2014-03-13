@@ -1,5 +1,7 @@
 package org.app.scrum.ejb;
 
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Remote;
@@ -15,9 +17,10 @@ import org.app.scrum.Project;
  */
 // 1. Remote interface
 @Stateless
-//@LocalBean
+@LocalBean
 public class ScrumProjectRepositoryEJB extends EntityRepository<Project> implements ScrumProjectRepositoryService{
-
+	private static Logger logger = Logger.getLogger(ScrumProjectRepositoryEJB.class.getName());
+	
 	// 2. Inject resource
 	@PersistenceContext(unitName="ScrumEJB")
 	private EntityManager scrumEM;
@@ -30,7 +33,7 @@ public class ScrumProjectRepositoryEJB extends EntityRepository<Project> impleme
 		this.repositoryType = Project.class;
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
-//		logger.info("generic JPAQL: " + genericSQL);
+		logger.info("generic JPAQL: " + genericSQL);
 		
 	}	
 	
@@ -47,7 +50,7 @@ public class ScrumProjectRepositoryEJB extends EntityRepository<Project> impleme
 
 	@Override
 	public String sayMessage(String m) {
-		// TODO Auto-generated method stub
+		logger.info("DEBUG ... BREAKPOINT");
 		return m + " ... from remote EJB!";
 	}
 

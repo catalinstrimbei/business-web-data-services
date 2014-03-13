@@ -1,6 +1,7 @@
 package org.app.scrum.ejb.test;
 
 import java.util.Hashtable;
+import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -10,6 +11,8 @@ import org.app.scrum.ejb.ScrumProjectRepositoryEJB;
 import org.app.scrum.ejb.ScrumProjectRepositoryService;
 
 public class ScrumProjectRepositoryServiceFactory {
+	private static Logger logger = Logger.getLogger(ScrumProjectRepositoryServiceFactory.class.getName());
+	
 	public static ScrumProjectRepositoryService getScrumProjectRepositoryService() throws Exception{
 		return lookupEJBService();
 	}
@@ -26,7 +29,7 @@ public class ScrumProjectRepositoryServiceFactory {
         
         String lookUpURL =  "ejb:/" + MODULE_NAME + "//" + SERVICE_NAME + "!" + REMOTE_INTERFACE_NAME;
         
-        System.out.println("!DEBUG: lookUpURL =  " + lookUpURL + "\n");
+        logger.info("!DEBUG: lookUpURL =  " + lookUpURL + "\n");
         return (T) context.lookup(lookUpURL);
     }
 }
