@@ -1,5 +1,6 @@
 package org.app.scrum;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-public class Project {
+public class Project implements Serializable{
 	@Id
 	private Integer nrProiect;
 	
