@@ -544,7 +544,7 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_HYzY8TpjEeObrIpWPUJq-Q" fontName="Segoe UI"/>
       <element xmi:type="uml:Association" href="Model-scrum.uml#_HYw8sDpjEeObrIpWPUJq-Q"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HYzY8jpjEeObrIpWPUJq-Q" points="[9, 17, 9, -45]$[9, 25, 9, -37]$[9, 61, 9, -1]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HYzY8jpjEeObrIpWPUJq-Q" points="[-6, 17, 0, -57]$[-6, 73, 0, -1]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HZKlUDpjEeObrIpWPUJq-Q" id="(0.43,0.87)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g0IKgDpoEeObrIpWPUJq-Q" id="(0.4012738853503185,0.008064516129032258)"/>
     </edges>
