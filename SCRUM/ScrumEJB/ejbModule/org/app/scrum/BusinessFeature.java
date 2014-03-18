@@ -5,59 +5,31 @@ import javax.persistence.Entity;
 @Entity
 public class BusinessFeature extends Feature {
 
-	private String categorieFunctionala; // basic, improvement
-	private String descriereUseCase; // scenariu-flux dialog utilizator final - aplicatie
-	
-	public String getCategorieFunctionala() {
-		return categorieFunctionala;
+	private String functionalCategory; // basic, improvement
+	private String useCaseDescription; // scenariu-flux dialog utilizator final - aplicatie
+	public String getFunctionalCategory() {
+		return functionalCategory;
 	}
-	public void setCategorieFunctionala(String categorieFunctionala) {
-		this.categorieFunctionala = categorieFunctionala;
+	public void setFunctionalCategory(String functionalCategory) {
+		this.functionalCategory = functionalCategory;
 	}
-	public String getDescriereUseCase() {
-		return descriereUseCase;
+	public String getUseCaseDescription() {
+		return useCaseDescription;
 	}
-	public void setDescriereUseCase(String descriereUseCase) {
-		this.descriereUseCase = descriereUseCase;
+	public void setUseCaseDescription(String useCaseDescription) {
+		this.useCaseDescription = useCaseDescription;
 	}
-	
-	public BusinessFeature(Integer idCerinta, String denumire,
-			String descriere, String categorieFunctionala,
-			String descriereUseCase) {
-		super(idCerinta, denumire, descriere);
-		this.idCerinta = idCerinta;
-		this.categorieFunctionala = categorieFunctionala;
-		this.descriereUseCase = descriereUseCase;
-		
-		this.categorie = FeatureCategory.FUNCTIONALA;
+	public BusinessFeature(String functionalCategory, String useCaseDescription) {
+		super();
+		this.functionalCategory = functionalCategory;
+		this.useCaseDescription = useCaseDescription;
 	}
-	
-	public BusinessFeature(Integer idCerinta, String denumire,
-			String descriere, 
-			String descriereUseCase) {
-		super(idCerinta, denumire, descriere);
-		this.idCerinta = idCerinta;
-		this.categorieFunctionala = categorieFunctionala;
-		this.descriereUseCase = descriereUseCase;
-		
-		this.categorie = FeatureCategory.FUNCTIONALA;
-	}	
-	
-	
 	public BusinessFeature() {
 		super();
-		this.categorie = FeatureCategory.FUNCTIONALA;
 	}
-	
 	@Override
 	public String toString() {
-		return super.toString() + " CerintaFunctionala [categorieFunctionala="
-				+ categorieFunctionala + ", descriereUseCase="
-				+ descriereUseCase + "]";
-	}
-	
-	@Override
-	public void setCategorie(FeatureCategory categorie) {
-		throw new Error("Proprietatea categorie nu poate fi schimbata!");
+		return "BusinessFeature [functionalCategory=" + functionalCategory
+				+ ", useCaseDescription=" + useCaseDescription + "]";
 	}
 }

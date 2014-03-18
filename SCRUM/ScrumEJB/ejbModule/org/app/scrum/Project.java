@@ -22,54 +22,53 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 public class Project implements Serializable{
 	@Id
-	private Integer nrProiect;
+	private Integer projectNo;
 	
 	@NotNull
-	private String numeProiect;
+	private String name;
 	
 	@Temporal(TemporalType.DATE)
-	private Date dataStart;
+	private Date startDate;
 	
 	@Transient
-	private ProjectManager managerProiect;
+	private ProjectManager projectManager;
 	
 	// Added
-	@OneToMany(mappedBy="proiect", cascade = ALL, fetch = LAZY)
+	@OneToMany(mappedBy="project", cascade = ALL, fetch = LAZY)
 	private List<Release> releases = new ArrayList<>();
 	
 	@OneToOne(cascade = ALL)
-	private Release releaseCurent;
+	private Release currentRelease;
 	
-	public ProjectManager getManagerProiect() {
-		return managerProiect;
+	public Integer getProjectNo() {
+		return projectNo;
 	}
-	public void setManagerProiect(ProjectManager managerProiect) {
-		this.managerProiect = managerProiect;
+	public void setProjectNo(Integer projectNo) {
+		this.projectNo = projectNo;
 	}
-	public Integer getNrProiect() {
-		return nrProiect;
+	public String getName() {
+		return name;
 	}
-	public void setNrProiect(Integer nrProiect) {
-		this.nrProiect = nrProiect;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getNumeProiect() {
-		return numeProiect;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setNumeProiect(String numeProiect) {
-		this.numeProiect = numeProiect;
+	public void setStartDate(Date startName) {
+		this.startDate = startName;
 	}
-	public Date getDataStart() {
-		return dataStart;
+	public ProjectManager getProjectManager() {
+		return projectManager;
 	}
-	public void setDataStart(Date dataStart) {
-		this.dataStart = dataStart;
+	public void setProjectManager(ProjectManager projectManager) {
+		this.projectManager = projectManager;
 	}
-	
-	public Project(Integer nrProiect, String numeProiect, Date dataStart) {
+	public Project(Integer projectNo, String name, Date startDate) {
 		super();
-		this.nrProiect = nrProiect;
-		this.numeProiect = numeProiect;
-		this.dataStart = dataStart;
+		this.projectNo = projectNo;
+		this.name = name;
+		this.startDate = startDate;
 	}
 	public Project() {
 		super();
@@ -83,18 +82,18 @@ public class Project implements Serializable{
 	public void setReleases(List<Release> releases) {
 		this.releases = releases;
 	}
-	public Release getReleaseCurent() {
-		return releaseCurent;
+	public Release getCurrentRelease() {
+		return currentRelease;
 	}
-	public void setReleaseCurent(Release releaseCurent) {
-		this.releaseCurent = releaseCurent;
+	public void setCurrentRelease(Release currentRelease) {
+		this.currentRelease = currentRelease;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((nrProiect == null) ? 0 : nrProiect.hashCode());
+				+ ((projectNo == null) ? 0 : projectNo.hashCode());
 		return result;
 	}
 	@Override
@@ -106,24 +105,16 @@ public class Project implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Project other = (Project) obj;
-		if (nrProiect == null) {
-			if (other.nrProiect != null)
+		if (projectNo == null) {
+			if (other.projectNo != null)
 				return false;
-		} else if (!nrProiect.equals(other.nrProiect))
+		} else if (!projectNo.equals(other.projectNo))
 			return false;
 		return true;
 	}
 	public Project(Integer nrProiect, String numeProiect) {
 		super();
-		this.nrProiect = nrProiect;
-		this.numeProiect = numeProiect;
+		this.projectNo = nrProiect;
+		this.name = numeProiect;
 	}
-	@Override
-	public String toString() {
-		return "Proiect [nrProiect=" + nrProiect + ", numeProiect="
-				+ numeProiect + ", dataStart=" + dataStart + "]";
-	}
-	
-	
-	
 }

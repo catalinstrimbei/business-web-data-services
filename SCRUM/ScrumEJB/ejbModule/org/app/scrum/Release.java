@@ -10,7 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import static javax.persistence.CascadeType.ALL;
+
 import javax.persistence.GeneratedValue;
 
 
@@ -18,98 +20,96 @@ import javax.persistence.GeneratedValue;
 public class Release {
 	@Id
 	@GeneratedValue
-	private Integer idRelease;
-	private String numeCod; // NEW born
-	private String indicativ; // vers 1.1
-	private String descriere;
+	private Integer releaseId;
+	private String codeName; // NEW born
+	private String indicative; // vers 1.1
+	private String description;
 	
 	@Temporal(TemporalType.DATE)
-	private Date dataPublicare; // dataEstimarePublicare
+	private Date publishDate; // dataEstimarePublicare
 	
 	// Added
 	@ManyToOne
-	private Project proiect;
+	private Project project;
 	
 	@OneToMany(cascade = ALL)
-	private List<Feature> cerinte = new ArrayList<>();
-	
-	public Integer getIdRelease() {
-		return idRelease;
+	private List<Feature> features = new ArrayList<>();
+		
+	public Integer getReleaseId() {
+		return releaseId;
 	}
-	public void setIdRelease(Integer idRelease) {
-		this.idRelease = idRelease;
+	public void setReleaseId(Integer releaseId) {
+		this.releaseId = releaseId;
 	}
-	public String getNumeCod() {
-		return numeCod;
+	public String getCodeName() {
+		return codeName;
 	}
-	public void setNumeCod(String numeCod) {
-		this.numeCod = numeCod;
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
 	}
-	
-	public String getDescriere() {
-		return descriere;
+	public String getIndicative() {
+		return indicative;
 	}
-	public void setDescriere(String descriere) {
-		this.descriere = descriere;
+	public void setIndicative(String indicative) {
+		this.indicative = indicative;
 	}
-	public Date getDataPublicare() {
-		return dataPublicare;
+	public String getDescription() {
+		return description;
 	}
-	public void setDataPublicare(Date dataPublicare) {
-		this.dataPublicare = dataPublicare;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
-	// Added
-	public String getIndicativ() {
-		return indicativ;
+	public Date getPublishDate() {
+		return publishDate;
 	}
-	public void setIndicativ(String indicativ) {
-		this.indicativ = indicativ;
+	public void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
 	}
-	public Project getProiect() {
-		return proiect;
+	public Project getProject() {
+		return project;
 	}
-	public void setProiect(Project proiect) {
-		this.proiect = proiect;
+	public void setProject(Project project) {
+		this.project = project;
 	}
-	
-	public List<Feature> getCerinte() {
-		return cerinte;
+	public List<Feature> getFeatures() {
+		return features;
 	}
-	public void setCerinte(List<Feature> cerinte) {
-		this.cerinte = cerinte;
+	public void setFeatures(List<Feature> features) {
+		this.features = features;
 	}
 	public Release() {
 		super();
 	}
-	public Release(Integer idRelease, String numeCod, String indicativ,
-			String descriere, Date dataPublicare, Project proiect) {
-		super();
-		this.idRelease = idRelease;
-		this.numeCod = numeCod;
-		this.indicativ = indicativ;
-		this.descriere = descriere;
-		this.dataPublicare = dataPublicare;
-		this.proiect = proiect;
-	}
 	
-	
-	public Release(Integer idRelease, String indicativ, Date dataPublicare,
-			Project proiect) {
+	public Release(Integer releaseId, String codeName, String indicative,
+			String description, Date publishDate, Project project) {
 		super();
-		this.idRelease = idRelease;
-		this.indicativ = indicativ;
-		this.dataPublicare = dataPublicare;
-		this.proiect = proiect;
+		this.releaseId = releaseId;
+		this.codeName = codeName;
+		this.indicative = indicative;
+		this.description = description;
+		this.publishDate = publishDate;
+		this.project = project;
 	}
+
+	public Release(Integer releaseId, String indicative, Date publishDate,
+			Project project) {
+		super();
+		this.releaseId = releaseId;
+		this.indicative = indicative;
+		this.publishDate = publishDate;
+		this.project = project;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((idRelease == null) ? 0 : idRelease.hashCode());
+				+ ((releaseId == null) ? 0 : releaseId.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -119,13 +119,12 @@ public class Release {
 		if (getClass() != obj.getClass())
 			return false;
 		Release other = (Release) obj;
-		if (idRelease == null) {
-			if (other.idRelease != null)
+		if (releaseId == null) {
+			if (other.releaseId != null)
 				return false;
-		} else if (!idRelease.equals(other.idRelease))
+		} else if (!releaseId.equals(other.releaseId))
 			return false;
 		return true;
 	}
-	
 	
 }

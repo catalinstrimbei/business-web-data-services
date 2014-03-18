@@ -4,64 +4,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-	private Integer idEchipa;
-	private Specializare specializare;
-	private String competente;
-	private List<Member> membri = new ArrayList<Member>();
-	private TeamLeader liderEchipa;
+	private Integer teamID;
+	private Specialization specialization;
+	private String abilities;
+	private List<Member> members = new ArrayList<Member>();
+	private TeamLeader teamLeader;
 	
 	// properties from bean accessors
-	public TeamLeader getLiderEchipa() {
-		return liderEchipa;
-	}
-	public void setLiderEchipa(TeamLeader liderEchipa) {
-		this.liderEchipa = liderEchipa;
-	}
-	public Integer getIdEchipa() {
-		return idEchipa;
-	}
-	public void setIdEchipa(Integer idEchipa) {
-		this.idEchipa = idEchipa;
-	}
-	public Specializare getSpecializare() {
-		return specializare;
-	}
-	public void setSpecializare(Specializare specializare) {
-		this.specializare = specializare;
-	}
-	public String getCompetente() {
-		return competente;
-	}
-	public void setCompetente(String competente) {
-		this.competente = competente;
-	}
-	public List<Member> getMembri() {
-		return membri;
-	}
-	public void setMembri(List<Member> membri) {
-		this.membri = membri;
-	}
-	public Team(Integer idEchipa, Specializare specializare, String competente) {
+	public Team(Integer idEchipa, Specialization specializare, String competente) {
 		super();
-		this.idEchipa = idEchipa;
-		this.specializare = specializare;
-		this.competente = competente;
+		this.teamID = idEchipa;
+		this.specialization = specializare;
+		this.abilities = competente;
+	}
+	public Integer getTeamID() {
+		return teamID;
+	}
+	public void setTeamID(Integer teamID) {
+		this.teamID = teamID;
+	}
+	public Specialization getSpecialization() {
+		return specialization;
+	}
+	public void setSpecialization(Specialization specialization) {
+		this.specialization = specialization;
+	}
+	public String getAbilities() {
+		return abilities;
+	}
+	public void setAbilities(String abilities) {
+		this.abilities = abilities;
+	}
+	public List<Member> getMembers() {
+		return members;
+	}
+	public void setMembers(List<Member> members) {
+		this.members = members;
+	}
+	public TeamLeader getTeamLeader() {
+		return teamLeader;
+	}
+	public void setTeamLeader(TeamLeader teamLeader) {
+		this.teamLeader = teamLeader;
 	}
 	public Team() {
 		super();
 	}
-	
-	public Team(Integer idEchipa, Specializare specializare) {
+	public Team(Integer teamID, Specialization specialization) {
 		super();
-		this.idEchipa = idEchipa;
-		this.specializare = specializare;
+		this.teamID = teamID;
+		this.specialization = specialization;
 	}
 	// polimorfism parametrizare
-	public void adaugaMembru(Member membru){
-		this.membri.add(membru);
+	public void addMember(Member member){
+		this.members.add(member);
 	}
 	
-	public enum Specializare {
+	public enum Specialization {
 		BACKEND, FRONTEND, DATABASE;
 	}	
 }

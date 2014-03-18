@@ -33,4 +33,7 @@ public class TestScrumProjectRepositoryService {
 		assertTrue("Fail to delete project in repository", service.size() == 0);
 	}
 
+	public void testAddProjects(){
+		
+	}
 }

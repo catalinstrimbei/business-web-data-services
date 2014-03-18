@@ -7,72 +7,72 @@ import java.util.List;
 import org.app.scrum.Feature;
 
 public class Sprint {
-	private Integer idSprint;
-	private String obiectiv;
-	private List<Feature> cerinte = new ArrayList<>();
-	private Date dataStart;
+	private Integer sprintID;
+	private String objective;
+	private List<Feature> features = new ArrayList<>();
+	private Date startDate;
 	private String review;
 	
-	public List<Feature> getCerinte() {
-		return cerinte;
-	}
-	public void setCerinte(List<Feature> cerinte) {
-		this.cerinte = cerinte;
-	}
-	/*******************************/
 	
-	// proprietatea dataStart
-	public Date getDataStart() {
-		return dataStart;
+	public Integer getSprintID() {
+		return sprintID;
 	}
-	public void setDataStart(Date dataStart) {
-		this.dataStart = dataStart;
+
+	public void setSprintID(Integer sprintID) {
+		this.sprintID = sprintID;
 	}
-	
+
+	public String getObjective() {
+		return objective;
+	}
+
+	public void setObjective(String objective) {
+		this.objective = objective;
+	}
+
+	public List<Feature> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(List<Feature> features) {
+		this.features = features;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
 	// --------------------------------------------------------------------- //
-	private Long getDurataEstimataCerinta(Feature cerinta){
-		Long durataEstimataCerinta = 0l; // 0 long
-		for(Task t: cerinta.getTaskuri()){
-			durataEstimataCerinta += t.getTimpEstimat() * 60 * 60 * 1000;
+	private Long getEstimatedTimeFeature(Feature feature){
+		Long estimatedTimeFeature = 0l; // 0 long
+		for(Task t: feature.getTasks()){
+			estimatedTimeFeature += t.getEstimatedTime() * 60 * 60 * 1000;
 		}
-		return durataEstimataCerinta;
+		return estimatedTimeFeature;
 	}
 	
-	private Long getDurataEstimataSprint() {
-		Long durataEstimataSprint = 0l; // 0 long
-		for (Feature c: this.cerinte){
-			durataEstimataSprint += getDurataEstimataCerinta(c);
+	private Long getEstimatedTimeSprint() {
+		Long estimatedTimeSprint = 0l; // 0 long
+		for (Feature c: this.features){
+			estimatedTimeSprint += getEstimatedTimeFeature(c);
 		}
 		
-		return durataEstimataSprint;
+		return estimatedTimeSprint;
 	}	
 	
 	// prop dataFinalizare
-	public Date getDataFinalizare() {
-		Long t1 = this.dataStart.getTime() + this.getDurataEstimataSprint();
+	public Date getFinalDate() {
+		Long t1 = this.startDate.getTime() + this.getEstimatedTimeSprint();
 		
-		Date dataFinalizare = new Date(t1);
+		Date finalDate = new Date(t1);
 		
-		return dataFinalizare;
+		return finalDate;
 	}	
 	// --------------------------------------------------------------------- //
-	public Integer getIdSprint() {
-		return idSprint;
-	}
-	public void setIdSprint(Integer idSprint) {
-		this.idSprint = idSprint;
-	}
-	public String getObiectiv() {
-		return obiectiv;
-	}
-	public void setObiectiv(String obiectiv) {
-		this.obiectiv = obiectiv;
-	}
-
-
-
-
-
 	public String getReview() {
 		return review;
 	}
@@ -83,13 +83,11 @@ public class Sprint {
 	public Sprint() {
 		super();
 	}
-	public Sprint(Integer idSprint, String obiectiv, Date dataStart) {
+
+	public Sprint(Integer sprintID, String objective, Date startDate) {
 		super();
-		this.idSprint = idSprint;
-		this.obiectiv = obiectiv;
-		this.dataStart = dataStart;
+		this.sprintID = sprintID;
+		this.objective = objective;
+		this.startDate = startDate;
 	}
-	
-	
-	
 }

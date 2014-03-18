@@ -5,51 +5,56 @@ import javax.persistence.Entity;
 @Entity
 public class TechnicalFeature extends Feature {
 	
-	private String nivelArhitectural; // prezentare (UI), model si/sau logica afacerii, persistenta, baza de date
-	private String competenteTehniceNecesare; // LP: Java, C#, JavaScript, BD: SQL, MongoDB, FMks: EJB, JPA, JSF, Angular, JQuery
-	private String descriereFluxArhitecural; // colaborare inter-niveluri: UI - catre - Fmk.Logica/Model - catre - Sistem BD
+	private String architecturalLevel; // prezentare (UI), model si/sau logica afacerii, persistenta, baza de date
+	private String technicalAbilitiesRequired; // LP: Java, C#, JavaScript, BD: SQL, MongoDB, FMks: EJB, JPA, JSF, Angular, JQuery
+	private String architecturalFlowDescription; // colaborare inter-niveluri: UI - catre - Fmk.Logica/Model - catre - Sistem BD
 	
-	public String getNivelArhitectural() {
-		return nivelArhitectural;
-	}
-	public void setNivelArhitectural(String nivelArhitectural) {
-		this.nivelArhitectural = nivelArhitectural;
-	}
-	public String getCompetenteTehniceNecesare() {
-		return competenteTehniceNecesare;
-	}
-	public void setCompetenteTehniceNecesare(String competenteTehniceNecesare) {
-		this.competenteTehniceNecesare = competenteTehniceNecesare;
-	}
-	public String getDescriereFluxArhitecural() {
-		return descriereFluxArhitecural;
-	}
-	public void setDescriereFluxArhitecural(String descriereFluxArhitecural) {
-		this.descriereFluxArhitecural = descriereFluxArhitecural;
-	}
 	
+	public String getArchitecturalLevel() {
+		return architecturalLevel;
+	}
+
+	public void setArchitecturalLevel(String architecturalLevel) {
+		this.architecturalLevel = architecturalLevel;
+	}
+
+	public String getTechnicalAbilitiesRequired() {
+		return technicalAbilitiesRequired;
+	}
+
+	public void setTechnicalAbilitiesRequired(String technicalAbilitiesRequired) {
+		this.technicalAbilitiesRequired = technicalAbilitiesRequired;
+	}
+
+	public String getArchitecturalFlowDescription() {
+		return architecturalFlowDescription;
+	}
+
+	public void setArchitecturalFlowDescription(String architecturalFlowDescription) {
+		this.architecturalFlowDescription = architecturalFlowDescription;
+	}
+
 	@Override
-	public void setCategorie(FeatureCategory categorie) {
+	public void setCategory(FeatureCategory category) {
 		throw new Error("Proprietatea categorie nu poate fi schimbata!");
 	}
 	
 	public TechnicalFeature() {
 		super();
-		this.categorie = FeatureCategory.TEHNICA;
+		this.category = FeatureCategory.TECHNICAL;
 	}
-	public TechnicalFeature(Integer idCerinta, String denumire, String descriere,
-			String nivelArhitectural, String competenteTehniceNecesare,
-			String descriereFluxArhitecural) {
-		super(idCerinta, denumire, descriere);
-		this.nivelArhitectural = nivelArhitectural;
-		this.competenteTehniceNecesare = competenteTehniceNecesare;
-		this.descriereFluxArhitecural = descriereFluxArhitecural;
-		
-		this.categorie = FeatureCategory.TEHNICA;
+
+	public TechnicalFeature(Integer featureID, String name, String description,
+			String architecturalLevel, String technicalAbilitiesRequired,
+			String architecturalFlowDescription) {
+		super(featureID, name, description);
+		this.architecturalLevel = architecturalLevel;
+		this.technicalAbilitiesRequired = technicalAbilitiesRequired;
+		this.architecturalFlowDescription = architecturalFlowDescription;
+		this.category = FeatureCategory.TECHNICAL;
 	}
-	public TechnicalFeature(Integer idCerinta, String denumire, String descriere) {
-		super(idCerinta, denumire, descriere);
+
+	public TechnicalFeature(Integer featureID, String name, String description) {
+		super(featureID, name, description);
 	}
-	
-	
 }
