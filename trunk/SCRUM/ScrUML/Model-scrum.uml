@@ -391,7 +391,7 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_-jOEwDvVEeOykqJIqx8NfQ" name="TECHNICAL"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_SJCNwDvWEeOykqJIqx8NfQ" name="TaskCategory">
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_UuU1ADvWEeOykqJIqx8NfQ" name="ANALISIS"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_UuU1ADvWEeOykqJIqx8NfQ" name="ANALYSIS"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_VF0vADvWEeOykqJIqx8NfQ" name="DESIGN"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_VyOiADvWEeOykqJIqx8NfQ" name="IMPLEMENTATION"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_gNYSQDvWEeOykqJIqx8NfQ" name="TEST"/>
