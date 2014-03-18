@@ -5,7 +5,7 @@ import org.app.scrum.sprint.*;
 import org.app.scrum.team.*;
 
 public class ScrumTeamService {
-	public Integer getTotalOreEstimateCerinta(Cerinta cerinta, Membru membru){
+	public Integer getTotalOreEstimateCerinta(Feature cerinta, Member membru){
 		Integer totalOreEstimateCerinta = 0;
 		for(Task t: cerinta.getTaskuri()){
 			if (t.getResponsabil().equals(membru))
@@ -14,7 +14,7 @@ public class ScrumTeamService {
 		return totalOreEstimateCerinta;
 	}
 	
-	public Integer getTotalOreRamaseCerinta(Cerinta cerinta, Membru membru){
+	public Integer getTotalOreRamaseCerinta(Feature cerinta, Member membru){
 		Integer totalOreRamaseCerinta = 0;
 		for(Task t: cerinta.getTaskuri()){
 			if (t.getResponsabil().equals(membru))
@@ -24,24 +24,24 @@ public class ScrumTeamService {
 	}
 	
 	// model-subiect sesiune-no.1
-	public Integer getTotalOreEstimateSprint(Sprint sprint, Membru membru){
+	public Integer getTotalOreEstimateSprint(Sprint sprint, Member membru){
 		return null;
 	}
-	public Integer getTotalOreEstimateCerinta(Cerinta cerinta, Echipa echipa){
+	public Integer getTotalOreEstimateCerinta(Feature cerinta, Team echipa){
 		return null;
 	}
-	public Integer getTotalOreEstimateCerinta(Cerinta cerinta){
+	public Integer getTotalOreEstimateCerinta(Feature cerinta){
 		return null;
 	}
 	
 	// model-subiect sesiune-no.2
-	public Integer getTotalOreRamaseSprint(Sprint sprint, Membru membru){
+	public Integer getTotalOreRamaseSprint(Sprint sprint, Member membru){
 		return null;
 	}
-	public Integer getTotalOreRamaseCerinta(Cerinta cerinta, Echipa echipa){
+	public Integer getTotalOreRamaseCerinta(Feature cerinta, Team echipa){
 		return null;
 	}
-	public Integer getTotalOreRamaseCerinta(Cerinta cerinta){
+	public Integer getTotalOreRamaseCerinta(Feature cerinta){
 		return null;
 	}
 }

@@ -3,18 +3,18 @@ package org.app.scrum.team;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Echipa {
+public class Team {
 	private Integer idEchipa;
 	private Specializare specializare;
 	private String competente;
-	private List<Membru> membri = new ArrayList<Membru>();
-	private LiderEchipa liderEchipa;
+	private List<Member> membri = new ArrayList<Member>();
+	private TeamLeader liderEchipa;
 	
 	// properties from bean accessors
-	public LiderEchipa getLiderEchipa() {
+	public TeamLeader getLiderEchipa() {
 		return liderEchipa;
 	}
-	public void setLiderEchipa(LiderEchipa liderEchipa) {
+	public void setLiderEchipa(TeamLeader liderEchipa) {
 		this.liderEchipa = liderEchipa;
 	}
 	public Integer getIdEchipa() {
@@ -35,29 +35,29 @@ public class Echipa {
 	public void setCompetente(String competente) {
 		this.competente = competente;
 	}
-	public List<Membru> getMembri() {
+	public List<Member> getMembri() {
 		return membri;
 	}
-	public void setMembri(List<Membru> membri) {
+	public void setMembri(List<Member> membri) {
 		this.membri = membri;
 	}
-	public Echipa(Integer idEchipa, Specializare specializare, String competente) {
+	public Team(Integer idEchipa, Specializare specializare, String competente) {
 		super();
 		this.idEchipa = idEchipa;
 		this.specializare = specializare;
 		this.competente = competente;
 	}
-	public Echipa() {
+	public Team() {
 		super();
 	}
 	
-	public Echipa(Integer idEchipa, Specializare specializare) {
+	public Team(Integer idEchipa, Specializare specializare) {
 		super();
 		this.idEchipa = idEchipa;
 		this.specializare = specializare;
 	}
 	// polimorfism parametrizare
-	public void adaugaMembru(Membru membru){
+	public void adaugaMembru(Member membru){
 		this.membri.add(membru);
 	}
 	

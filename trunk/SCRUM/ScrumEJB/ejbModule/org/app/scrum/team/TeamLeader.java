@@ -1,6 +1,6 @@
 package org.app.scrum.team;
 
-public class LiderEchipa extends Membru{
+public class TeamLeader extends Member{
 //	private Integer id;
 //	private String numePrenume;
 	private String competenteTehnologice; // JEE, Spring, .NET, JS/Node.js, Ruby_Rails
@@ -24,15 +24,15 @@ public class LiderEchipa extends Membru{
 	private void setCompetenteTehnologice(String competenteTehnologice) {
 		this.competenteTehnologice = competenteTehnologice;
 	}
-	public LiderEchipa(Integer id, String numePrenume,
+	public TeamLeader(Integer id, String numePrenume,
 			String competenteTehnologice) {
 //		super();
 //		this.id = id;
 //		this.numePrenume = numePrenume;
-		super(id, numePrenume, Rol.MANAGER);
+		super(id, numePrenume, Role.MANAGER);
 		this.competenteTehnologice = competenteTehnologice;
 	}
-	public LiderEchipa() {
+	public TeamLeader() {
 		super();
 	}
 	

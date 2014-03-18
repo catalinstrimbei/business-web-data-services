@@ -14,35 +14,35 @@ public class Test7_Polimorfism {
 		// Baza: ierarhiile
 
 		// Polimorfism in "echipa"
-		Echipa echipa = new Echipa(1, Echipa.Specializare.BACKEND, null);
+		Team echipa = new Team(1, Team.Specializare.BACKEND, null);
 		
-		Membru membru = new ManagerProiect(1, "M1", 2, "agile, scrum, xp");
+		Member membru = new ProjectManager(1, "M1", 2, "agile, scrum, xp");
 		membru.setCompetente("MSFT Project, Redmine, ScrumSoft"); // polimorfism operatie
 		
 //		ManagerProiect manager = (ManagerProiect) membru;
 //		manager.setExperientaManageriala(5);
-		((ManagerProiect) membru).setExperientaManageriala(5);
+		((ProjectManager) membru).setExperientaManageriala(5);
 		
 		echipa.adaugaMembru(membru);
 		
-		membru = new LiderEchipa(2, "M2", null); // variabila polimorfica
+		membru = new TeamLeader(2, "M2", null); // variabila polimorfica
 		membru.setCompetente("Java, JEE, SQL, Oracle, JavaScript, HTML5");  // polimorfism operatie
-		((LiderEchipa)membru).setCompetente("Redmine", LiderEchipa.TipCompetente.MANAGERIALE); // spraincarcare
+		((TeamLeader)membru).setCompetente("Redmine", TeamLeader.TipCompetente.MANAGERIALE); // spraincarcare
 		
 		echipa.adaugaMembru(membru);
 		
-		membru = new Membru(3, "M3", Rol.DEVELOPER);
+		membru = new Member(3, "M3", Role.DEVELOPER);
 		membru.setCompetente("Java, JEE");  // polimorfism operatie
 		echipa.adaugaMembru(membru); // apel polimorfic
 		
-		membru = new Membru(4, "M4", Rol.TESTER);
+		membru = new Member(4, "M4", Role.TESTER);
 		membru.setCompetente("JUnit");
 		echipa.adaugaMembru(membru);
 		
 		// Polimorfism in delegare responsabilitati
-		Cerinta cerinta = new CerintaFunctionala();
+		Feature cerinta = new BusinessFeature();
 		List<Task> taskuri = new ArrayList<>(); // colectie polimorfica
-		Membru responsabil = null; // variabila polimorfica
+		Member responsabil = null; // variabila polimorfica
 
 		Task task = new Task(); 
 		task.setDataStart(new Date());

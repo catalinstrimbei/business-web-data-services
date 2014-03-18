@@ -12,13 +12,13 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 import org.app.scrum.sprint.Task;
-import org.app.scrum.team.Membru;
+import org.app.scrum.team.Member;
 
 //abstract 
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Cerinta implements Comparable<Cerinta>
+public class Feature implements Comparable<Feature>
 {
 	@Id
 	protected Integer idCerinta;
@@ -26,7 +26,7 @@ public class Cerinta implements Comparable<Cerinta>
 	private String descriere;
 	
 	@Enumerated
-	protected CategorieCerinta categorie;
+	protected FeatureCategory categorie;
 	
 	@Transient
 	private List<Task> taskuri = new ArrayList<>();
@@ -55,20 +55,20 @@ public class Cerinta implements Comparable<Cerinta>
 	public void setDescriere(String descriere) {
 		this.descriere = descriere;
 	}
-	public CategorieCerinta getCategorie() {
+	public FeatureCategory getCategorie() {
 		return categorie;
 	}
-	public void setCategorie(CategorieCerinta categorie) {
+	public void setCategorie(FeatureCategory categorie) {
 		this.categorie = categorie;
 	}
 	
 	
 
-	public Cerinta() {
+	public Feature() {
 		super();
 	}
 
-	public Cerinta(Integer idCerinta, String denumire, String descriere) {
+	public Feature(Integer idCerinta, String denumire, String descriere) {
 		super();
 		this.idCerinta = idCerinta;
 		this.denumire = denumire;
@@ -103,7 +103,7 @@ public class Cerinta implements Comparable<Cerinta>
 			return false;
 //		if (getClass() != obj.getClass())
 //			return false;
-		Cerinta other = (Cerinta) obj;
+		Feature other = (Feature) obj;
 		if (categorie != other.categorie)
 			return false;
 		if (idCerinta == null) {
@@ -115,12 +115,12 @@ public class Cerinta implements Comparable<Cerinta>
 	}
 	
 	@Override
-	public int compareTo(Cerinta other) {
+	public int compareTo(Feature other) {
 		if (this.equals(other))
 			return 0;
 		return this.getDenumire().compareTo(other.getDenumire());
 	}
-	public Cerinta(Integer idCerinta, String denumire) {
+	public Feature(Integer idCerinta, String denumire) {
 		super();
 		this.idCerinta = idCerinta;
 		this.denumire = denumire;

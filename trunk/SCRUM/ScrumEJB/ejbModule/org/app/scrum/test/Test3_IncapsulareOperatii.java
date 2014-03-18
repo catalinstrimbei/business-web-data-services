@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.app.scrum.Cerinta;
-import org.app.scrum.CerintaFunctionala;
+import org.app.scrum.Feature;
+import org.app.scrum.BusinessFeature;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.sprint.Task;
 
@@ -32,8 +32,8 @@ public class Test3_IncapsulareOperatii {
 		Sprint s1 = new Sprint();
 		s1.setDataStart(new Date());
 		
-		List<Cerinta> cerinte = new ArrayList<>();
-		Cerinta c1 = new CerintaFunctionala();
+		List<Feature> cerinte = new ArrayList<>();
+		Feature c1 = new BusinessFeature();
 		
 		
 		

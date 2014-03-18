@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.app.scrum.Cerinta;
+import org.app.scrum.Feature;
 
 public class Sprint {
 	private Integer idSprint;
 	private String obiectiv;
-	private List<Cerinta> cerinte = new ArrayList<>();
+	private List<Feature> cerinte = new ArrayList<>();
 	private Date dataStart;
 	private String review;
 	
-	public List<Cerinta> getCerinte() {
+	public List<Feature> getCerinte() {
 		return cerinte;
 	}
-	public void setCerinte(List<Cerinta> cerinte) {
+	public void setCerinte(List<Feature> cerinte) {
 		this.cerinte = cerinte;
 	}
 	/*******************************/
@@ -30,7 +30,7 @@ public class Sprint {
 	}
 	
 	// --------------------------------------------------------------------- //
-	private Long getDurataEstimataCerinta(Cerinta cerinta){
+	private Long getDurataEstimataCerinta(Feature cerinta){
 		Long durataEstimataCerinta = 0l; // 0 long
 		for(Task t: cerinta.getTaskuri()){
 			durataEstimataCerinta += t.getTimpEstimat() * 60 * 60 * 1000;
@@ -40,7 +40,7 @@ public class Sprint {
 	
 	private Long getDurataEstimataSprint() {
 		Long durataEstimataSprint = 0l; // 0 long
-		for (Cerinta c: this.cerinte){
+		for (Feature c: this.cerinte){
 			durataEstimataSprint += getDurataEstimataCerinta(c);
 		}
 		

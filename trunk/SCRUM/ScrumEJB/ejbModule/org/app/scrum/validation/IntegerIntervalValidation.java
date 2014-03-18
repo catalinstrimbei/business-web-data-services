@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.app.scrum.validare;
+package org.app.scrum.validation;
 
 /**
  *
@@ -20,13 +20,13 @@ public class IntegerIntervalValidation extends Validator{
     }
 
     @Override
-    public boolean validate(Object valueToValidate) throws ExceptieValidare {
+    public boolean validate(Object valueToValidate) throws ValidationException {
         if (valueToValidate == null)
-            throw new ExceptieValidare("Validare valoare NULL !?!");
+            throw new ValidationException("Validare valoare NULL !?!");
         Integer value = (Integer) valueToValidate;
         if (value >= start && value <= end)
             return true;
-        throw new ExceptieValidare(message);
+        throw new ValidationException(message);
     }
 
 }

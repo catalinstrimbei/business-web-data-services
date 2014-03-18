@@ -3,7 +3,7 @@ package org.app.scrum;
 import javax.persistence.Entity;
 
 @Entity
-public class CerintaFunctionala extends Cerinta {
+public class BusinessFeature extends Feature {
 
 	private String categorieFunctionala; // basic, improvement
 	private String descriereUseCase; // scenariu-flux dialog utilizator final - aplicatie
@@ -21,7 +21,7 @@ public class CerintaFunctionala extends Cerinta {
 		this.descriereUseCase = descriereUseCase;
 	}
 	
-	public CerintaFunctionala(Integer idCerinta, String denumire,
+	public BusinessFeature(Integer idCerinta, String denumire,
 			String descriere, String categorieFunctionala,
 			String descriereUseCase) {
 		super(idCerinta, denumire, descriere);
@@ -29,10 +29,10 @@ public class CerintaFunctionala extends Cerinta {
 		this.categorieFunctionala = categorieFunctionala;
 		this.descriereUseCase = descriereUseCase;
 		
-		this.categorie = CategorieCerinta.FUNCTIONALA;
+		this.categorie = FeatureCategory.FUNCTIONALA;
 	}
 	
-	public CerintaFunctionala(Integer idCerinta, String denumire,
+	public BusinessFeature(Integer idCerinta, String denumire,
 			String descriere, 
 			String descriereUseCase) {
 		super(idCerinta, denumire, descriere);
@@ -40,13 +40,13 @@ public class CerintaFunctionala extends Cerinta {
 		this.categorieFunctionala = categorieFunctionala;
 		this.descriereUseCase = descriereUseCase;
 		
-		this.categorie = CategorieCerinta.FUNCTIONALA;
+		this.categorie = FeatureCategory.FUNCTIONALA;
 	}	
 	
 	
-	public CerintaFunctionala() {
+	public BusinessFeature() {
 		super();
-		this.categorie = CategorieCerinta.FUNCTIONALA;
+		this.categorie = FeatureCategory.FUNCTIONALA;
 	}
 	
 	@Override
@@ -57,7 +57,7 @@ public class CerintaFunctionala extends Cerinta {
 	}
 	
 	@Override
-	public void setCategorie(CategorieCerinta categorie) {
+	public void setCategorie(FeatureCategory categorie) {
 		throw new Error("Proprietatea categorie nu poate fi schimbata!");
 	}
 }

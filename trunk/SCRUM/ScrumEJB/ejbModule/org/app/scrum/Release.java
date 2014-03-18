@@ -31,7 +31,7 @@ public class Release {
 	private Project proiect;
 	
 	@OneToMany(cascade = ALL)
-	private List<Cerinta> cerinte = new ArrayList<>();
+	private List<Feature> cerinte = new ArrayList<>();
 	
 	public Integer getIdRelease() {
 		return idRelease;
@@ -73,10 +73,10 @@ public class Release {
 		this.proiect = proiect;
 	}
 	
-	public List<Cerinta> getCerinte() {
+	public List<Feature> getCerinte() {
 		return cerinte;
 	}
-	public void setCerinte(List<Cerinta> cerinte) {
+	public void setCerinte(List<Feature> cerinte) {
 		this.cerinte = cerinte;
 	}
 	public Release() {

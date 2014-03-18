@@ -1,6 +1,6 @@
 package org.app.scrum;
 
-public class ProiectView {
+public class ProjectView {
 	private Integer nrProiect;
 	
 	private String numeProiect;
@@ -21,13 +21,13 @@ public class ProiectView {
 		this.numeProiect = numeProiect;
 	}
 
-	public ProiectView(Integer nrProiect, String numeProiect) {
+	public ProjectView(Integer nrProiect, String numeProiect) {
 		super();
 		this.nrProiect = nrProiect;
 		this.numeProiect = numeProiect;
 	}
 
-	public ProiectView() {
+	public ProjectView() {
 		super();
 	}
 

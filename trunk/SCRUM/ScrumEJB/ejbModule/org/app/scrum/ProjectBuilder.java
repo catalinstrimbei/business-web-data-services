@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ProiectBuilder implements EntityFactory{
+public class ProjectBuilder implements EntityFactory{
 	public Project buildProiect(Integer idProiect, String denumire, Integer nrReleases){
 		
 		Project proiect = new Project(idProiect, denumire + "." + idProiect , new Date());

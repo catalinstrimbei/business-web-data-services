@@ -1,5 +1,5 @@
 package org.app.scrum.team;
 
-public enum Rol{
+public enum Role{
 	MANAGER, PRODUCT_OWNER, SCRUM_MASTER, DEVELOPER, ANALIST, TESTER;
 }

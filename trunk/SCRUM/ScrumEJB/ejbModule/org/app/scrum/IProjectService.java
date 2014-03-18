@@ -1,6 +1,6 @@
 package org.app.scrum;
 
-public interface IServiciuProiecte extends Service{
+public interface IProjectService extends Service{
 
 	public abstract Integer calculZileEfortProiect(Project proiect);
 

@@ -1,5 +1,5 @@
 package org.app.scrum;
 
-public enum CategorieCerinta {
+public enum FeatureCategory {
 	FUNCTIONALA, TEHNICA;
 }
