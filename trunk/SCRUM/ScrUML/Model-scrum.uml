@@ -324,11 +324,11 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_g9XbgDpnEeObrIpWPUJq-Q" name="FRONTEND"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mpeCsDpnEeObrIpWPUJq-Q" name="DATABASE"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_pidpEDpnEeObrIpWPUJq-Q" name="Rol">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_pidpEDpnEeObrIpWPUJq-Q" name="Role">
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_rG-IwDpnEeObrIpWPUJq-Q" name="MANAGER"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_s53CsDpnEeObrIpWPUJq-Q" name="PRODUCT_OWNER"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_uRtmcDpnEeObrIpWPUJq-Q" name="DEVELOPER"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_v8dRADpnEeObrIpWPUJq-Q" name="ANALIST"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_v8dRADpnEeObrIpWPUJq-Q" name="ANALYST"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_zk8aoDpnEeObrIpWPUJq-Q" name="TESTER"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_z75FkDpoEeObrIpWPUJq-Q" clientDependency="_tI9icDvXEeOykqJIqx8NfQ" name="Feature">
@@ -387,7 +387,7 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_6nyxADvVEeOykqJIqx8NfQ" name="FeatureCategory">
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_8n2kQDvVEeOykqJIqx8NfQ" name="FUNCTIONAL"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_8n2kQDvVEeOykqJIqx8NfQ" name="BUSINESS"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_-jOEwDvVEeOykqJIqx8NfQ" name="TECHNICAL"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_SJCNwDvWEeOykqJIqx8NfQ" name="TaskCategory">
