@@ -2,41 +2,41 @@ package org.app.scrum.test;
 
 import java.util.*;
 
-import org.app.scrum.CategorieCerinta;
-import org.app.scrum.Cerinta;
-import org.app.scrum.CerintaFunctionala;
+import org.app.scrum.FeatureCategory;
+import org.app.scrum.Feature;
+import org.app.scrum.BusinessFeature;
 
 public class Test9_Colectii_Tipologie {
 	public static void main(String[] args){
 		/* Ex 1: Tipuri de colectii: *********************************************************/
 		// Array-Collection-List-Set-Map-Set-Array
 		// 1. Array simplu
-		Cerinta[] arrayCerinte = new Cerinta[5];
+		Feature[] arrayCerinte = new Feature[5];
 		for(int i=0; i < arrayCerinte.length; i++)
-			arrayCerinte[i] = new CerintaFunctionala(
+			arrayCerinte[i] = new BusinessFeature(
 					arrayCerinte.length - i, 
 					"Cerinta " + (arrayCerinte.length - i), 
 					null, null);
 		
 		// 2. Collection tipizate nedefinita ca implementare
-		Collection<Cerinta> collectionCerinta = Arrays.asList(arrayCerinte);
-		Iterator<Cerinta> iteratorCollectionCerinte = collectionCerinta.iterator();
+		Collection<Feature> collectionCerinta = Arrays.asList(arrayCerinte);
+		Iterator<Feature> iteratorCollectionCerinte = collectionCerinta.iterator();
 		while(iteratorCollectionCerinte.hasNext())
 			System.out.println("collection-cerinte next-element: " + iteratorCollectionCerinte.next());		
 		// 3. Lista tipizata
-		List<Cerinta> listCerinte = new ArrayList<>();
+		List<Feature> listCerinte = new ArrayList<>();
 		listCerinte.addAll(collectionCerinta);
 		// 4. Set tipizat
-		Set<Cerinta> setCerinte = new TreeSet<>();
+		Set<Feature> setCerinte = new TreeSet<>();
 		setCerinte.addAll(listCerinte);
 		// 5. Map-a tipizata
-		Map<Integer, Cerinta> mapCerinte = new HashMap<Integer, Cerinta>();
-		for(Cerinta c: setCerinte)
+		Map<Integer, Feature> mapCerinte = new HashMap<Integer, Feature>();
+		for(Feature c: setCerinte)
 			mapCerinte.put(c.getIdCerinta(), c);
 		// 6. Set din cheile-map
 		Set<Integer> setIdCerinte = mapCerinte.keySet();
 		// 7. Collection tipizata - revenire
-		Cerinta[] mapArrayCerinte = mapCerinte.values().toArray(new Cerinta[1]);
+		Feature[] mapArrayCerinte = mapCerinte.values().toArray(new Feature[1]);
 		for(int i=0; i < mapArrayCerinte.length; i++){
 			System.out.println("mapArrayCerinte[" + i +"]=" + mapArrayCerinte[i]);
 		}

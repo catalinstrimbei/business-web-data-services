@@ -5,12 +5,12 @@ import java.util.TreeSet;
 import javax.persistence.EntityManager;
 
 
-public class RegistruProiecte implements Repository{
+public class ProjectRepository implements Repository{
 
     private EntityManager entityManager;
     private String sqlContDefaultText = "SELECT o FROM Proiect o";
 
-    public RegistruProiecte(EntityManager entityManager) {
+    public ProjectRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

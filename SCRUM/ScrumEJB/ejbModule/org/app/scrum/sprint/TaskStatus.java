@@ -1,5 +1,5 @@
 package org.app.scrum.sprint;
 
-public enum StatusTask{
+public enum TaskStatus{
 	IN_CURS, BLOCAT, FINALIZAT, SUSPENDAT;
 }

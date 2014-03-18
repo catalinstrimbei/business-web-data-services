@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.app.scrum.validare;
+package org.app.scrum.validation;
 
 /**
  *
@@ -14,5 +14,5 @@ public abstract class Validator {
     public Validator(String message) {
         this.message = message;
     }
-    public abstract boolean validate(Object valueToValidate) throws ExceptieValidare;
+    public abstract boolean validate(Object valueToValidate) throws ValidationException;
 }

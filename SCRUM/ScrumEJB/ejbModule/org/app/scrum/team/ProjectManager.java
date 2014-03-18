@@ -1,7 +1,7 @@
 package org.app.scrum.team;
 
 
-public class ManagerProiect extends Membru{
+public class ProjectManager extends Member{
 //	private Integer id;
 //	private String numePrenume;
 
@@ -34,18 +34,18 @@ public class ManagerProiect extends Membru{
 		this.competenteManageriale = competenteManageriale;
 	}
 	
-	public ManagerProiect() {
+	public ProjectManager() {
 		super();
-		super.setRol(Rol.MANAGER);
+		super.setRol(Role.MANAGER);
 	}
 	
-	public ManagerProiect(Integer id, String numePrenume,
+	public ProjectManager(Integer id, String numePrenume,
 			Integer experientaManageriala, String competenteManageriale) {
 //		super();
 //		this.id = id;
 //		this.numePrenume = numePrenume;
 		
-		super(id, numePrenume, Rol.MANAGER);
+		super(id, numePrenume, Role.MANAGER);
 		this.experientaManageriala = experientaManageriala;
 		this.competenteManageriale = competenteManageriale;
 	}
@@ -62,7 +62,7 @@ public class ManagerProiect extends Membru{
 	
 	// caz supra-scriere
 	@Override
-	public void setRol(Rol rol) {
+	public void setRol(Role rol) {
 		throw new Error("Proprietatea rol nu poate fi schimbata!");
 	}
 	

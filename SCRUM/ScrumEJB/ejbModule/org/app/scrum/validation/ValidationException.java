@@ -3,15 +3,15 @@
  * and open the template in the editor.
  */
 
-package org.app.scrum.validare;
+package org.app.scrum.validation;
 
 /**
  *
  * @author catalin
  */
-public class ExceptieValidare extends RuntimeException{
+public class ValidationException extends RuntimeException{
 
-    public ExceptieValidare(String message) {
+    public ValidationException(String message) {
         super(message);
     }
     

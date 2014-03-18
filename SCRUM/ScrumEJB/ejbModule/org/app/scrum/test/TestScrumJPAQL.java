@@ -7,8 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.app.scrum.Project;
-import org.app.scrum.ProiectBuilder;
-import org.app.scrum.ProiectView;
+import org.app.scrum.ProjectBuilder;
+import org.app.scrum.ProjectView;
 
 public class TestScrumJPAQL {
 
@@ -31,8 +31,8 @@ public class TestScrumJPAQL {
 //		Integer nrProiecte = (Integer) em.createNativeQuery("SELECT COUNT(*) FROM proiect p").getSingleResult();
 //		System.out.println("Nr proiecte: " + nrProiecte);
 		
-		List<ProiectView> pList = em.createQuery("SELECT NEW org.app.scrum.ProiectView(p.nrProiect, p.numeProiect) FROM Proiect p").getResultList();
-		for(ProiectView p: pList)
+		List<ProjectView> pList = em.createQuery("SELECT NEW org.app.scrum.ProiectView(p.nrProiect, p.numeProiect) FROM Proiect p").getResultList();
+		for(ProjectView p: pList)
 			System.out.println("Proiect: " + p);		
 
 		

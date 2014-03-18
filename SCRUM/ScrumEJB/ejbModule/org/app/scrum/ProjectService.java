@@ -2,7 +2,7 @@ package org.app.scrum;
 
 import java.util.Date;
 
-public class ServiciuProiecte implements IServiciuProiecte {
+public class ProjectService implements IProjectService {
 	/* (non-Javadoc)
 	 * @see org.app.scrum.IServiciuProiecte#calculZileEfortProiect(org.app.scrum.Proiect)
 	 */

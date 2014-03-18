@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.app.scrum.team.Membru;
+import org.app.scrum.team.Member;
 
 public class Task {
 	private Integer idTask;
@@ -16,11 +16,11 @@ public class Task {
 	private Integer timpEstimat; // initial, exprimat in ore
 	private Integer timpRamas; // actualizat, exprimat in ore
 	private Integer timpEfectiv;	
-	private StatusTask statusTask;
+	private TaskStatus statusTask;
 	
 	// assessment
-	private Membru responsabil;
-	private CategorieTask categorieTask;
+	private Member responsabil;
+	private TaskCategory categorieTask;
 	
 	// Burn down
 	private Map<Date, Integer> burnDownRecords = new HashMap<>();
@@ -62,16 +62,16 @@ public class Task {
 		this.timpRamas = timpRamas;
 		burnDownRecords.put(new Date(), timpRamas);
 	}
-	public StatusTask getStatusTask() {
+	public TaskStatus getStatusTask() {
 		return statusTask;
 	}
-	public void setStatusTask(StatusTask statusTask) {
+	public void setStatusTask(TaskStatus statusTask) {
 		this.statusTask = statusTask;
 	}
-	public CategorieTask getCategorieTask() {
+	public TaskCategory getCategorieTask() {
 		return categorieTask;
 	}
-	public void setCategorieTask(CategorieTask categorieTask) {
+	public void setCategorieTask(TaskCategory categorieTask) {
 		this.categorieTask = categorieTask;
 	}
 	public Integer getTimpEfectiv() {
@@ -83,10 +83,10 @@ public class Task {
 	
 	
 	// interfete si polimorfism 
-	public Membru getResponsabil() {
+	public Member getResponsabil() {
 		return responsabil;
 	}
-	public void setResponsabil(Membru responsabil) {
+	public void setResponsabil(Member responsabil) {
 		this.responsabil = responsabil;
 	}
 	public Map<Date, Integer> getBurnDownRecords() {
@@ -97,8 +97,8 @@ public class Task {
 	}
 	
 	public Task(Integer idTask, String denumire, String descriere,
-			Date dataStart, Integer timpEstimat, StatusTask statusTask,
-			CategorieTask categorieTask) {
+			Date dataStart, Integer timpEstimat, TaskStatus statusTask,
+			TaskCategory categorieTask) {
 		super();
 		this.idTask = idTask;
 		this.denumire = denumire;
@@ -113,8 +113,8 @@ public class Task {
 	}
 	public Task(Integer idTask, String denumire, String descriere,
 			Date dataStart, Integer timpEstimat, Integer timpRamas,
-			Integer timpEfectiv, StatusTask statusTask, Membru responsabil,
-			CategorieTask categorieTask) {
+			Integer timpEfectiv, TaskStatus statusTask, Member responsabil,
+			TaskCategory categorieTask) {
 		super();
 		this.idTask = idTask;
 		this.denumire = denumire;
@@ -136,7 +136,7 @@ public class Task {
 		this.timpEstimat = timpEstimat;
 	}
 	public Task(Integer idTask, String denumire, Date dataStart,
-			Integer timpEstimat, Membru responsabil) {
+			Integer timpEstimat, Member responsabil) {
 		super();
 		this.idTask = idTask;
 		this.denumire = denumire;

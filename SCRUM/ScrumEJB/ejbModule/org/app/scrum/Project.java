@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
-import org.app.scrum.team.ManagerProiect;
+import org.app.scrum.team.ProjectManager;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -31,7 +31,7 @@ public class Project implements Serializable{
 	private Date dataStart;
 	
 	@Transient
-	private ManagerProiect managerProiect;
+	private ProjectManager managerProiect;
 	
 	// Added
 	@OneToMany(mappedBy="proiect", cascade = ALL, fetch = LAZY)
@@ -40,10 +40,10 @@ public class Project implements Serializable{
 	@OneToOne(cascade = ALL)
 	private Release releaseCurent;
 	
-	public ManagerProiect getManagerProiect() {
+	public ProjectManager getManagerProiect() {
 		return managerProiect;
 	}
-	public void setManagerProiect(ManagerProiect managerProiect) {
+	public void setManagerProiect(ProjectManager managerProiect) {
 		this.managerProiect = managerProiect;
 	}
 	public Integer getNrProiect() {

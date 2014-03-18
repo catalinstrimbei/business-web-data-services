@@ -1,10 +1,10 @@
 package org.app.scrum.team;
 
-public class Membru 
-implements Comparable<Membru>{
+public class Member 
+implements Comparable<Member>{
 	private Integer idMembru;
 	private String numePrenume;
-	private Rol rol;
+	private Role rol;
 	
 	// bean accessors
 	public Integer getIdMembru() {
@@ -19,23 +19,23 @@ implements Comparable<Membru>{
 	public void setNumePrenume(String numePrenume) {
 		this.numePrenume = numePrenume;
 	}
-	public Rol getRol() {
+	public Role getRol() {
 		return rol;
 	}
-	public void setRol(Rol rol) {
+	public void setRol(Role rol) {
 		this.rol = rol;
 	}
-	public Membru(Integer idMembru, String numePrenume, Rol rol) {
+	public Member(Integer idMembru, String numePrenume, Role rol) {
 		super();
 		this.idMembru = idMembru;
 		this.numePrenume = numePrenume;
 		this.rol = rol;
 	}
-	public Membru() {
+	public Member() {
 		super();
 	}
 	
-	public Membru(Integer idMembru, String numePrenume, String rol) {
+	public Member(Integer idMembru, String numePrenume, String rol) {
 		super();
 		this.idMembru = idMembru;
 		this.numePrenume = numePrenume;
@@ -69,7 +69,7 @@ implements Comparable<Membru>{
 			return false;
 //		if (getClass() != obj.getClass())
 //			return false;
-		Membru other = (Membru) obj;
+		Member other = (Member) obj;
 		if (idMembru == null) {
 			if (other.idMembru != null)
 				return false;
@@ -81,7 +81,7 @@ implements Comparable<Membru>{
 	}
 	
 	@Override
-	public int compareTo(Membru other) {
+	public int compareTo(Member other) {
 		if (this.equals(other))
 			return 0;
 		//return this.getNumePrenume().compareTo(other.getNumePrenume());

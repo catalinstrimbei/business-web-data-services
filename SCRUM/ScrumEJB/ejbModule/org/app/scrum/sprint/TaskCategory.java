@@ -2,6 +2,6 @@ package org.app.scrum.sprint;
 
 // JPA cu @Enumerated
 
-public enum CategorieTask{
+public enum TaskCategory{
 	ANALIZA, DESIGN, IMPLEMENTARE, TEST;
 }

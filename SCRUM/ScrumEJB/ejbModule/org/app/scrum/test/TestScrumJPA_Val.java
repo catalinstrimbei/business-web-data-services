@@ -12,7 +12,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.app.scrum.Project;
-import org.app.scrum.ProiectBuilder;
+import org.app.scrum.ProjectBuilder;
 
 public class TestScrumJPA_Val {
 
@@ -20,7 +20,7 @@ public class TestScrumJPA_Val {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ScrumJPA2");
 		EntityManager em = emf.createEntityManager();
 		
-		Project proiect = new ProiectBuilder().buildProiect(1, "P.t.", 3);
+		Project proiect = new ProjectBuilder().buildProiect(1, "P.t.", 3);
 //		proiect.setReleaseCurent(proiect.getReleases().get(0));
 		
 		try{

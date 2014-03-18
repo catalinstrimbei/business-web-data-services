@@ -3,7 +3,7 @@ package org.app.scrum;
 import javax.persistence.Entity;
 
 @Entity
-public class CerintaTehnica extends Cerinta {
+public class TechnicalFeature extends Feature {
 	
 	private String nivelArhitectural; // prezentare (UI), model si/sau logica afacerii, persistenta, baza de date
 	private String competenteTehniceNecesare; // LP: Java, C#, JavaScript, BD: SQL, MongoDB, FMks: EJB, JPA, JSF, Angular, JQuery
@@ -29,15 +29,15 @@ public class CerintaTehnica extends Cerinta {
 	}
 	
 	@Override
-	public void setCategorie(CategorieCerinta categorie) {
+	public void setCategorie(FeatureCategory categorie) {
 		throw new Error("Proprietatea categorie nu poate fi schimbata!");
 	}
 	
-	public CerintaTehnica() {
+	public TechnicalFeature() {
 		super();
-		this.categorie = CategorieCerinta.TEHNICA;
+		this.categorie = FeatureCategory.TEHNICA;
 	}
-	public CerintaTehnica(Integer idCerinta, String denumire, String descriere,
+	public TechnicalFeature(Integer idCerinta, String denumire, String descriere,
 			String nivelArhitectural, String competenteTehniceNecesare,
 			String descriereFluxArhitecural) {
 		super(idCerinta, denumire, descriere);
@@ -45,9 +45,9 @@ public class CerintaTehnica extends Cerinta {
 		this.competenteTehniceNecesare = competenteTehniceNecesare;
 		this.descriereFluxArhitecural = descriereFluxArhitecural;
 		
-		this.categorie = CategorieCerinta.TEHNICA;
+		this.categorie = FeatureCategory.TEHNICA;
 	}
-	public CerintaTehnica(Integer idCerinta, String denumire, String descriere) {
+	public TechnicalFeature(Integer idCerinta, String denumire, String descriere) {
 		super(idCerinta, denumire, descriere);
 	}
 	

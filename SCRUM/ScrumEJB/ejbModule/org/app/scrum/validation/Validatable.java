@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.app.scrum.validare;
+package org.app.scrum.validation;
 
 /**
  *
