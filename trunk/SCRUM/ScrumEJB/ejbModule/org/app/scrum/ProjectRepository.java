@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 public class ProjectRepository implements Repository{
 
     private EntityManager entityManager;
-    private String sqlContDefaultText = "SELECT o FROM Proiect o";
+    private String sqlContDefaultText = "SELECT o FROM Project o";
 
     public ProjectRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -70,16 +70,16 @@ public class ProjectRepository implements Repository{
     
     //-------------------------------------------------------------//
     /* Operatii de cautare specifice */
-    public Project getContDupaDenumire(String numeProiect){
+    public Project getProjectOfName(String projectName){
         return (Project) this.entityManager
-                .createQuery(sqlContDefaultText + " WHERE o.numeProiect = :numeProiect")
-                .setParameter("numeProiect", numeProiect)
+                .createQuery(sqlContDefaultText + " WHERE o.name = :projectName")
+                .setParameter("numeProiect", projectName)
                 .getSingleResult();
     }
 
-	public Long getCountProiect() {
+	public Long getCountProjects() {
         return (Long) this.entityManager
-        .createQuery("SELECT COUNT(c) FROM Proiect c")
+        .createQuery("SELECT COUNT(c) FROM Project c")
         .getSingleResult();
 	}
 	//-------------------------------------------------------------------------------------

@@ -1,36 +1,19 @@
 package org.app.scrum.team;
 
 public class TeamLeader extends Member{
-//	private Integer id;
-//	private String numePrenume;
-	private String competenteTehnologice; // JEE, Spring, .NET, JS/Node.js, Ruby_Rails
+
+	private String technologicalAbilities; // JEE, Spring, .NET, JS/Node.js, Ruby_Rails
 	
-//	public Integer getId() {
-//		return id;
-//	}
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
-//	public String getNumePrenume() {
-//		return numePrenume;
-//	}
-//	public void setNumePrenume(String numePrenume) {
-//		this.numePrenume = numePrenume;
-//	}
-	
-	public String getCompetenteTehnologice() {
-		return competenteTehnologice;
+	public String getTechnologicalAbilities() {
+		return technologicalAbilities;
 	}
-	private void setCompetenteTehnologice(String competenteTehnologice) {
-		this.competenteTehnologice = competenteTehnologice;
+	public void setTechnologicalAbilities(String technologicalAbilities) {
+		this.technologicalAbilities = technologicalAbilities;
 	}
-	public TeamLeader(Integer id, String numePrenume,
-			String competenteTehnologice) {
-//		super();
-//		this.id = id;
-//		this.numePrenume = numePrenume;
-		super(id, numePrenume, Role.MANAGER);
-		this.competenteTehnologice = competenteTehnologice;
+	public TeamLeader(Integer id, String name,
+			String technologicalAbilities) {
+		super(id, name, Role.MANAGER);
+		this.technologicalAbilities = technologicalAbilities;
 	}
 	public TeamLeader() {
 		super();
@@ -38,19 +21,18 @@ public class TeamLeader extends Member{
 	
 	// Polimorfism
 	@Override
-	public void setCompetente(String competente) {
-		this.setCompetenteTehnologice(competente);
+	public void setAbilities(String abilities) {
+		this.setTechnologicalAbilities(abilities);
 	}	
 	
 	// Supraincarcare
-	public void setCompetente(String competente, TipCompetente tip) {
-		if (tip.equals(TipCompetente.MANAGERIALE))
-			super.setCompetente(competente);
+	public void setAbilities(String abilities, AbilityType type) {
+		if (type.equals(AbilityType.MANAGERIAL))
+			super.setAbilities(abilities);
 		
-		if (tip.equals(TipCompetente.TEHNOLOGICE))
-			setCompetenteTehnologice(competente);
+		if (type.equals(AbilityType.TECHNOLOGICAL))
+			setTechnologicalAbilities(abilities);
 		
 	}
-	
-	public enum TipCompetente {MANAGERIALE, TEHNOLOGICE}
+	public enum AbilityType {MANAGERIAL, TECHNOLOGICAL}
 }

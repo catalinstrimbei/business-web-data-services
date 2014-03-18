@@ -1,30 +1,30 @@
 package org.app.scrum;
 
 public class ProjectView {
-	private Integer nrProiect;
+	private Integer projectNo;
 	
-	private String numeProiect;
+	private String name;
 
-	public Integer getNrProiect() {
-		return nrProiect;
+	public Integer getProjectNo() {
+		return projectNo;
 	}
 
-	public void setNrProiect(Integer nrProiect) {
-		this.nrProiect = nrProiect;
+	public void setProjectNo(Integer projectNo) {
+		this.projectNo = projectNo;
 	}
 
-	public String getNumeProiect() {
-		return numeProiect;
+	public String getName() {
+		return name;
 	}
 
-	public void setNumeProiect(String numeProiect) {
-		this.numeProiect = numeProiect;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public ProjectView(Integer nrProiect, String numeProiect) {
+	public ProjectView(Integer projectNo, String name) {
 		super();
-		this.nrProiect = nrProiect;
-		this.numeProiect = numeProiect;
+		this.projectNo = projectNo;
+		this.name = name;
 	}
 
 	public ProjectView() {
@@ -33,9 +33,6 @@ public class ProjectView {
 
 	@Override
 	public String toString() {
-		return "ProiectView [nrProiect=" + nrProiect + ", numeProiect="
-				+ numeProiect + "]";
+		return "ProjectView [projectNo=" + projectNo + ", name=" + name + "]";
 	}
-	
-	
 }

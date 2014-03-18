@@ -21,111 +21,90 @@ import org.app.scrum.team.Member;
 public class Feature implements Comparable<Feature>
 {
 	@Id
-	protected Integer idCerinta;
-	private String denumire;
-	private String descriere;
+	protected Integer featureID;
+	private String name;
+	private String description;
 	
 	@Enumerated
-	protected FeatureCategory categorie;
+	protected FeatureCategory category;
 	
 	@Transient
-	private List<Task> taskuri = new ArrayList<>();
+	private List<Task> tasks = new ArrayList<>();
 	
-	public List<Task> getTaskuri() {
-		return taskuri;
+	public Integer getFeatureID() {
+		return featureID;
 	}
-	public void setTaskuri(List<Task> taskuri) {
-		this.taskuri = taskuri;
+	public void setFeatureID(Integer featureID) {
+		this.featureID = featureID;
 	}
-	public Integer getIdCerinta() {
-		return idCerinta;
+	public String getName() {
+		return name;
 	}
-	public void setIdCerinta(Integer idCerinta) {
-		this.idCerinta = idCerinta;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getDenumire() {
-		return denumire;
+	public String getDescription() {
+		return description;
 	}
-	public void setDenumire(String denumire) {
-		this.denumire = denumire;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getDescriere() {
-		return descriere;
+	public FeatureCategory getCategory() {
+		return category;
 	}
-	public void setDescriere(String descriere) {
-		this.descriere = descriere;
+	public void setCategory(FeatureCategory category) {
+		this.category = category;
 	}
-	public FeatureCategory getCategorie() {
-		return categorie;
+	public List<Task> getTasks() {
+		return tasks;
 	}
-	public void setCategorie(FeatureCategory categorie) {
-		this.categorie = categorie;
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
-	
-	
-
 	public Feature() {
 		super();
 	}
-
-	public Feature(Integer idCerinta, String denumire, String descriere) {
+	
+	public Feature(Integer featureID, String name, String description,
+			FeatureCategory category, List<Task> tasks) {
 		super();
-		this.idCerinta = idCerinta;
-		this.denumire = denumire;
-		this.descriere = descriere;
-	}
-	
-	public enum ECategorieCerinta {
-		FUNCTIONALA, TEHNICA;
+		this.featureID = featureID;
+		this.name = name;
+		this.description = description;
+		this.category = category;
+		this.tasks = tasks;
 	}
 
-	@Override
-	public String toString() {
-		return "Cerinta [idCerinta=" + idCerinta + ", denumire=" + denumire
-				+ ", descriere=" + descriere + "]";
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((categorie == null) ? 0 : categorie.hashCode());
-		result = prime * result
-				+ ((idCerinta == null) ? 0 : idCerinta.hashCode());
-		return result;
-	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-		Feature other = (Feature) obj;
-		if (categorie != other.categorie)
-			return false;
-		if (idCerinta == null) {
-			if (other.idCerinta != null)
-				return false;
-		} else if (!idCerinta.equals(other.idCerinta))
-			return false;
-		return true;
-	}
 	
+	public Feature(Integer featureID, String name, String description) {
+		super();
+		this.featureID = featureID;
+		this.name = name;
+		this.description = description;
+	}
+
+
+
+	public enum EFeatureCategory {
+		BUSINESS, TECHNICAL;
+	}
+
 	@Override
 	public int compareTo(Feature other) {
 		if (this.equals(other))
 			return 0;
-		return this.getDenumire().compareTo(other.getDenumire());
+		return this.getName().compareTo(other.getName());
 	}
-	public Feature(Integer idCerinta, String denumire) {
+	public Feature(Integer featureID, String name) {
 		super();
-		this.idCerinta = idCerinta;
-		this.denumire = denumire;
+		this.featureID = featureID;
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Feature [featureID=" + featureID + ", name=" + name
+				+ ", description=" + description + ", category=" + category
+				+ ", tasks=" + tasks + "]";
 	}	
-		
-	
-	
 }

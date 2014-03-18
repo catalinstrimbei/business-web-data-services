@@ -7,87 +7,81 @@ import java.util.Map;
 import org.app.scrum.team.Member;
 
 public class Task {
-	private Integer idTask;
-	private String denumire;
-	private String descriere;
+	private Integer taskID;
+	private String name;
+	private String description;
 	
 	// timing
-	private Date dataStart;
-	private Integer timpEstimat; // initial, exprimat in ore
-	private Integer timpRamas; // actualizat, exprimat in ore
-	private Integer timpEfectiv;	
-	private TaskStatus statusTask;
-	
+	private Date startDate;
+	private Integer estimatedTime; // initial, exprimat in ore
+	private Integer remainingTime; // actualizat, exprimat in ore
+	private Integer realTime;	
+	private TaskStatus taskStatus;
 	// assessment
-	private Member responsabil;
-	private TaskCategory categorieTask;
-	
+	private Member responsible;
+	private TaskCategory taskCategory;
 	// Burn down
 	private Map<Date, Integer> burnDownRecords = new HashMap<>();
-	
-	public Integer getIdTask() {
-		return idTask;
+	public Integer getTaskID() {
+		return taskID;
 	}
-	public void setIdTask(Integer idTask) {
-		this.idTask = idTask;
+	public void setTaskID(Integer taskID) {
+		this.taskID = taskID;
 	}
-	public String getDenumire() {
-		return denumire;
+	public String getName() {
+		return name;
 	}
-	public void setDenumire(String denumire) {
-		this.denumire = denumire;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getDescriere() {
-		return descriere;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescriere(String descriere) {
-		this.descriere = descriere;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public Date getDataStart() {
-		return dataStart;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setDataStart(Date dataStart) {
-		this.dataStart = dataStart;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	public Integer getTimpEstimat() {
-		return timpEstimat;
+	public Integer getEstimatedTime() {
+		return estimatedTime;
 	}
-	public void setTimpEstimat(Integer timpEstimat) {
-		this.timpEstimat = timpEstimat;
+	public void setEstimatedTime(Integer estimatedTime) {
+		this.estimatedTime = estimatedTime;
 	}
-	public Integer getTimpRamas() {
-		return timpRamas;
+	public Integer getRemainingTime() {
+		return remainingTime;
 	}
-	public void setTimpRamas(Integer timpRamas) {
-		this.timpRamas = timpRamas;
-		burnDownRecords.put(new Date(), timpRamas);
+	public void setRemainingTime(Integer remainingTime) {
+		this.remainingTime = remainingTime;
+		burnDownRecords.put(new Date(), remainingTime);
 	}
-	public TaskStatus getStatusTask() {
-		return statusTask;
+	public Integer getRealTime() {
+		return realTime;
 	}
-	public void setStatusTask(TaskStatus statusTask) {
-		this.statusTask = statusTask;
+	public void setRealTime(Integer realTime) {
+		this.realTime = realTime;
 	}
-	public TaskCategory getCategorieTask() {
-		return categorieTask;
+	public TaskStatus getTaskStatus() {
+		return taskStatus;
 	}
-	public void setCategorieTask(TaskCategory categorieTask) {
-		this.categorieTask = categorieTask;
+	public void setTaskStatus(TaskStatus taskStatus) {
+		this.taskStatus = taskStatus;
 	}
-	public Integer getTimpEfectiv() {
-		return timpEfectiv;
+	public Member getResponsible() {
+		return responsible;
 	}
-	public void setTimpEfectiv(Integer timpEfectiv) {
-		this.timpEfectiv = timpEfectiv;
+	public void setResponsible(Member responsible) {
+		this.responsible = responsible;
 	}
-	
-	
-	// interfete si polimorfism 
-	public Member getResponsabil() {
-		return responsabil;
+	public TaskCategory getTaskCategory() {
+		return taskCategory;
 	}
-	public void setResponsabil(Member responsabil) {
-		this.responsabil = responsabil;
+	public void setTaskCategory(TaskCategory taskCategory) {
+		this.taskCategory = taskCategory;
 	}
 	public Map<Date, Integer> getBurnDownRecords() {
 		return burnDownRecords;
@@ -95,55 +89,33 @@ public class Task {
 	public void setBurnDownRecords(Map<Date, Integer> burnDownRecords) {
 		this.burnDownRecords = burnDownRecords;
 	}
-	
-	public Task(Integer idTask, String denumire, String descriere,
-			Date dataStart, Integer timpEstimat, TaskStatus statusTask,
-			TaskCategory categorieTask) {
+	public Task(Integer taskID, String name, String description,
+			Date startDate, Integer estimatedTime, TaskStatus taskStatus,
+			TaskCategory taskCategory) {
 		super();
-		this.idTask = idTask;
-		this.denumire = denumire;
-		this.descriere = descriere;
-		this.dataStart = dataStart;
-		this.timpEstimat = timpEstimat;
-		this.statusTask = statusTask;
-		this.categorieTask = categorieTask;
+		this.taskID = taskID;
+		this.name = name;
+		this.description = description;
+		this.startDate = startDate;
+		this.estimatedTime = estimatedTime;
+		this.taskStatus = taskStatus;
+		this.taskCategory = taskCategory;
 	}
-	public Task() {
+	public Task(Integer taskID, String name, Date startDate,
+			Integer estimatedTime) {
 		super();
+		this.taskID = taskID;
+		this.name = name;
+		this.startDate = startDate;
+		this.estimatedTime = estimatedTime;
 	}
-	public Task(Integer idTask, String denumire, String descriere,
-			Date dataStart, Integer timpEstimat, Integer timpRamas,
-			Integer timpEfectiv, TaskStatus statusTask, Member responsabil,
-			TaskCategory categorieTask) {
+	public Task(Integer taskID, String name,
+			Date startDate, Integer estimatedTime, Member responsible) {
 		super();
-		this.idTask = idTask;
-		this.denumire = denumire;
-		this.descriere = descriere;
-		this.dataStart = dataStart;
-		this.timpEstimat = timpEstimat;
-		this.timpRamas = timpRamas;
-		this.timpEfectiv = timpEfectiv;
-		this.statusTask = statusTask;
-		this.responsabil = responsabil;
-		this.categorieTask = categorieTask;
+		this.taskID = taskID;
+		this.name = name;
+		this.startDate = startDate;
+		this.estimatedTime = estimatedTime;
+		this.responsible = responsible;
 	}
-	public Task(Integer idTask, String denumire, Date dataStart,
-			Integer timpEstimat) {
-		super();
-		this.idTask = idTask;
-		this.denumire = denumire;
-		this.dataStart = dataStart;
-		this.timpEstimat = timpEstimat;
-	}
-	public Task(Integer idTask, String denumire, Date dataStart,
-			Integer timpEstimat, Member responsabil) {
-		super();
-		this.idTask = idTask;
-		this.denumire = denumire;
-		this.dataStart = dataStart;
-		this.timpEstimat = timpEstimat;
-		this.responsabil = responsabil;
-	}
-	
-	
 }

@@ -1,63 +1,63 @@
 package org.app.scrum.team;
 
 public class Member 
-implements Comparable<Member>{
-	private Integer idMembru;
-	private String numePrenume;
-	private Role rol;
+	implements Comparable<Member>{
 	
-	// bean accessors
-	public Integer getIdMembru() {
-		return idMembru;
+	private Integer memberID;
+	private String name;
+	private Role role;
+		
+	public Integer getMemberID() {
+		return memberID;
 	}
-	public void setIdMembru(Integer idMembru) {
-		this.idMembru = idMembru;
+	public void setMemberID(Integer memberID) {
+		this.memberID = memberID;
 	}
-	public String getNumePrenume() {
-		return numePrenume;
+	public String getName() {
+		return name;
 	}
-	public void setNumePrenume(String numePrenume) {
-		this.numePrenume = numePrenume;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public Role getRol() {
-		return rol;
+	public Role getRole() {
+		return role;
 	}
-	public void setRol(Role rol) {
-		this.rol = rol;
+	public void setRole(Role role) {
+		this.role = role;
 	}
-	public Member(Integer idMembru, String numePrenume, Role rol) {
-		super();
-		this.idMembru = idMembru;
-		this.numePrenume = numePrenume;
-		this.rol = rol;
-	}
+	
 	public Member() {
 		super();
 	}
-	
-	public Member(Integer idMembru, String numePrenume, String rol) {
+	public Member(Integer memberID, String name) {
 		super();
-		this.idMembru = idMembru;
-		this.numePrenume = numePrenume;
-//		this.rol = rol;
-	}	
-	
-	// caz supra-incarcare
-	private String competente;
-	
-	public String getCompetente() {
-		return competente;
+		this.memberID = memberID;
+		this.name = name;
 	}
-	public void setCompetente(String competente) {
-		this.competente = competente;
+	public Member(Integer memberID, String name, Role role) {
+		super();
+		this.memberID = memberID;
+		this.name = name;
+		this.role = role;
+	}
+
+
+	// caz supra-incarcare
+	private String abilities;
+	
+	public String getAbilities() {
+		return abilities;
+	}
+	public void setAbilities(String abilities) {
+		this.abilities = abilities;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((idMembru == null) ? 0 : idMembru.hashCode());
-		result = prime * result + ((rol == null) ? 0 : rol.hashCode());
+				+ ((memberID == null) ? 0 : memberID.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		return result;
 	}
 	
@@ -70,12 +70,12 @@ implements Comparable<Member>{
 //		if (getClass() != obj.getClass())
 //			return false;
 		Member other = (Member) obj;
-		if (idMembru == null) {
-			if (other.idMembru != null)
+		if (memberID == null) {
+			if (other.memberID != null)
 				return false;
-		} else if (!idMembru.equals(other.idMembru))
+		} else if (!memberID.equals(other.memberID))
 			return false;
-		if (rol != other.rol)
+		if (role != other.role)
 			return false;
 		return true;
 	}
@@ -84,15 +84,10 @@ implements Comparable<Member>{
 	public int compareTo(Member other) {
 		if (this.equals(other))
 			return 0;
-		//return this.getNumePrenume().compareTo(other.getNumePrenume());
-		return this.getIdMembru().compareTo(other.getIdMembru());
+		return this.getMemberID().compareTo(other.getMemberID());
 	}
-	
 	@Override
 	public String toString() {
-		return "Membru [idMembru=" + idMembru + ", numePrenume=" + numePrenume
-				+ ", rol=" + rol + "]";
+		return "Member [memberID=" + memberID + ", name=" + name + "]";
 	}	
-	
-	
 }
