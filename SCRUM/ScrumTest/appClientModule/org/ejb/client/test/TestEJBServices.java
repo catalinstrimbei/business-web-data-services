@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.app.scrum.ejb.ScrumProjectDataService;
+import org.app.scrum.ejb.ScrumProjectDataServiceEJB;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -36,7 +37,7 @@ public class TestEJBServices {
 	
 	/*--- Utils: Obtinere referinta serviciu EJB ----------------------------------------------------*/
 	private static String serviceInterface = ScrumProjectDataService.class.getName();
-	private static String serviceName = ScrumProjectDataService.class.getName();
+	private static String serviceName = ScrumProjectDataServiceEJB.class.getSimpleName();
 	private static String serviceModule = "ScrumEJB";	
 	
     private static <T> T lookupEJBService() throws NamingException {
