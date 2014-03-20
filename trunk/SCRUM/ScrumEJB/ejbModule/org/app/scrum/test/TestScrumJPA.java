@@ -4,8 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.app.patterns.ProjectBuilder;
 import org.app.scrum.Project;
-import org.app.scrum.ProjectBuilder;
 
 public class TestScrumJPA {
 

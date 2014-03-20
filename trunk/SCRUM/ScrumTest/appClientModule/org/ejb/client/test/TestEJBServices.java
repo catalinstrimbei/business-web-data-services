@@ -7,7 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.app.scrum.ejb.ScrumProjectRepositoryService;
+import org.app.scrum.ejb.ScrumProjectDataService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class TestEJBServices {
 	/* Resurse test*/
 	private static Logger logger = Logger.getLogger(TestEJBServices.class.getName());
 
-	private static ScrumProjectRepositoryService serviceEJB;
+	private static ScrumProjectDataService serviceEJB;
 	
 	/* Set up */
 	@BeforeClass
@@ -35,8 +35,8 @@ public class TestEJBServices {
 	}
 	
 	/*--- Utils: Obtinere referinta serviciu EJB ----------------------------------------------------*/
-	private static String serviceInterface = ScrumProjectRepositoryService.class.getName();
-	private static String serviceName = "ScrumProjectRepositoryEJB";
+	private static String serviceInterface = ScrumProjectDataService.class.getName();
+	private static String serviceName = ScrumProjectDataService.class.getName();
 	private static String serviceModule = "ScrumEJB";	
 	
     private static <T> T lookupEJBService() throws NamingException {

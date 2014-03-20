@@ -6,7 +6,7 @@ import org.app.patterns.EntityRepositoryService;
 import org.app.scrum.Project;
 
 @Remote
-public interface ScrumProjectRepositoryService extends EntityRepositoryService<Project>{
+public interface ScrumProjectDataService extends EntityRepositoryService<Project>{
 
 	String sayMessage(String string);
 

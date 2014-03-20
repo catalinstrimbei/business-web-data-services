@@ -86,7 +86,7 @@ public class Feature implements Comparable<Feature>
 
 
 
-	public enum EFeatureCategory {
+	public enum FeatureCategory {
 		BUSINESS, TECHNICAL;
 	}
 

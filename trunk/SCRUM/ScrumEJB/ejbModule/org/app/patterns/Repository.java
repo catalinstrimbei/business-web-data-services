@@ -1,4 +1,4 @@
-package org.app.scrum;
+package org.app.patterns;
 
 // interfata marcator
 public interface Repository {

@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 import java.util.logging.Logger;
 
 import org.app.scrum.Project;
-import org.app.scrum.ejb.ScrumProjectRepositoryEJB;
-import org.app.scrum.ejb.ScrumProjectRepositoryService;
+import org.app.scrum.ejb.ScrumProjectDataServiceEJB;
+import org.app.scrum.ejb.ScrumProjectDataService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestScrumProjectRepositoryService {
-	private static Logger logger = Logger.getLogger(TestScrumProjectRepositoryService.class.getName());
-	private static ScrumProjectRepositoryService service;
+public class TestScrumProjectDataService {
+	private static Logger logger = Logger.getLogger(TestScrumProjectDataService.class.getName());
+	private static ScrumProjectDataService service;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		service = ScrumProjectRepositoryServiceFactory.getScrumProjectRepositoryService();
+		service = ScrumProjectDataServiceEJBFactory.getScrumProjectRepositoryService();
 	}
 	
 	@Test

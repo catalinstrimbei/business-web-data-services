@@ -7,19 +7,19 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.app.scrum.ejb.ScrumProjectRepositoryEJB;
-import org.app.scrum.ejb.ScrumProjectRepositoryService;
+import org.app.scrum.ejb.ScrumProjectDataServiceEJB;
+import org.app.scrum.ejb.ScrumProjectDataService;
 
-public class ScrumProjectRepositoryServiceFactory {
-	private static Logger logger = Logger.getLogger(ScrumProjectRepositoryServiceFactory.class.getName());
+public class ScrumProjectDataServiceEJBFactory {
+	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJBFactory.class.getName());
 	
-	public static ScrumProjectRepositoryService getScrumProjectRepositoryService() throws Exception{
+	public static ScrumProjectDataService getScrumProjectRepositoryService() throws Exception{
 		return lookupEJBService();
 	}
 	
 	private static String MODULE_NAME = "ScrumEJB";
-	private static String SERVICE_NAME = ScrumProjectRepositoryEJB.class.getSimpleName();
-	private static String REMOTE_INTERFACE_NAME = ScrumProjectRepositoryService.class.getName();
+	private static String SERVICE_NAME = ScrumProjectDataServiceEJB.class.getSimpleName();
+	private static String REMOTE_INTERFACE_NAME = ScrumProjectDataService.class.getName();
 	
 	
     private static <T> T lookupEJBService() throws NamingException {

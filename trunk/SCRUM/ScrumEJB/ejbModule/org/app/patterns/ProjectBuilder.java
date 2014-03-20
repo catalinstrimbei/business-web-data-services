@@ -1,8 +1,11 @@
-package org.app.scrum;
+package org.app.patterns;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.app.scrum.Project;
+import org.app.scrum.Release;
 
 
 public class ProjectBuilder implements EntityFactory{

@@ -1,9 +1,11 @@
 package org.app.scrum;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 @Entity
-public class BusinessFeature extends Feature {
+public class BusinessFeature extends Feature implements Serializable{
 
 	private String functionalCategory; // basic, improvement
 	private String useCaseDescription; // scenariu-flux dialog utilizator final - aplicatie
