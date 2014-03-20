@@ -1,4 +1,4 @@
-package org.app.scrum;
+package org.app.patterns;
 
 public class ProjectView {
 	private Integer projectNo;

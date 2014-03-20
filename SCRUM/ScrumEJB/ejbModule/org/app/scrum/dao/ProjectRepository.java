@@ -1,8 +1,12 @@
-package org.app.scrum;
+package org.app.scrum.dao;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
 import javax.persistence.EntityManager;
+
+import org.app.patterns.Repository;
+import org.app.scrum.Project;
 
 
 public class ProjectRepository implements Repository{

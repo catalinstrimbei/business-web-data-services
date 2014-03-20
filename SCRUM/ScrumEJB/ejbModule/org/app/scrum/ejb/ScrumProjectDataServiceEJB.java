@@ -18,8 +18,8 @@ import org.app.scrum.Project;
 // 1. Remote interface
 @Stateless
 @LocalBean
-public class ScrumProjectRepositoryEJB extends EntityRepository<Project> implements ScrumProjectRepositoryService{
-	private static Logger logger = Logger.getLogger(ScrumProjectRepositoryEJB.class.getName());
+public class ScrumProjectDataServiceEJB extends EntityRepository<Project> implements ScrumProjectDataService{
+	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());
 	
 	// 2. Inject resource
 	@PersistenceContext(unitName="ScrumEJB")
@@ -40,11 +40,11 @@ public class ScrumProjectRepositoryEJB extends EntityRepository<Project> impleme
     /**
      * @see EntityRepository#EntityRepository(EntityManager, Class<T>)
      */
-    public ScrumProjectRepositoryEJB(EntityManager em, Class<Project> t) {
+    public ScrumProjectDataServiceEJB(EntityManager em, Class<Project> t) {
         super(em, t);
     }
 
-	public ScrumProjectRepositoryEJB() {
+	public ScrumProjectDataServiceEJB() {
 		super();
 	}
 

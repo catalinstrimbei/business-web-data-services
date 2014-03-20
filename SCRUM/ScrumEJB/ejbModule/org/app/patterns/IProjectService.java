@@ -1,4 +1,6 @@
-package org.app.scrum;
+package org.app.patterns;
+
+import org.app.scrum.Project;
 
 public interface IProjectService extends Service{
 
