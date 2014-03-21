@@ -19,6 +19,15 @@
     <availablePage>
       <emfPageIdentifier href="Model-scrum.notation#_Sfx2sIa9EeOzs_Z1tiYrlA"/>
     </availablePage>
+    <availablePage>
+      <emfPageIdentifier href="Model-scrum.notation#_BLGLALALEeO_IpBo_jcT-A"/>
+    </availablePage>
+    <availablePage>
+      <emfPageIdentifier href="Model-scrum.notation#_DyHQkLALEeO_IpBo_jcT-A"/>
+    </availablePage>
+    <availablePage>
+      <emfPageIdentifier href="Model-scrum.notation#_vIkyALAQEeO_IpBo_jcT-A"/>
+    </availablePage>
   </pageList>
   <sashModel currentSelection="//@sashModel/@windows.0/@children.0">
     <windows>
@@ -40,6 +49,15 @@
         </children>
         <children>
           <emfPageIdentifier href="Model-scrum.notation#_Sfx2sIa9EeOzs_Z1tiYrlA"/>
+        </children>
+        <children>
+          <emfPageIdentifier href="Model-scrum.notation#_DyHQkLALEeO_IpBo_jcT-A"/>
+        </children>
+        <children>
+          <emfPageIdentifier href="Model-scrum.notation#_BLGLALALEeO_IpBo_jcT-A"/>
+        </children>
+        <children>
+          <emfPageIdentifier href="Model-scrum.notation#_vIkyALAQEeO_IpBo_jcT-A"/>
         </children>
       </children>
     </windows>
