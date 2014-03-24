@@ -9,7 +9,7 @@ import org.app.scrum.Release;
 
 
 public class ProjectBuilder implements EntityFactory{
-	public Project buildProiect(Integer projectID, String name, Integer releaseCount){
+	public static Project buildProiect(Integer projectID, String name, Integer releaseCount){
 		
 		Project project = new Project(projectID, name + "." + projectID , new Date());
 		List<Release> releasesProject = new ArrayList<>();

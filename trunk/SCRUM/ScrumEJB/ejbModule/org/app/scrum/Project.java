@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -34,7 +35,7 @@ public class Project implements Serializable{
 	private ProjectManager projectManager;
 	
 	// Added
-	@OneToMany(mappedBy="project", cascade = ALL, fetch = LAZY)
+	@OneToMany(mappedBy="project", cascade = ALL, fetch = FetchType.EAGER)
 	private List<Release> releases = new ArrayList<>();
 	
 	@OneToOne(cascade = ALL)
@@ -117,4 +118,9 @@ public class Project implements Serializable{
 		this.projectNo = nrProiect;
 		this.name = numeProiect;
 	}
+	@Override
+	public String toString() {
+		return "Project [projectNo=" + projectNo + ", name=" + name + "]";
+	}
+	
 }
