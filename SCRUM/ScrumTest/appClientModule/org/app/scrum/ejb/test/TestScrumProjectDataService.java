@@ -2,9 +2,11 @@ package org.app.scrum.ejb.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.app.scrum.Project;
+import org.app.scrum.Release;
 import org.app.scrum.ejb.ScrumProjectDataServiceEJB;
 import org.app.scrum.ejb.ScrumProjectDataService;
 import org.junit.BeforeClass;
@@ -19,7 +21,7 @@ public class TestScrumProjectDataService {
 		service = ScrumProjectDataServiceEJBFactory.getScrumProjectRepositoryService();
 	}
 	
-	@Test
+//	@Test
 	public void test() {
 		logger.info("START TESTING ...");
 		
@@ -33,7 +35,19 @@ public class TestScrumProjectDataService {
 		assertTrue("Fail to delete project in repository", service.size() == 0);
 	}
 
-	public void testAddProjects(){
+	@Test
+	public void createNewProject(){
+		logger.info("START TEST createNewProject ...");
 		
+		Project project = service.createNewProject();
+		assertTrue("Fail to create new project in repository", service.size() == 1);
+		
+		List<Release> releases = service.getReleases(project);
+		assertNotNull("Fail to create releases in repository (is null)", releases);
+		assertTrue("Fail to create releases in repository (is empty)", releases.size() >= 1);
+		
+//		service.remove(project);
+//		assertTrue("Fail to delete project in repository", service.size() == 0);
+		logger.info("... END TEST createNewProject!");
 	}
 }

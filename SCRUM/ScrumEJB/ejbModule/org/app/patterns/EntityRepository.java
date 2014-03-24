@@ -5,6 +5,7 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
@@ -23,7 +25,9 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 
+	@PersistenceContext(unitName="ScrumEJB")
 	protected EntityManager em;
+	
 	protected Class<T> repositoryType;
 	protected String genericSQL;
 
@@ -37,8 +41,25 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 	
 	// Empty constructor
 	public EntityRepository() {
+
+		logger.info("START DEFAULT INIT: ENTITY REPOSITORY ... ");
+		
+		this.repositoryType = returnedClass();
+		logger.info("init repositoryType: " + repositoryType.getSimpleName());
+		
+		this.genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
+				+ " o";
+		logger.info("init generic JPAQL: " + genericSQL);		
+		
+		logger.info("... END DEFAULT INIT: ENTITY REPOSITORY!");
 	}
 
+	private Class returnedClass() {
+	      ParameterizedType parameterizedType =
+	        (ParameterizedType) getClass().getGenericSuperclass();
+	     return (Class) parameterizedType.getActualTypeArguments()[0];
+	}	
+	
 	public EntityRepository(EntityManager em, Class<T> t) {
 		this.em = em;
 		this.repositoryType = t;
@@ -47,6 +68,13 @@ public class EntityRepository<T extends Object> implements EntityRepositoryServi
 		logger.info("generic JPAQL: " + genericSQL);
 	}
 
+	public EntityRepository(Class<T> t) {
+		this.repositoryType = t;
+		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
+				+ " o";
+		logger.info("generic JPAQL: " + genericSQL);
+	}	
+	
 	// Repository query implementation
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)

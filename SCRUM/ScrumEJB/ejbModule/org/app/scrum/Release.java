@@ -1,5 +1,6 @@
 package org.app.scrum;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.persistence.GeneratedValue;
 
 
 @Entity
-public class Release {
+public class Release implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer releaseId;
