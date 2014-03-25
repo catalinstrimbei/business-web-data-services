@@ -36,13 +36,13 @@
           <emfPageIdentifier href="Model-scrum.notation#_mO7GsDcwEeObreURXdy-Cg"/>
         </children>
         <children>
+          <emfPageIdentifier href="Model-scrum.notation#_mfwZAD54EeOn5pvlXCmwSA"/>
+        </children>
+        <children>
           <emfPageIdentifier href="Model-scrum.notation#_iN99QDcxEeObreURXdy-Cg"/>
         </children>
         <children>
           <emfPageIdentifier href="Model-scrum.notation#_wEadsDpoEeObrIpWPUJq-Q"/>
-        </children>
-        <children>
-          <emfPageIdentifier href="Model-scrum.notation#_mfwZAD54EeOn5pvlXCmwSA"/>
         </children>
         <children>
           <emfPageIdentifier href="Model-scrum.notation#_W0zlwIaHEeOzs_Z1tiYrlA"/>
