@@ -1,9 +1,17 @@
 package org.app.scrum.team;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Member 
-	implements Comparable<Member>{
+	implements Comparable<Member>, Serializable{
 	
+	@Id
 	private Integer memberID;
+	
 	private String name;
 	private Role role;
 		
@@ -89,5 +97,9 @@ public class Member
 	@Override
 	public String toString() {
 		return "Member [memberID=" + memberID + ", name=" + name + "]";
+	}	
+	
+	public enum Role{
+		MANAGER, PRODUCT_OWNER, SCRUM_MASTER, DEVELOPER, ANALYST, TESTER;
 	}	
 }

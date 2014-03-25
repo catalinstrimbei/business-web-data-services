@@ -1,6 +1,8 @@
 package org.app.scrum.team;
 
+import javax.persistence.Entity;
 
+@Entity
 public class ProjectManager extends Member{
 //	private Integer id;
 //	private String numePrenume;
