@@ -90,10 +90,6 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Yy4VEDfwEeOXdLoEgavdtA" name="Sprint">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-fm78DpoEeObrIpWPUJq-Q" name="features" type="_z75FkDpoEeObrIpWPUJq-Q" association="_-fnjADpoEeObrIpWPUJq-Q">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-fm78TpoEeObrIpWPUJq-Q" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-fm78jpoEeObrIpWPUJq-Q" value="*"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Q9sA0DppEeObrIpWPUJq-Q" name="sprintId" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RR7LcDppEeObrIpWPUJq-Q" value="1"/>
@@ -139,6 +135,10 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
           <defaultValue xmi:type="uml:LiteralString" xmi:id="_biXggDppEeObrIpWPUJq-Q">
             <value xsi:nil="true"/>
           </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_oYidILQ4EeOG5-0ImUPXdg" name="tasks" type="_fwSzIDfwEeOXdLoEgavdtA" association="_oYjrQLQ4EeOG5-0ImUPXdg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oYidIbQ4EeOG5-0ImUPXdg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oYidIrQ4EeOG5-0ImUPXdg" value="*"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_fwSzIDfwEeOXdLoEgavdtA" clientDependency="_veVeYDvXEeOykqJIqx8NfQ _wX2gUDvXEeOykqJIqx8NfQ" name="Task">
@@ -310,6 +310,10 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ir9RQT71EeOU9dNraMsEtQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ir9RQj71EeOU9dNraMsEtQ" value="*"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_zy-LALQ2EeOG5-0ImUPXdg" name="features" type="_z75FkDpoEeObrIpWPUJq-Q" association="_zzB1YLQ2EeOG5-0ImUPXdg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zy-LAbQ2EeOG5-0ImUPXdg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zy-LArQ2EeOG5-0ImUPXdg" value="*"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_Vv6d4DpiEeObrIpWPUJq-Q" name="" memberEnd="_Vv6d4TpiEeObrIpWPUJq-Q _Vv5PwDpiEeObrIpWPUJq-Q">
         <ownedEnd xmi:type="uml:Property" xmi:id="_Vv6d4TpiEeObrIpWPUJq-Q" name="proiect" type="_bbj1UDcxEeObreURXdy-Cg" association="_Vv6d4DpiEeObrIpWPUJq-Q">
@@ -336,10 +340,6 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_zk8aoDpnEeObrIpWPUJq-Q" name="TESTER"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_z75FkDpoEeObrIpWPUJq-Q" clientDependency="_tI9icDvXEeOykqJIqx8NfQ" name="Feature">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_A1l74DppEeObrIpWPUJq-Q" name="tasks" type="_fwSzIDfwEeOXdLoEgavdtA" association="_A1mi8DppEeObrIpWPUJq-Q">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1l74TppEeObrIpWPUJq-Q" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1l74jppEeObrIpWPUJq-Q" value="*"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Tkr-UDvUEeOykqJIqx8NfQ" name="featureId" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_atZtcDvUEeOykqJIqx8NfQ" value="1"/>
@@ -372,16 +372,14 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
           </defaultValue>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_-fnjADpoEeObrIpWPUJq-Q" name="sprint_cerinta_1" memberEnd="_-fnjATpoEeObrIpWPUJq-Q _-fm78DpoEeObrIpWPUJq-Q">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-fnjATpoEeObrIpWPUJq-Q" name="sprint" type="_Yy4VEDfwEeOXdLoEgavdtA" association="_-fnjADpoEeObrIpWPUJq-Q">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-fnjAjpoEeObrIpWPUJq-Q" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-fnjAzpoEeObrIpWPUJq-Q" value="1"/>
-        </ownedEnd>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_A1mi8DppEeObrIpWPUJq-Q" name="cerinta_task_1" memberEnd="_A1mi8TppEeObrIpWPUJq-Q _A1l74DppEeObrIpWPUJq-Q" navigableOwnedEnd="_A1mi8TppEeObrIpWPUJq-Q">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_A1mi8TppEeObrIpWPUJq-Q" name="cerinta" type="_z75FkDpoEeObrIpWPUJq-Q" association="_A1mi8DppEeObrIpWPUJq-Q">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_A1mi8TppEeObrIpWPUJq-Q" name="feature" type="_z75FkDpoEeObrIpWPUJq-Q" association="_A1mi8DppEeObrIpWPUJq-Q">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1mi8jppEeObrIpWPUJq-Q" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1mi8zppEeObrIpWPUJq-Q" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_A1l74DppEeObrIpWPUJq-Q" name="tasks" type="_fwSzIDfwEeOXdLoEgavdtA" association="_A1mi8DppEeObrIpWPUJq-Q">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1l74TppEeObrIpWPUJq-Q" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1l74jppEeObrIpWPUJq-Q" value="*"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_Jy4nADppEeObrIpWPUJq-Q" name="task_membru_1" memberEnd="_Jy4nATppEeObrIpWPUJq-Q _Jy3_8DppEeObrIpWPUJq-Q">
@@ -423,6 +421,18 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_PEz0QD72EeOU9dNraMsEtQ" name="Dependency1" client="_xdTncDfwEeOXdLoEgavdtA" supplier="_pidpEDpnEeObrIpWPUJq-Q"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_Xwt0cD72EeOU9dNraMsEtQ" name="Dependency2" client="_vczvUDfwEeOXdLoEgavdtA" supplier="_aObeUDpnEeObrIpWPUJq-Q"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_zzB1YLQ2EeOG5-0ImUPXdg" name="release_feature_1" memberEnd="_zzB1YbQ2EeOG5-0ImUPXdg _zy-LALQ2EeOG5-0ImUPXdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_zzB1YbQ2EeOG5-0ImUPXdg" name="release" type="_3lUHgDfwEeOXdLoEgavdtA" association="_zzB1YLQ2EeOG5-0ImUPXdg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zzB1YrQ2EeOG5-0ImUPXdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zzB1Y7Q2EeOG5-0ImUPXdg" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_oYjrQLQ4EeOG5-0ImUPXdg" name="sprint_task_1" memberEnd="_oYjrQbQ4EeOG5-0ImUPXdg _oYidILQ4EeOG5-0ImUPXdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_oYjrQbQ4EeOG5-0ImUPXdg" name="sprint" type="_Yy4VEDfwEeOXdLoEgavdtA" association="_oYjrQLQ4EeOG5-0ImUPXdg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oYjrQrQ4EeOG5-0ImUPXdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oYjrQ7Q4EeOG5-0ImUPXdg" value="1"/>
+        </ownedEnd>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_GXyrIDcyEeObreURXdy-Cg" name="java.util">
       <packagedElement xmi:type="uml:DataType" xmi:id="_LFJLEDcyEeObreURXdy-Cg" name="Date"/>
