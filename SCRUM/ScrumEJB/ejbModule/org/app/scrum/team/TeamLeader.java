@@ -1,5 +1,8 @@
 package org.app.scrum.team;
 
+import javax.persistence.Entity;
+
+@Entity
 public class TeamLeader extends Member{
 
 	private String technologicalAbilities; // JEE, Spring, .NET, JS/Node.js, Ruby_Rails

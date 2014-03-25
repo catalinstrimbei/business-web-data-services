@@ -10,10 +10,12 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import org.app.patterns.EntityRepository;
+import org.app.patterns.EntityRepositoryBase;
 import org.app.patterns.ProjectBuilder;
 import org.app.scrum.Feature;
 import org.app.scrum.Project;
 import org.app.scrum.Release;
+import org.app.scrum.team.Team;
 
 /**
  * Session Bean implementation class ScrumTeamRepositoryService
@@ -22,20 +24,20 @@ import org.app.scrum.Release;
 // 1. Remote interface
 @Stateless
 @LocalBean
-public class ScrumProjectDataServiceEJB extends EntityRepository<Project> implements ScrumProjectDataService{
+public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> implements ScrumProjectDataService{
 	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());
 	
-	// 2. Inject resource
+	// 2. Inject resource 
 //	@PersistenceContext(unitName="ScrumEJB")
 //	private EntityManager scrumEM;
 
     // 3. Init with injected EntityManager
-	private EntityRepository<Release> releaseRepository;
+	private EntityRepository<Team> teamRepository;
 	
     @PostConstruct
 	public void init(){
-		releaseRepository = new EntityRepository<Release>(this.em, Release.class);
-		logger.info("Initialized releaseRepository : " + releaseRepository.size());		
+		teamRepository = new EntityRepositoryBase<Team>(this.em, Team.class);
+		logger.info("Initialized teamRepository : " + teamRepository.size());		
 	}	
 
 	public ScrumProjectDataServiceEJB() {
@@ -86,12 +88,5 @@ public class ScrumProjectDataServiceEJB extends EntityRepository<Project> implem
 			r.setProject(null);
 		}
 		return ((project != null) ? project.getReleases() : null) ;
-	}
-	
-	@Override
-	public List<Release> getAllReleases(){
-		List<Release> releases = new ArrayList<>();
-		releases.addAll(releaseRepository.toCollection());
-		return releases;
 	}	
 }

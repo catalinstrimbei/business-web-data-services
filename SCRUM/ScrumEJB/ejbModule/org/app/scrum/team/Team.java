@@ -3,11 +3,23 @@ package org.app.scrum.team;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Team {
+	@Id
 	private Integer teamID;
+	
 	private Specialization specialization;
 	private String abilities;
+	
+	@OneToMany
 	private List<Member> members = new ArrayList<Member>();
+	
+	@OneToOne
 	private TeamLeader teamLeader;
 	
 	// properties from bean accessors
