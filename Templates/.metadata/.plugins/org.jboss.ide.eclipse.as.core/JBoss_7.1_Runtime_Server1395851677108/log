@@ -1,0 +1,73 @@
+!SESSION 2014-03-26 17:44:41.237 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product -data O:\Professional\MID\Projects\sprint-web-data-services\Templates -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:07:02.475
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-03-26 19:07:03.772
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-03-26 19:07:09.477
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:08:04.210
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:08:22.007
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:09:59.537
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:10:11.115
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:10:20.568
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:11:04.412
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:11:10.583
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:11:54.099
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:12:16.302
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:12:23.146
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-03-26 19:23:09.075
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-03-26 19:23:09.218
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:25:20.219
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-03-26 19:25:24.079
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-03-26 19:25:29.894
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:35:14.076
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:35:53.481
+!MESSAGE 1 files modified in module ServiceEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-03-26 19:35:57.544
+!MESSAGE Module ServiceEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-03-26 19:36:29.659
+!MESSAGE Server processes have been terminated.
