@@ -1,0 +1,10 @@
+package org.app.service.ejb;
+
+public class DataServiceEJB implements DataService{
+
+	@Override
+	public String sayMessage(String message) {
+		return message + " (from JEE Container)";
+	}
+
+}

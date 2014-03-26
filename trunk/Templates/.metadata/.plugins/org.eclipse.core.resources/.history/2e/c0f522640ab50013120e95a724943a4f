@@ -1,0 +1,14 @@
+package org.app.service.ejb.tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestDataServiceEJB {
+
+	@Test
+	public void testSayMessage() {
+		fail("Not yet implemented");
+	}
+
+}

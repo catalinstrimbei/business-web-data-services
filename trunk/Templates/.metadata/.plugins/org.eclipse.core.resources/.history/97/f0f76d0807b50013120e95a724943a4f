@@ -1,0 +1,19 @@
+package org.app.service.ejb;
+
+import java.util.logging.Logger;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+@Stateless
+@LocalBean
+public class DataServiceEJB implements DataService{
+	private static Logger logger = Logger.getLogger(DataServiceEJB.class.getName());
+	
+	@Override
+	public String sayMessage(String message) {
+		logger.info("DEBUG: Received message: " + message);;
+		return message + " (from JEE Container)";
+	}
+
+}
