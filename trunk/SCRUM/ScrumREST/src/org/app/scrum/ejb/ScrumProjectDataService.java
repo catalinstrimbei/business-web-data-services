@@ -11,7 +11,7 @@ import org.app.scrum.Release;
 @Remote
 public interface ScrumProjectDataService extends EntityRepository<Project>{
 
-	String sayMessage();
+	String sayRest();
 	
 	String sayMessage(String string);
 

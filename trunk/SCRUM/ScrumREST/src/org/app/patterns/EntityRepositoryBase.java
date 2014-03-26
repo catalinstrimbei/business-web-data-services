@@ -6,6 +6,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +45,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 		logger.info("START DEFAULT INIT: ENTITY REPOSITORY ... ");
 		
-		this.repositoryType = returnedClass();
+		this.repositoryType = g();
 		logger.info("init repositoryType: " + repositoryType.getSimpleName());
 		
 		this.genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
@@ -287,4 +288,24 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 //		String uri = entity.getClass().getSimpleName().concat("/").concat(entity.getIdentifier());
 //		entity.setUri(uri);
 //	}
+	
+	
+	private Class<?> extractClassFromType(Type t) throws ClassCastException {
+	    if (t instanceof Class<?>) {
+	        return (Class<?>)t;
+	    }
+	    return (Class<?>)((ParameterizedType)t).getRawType();
+	}
+
+	public Class<T> g() throws ClassCastException {
+	    Class<?> superClass = getClass(); // initial value
+	    Type superType;
+	    do {
+	        superType = superClass.getGenericSuperclass();
+	        superClass = extractClassFromType(superType);
+	    } while (! (superClass.equals(EntityRepositoryBase.class)));
+
+	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
+	    return (Class<T>)extractClassFromType(actualArg);
+	}		
 }
