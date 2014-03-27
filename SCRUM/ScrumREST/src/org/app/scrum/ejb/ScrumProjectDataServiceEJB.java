@@ -103,8 +103,5 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 	
 }
 
-//  http://localhost:8080/HybridSample/resources/genericresource/samplemethod
-//  http://localhost:8080/HybridSample/resources/Hybrid/demo
-
-// http://localhost:8080/ScrumEJB/resources/scrum/sayMessage
-// http://localhost:8080/ScrumEJB/scrum/sayMessage
+// http://localhost:8080/ScrumREST/resources/scrum/sayMessage
+// http://localhost:8080/ScrumREST/scrum

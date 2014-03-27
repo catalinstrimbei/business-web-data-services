@@ -17,7 +17,7 @@ public class ScrumProjectDataServiceEJBFactory {
 		return lookupEJBService();
 	}
 	
-	private static String MODULE_NAME = "ScrumEJB";
+	private static String MODULE_NAME = "ScrumREST";
 	private static String SERVICE_NAME = ScrumProjectDataServiceEJB.class.getSimpleName();
 	private static String REMOTE_INTERFACE_NAME = ScrumProjectDataService.class.getName();
 	
