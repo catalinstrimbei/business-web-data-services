@@ -11,6 +11,8 @@ import org.app.scrum.Release;
 @Remote
 public interface ScrumProjectDataService extends EntityRepository<Project>{
 
+	String sayMessage();
+	
 	String sayMessage(String string);
 
 	public abstract List<Release> getReleases(Project p);
