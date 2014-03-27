@@ -1,5 +1,0 @@
-package org.app.patterns;
-
-public interface EntityFactory {
-
-}
