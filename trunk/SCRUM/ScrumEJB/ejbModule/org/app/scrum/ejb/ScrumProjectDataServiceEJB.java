@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
@@ -21,6 +23,7 @@ import org.app.scrum.team.Team;
  * Session Bean implementation class ScrumTeamRepositoryService
  * Aggregate Repository Service Facade: Project - features - releases
  */
+@Path("/scrum/")
 // 1. Remote interface
 @Stateless
 @LocalBean
@@ -45,6 +48,11 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 		logger.info("INIT DEF CONSTRUCTOR ScrumProjectDataServiceEJB : " + this.em);		
 	}
 
+	@GET
+	public String sayMessage() {
+		return "Scrumming ";
+	}
+	
 	@Override
 	public String sayMessage(String m) {
 		logger.info("DEBUG ... BREAKPOINT");
@@ -90,3 +98,9 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 		return ((project != null) ? project.getReleases() : null) ;
 	}	
 }
+
+//  http://localhost:8080/HybridSample/resources/genericresource/samplemethod
+//  http://localhost:8080/HybridSample/resources/Hybrid/demo
+
+// http://localhost:8080/ScrumEJB/resources/scrum/sayMessage
+// http://localhost:8080/ScrumEJB/scrum/sayMessage
