@@ -32,20 +32,16 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	protected Class<T> repositoryType;
 	protected String genericSQL;
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#setEm(javax.persistence.EntityManager)
-	 */
 	@Override
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
 	
-	// Empty constructor
 	public EntityRepositoryBase() {
 
 		logger.info("START DEFAULT INIT: ENTITY REPOSITORY ... ");
 		
-		this.repositoryType = g();
+		this.repositoryType = getEntityParametrizedType();
 		logger.info("init repositoryType: " + repositoryType.getSimpleName());
 		
 		this.genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
@@ -54,12 +50,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		
 		logger.info("... END DEFAULT INIT: ENTITY REPOSITORY!");
 	}
-
-	private Class returnedClass() {
-	      ParameterizedType parameterizedType =
-	        (ParameterizedType) getClass().getGenericSuperclass();
-	     return (Class) parameterizedType.getActualTypeArguments()[0];
-	}	
 	
 	public EntityRepositoryBase(EntityManager em, Class<T> t) {
 		this.em = em;
@@ -279,15 +269,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		em.refresh(entity);
 		return entity;
 	}
-
-	// Private
-//	protected void provideUri(T entity) {
-//		if (entity.getUri() != null && !entity.getUri().isEmpty()) {
-//			return;
-//		}
-//		String uri = entity.getClass().getSimpleName().concat("/").concat(entity.getIdentifier());
-//		entity.setUri(uri);
-//	}
 	
 	
 	private Class<?> extractClassFromType(Type t) throws ClassCastException {
@@ -297,7 +278,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	    return (Class<?>)((ParameterizedType)t).getRawType();
 	}
 
-	public Class<T> g() throws ClassCastException {
+	public Class<T> getEntityParametrizedType() throws ClassCastException {
 	    Class<?> superClass = getClass(); // initial value
 	    Type superType;
 	    do {
