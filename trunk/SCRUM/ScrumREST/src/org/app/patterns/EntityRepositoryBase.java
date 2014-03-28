@@ -17,6 +17,10 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 /**
  * 
@@ -70,11 +74,14 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
 	 */
+//	@GET @Path("/getbyid/{id}") @Produces("application/json")
 	@Override
-	public T getById(Object id) {
+	public T getById(@PathParam("id") Object id) {
 		return (T) em.find(repositoryType, id);
 	}
 
+
+	
 	// QBExample
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#get(T)
@@ -249,6 +256,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#size()
 	 */
+	@GET @Path("/size") @Produces("application/json")
 	@Override
 	public int size() {
 		String sqlCount = "SELECT count(o) FROM "

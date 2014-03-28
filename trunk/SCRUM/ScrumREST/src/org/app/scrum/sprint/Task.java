@@ -118,4 +118,8 @@ public class Task {
 		this.estimatedTime = estimatedTime;
 		this.responsible = responsible;
 	}
+	public Task() {
+		super();
+	}
+	
 }

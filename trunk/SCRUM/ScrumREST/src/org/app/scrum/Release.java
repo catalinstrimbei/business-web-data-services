@@ -15,8 +15,13 @@ import javax.persistence.TemporalType;
 import static javax.persistence.CascadeType.ALL;
 
 import javax.persistence.GeneratedValue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Release implements Serializable{
 	@Id
@@ -29,13 +34,13 @@ public class Release implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date publishDate; // dataEstimarePublicare
 	
-	// Added
 	@ManyToOne
 	private Project project;
-	
+
 	@OneToMany(cascade = ALL)
 	private List<Feature> features = new ArrayList<>();
-		
+	
+	@XmlElement
 	public Integer getReleaseId() {
 		return releaseId;
 	}
@@ -66,12 +71,16 @@ public class Release implements Serializable{
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
+	
+	@XmlTransient
 	public Project getProject() {
 		return project;
 	}
 	public void setProject(Project project) {
 		this.project = project;
 	}
+	
+	@XmlTransient
 	public List<Feature> getFeatures() {
 		return features;
 	}

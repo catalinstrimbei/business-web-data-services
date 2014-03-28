@@ -1,5 +1,7 @@
 package org.app.scrum;
 
+import static javax.persistence.CascadeType.ALL;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,17 +16,22 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.app.scrum.team.ProjectManager;
 
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
-
+@XmlRootElement(name="project")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Project implements Serializable{
 	@Id
 	private Integer projectNo;
-	
+
 	@NotNull
 	private String name;
 	
@@ -41,18 +48,23 @@ public class Project implements Serializable{
 	@OneToOne(cascade = ALL)
 	private Release currentRelease;
 	
+//	@XmlElement
 	public Integer getProjectNo() {
 		return projectNo;
 	}
 	public void setProjectNo(Integer projectNo) {
 		this.projectNo = projectNo;
 	}
+	
+//	@XmlElement
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@XmlTransient
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -76,13 +88,15 @@ public class Project implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	// Added
+//	@XmlTransient
 	public List<Release> getReleases() {
 		return releases;
 	}
 	public void setReleases(List<Release> releases) {
 		this.releases = releases;
 	}
+	
+	@XmlTransient
 	public Release getCurrentRelease() {
 		return currentRelease;
 	}

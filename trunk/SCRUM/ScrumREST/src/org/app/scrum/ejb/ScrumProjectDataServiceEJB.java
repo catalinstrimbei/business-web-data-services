@@ -11,6 +11,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.app.patterns.EntityRepository;
@@ -62,13 +63,15 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 	}
 
 	@Override
+	@GET @Path("/project")
+	@Produces("application/json")
 	public Project createNewProject(){
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
 		debugCheckRelease(project);
 		this.add(project);
 		debugCheckRelease(project);
 		// Project DTO: service getEntityDTO() or entity.getDTO()
-//		project.setReleases(null);
+		project.setReleases(null);
 		return project;
 	}
 	
@@ -100,6 +103,10 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 		return ((project != null) ? project.getReleases() : null) ;
 	}	
 	
+	@GET @Path("/getbyid/{id}") @Produces("application/xml")
+	public Project getByKey(@PathParam("id") Integer id) {
+		return (Project) em.find(repositoryType, id);
+	}		
 	
 }
 
