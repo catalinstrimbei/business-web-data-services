@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html data-ng-app='demoAppRest'>
+<head>
+<meta charset="ISO-8859-1">
+<title>4. AngularJS to simple REST</title>
+</head>
+<body>
+	<h1>4. AngularJS to simple REST</h1>
+	
+	<div data-ng-controller="SimpleController">
+		<h3>RestSrc: [ {{ restSrc }} ]</h3>
+		<h3>RestText: [ {{ restText }} ]</h3>
+		<input type="text" data-ng-model="project.name" />
+	</div>
+	
+	<script src="Scripts/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.js"></script>
+	<script src="Scripts/start4.js"></script>	
+	
+</body>
+</html>
