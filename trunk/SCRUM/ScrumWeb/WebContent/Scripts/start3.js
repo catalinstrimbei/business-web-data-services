@@ -34,7 +34,9 @@ demoApp.controller('SimpleController',
 				console.log('r: ' + response);
 			});
 			
-			$http.
+			$http.get('http://localhost:8080/ScrumREST/scrum')
+				.success(function(data){console.log('d: ' + data);})
+				.error(function(data){console.log('ERROR');});
 	     }
 );
 
