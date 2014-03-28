@@ -1,5 +1,5 @@
 // [] - dependency modules
-var demoApp = angular.module('demoApp', ['routeProvider']);
+var demoApp = angular.module('demoApp', ['ngRoute']);
 
 
 demoApp.controller('SimpleController', 
