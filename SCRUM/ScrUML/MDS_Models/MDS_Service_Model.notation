@@ -4,11 +4,11 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_otFoMLdWEeOH5riGJGc5Jg" source="ShadowFigure">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_otFoMbdWEeOH5riGJGc5Jg" key="ShadowFigure_Value" value="false"/>
     </eAnnotations>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_otFoMrdWEeOH5riGJGc5Jg" source="displayNameLabelIcon">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_otFoM7dWEeOH5riGJGc5Jg" key="displayNameLabelIcon_value" value="false"/>
-    </eAnnotations>
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_otFoNLdWEeOH5riGJGc5Jg" source="QualifiedName">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_otGPQLdWEeOH5riGJGc5Jg" key="QualifiedNameDepth" value="1000"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g9tmELd0EeOUjJlmCe2wXA" source="displayNameLabelIcon">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g9uNILd0EeOUjJlmCe2wXA" key="displayNameLabelIcon_value" value="true"/>
     </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_otGPQbdWEeOH5riGJGc5Jg" type="5011"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_otGPQrdWEeOH5riGJGc5Jg" visible="false" type="7006">
