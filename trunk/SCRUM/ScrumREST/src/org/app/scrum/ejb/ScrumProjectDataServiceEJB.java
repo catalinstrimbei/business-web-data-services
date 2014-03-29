@@ -19,17 +19,30 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.patterns.ProjectBuilder;
 import org.app.scrum.Project;
 import org.app.scrum.Release;
+import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Team;
 
 /**
- * Session Bean implementation class ScrumTeamRepositoryService
- * Aggregate Repository Service Facade: Project - features - releases
+ * Facade Service Implementation:
+ * Session Bean implementation of ScrumProjectDataService facade interface:
+ * - Main DAO: Project Aggregate Repository Service: Project - features - releases
+ * - DAO Service Integration (local orchestration):
+ * 		ProjectRepository [Project, Release, Feature]
+ * 		SprintRepository [Sprint, Task]
+ * - Prepare DTO for Project Aggregate Data Service
+ * 		Project SimpleList(key,value)
+ * 		Project SingleAggregate [Project-releases-features]
+ * 		Release SingleAggregate[project-Release-features]
+ * 		(Sprint SimpleList)
+ * 		(Sprint SingleAggregate [Sprint-tasks])
  */
 @Path("scrum")
 // 1. Remote interface
 @Stateless
 @LocalBean
-public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> implements ScrumProjectDataService{
+public class ScrumProjectDataServiceEJB 
+	extends EntityRepositoryBase<Project> implements ScrumProjectDataService{
+	
 	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());
 	
 	// 2. Inject resource 
@@ -37,12 +50,12 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 //	private EntityManager scrumEM;
 
     // 3. Init with injected EntityManager
-	private EntityRepository<Team> teamRepository;
+	private EntityRepository<Sprint> sprintRepository;
 	
     @PostConstruct
 	public void init(){
-		teamRepository = new EntityRepositoryBase<Team>(this.em, Team.class);
-		logger.info("Initialized teamRepository : " + teamRepository.size());		
+		sprintRepository = new EntityRepositoryBase<Sprint>(this.em, Sprint.class);
+		logger.info("Initialized sprintRepository : " + sprintRepository.size());		
 	}	
 
 	public ScrumProjectDataServiceEJB() {
@@ -103,7 +116,7 @@ public class ScrumProjectDataServiceEJB extends EntityRepositoryBase<Project> im
 		return ((project != null) ? project.getReleases() : null) ;
 	}	
 	
-	@GET @Path("/getbyid/{id}") @Produces("application/xml")
+	@GET @Path("/project/{id}") @Produces("application/xml")
 	public Project getByKey(@PathParam("id") Integer id) {
 		return (Project) em.find(repositoryType, id);
 	}		
