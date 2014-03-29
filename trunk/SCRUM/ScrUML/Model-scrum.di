@@ -28,6 +28,9 @@
     <availablePage>
       <emfPageIdentifier href="Model-scrum.notation#_vIkyALAQEeO_IpBo_jcT-A"/>
     </availablePage>
+    <availablePage>
+      <emfPageIdentifier href="Model-scrum.notation#_kkOoILSzEeOcsNo5HybN5g"/>
+    </availablePage>
   </pageList>
   <sashModel currentSelection="//@sashModel/@windows.0/@children.0">
     <windows>
@@ -58,6 +61,9 @@
         </children>
         <children>
           <emfPageIdentifier href="Model-scrum.notation#_vIkyALAQEeO_IpBo_jcT-A"/>
+        </children>
+        <children>
+          <emfPageIdentifier href="Model-scrum.notation#_kkOoILSzEeOcsNo5HybN5g"/>
         </children>
       </children>
     </windows>

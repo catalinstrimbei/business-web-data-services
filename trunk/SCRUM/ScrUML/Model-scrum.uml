@@ -570,6 +570,46 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
     <packagedElement xmi:type="uml:Usage" xmi:id="_PG7vkLASEeO_IpBo_jcT-A" name="Usage0" client="_E8BawLASEeO_IpBo_jcT-A" supplier="_6QGDkLAREeO_IpBo_jcT-A"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_UHYxsLASEeO_IpBo_jcT-A" name="ScrumProjectDataServiceEJBFactory"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_ZufkILASEeO_IpBo_jcT-A" name="Dependency3" client="_E8BawLASEeO_IpBo_jcT-A" supplier="_UHYxsLASEeO_IpBo_jcT-A"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_lOu9sLSzEeOcsNo5HybN5g" name="CRUD Project and releases"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_pn2TALSzEeOcsNo5HybN5g" name="CRUD Teams and members"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ugOXMLSzEeOcsNo5HybN5g" name="CRUD Sprints and tasks"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_yXHwQLSzEeOcsNo5HybN5g" name="Project Member"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_3AgWMLSzEeOcsNo5HybN5g" name="Project Manager">
+      <generalization xmi:type="uml:Generalization" xmi:id="_86S0ELSzEeOcsNo5HybN5g" general="_yXHwQLSzEeOcsNo5HybN5g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_6TP5ULSzEeOcsNo5HybN5g" name="Team Leader">
+      <generalization xmi:type="uml:Generalization" xmi:id="_9lH5wLSzEeOcsNo5HybN5g" general="_yXHwQLSzEeOcsNo5HybN5g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__kRHALSzEeOcsNo5HybN5g" name="A_project member_crud project and releases" memberEnd="__kRHAbSzEeOcsNo5HybN5g __kRHBLSzEeOcsNo5HybN5g">
+      <ownedEnd xmi:type="uml:Property" xmi:id="__kRHAbSzEeOcsNo5HybN5g" name="project member" type="_yXHwQLSzEeOcsNo5HybN5g" association="__kRHALSzEeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__kRHArSzEeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__kRHA7SzEeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="__kRHBLSzEeOcsNo5HybN5g" name="crud project and releases" type="_lOu9sLSzEeOcsNo5HybN5g" association="__kRHALSzEeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__kRHBbSzEeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__kRHBrSzEeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ard_oLS0EeOcsNo5HybN5g" name="A_project member_crud teams and members" memberEnd="_Ard_obS0EeOcsNo5HybN5g _Ard_pLS0EeOcsNo5HybN5g">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Ard_obS0EeOcsNo5HybN5g" name="project member" type="_yXHwQLSzEeOcsNo5HybN5g" association="_Ard_oLS0EeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ard_orS0EeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ard_o7S0EeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Ard_pLS0EeOcsNo5HybN5g" name="crud teams and members" type="_pn2TALSzEeOcsNo5HybN5g" association="_Ard_oLS0EeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ard_pbS0EeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ard_prS0EeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_CjhGYLS0EeOcsNo5HybN5g" name="A_project member_crud sprints and tasks" memberEnd="_CjhGYbS0EeOcsNo5HybN5g _CjhGZLS0EeOcsNo5HybN5g">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_CjhGYbS0EeOcsNo5HybN5g" name="project member" type="_yXHwQLSzEeOcsNo5HybN5g" association="_CjhGYLS0EeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CjhGYrS0EeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CjhGY7S0EeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_CjhGZLS0EeOcsNo5HybN5g" name="crud sprints and tasks" type="_ugOXMLSzEeOcsNo5HybN5g" association="_CjhGYLS0EeOcsNo5HybN5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CjhGZbS0EeOcsNo5HybN5g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CjhGZrS0EeOcsNo5HybN5g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_TwnqMDzUEeOnHa56VvETGA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TxSYkDzUEeOnHa56VvETGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
