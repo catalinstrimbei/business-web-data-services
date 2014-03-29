@@ -2,7 +2,7 @@
     <wb-module deploy-name="ScrumWeb">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="ScrumWeb"/>
         <property name="java-output-path" value="/ScrumWeb/build/classes"/>
+        <property name="context-root" value="ScrumWeb"/>
     </wb-module>
 </project-modules>

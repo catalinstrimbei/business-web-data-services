@@ -1,7 +1,7 @@
 // [] - dependency modules
 var demoAppRest = angular.module('demoAppRest', ['ngRoute', 'ngResource']);
 restServiceURL = 'http://localhost:8080/ScrumREST/scrum';
-projectServiceURL = "http://localhost:8080/ScrumREST/scrum/getbyid/1001";
+projectServiceURL = "http://localhost:8080/ScrumREST/scrum/project/1001";
 
 demoAppRest.factory('simpleTextFactory',
 		function($http){
