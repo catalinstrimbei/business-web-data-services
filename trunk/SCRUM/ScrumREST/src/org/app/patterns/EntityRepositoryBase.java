@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -176,7 +179,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#add(T)
 	 */
-	@Override
+	@Override @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T add(T entity) {
 		// em.getTransaction().begin();
 		try {

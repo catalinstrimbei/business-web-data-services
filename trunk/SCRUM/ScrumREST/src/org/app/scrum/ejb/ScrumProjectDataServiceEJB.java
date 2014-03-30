@@ -87,9 +87,11 @@ public class ScrumProjectDataServiceEJB
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
 		debugCheckRelease(project);
 		this.add(project);
-		debugCheckRelease(project);
+//		this.refresh(project);
+		project = getById(project.getProjectNo());
+//		debugCheckRelease(project);
 		// Project DTO: service getEntityDTO() or entity.getDTO()
-		project.setReleases(null);
+//		project.setReleases(null);
 		return project;
 	}
 	
@@ -123,7 +125,10 @@ public class ScrumProjectDataServiceEJB
 	
 	@GET @Path("/project/{id}") @Produces("application/xml")
 	public Project getByKey(@PathParam("id") Integer id) {
-		return (Project) em.find(repositoryType, id);
+		logger.info("DEBUG: get project with id " + id);
+		Project p = em.find(repositoryType, id);
+		logger.info("DEBUG: found project " + p);
+		return p;
 	}		
 	
 }

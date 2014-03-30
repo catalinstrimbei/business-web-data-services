@@ -3,13 +3,14 @@ package org.app.scrum.team;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Member 
 	implements Comparable<Member>, Serializable{
 	
-	@Id
+	@Id @GeneratedValue
 	private Integer memberID;
 	
 	private String name;
