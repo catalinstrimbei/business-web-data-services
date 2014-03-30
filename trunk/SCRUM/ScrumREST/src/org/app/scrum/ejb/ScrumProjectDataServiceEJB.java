@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -17,8 +18,8 @@ import javax.ws.rs.Produces;
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
 import org.app.patterns.ProjectBuilder;
-import org.app.scrum.Project;
-import org.app.scrum.Release;
+import org.app.scrum.project.Project;
+import org.app.scrum.project.Release;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Team;
 
@@ -48,6 +49,9 @@ public class ScrumProjectDataServiceEJB
 	// 2. Inject resource 
 //	@PersistenceContext(unitName="ScrumEJB")
 //	private EntityManager scrumEM;
+	
+	@EJB
+	private ScrumTeamDataServiceEJB teamRepository;
 
     // 3. Init with injected EntityManager
 	private EntityRepository<Sprint> sprintRepository;
@@ -55,7 +59,8 @@ public class ScrumProjectDataServiceEJB
     @PostConstruct
 	public void init(){
 		sprintRepository = new EntityRepositoryBase<Sprint>(this.em, Sprint.class);
-		logger.info("Initialized sprintRepository : " + sprintRepository.size());		
+		logger.info("Initialized sprintRepository : " + sprintRepository.size());
+		logger.info("Initialized teamRepository : " + teamRepository.size());	
 	}	
 
 	public ScrumProjectDataServiceEJB() {

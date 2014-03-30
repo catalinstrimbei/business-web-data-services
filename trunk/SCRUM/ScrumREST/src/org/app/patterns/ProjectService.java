@@ -2,8 +2,8 @@ package org.app.patterns;
 
 import java.util.Date;
 
-import org.app.scrum.Project;
-import org.app.scrum.Release;
+import org.app.scrum.project.Project;
+import org.app.scrum.project.Release;
 
 public class ProjectService implements IProjectService {
 	/* (non-Javadoc)

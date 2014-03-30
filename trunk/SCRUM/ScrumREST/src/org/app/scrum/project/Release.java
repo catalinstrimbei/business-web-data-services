@@ -1,4 +1,4 @@
-package org.app.scrum;
+package org.app.scrum.project;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -4,12 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.app.scrum.Feature;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.app.scrum.project.Feature;
+
+@Entity
 public class Sprint {
+	@Id
 	private Integer sprintID;
 	private String objective;
+	
+	@OneToMany
 	private List<Feature> features = new ArrayList<>();
+	
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	private String review;
 	
@@ -89,5 +102,31 @@ public class Sprint {
 		this.sprintID = sprintID;
 		this.objective = objective;
 		this.startDate = startDate;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((sprintID == null) ? 0 : sprintID.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sprint other = (Sprint) obj;
+		if (sprintID == null) {
+			if (other.sprintID != null)
+				return false;
+		} else if (!sprintID.equals(other.sprintID))
+			return false;
+		return true;
 	}
 }
