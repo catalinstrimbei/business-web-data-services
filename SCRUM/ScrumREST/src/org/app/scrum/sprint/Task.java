@@ -1,11 +1,13 @@
 package org.app.scrum.sprint;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -15,8 +17,8 @@ import javax.persistence.Transient;
 import org.app.scrum.team.Member;
 
 @Entity
-public class Task {
-	@Id // @Generated()
+public class Task implements Serializable{
+	@Id @GeneratedValue
 	private Integer taskID;
 	private String name;
 	private String description;

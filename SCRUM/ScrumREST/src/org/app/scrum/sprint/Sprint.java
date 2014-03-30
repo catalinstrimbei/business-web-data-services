@@ -1,5 +1,6 @@
 package org.app.scrum.sprint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.persistence.TemporalType;
 import org.app.scrum.project.Feature;
 
 @Entity
-public class Sprint {
+public class Sprint implements Serializable{
 	@Id
 	private Integer sprintID;
 	private String objective;

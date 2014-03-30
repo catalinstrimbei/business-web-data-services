@@ -24,8 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Release implements Serializable{
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private Integer releaseId;
 	private String codeName; // NEW born
 	private String indicative; // vers 1.1
@@ -136,5 +135,11 @@ public class Release implements Serializable{
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Release [releaseId=" + releaseId + ", codeName=" + codeName
+				+ ", indicative=" + indicative + "]";
+	}
+
 	
 }
