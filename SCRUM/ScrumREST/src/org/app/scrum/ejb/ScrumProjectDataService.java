@@ -5,8 +5,8 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import org.app.patterns.EntityRepository;
-import org.app.scrum.Project;
-import org.app.scrum.Release;
+import org.app.scrum.project.Project;
+import org.app.scrum.project.Release;
 
 @Remote
 public interface ScrumProjectDataService extends EntityRepository<Project>{

@@ -6,7 +6,7 @@ import java.util.TreeSet;
 import javax.persistence.EntityManager;
 
 import org.app.patterns.Repository;
-import org.app.scrum.Project;
+import org.app.scrum.project.Project;
 
 
 public class ProjectRepository implements Repository{

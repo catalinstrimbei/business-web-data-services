@@ -12,7 +12,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.app.patterns.ProjectBuilder;
-import org.app.scrum.Project;
+import org.app.scrum.project.Project;
 
 public class TestScrumJPA_Val {
 

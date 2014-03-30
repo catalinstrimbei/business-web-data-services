@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 import org.app.patterns.ProjectBuilder;
 import org.app.patterns.ProjectView;
-import org.app.scrum.Project;
+import org.app.scrum.project.Project;
 
 public class TestScrumJPAQL {
 
