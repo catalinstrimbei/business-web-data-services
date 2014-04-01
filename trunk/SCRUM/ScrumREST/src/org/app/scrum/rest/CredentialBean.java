@@ -3,12 +3,15 @@ package org.app.scrum.rest;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
+//@ApplicationScoped
+//@SessionScoped
 public class CredentialBean implements Serializable{
 	private static Logger logger = Logger.getLogger(CredentialBean.class.getName());
 	
@@ -25,7 +28,7 @@ public class CredentialBean implements Serializable{
 	public CredentialBean() {
 		super();
 		this.creds = "default";
-		logger.info("DEBUG " + "initialized CredentialBean");
+		logger.info("DEBUG " + "... initialized CredentialBean");
 	}
 
 	@Override
