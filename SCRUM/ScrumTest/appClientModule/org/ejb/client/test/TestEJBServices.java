@@ -1,5 +1,9 @@
 package org.ejb.client.test;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
@@ -23,6 +27,23 @@ public class TestEJBServices {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		serviceEJB = lookupEJBService();
+		
+		
+		URL url = new URL("http://localhost:8080/ScrumREST/scrum");
+		URLConnection conn = url.openConnection();
+		conn.getInputStream();
+		
+		
+
+		/*
+		 // java:comp/BeanManager
+		BufferedReader br = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));		
+		String inputLine;
+		while ((inputLine = br.readLine()) != null) {
+			logger.info("DEBUG URL output >>> " + inputLine);
+		}	
+		*/	
 	}
 
 	// Test simplu invocare EJB
@@ -45,6 +66,11 @@ public class TestEJBServices {
         final Hashtable jndiProperties = new Hashtable();
         jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");        
         final Context context = new InitialContext(jndiProperties);
+        
+//        // username
+//        jndiProperties.put("remote.connection.default.username", "peter");
+//        // password
+//        jndiProperties.put("remote.connection.default.password", "lois");        
         
         String lookUpURL =  "ejb:/" + MODULE_NAME + "//" + SERVICE_NAME + "!" + REMOTE_INTERFACE_NAME;
         

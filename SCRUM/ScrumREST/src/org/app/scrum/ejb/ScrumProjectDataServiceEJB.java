@@ -34,6 +34,7 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.patterns.ProjectBuilder;
 import org.app.scrum.project.Project;
 import org.app.scrum.project.Release;
+import org.app.scrum.rest.ApplicationConfigBean;
 import org.app.scrum.rest.CredentialBean;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Team;
@@ -83,7 +84,11 @@ public class ScrumProjectDataServiceEJB
 	//
 	
 	@Inject
-    private CredentialBean creds;	
+    private CredentialBean creds;
+	
+	@Inject
+    private ApplicationConfigBean cfgs;
+
 	
     // 3. Init with injected EntityManager
 	private EntityRepository<Sprint> sprintRepository;
