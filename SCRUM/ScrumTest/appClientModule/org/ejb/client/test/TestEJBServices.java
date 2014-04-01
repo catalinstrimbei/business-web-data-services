@@ -36,17 +36,21 @@ public class TestEJBServices {
 	}
 	
 	/*--- Utils: Obtinere referinta serviciu EJB ----------------------------------------------------*/
-	private static String serviceInterface = ScrumProjectDataService.class.getName();
-	private static String serviceName = ScrumProjectDataServiceEJB.class.getSimpleName();
-	private static String serviceModule = "ScrumEJB";	
+	private static String MODULE_NAME = "ScrumREST";
+	private static String SERVICE_NAME = ScrumProjectDataServiceEJB.class.getSimpleName();
+	private static String REMOTE_INTERFACE_NAME = ScrumProjectDataService.class.getName();
+	
 	
     private static <T> T lookupEJBService() throws NamingException {
         final Hashtable jndiProperties = new Hashtable();
-        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-        logger.info(Context.URL_PKG_PREFIXES);
+        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");        
         final Context context = new InitialContext(jndiProperties);
-        logger.info("LOOKUP FOR ejb:/" + serviceModule + "//" + serviceName + "!" + serviceInterface);
-        return (T) context.lookup("ejb:/" + serviceModule + "//" + serviceName + "!" + serviceInterface);
+        
+        String lookUpURL =  "ejb:/" + MODULE_NAME + "//" + SERVICE_NAME + "!" + REMOTE_INTERFACE_NAME;
+        
+        logger.info("!DEBUG: lookUpURL =  " + lookUpURL + "\n");
+        
+        return (T) context.lookup(lookUpURL);
     }	
 	    
 }
