@@ -3,13 +3,22 @@ package org.app.scrum.ejb;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.interceptor.Interceptors;
+import javax.transaction.TransactionSynchronizationRegistry;
+import javax.transaction.UserTransaction;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -20,6 +29,7 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.patterns.ProjectBuilder;
 import org.app.scrum.project.Project;
 import org.app.scrum.project.Release;
+import org.app.scrum.rest.CredentialBean;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Team;
 
@@ -41,6 +51,7 @@ import org.app.scrum.team.Team;
 // 1. Remote interface
 @Stateless
 @LocalBean
+@Interceptors({SecurityInterceptor.class})
 public class ScrumProjectDataServiceEJB 
 	extends EntityRepositoryBase<Project> implements ScrumProjectDataService{
 	
@@ -53,6 +64,21 @@ public class ScrumProjectDataServiceEJB
 	@EJB
 	private ScrumTeamDataServiceEJB teamRepository;
 
+	@Resource
+	private SessionContext sctx;
+	
+	@Resource
+	private TransactionSynchronizationRegistry tsr;   	
+	
+	@Resource
+	private UserTransaction usrt;
+	
+	
+	//
+	
+	@Inject
+    private CredentialBean creds;	
+	
     // 3. Init with injected EntityManager
 	private EntityRepository<Sprint> sprintRepository;
 	
@@ -61,6 +87,11 @@ public class ScrumProjectDataServiceEJB
 		sprintRepository = new EntityRepositoryBase<Sprint>(this.em, Sprint.class);
 		logger.info("Initialized sprintRepository : " + sprintRepository.size());
 		logger.info("Initialized teamRepository : " + teamRepository.size());	
+		
+		logger.info("Initialized TransactionSynchronizationRegistry : " + tsr);
+		logger.info("Initialized UserTransaction : " + usrt);
+		
+		logger.info("Initialized creds : " + creds);
 	}	
 
 	public ScrumProjectDataServiceEJB() {
@@ -71,12 +102,29 @@ public class ScrumProjectDataServiceEJB
 	@GET
 	@Produces("text/html")
 	public String sayRest() {
+		
 		return "Scrumming ";
 	}
 	
 	@Override
 	public String sayMessage(String m) {
 		logger.info("DEBUG ... BREAKPOINT");
+		logger.info("Initialized creds : " + creds);
+		
+		Map<String, Object> contextData = sctx.getContextData();
+		for(String key: contextData.keySet()){
+			logger.info("DEBUG contextData: " + key + " = " + contextData.get(key));
+		}		
+		
+//		Properties properties = sctx.getEnvironment();
+		
+//		Enumeration e = properties.propertyNames();
+//
+//	    while (e.hasMoreElements()) {
+//	      String key = (String) e.nextElement();
+//	      logger.info("DEBUG properties: " + key + " -- " + properties.getProperty(key));
+//	    }		
+//		
 		return m + " ... from remote ScrumProjectDataServiceEJB!";
 	}
 
@@ -84,6 +132,7 @@ public class ScrumProjectDataServiceEJB
 	@GET @Path("/project")
 	@Produces("application/json")
 	public Project createNewProject(){
+		
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
 		debugCheckRelease(project);
 		this.add(project);
