@@ -1,5 +1,6 @@
 package org.app.scrum.ejb;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -14,8 +15,12 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.SessionContext;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.interceptor.Interceptors;
 import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.UserTransaction;
@@ -50,10 +55,11 @@ import org.app.scrum.team.Team;
 @Path("scrum")
 // 1. Remote interface
 @Stateless
+//@Stateful
 @LocalBean
 @Interceptors({SecurityInterceptor.class})
 public class ScrumProjectDataServiceEJB 
-	extends EntityRepositoryBase<Project> implements ScrumProjectDataService{
+	extends EntityRepositoryBase<Project> implements ScrumProjectDataService, Serializable{
 	
 	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());
 	
