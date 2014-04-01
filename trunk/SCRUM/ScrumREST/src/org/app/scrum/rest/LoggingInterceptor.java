@@ -1,9 +1,12 @@
 package org.app.scrum.rest;
 
+import java.io.Serializable;
+
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.inject.Inject;
+import javax.interceptor.Interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.TransactionSynchronizationRegistry;
 import javax.ws.rs.WebApplicationException;
@@ -22,7 +25,7 @@ import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
 
 @Provider
 @ServerInterceptor
-public class LoggingInterceptor implements PreProcessInterceptor {
+public class LoggingInterceptor implements PreProcessInterceptor, Serializable {
     Logger logger = Logger.getLogger(LoggingInterceptor.class);
 
     @Context
