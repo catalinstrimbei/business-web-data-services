@@ -70,6 +70,8 @@ public class ScrumProjectDataServiceEJB
 	
 	private EntityRepositoryBase<Release> releaseEntityRepository;
 	
+	@Inject CredentialBean credentialBean;
+	
     @PostConstruct
 	public void init(){
     	// direct init referenced releaseEntityRepository
@@ -78,6 +80,8 @@ public class ScrumProjectDataServiceEJB
 		logger.info("Initialized releaseEntityRepository : " + releaseEntityRepository.size());
 		logger.info("Initialized teamEntityRepository : " + teamEntityRepository.size());	
 		logger.info("Initialized sprintEntityRepository : " + sprintEntityRepository.size());
+		
+		logger.info("Initialized credentialBean : " + credentialBean);
 	}	
 
 	public ScrumProjectDataServiceEJB() {

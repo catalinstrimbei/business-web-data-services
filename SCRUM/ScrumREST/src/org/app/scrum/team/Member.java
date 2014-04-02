@@ -66,6 +66,16 @@ public class Member
 	}
 
 
+	public Member(Integer memberID, String name, String userName,
+			String password) {
+		super();
+		this.memberID = memberID;
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+	}
+
+
 	// caz supra-incarcare
 	private String abilities;
 	
@@ -112,7 +122,8 @@ public class Member
 	}
 	@Override
 	public String toString() {
-		return "Member [memberID=" + memberID + ", name=" + name + "]";
+		return "Member [memberID=" + memberID + ", name=" + name
+				+ ", userName=" + userName + ", password=" + password + "]";
 	}	
 	
 	public enum Role{

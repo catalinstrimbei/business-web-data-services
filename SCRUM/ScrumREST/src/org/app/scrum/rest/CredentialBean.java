@@ -10,11 +10,18 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-//@ApplicationScoped
-//@SessionScoped
 public class CredentialBean implements Serializable{
 	private static Logger logger = Logger.getLogger(CredentialBean.class.getName());
 	
+	private String username;
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	private String creds;
 
 	public String getCreds() {
@@ -27,13 +34,14 @@ public class CredentialBean implements Serializable{
 
 	public CredentialBean() {
 		super();
+		this.username = "default";
 		this.creds = "default";
 		logger.info("DEBUG " + "... initialized CredentialBean");
 	}
 
 	@Override
 	public String toString() {
-		return "CredentialBean [creds=" + creds + "]";
+		return "CredentialBean [username=" + username + "]";
 	}
 	
 	
