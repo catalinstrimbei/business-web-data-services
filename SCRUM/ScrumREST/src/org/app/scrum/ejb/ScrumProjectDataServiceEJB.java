@@ -19,6 +19,7 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.interceptor.Interceptors;
@@ -64,7 +65,7 @@ public class ScrumProjectDataServiceEJB
 	@EJB
 	private ScrumTeamDataServiceEJB teamEntityRepository;
 	
-	@Inject
+	@Inject @DataServiceBean
 	private ScrumSprintDataService sprintEntityRepository;
 	
 	private EntityRepositoryBase<Release> releaseEntityRepository;
