@@ -54,55 +54,29 @@ import org.app.scrum.team.Team;
  * 		(Sprint SingleAggregate [Sprint-tasks])
  */
 @Path("scrum")
-// 1. Remote interface
-@Stateless
-//@Stateful
+@Stateless //@Stateful
 @LocalBean
 @Interceptors({SecurityInterceptor.class})
 public class ScrumProjectDataServiceEJB 
 	extends EntityRepositoryBase<Project> implements ScrumProjectDataService, Serializable{
-	
 	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());
 	
-	// 2. Inject resource 
-//	@PersistenceContext(unitName="ScrumEJB")
-//	private EntityManager scrumEM;
-	
 	@EJB
-	private ScrumTeamDataServiceEJB teamRepository;
-
-	@Resource
-	private SessionContext sctx;
-	
-	@Resource
-	private TransactionSynchronizationRegistry tsr;   	
-	
-	@Resource
-	private UserTransaction usrt;
-	
-	
-	//
+	private ScrumTeamDataServiceEJB teamEntityRepository;
 	
 	@Inject
-    private CredentialBean creds;
+	private ScrumSprintDataService sprintEntityRepository;
 	
-	@Inject
-    private ApplicationConfigBean cfgs;
-
-	
-    // 3. Init with injected EntityManager
-	private EntityRepository<Sprint> sprintRepository;
+	private EntityRepositoryBase<Release> releaseEntityRepository;
 	
     @PostConstruct
 	public void init(){
-		sprintRepository = new EntityRepositoryBase<Sprint>(this.em, Sprint.class);
-		logger.info("Initialized sprintRepository : " + sprintRepository.size());
-		logger.info("Initialized teamRepository : " + teamRepository.size());	
-		
-		logger.info("Initialized TransactionSynchronizationRegistry : " + tsr);
-		logger.info("Initialized UserTransaction : " + usrt);
-		
-		logger.info("Initialized creds : " + creds);
+    	// direct init referenced releaseEntityRepository
+    	releaseEntityRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
+    	// check references: directed and injected
+		logger.info("Initialized releaseEntityRepository : " + releaseEntityRepository.size());
+		logger.info("Initialized teamEntityRepository : " + teamEntityRepository.size());	
+		logger.info("Initialized sprintEntityRepository : " + sprintEntityRepository.size());
 	}	
 
 	public ScrumProjectDataServiceEJB() {
@@ -120,22 +94,6 @@ public class ScrumProjectDataServiceEJB
 	@Override
 	public String sayMessage(String m) {
 		logger.info("DEBUG ... BREAKPOINT");
-		logger.info("Initialized creds : " + creds);
-		
-		Map<String, Object> contextData = sctx.getContextData();
-		for(String key: contextData.keySet()){
-			logger.info("DEBUG contextData: " + key + " = " + contextData.get(key));
-		}		
-		
-//		Properties properties = sctx.getEnvironment();
-		
-//		Enumeration e = properties.propertyNames();
-//
-//	    while (e.hasMoreElements()) {
-//	      String key = (String) e.nextElement();
-//	      logger.info("DEBUG properties: " + key + " -- " + properties.getProperty(key));
-//	    }		
-//		
 		return m + " ... from remote ScrumProjectDataServiceEJB!";
 	}
 
@@ -143,9 +101,7 @@ public class ScrumProjectDataServiceEJB
 	@GET @Path("/project")
 	@Produces("application/json")
 	public Project createNewProject(){
-		
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
-		debugCheckRelease(project);
 		this.add(project);
 //		this.refresh(project);
 		project = getById(project.getProjectNo());
@@ -153,13 +109,6 @@ public class ScrumProjectDataServiceEJB
 		// Project DTO: service getEntityDTO() or entity.getDTO()
 //		project.setReleases(null);
 		return project;
-	}
-	
-	private void debugCheckRelease(Project p){
-		logger.info("---------------------------------------------");
-		for(Release r: p.getReleases()){
-			logger.info("Check Releases: " + r.getProject());
-		}
 	}
 	
 	@Override
@@ -195,3 +144,37 @@ public class ScrumProjectDataServiceEJB
 
 // http://localhost:8080/ScrumREST/resources/scrum/sayMessage
 // http://localhost:8080/ScrumREST/scrum
+
+/*
+// EJBe Resource Session Context Injection 
+//	@PersistenceContext(unitName="ScrumEJB")
+//	private EntityManager scrumEM;
+	
+	@EJB
+	private ScrumTeamDataServiceEJB teamRepository;
+
+	@Resource
+	private SessionContext sctx;
+	
+	@Resource
+	private TransactionSynchronizationRegistry tsr;   	
+	
+	@Resource
+	private UserTransaction usrt;
+	
+	
+	// Context Dependency Injection
+	
+	@Inject
+    private CredentialBean creds;
+	
+	@Inject
+    private ApplicationConfigBean cfgs;
+	
+	@Inject
+	private ProjectBuilder projectBuilder;
+
+	
+    // 3. Init with injected EntityManager
+	private EntityRepository<Sprint> sprintRepository;
+*/
