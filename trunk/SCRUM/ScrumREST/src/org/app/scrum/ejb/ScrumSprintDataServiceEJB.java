@@ -16,13 +16,12 @@ import org.app.scrum.sprint.Sprint;
  * - as ejb: extends EntityRepositoryBase and inject entityManager as PersistenceContext
  * - as named-bean: could get entityManager in constructor by Producer
  */
-
-@Named
-@LocalBean 
 @Stateless 
+@LocalBean // No interface view
 public class ScrumSprintDataServiceEJB
 	extends EntityRepositoryBase<Sprint>
-	implements ScrumSprintDataService{
+	implements ScrumSprintDataService
+	{
 
 	public ScrumSprintDataServiceEJB() {
 		super();
