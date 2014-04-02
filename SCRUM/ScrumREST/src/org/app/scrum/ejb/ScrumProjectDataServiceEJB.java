@@ -17,6 +17,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
@@ -55,9 +57,9 @@ import org.app.scrum.team.Team;
  * 		(Sprint SingleAggregate [Sprint-tasks])
  */
 @Path("scrum")
-@Stateless //@Stateful
-@LocalBean
+@Stateless @LocalBean
 @Interceptors({SecurityInterceptor.class})
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class ScrumProjectDataServiceEJB 
 	extends EntityRepositoryBase<Project> implements ScrumProjectDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJB.class.getName());

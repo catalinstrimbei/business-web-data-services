@@ -25,6 +25,7 @@ public class ScrumTeamDataServiceEJB
 	
 	@EJB
 	private ScrumSprintDataServiceEJB sprintEntityRepository;
+	
 	// skeleton
 	
 	@Inject @DataRepositoryBean(entityType=Release.class)
@@ -39,6 +40,5 @@ public class ScrumTeamDataServiceEJB
 		logger.info(">>>>>>>>>>>>>> Initialized sprintEntityRepository : " + sprintEntityRepository.size());
 		logger.info(">>>>>>>>>>>>>> Initialized releaseEntityRepository : " + releaseEntityRepository.size());
 		logger.info(">>>>>>>>>>>>>> Initialized projectEntityRepository : " + projectEntityRepository.size());
-	}	
-
+	}
 }
