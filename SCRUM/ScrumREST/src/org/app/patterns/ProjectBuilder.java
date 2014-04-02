@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
 import org.app.scrum.project.Project;
 import org.app.scrum.project.Release;
 
-
-public class ProjectBuilder implements EntityFactory{
+@Named
+@RequestScoped
+public class ProjectBuilder{
 	public static Project buildProiect(Integer projectID, String name, Integer releaseCount){
 		
 		Project project = new Project(projectID, name + "." + projectID , new Date());
