@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import org.app.patterns.EntityRepository;
@@ -41,4 +43,9 @@ public class ScrumTeamDataServiceEJB
 		logger.info(">>>>>>>>>>>>>> Initialized releaseEntityRepository : " + releaseEntityRepository.size());
 		logger.info(">>>>>>>>>>>>>> Initialized projectEntityRepository : " + projectEntityRepository.size());
 	}
+    
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public Team getByKey(Integer key){
+    	return this.getById(key);
+    }
 }

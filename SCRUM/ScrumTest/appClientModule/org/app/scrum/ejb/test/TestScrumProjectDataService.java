@@ -59,7 +59,7 @@ public class TestScrumProjectDataService {
 	@Test
 	public void getProject(){
 		logger.info("START TEST getProject ...");
-		Project project = service.getByKey(0);
+		Project project = service.getByKey(null);
 		assertNotNull("Fail to create get project from repository (is null)", project);
 		logger.info("END TEST getProject ...");
 	}
