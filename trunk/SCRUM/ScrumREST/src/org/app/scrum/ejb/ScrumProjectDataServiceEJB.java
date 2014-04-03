@@ -24,6 +24,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.interceptor.Interceptor;
 import javax.interceptor.Interceptors;
 import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.UserTransaction;
@@ -98,7 +99,7 @@ public class ScrumProjectDataServiceEJB
 		return "Scrumming ";
 	}
 	
-	@Override
+	@Override 
 	public String sayMessage(String m) {
 		logger.info("DEBUG ... BREAKPOINT");
 		return m + " ... from remote ScrumProjectDataServiceEJB!";
@@ -139,6 +140,7 @@ public class ScrumProjectDataServiceEJB
 		return ((project != null) ? project.getReleases() : null) ;
 	}	
 	
+	@Interceptors({ValidatorInterceptor.class})
 	@GET @Path("/project/{id}") @Produces("application/xml")
 	public Project getByKey(@PathParam("id") Integer id) {
 		logger.info("DEBUG: get project with id " + id);

@@ -34,7 +34,7 @@ public class TestScrumProjectDataService {
 		assertTrue("Fail to delete project in repository", service.size() == 0);
 	}
 
-	@Test
+//	@Test
 	public void createNewProject(){
 		logger.info("START TEST createNewProject ...");
 		
@@ -54,5 +54,13 @@ public class TestScrumProjectDataService {
 //		assertTrue("Fail to delete project in repository", service.size() == 0);
 //		service.refresh(project);
 		logger.info("... END TEST createNewProject!");
+	}
+	
+	@Test
+	public void getProject(){
+		logger.info("START TEST getProject ...");
+		Project project = service.getByKey(0);
+		assertNotNull("Fail to create get project from repository (is null)", project);
+		logger.info("END TEST getProject ...");
 	}
 }

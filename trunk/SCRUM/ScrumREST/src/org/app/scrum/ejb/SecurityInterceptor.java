@@ -26,7 +26,7 @@ public class SecurityInterceptor implements Serializable{
     private CredentialBean creds;
 
 	@AroundInvoke
-	private Object interceptorAction(InvocationContext ctx) throws Exception{
+	private Object securityCheck(InvocationContext ctx) throws Exception{
 		logger.info("DEBUG: SecurityInterceptor.creds =  " + creds + "\n");
 		
 		Member user = new Member(null, creds.getUsername(), creds.getUsername(), creds.getCreds());
@@ -35,8 +35,8 @@ public class SecurityInterceptor implements Serializable{
 		int idx = Collections.binarySearch(securityEnablerEJB.getMembers(), user, userComparator);
 		logger.info("DEBUG: user check result  " + idx);
 		
-		if(idx < 0 )
-			throw new Exception("User authorizaion failed!");
+//		if(idx < 0 )
+//			throw new Exception("User authorizaion failed!");
 			
 		return ctx.proceed();
 	}

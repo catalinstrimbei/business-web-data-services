@@ -3,6 +3,7 @@ package org.app.scrum.ejb;
 import java.util.List;
 
 import javax.ejb.Remote;
+import javax.ws.rs.PathParam;
 
 import org.app.patterns.EntityRepository;
 import org.app.scrum.project.Project;
@@ -18,5 +19,7 @@ public interface ScrumProjectDataService extends EntityRepository<Project>{
 	public abstract List<Release> getReleases(Project p);
 
 	public abstract Project createNewProject();
+	
+	public Project getByKey(Integer id);
 
 }
