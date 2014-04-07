@@ -139,7 +139,7 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sFhvEbjUEeOM6qTRtgM7Ng" key="displayNameLabelIcon_value" value="true"/>
         </eAnnotations>
         <children xmi:type="notation:DecorationNode" xmi:id="_a2R01rjUEeOM6qTRtgM7Ng" type="5080">
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_a2R017jUEeOM6qTRtgM7Ng" y="5"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_a2R017jUEeOM6qTRtgM7Ng"/>
         </children>
         <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_a2RNwbjUEeOM6qTRtgM7Ng"/>
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_nzstgLjUEeOM6qTRtgM7Ng" name="shape_visibility" booleanValue="true"/>
@@ -180,7 +180,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LgcIwbjTEeOM6qTRtgM7Ng"/>
     </children>
     <element xmi:type="uml:Activity" href="Model-EJB.uml#_LbW0YLjTEeOM6qTRtgM7Ng"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LgcIwrjTEeOM6qTRtgM7Ng"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LgcIwrjTEeOM6qTRtgM7Ng" height="673"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_LgcIw7jTEeOM6qTRtgM7Ng"/>
   <element xmi:type="uml:Activity" href="Model-EJB.uml#_LbW0YLjTEeOM6qTRtgM7Ng"/>
