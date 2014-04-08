@@ -24,6 +24,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.app.scrum.team.ProjectManager;
+import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.FetchType.EAGER;
 
 @XmlRootElement(name="project")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -42,7 +44,7 @@ public class Project implements Serializable{
 	private ProjectManager projectManager;
 	
 	// Added
-	@OneToMany(mappedBy="project", cascade = ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="project", cascade = ALL, fetch = EAGER, orphanRemoval = false)
 	private List<Release> releases = new ArrayList<>();
 	
 	@OneToOne(cascade = ALL)
