@@ -4126,4 +4126,40 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qDnV4L5fEeOc9PBpln996Q" id="(0.61,0.92)"/>
     </edges>
   </notation:Diagram>
+  <notation:Diagram xmi:id="_HRNh8L7jEeOTAoXVXbRXxg" type="PapyrusUMLClassDiagram" name="Project DTOs" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_Il9HUL7jEeOTAoXVXbRXxg" type="2008" fontName="Segoe UI" lineColor="0">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Il-8gL7jEeOTAoXVXbRXxg" source="ShadowFigure">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Il-8gb7jEeOTAoXVXbRXxg" key="ShadowFigure_Value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Il-8gr7jEeOTAoXVXbRXxg" source="displayNameLabelIcon">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Il-8g77jEeOTAoXVXbRXxg" key="displayNameLabelIcon_value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Il-8hL7jEeOTAoXVXbRXxg" source="QualifiedName">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Il-8hb7jEeOTAoXVXbRXxg" key="QualifiedNameDepth" value="1000"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Il-8hr7jEeOTAoXVXbRXxg" type="5029"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Il-8h77jEeOTAoXVXbRXxg" type="7017">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_Il-8iL7jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_Il-8ib7jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_Il-8ir7jEeOTAoXVXbRXxg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Il-8i77jEeOTAoXVXbRXxg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Il_jkL7jEeOTAoXVXbRXxg" type="7018">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_Il_jkb7jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_Il_jkr7jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_Il_jk77jEeOTAoXVXbRXxg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Il_jlL7jEeOTAoXVXbRXxg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Il_jlb7jEeOTAoXVXbRXxg" type="7019">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_Il_jlr7jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_Il_jl77jEeOTAoXVXbRXxg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_Il_jmL7jEeOTAoXVXbRXxg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Il_jmb7jEeOTAoXVXbRXxg"/>
+      </children>
+      <element xmi:type="uml:Class" href="Model-scrum.uml#_IkypsL7jEeOTAoXVXbRXxg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Il9HUb7jEeOTAoXVXbRXxg" x="487" y="102"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_HRNh8b7jEeOTAoXVXbRXxg"/>
+    <element xmi:type="uml:Model" href="Model-scrum.uml#_mKOz8DcwEeObreURXdy-Cg"/>
+  </notation:Diagram>
 </xmi:XMI>

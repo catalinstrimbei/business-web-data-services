@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:profilescrum="http:///schemas/profilescrum/_P2ycoL5fEeOc9PBpln996Q/14" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///schemas/profilescrum/_P2ycoL5fEeOc9PBpln996Q/14 Profile-SCRUM.profile.uml#_P2zDsL5fEeOc9PBpln996Q">
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:profilescrum="http:///schemas/profilescrum/_aofDYL8JEeOTAoXVXbRXxg/16" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///schemas/profilescrum/_aofDYL8JEeOTAoXVXbRXxg/16 Profile-SCRUM.profile.uml#_aofDYb8JEeOTAoXVXbRXxg">
   <uml:Model xmi:id="_mKOz8DcwEeObreURXdy-Cg" name="Model">
     <ownedComment xmi:type="uml:Comment" xmi:id="_MqJosDfwEeOXdLoEgavdtA">
       <body>Vocabular Scrum Story&#xD;
@@ -494,7 +494,7 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_qDfaEL5fEeOc9PBpln996Q" name="Dependency6" client="_fk1p4L5fEeOc9PBpln996Q" supplier="_3lUHgDfwEeOXdLoEgavdtA"/>
       <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__bDIIL5MEeOc9PBpln996Q">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__bOHQL5MEeOc9PBpln996Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
-          <references xmi:type="ecore:EPackage" href="Profile-SCRUM.profile.uml#_P2zDsL5fEeOc9PBpln996Q"/>
+          <references xmi:type="ecore:EPackage" href="Profile-SCRUM.profile.uml#_aofDYb8JEeOTAoXVXbRXxg"/>
         </eAnnotations>
         <appliedProfile xmi:type="uml:Profile" href="Profile-SCRUM.profile.uml#_HPkukLAOEeO_IpBo_jcT-A"/>
       </profileApplication>
@@ -683,6 +683,7 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VPDGU75VEeOc9PBpln996Q" value="1"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_IkypsL7jEeOTAoXVXbRXxg" name="Class1"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_TwnqMDzUEeOnHa56VvETGA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TxSYkDzUEeOnHa56VvETGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
@@ -697,7 +698,7 @@ repartizate membrilor echipei/echipelor implicate in proiect.</body>
     </profileApplication>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_oo5DsLAOEeO_IpBo_jcT-A">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oprt4LAOEeO_IpBo_jcT-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="Profile-SCRUM.profile.uml#_P2zDsL5fEeOc9PBpln996Q"/>
+        <references xmi:type="ecore:EPackage" href="Profile-SCRUM.profile.uml#_aofDYb8JEeOTAoXVXbRXxg"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="Profile-SCRUM.profile.uml#_HPkukLAOEeO_IpBo_jcT-A"/>
     </profileApplication>
