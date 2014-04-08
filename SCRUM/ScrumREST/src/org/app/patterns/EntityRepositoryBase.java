@@ -181,18 +181,15 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	 */
 	@Override @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T add(T entity) {
-		// em.getTransaction().begin();
 		try {
-//			provideUri(entity);
 			em.merge(entity);
-			// em.getTransaction().commit();
 			return entity;
 		} catch (Exception e) {
+			logger.info("ERROR: " + " not able to ADD " + entity + "!");
 			e.printStackTrace();
-			// em.getTransaction().rollback();
 			return null;
 		} finally {
-			// em.close();
+			
 		}
 	}
 
@@ -201,17 +198,14 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	 */
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
-//		em.getTransaction().begin();
+
 		try {
 			for (T entity : entities) {
-//				provideUri(entity);
 				em.merge(entity);
 			}
-//			em.getTransaction().commit();
 			return entities;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -221,18 +215,15 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	 */
 	@Override
 	public boolean remove(T entity) {
-//		em.getTransaction().begin();
 		try {
 			entity = em.merge(entity);
 			em.remove(entity);
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		} finally {
-			// em.close();
+
 		}
 	}
 
@@ -241,16 +232,14 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	 */
 	@Override
 	public boolean removeAll(Collection<T> entities) {
-//		em.getTransaction().begin();
+
 		try {
 			for (Object c : entities) {
 				em.remove(c);
 			}
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		}
 	}

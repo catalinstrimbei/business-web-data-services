@@ -112,10 +112,10 @@ public class ScrumProjectDataServiceEJB
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
 		this.add(project);
 //		this.refresh(project);
-		project = getById(project.getProjectNo());
+//		project = getById(project.getProjectNo());
 //		debugCheckRelease(project);
 		// Project DTO: service getEntityDTO() or entity.getDTO()
-//		project.setReleases(null);
+		project.setReleases(null);
 		return project;
 	}
 	
