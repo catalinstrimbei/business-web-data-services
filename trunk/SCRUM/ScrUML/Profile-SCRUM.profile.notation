@@ -19,7 +19,7 @@
     </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_OvcZdrAOEeO_IpBo_jcT-A" type="1084"/>
     <element xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvdAgLAOEeO_IpBo_jcT-A" x="504" y="348"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvdAgLAOEeO_IpBo_jcT-A" x="588" y="348"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_PNnjMLAOEeO_IpBo_jcT-A" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PNnjMrAOEeO_IpBo_jcT-A" source="ShadowFigure">
@@ -97,7 +97,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JVCw3rAPEeO_IpBo_jcT-A"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_JVA7oLAPEeO_IpBo_jcT-A"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JVCJwbAPEeO_IpBo_jcT-A" x="828" y="192"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JVCJwbAPEeO_IpBo_jcT-A" x="672" y="192"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_LIqqkLAPEeO_IpBo_jcT-A" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LIrRoLAPEeO_IpBo_jcT-A" source="ShadowFigure">
@@ -175,7 +175,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3g_br75MEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_3g6jIL5MEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3g-0kb5MEeOc9PBpln996Q" x="984" y="192"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3g-0kb5MEeOc9PBpln996Q" x="1152" y="192"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_JcvPgL5NEeOc9PBpln996Q" type="1031" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JcvPgr5NEeOc9PBpln996Q" source="ShadowFigure">
@@ -196,7 +196,7 @@
     </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_Jcv2kb5NEeOc9PBpln996Q" type="1084"/>
     <element xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jcv2kr5NEeOc9PBpln996Q" x="984" y="348"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jcv2kr5NEeOc9PBpln996Q" x="1152" y="348"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_GlYycL5OEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GlZZgL5OEeOc9PBpln996Q" source="ShadowFigure">
@@ -248,7 +248,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ixRujr5QEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_ixOrML5QEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ixQgYb5QEeOc9PBpln996Q" x="348" y="192"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ixQgYb5QEeOc9PBpln996Q" x="984" y="192"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_poJfsL5QEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_poJfsr5QEeOc9PBpln996Q" source="ShadowFigure">
@@ -300,7 +300,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u1d5LL5QEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_u1cD8L5QEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u1dSEb5QEeOc9PBpln996Q" x="828" y="24"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u1dSEb5QEeOc9PBpln996Q" x="672" y="24"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_z2CQAL5QEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z2C3EL5QEeOc9PBpln996Q" source="ShadowFigure">
@@ -326,7 +326,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z2C3IL5QEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_z2BB4L5QEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z2CQAb5QEeOc9PBpln996Q" x="672" y="192"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z2CQAb5QEeOc9PBpln996Q" x="348" y="192"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_b17TsL5VEeOc9PBpln996Q" type="1031" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_b17Tsr5VEeOc9PBpln996Q" source="ShadowFigure">
@@ -347,7 +347,7 @@
     </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_b17TuL5VEeOc9PBpln996Q" type="1084"/>
     <element xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_b176wL5VEeOc9PBpln996Q" x="237" y="410"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_b176wL5VEeOc9PBpln996Q" x="1308" y="192"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_cS7_0L5VEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cS8m4L5VEeOc9PBpln996Q" source="ShadowFigure">
@@ -373,7 +373,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cS9N-L5VEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_cS6xsL5VEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cS7_0b5VEeOc9PBpln996Q" x="56" y="416"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cS7_0b5VEeOc9PBpln996Q" x="1152" y="24"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_d4xVML5VEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_d4x8QL5VEeOc9PBpln996Q" source="ShadowFigure">
@@ -399,7 +399,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d4yjVL5VEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_d4wHEL5VEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d4xVMb5VEeOc9PBpln996Q" x="433" y="424"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d4xVMb5VEeOc9PBpln996Q" x="1308" y="24"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_ffL5YL5VEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ffMgcL5VEeOc9PBpln996Q" source="ShadowFigure">
@@ -425,7 +425,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ffNHhL5VEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_ffKrQL5VEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ffL5Yb5VEeOc9PBpln996Q" x="240" y="516" width="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ffL5Yb5VEeOc9PBpln996Q" x="1464" y="24" width="121"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_KbcOQL5fEeOc9PBpln996Q" type="1026" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Kbc1UL5fEeOc9PBpln996Q" source="ShadowFigure">
@@ -451,37 +451,63 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Kbc1YL5fEeOc9PBpln996Q"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_KbbAIL5fEeOc9PBpln996Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KbcOQb5fEeOc9PBpln996Q" x="336" y="24"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KbcOQb5fEeOc9PBpln996Q" x="828" y="192"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_R7hTQL8JEeOTAoXVXbRXxg" type="1026" fontName="Segoe UI" lineColor="0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R7h6UL8JEeOTAoXVXbRXxg" source="ShadowFigure">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R7h6Ub8JEeOTAoXVXbRXxg" key="ShadowFigure_Value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R7ihYL8JEeOTAoXVXbRXxg" source="displayNameLabelIcon">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R7ihYb8JEeOTAoXVXbRXxg" key="displayNameLabelIcon_value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R7ihYr8JEeOTAoXVXbRXxg" source="QualifiedName">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R7ihY78JEeOTAoXVXbRXxg" key="QualifiedNameDepth" value="1000"/>
+    </eAnnotations>
+    <children xmi:type="notation:DecorationNode" xmi:id="_R7ihZL8JEeOTAoXVXbRXxg" type="1034"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_R7ihZb8JEeOTAoXVXbRXxg" type="1071">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_R7ihZr8JEeOTAoXVXbRXxg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_R7ihZ78JEeOTAoXVXbRXxg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_R7ihaL8JEeOTAoXVXbRXxg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R7ihab8JEeOTAoXVXbRXxg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_R7jIcL8JEeOTAoXVXbRXxg" visible="false" type="1019">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_R7jIcb8JEeOTAoXVXbRXxg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_R7jIcr8JEeOTAoXVXbRXxg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_R7jIc78JEeOTAoXVXbRXxg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R7jIdL8JEeOTAoXVXbRXxg"/>
+    </children>
+    <element xmi:type="uml:Stereotype" href="Profile-SCRUM.profile.uml#_R7dB0L8JEeOTAoXVXbRXxg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R7hTQb8JEeOTAoXVXbRXxg" x="984" y="24"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_JxQoMbAOEeO_IpBo_jcT-A"/>
   <element xmi:type="uml:Profile" href="Profile-SCRUM.profile.uml#_HPkukLAOEeO_IpBo_jcT-A"/>
   <edges xmi:type="notation:Connector" xmi:id="_Qwcn4LAOEeO_IpBo_jcT-A" type="1013" source="_PNnjMLAOEeO_IpBo_jcT-A" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_Qwcn4bAOEeO_IpBo_jcT-A" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_QwZkkLAOEeO_IpBo_jcT-A"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qwcn4rAOEeO_IpBo_jcT-A" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qwcn4rAOEeO_IpBo_jcT-A" points="[0, 0, -74, -60]$[74, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Q4dUYLAOEeO_IpBo_jcT-A" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Q4dUYbAOEeO_IpBo_jcT-A" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Q4dUYbAOEeO_IpBo_jcT-A" id="(0.44,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_ILZoMLAPEeO_IpBo_jcT-A" type="1013" source="_HOOOQLAPEeO_IpBo_jcT-A" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_ILZoMbAPEeO_IpBo_jcT-A" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_ILZBILAPEeO_IpBo_jcT-A"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ILZoMrAPEeO_IpBo_jcT-A" points="[0, 0, -295, -60]$[295, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ILZoMrAPEeO_IpBo_jcT-A" points="[0, 0, -372, -60]$[372, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fE8IL5QEeOc9PBpln996Q" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fE8Ib5QEeOc9PBpln996Q" id="(0.25,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fE8Ib5QEeOc9PBpln996Q" id="(0.22,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_Kspc8LAPEeO_IpBo_jcT-A" type="1013" source="_JVCJwLAPEeO_IpBo_jcT-A" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_Kspc8bAPEeO_IpBo_jcT-A" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_Kso14LAPEeO_IpBo_jcT-A"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Kspc8rAPEeO_IpBo_jcT-A" points="[0, 0, 295, -60]$[-295, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Kspc8rAPEeO_IpBo_jcT-A" points="[0, 0, 75, -60]$[-75, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fFjMb5QEeOc9PBpln996Q" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fGKQL5QEeOc9PBpln996Q" id="(0.75,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fGKQL5QEeOc9PBpln996Q" id="(0.55,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_MI5YgrAPEeO_IpBo_jcT-A" type="1013" source="_LIqqkLAPEeO_IpBo_jcT-A" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_MI5Yg7APEeO_IpBo_jcT-A" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_MI4xcLAPEeO_IpBo_jcT-A"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MI5YhLAPEeO_IpBo_jcT-A" points="[0, 0, -442, -60]$[442, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MI5YhLAPEeO_IpBo_jcT-A" points="[0, 0, -521, -60]$[521, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MI8b0rAPEeO_IpBo_jcT-A" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MI8b07APEeO_IpBo_jcT-A" id="(0.12,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MI8b07APEeO_IpBo_jcT-A" id="(0.11,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_QF-5ILAPEeO_IpBo_jcT-A" type="4002" source="_N6AJwLAPEeO_IpBo_jcT-A" target="_LIqqkLAPEeO_IpBo_jcT-A" lineColor="0">
     <children xmi:type="notation:DecorationNode" xmi:id="_QF_gMLAPEeO_IpBo_jcT-A" type="6007">
@@ -496,9 +522,9 @@
   <edges xmi:type="notation:Connector" xmi:id="_6FAQgL5MEeOc9PBpln996Q" type="1013" source="_3g-0kL5MEeOc9PBpln996Q" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_6FAQgb5MEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_6E47wL5MEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6FAQgr5MEeOc9PBpln996Q" points="[0, 0, 418, -60]$[-418, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6FAQgr5MEeOc9PBpln996Q" points="[0, 0, 497, -60]$[-497, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6FD64L5MEeOc9PBpln996Q" id="(0.25,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6FD64b5MEeOc9PBpln996Q" id="(0.87,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6FD64b5MEeOc9PBpln996Q" id="(0.88,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_KUQGUL5NEeOc9PBpln996Q" type="1013" source="_3g-0kL5MEeOc9PBpln996Q" target="_JcvPgL5NEeOc9PBpln996Q" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_KUQGUb5NEeOc9PBpln996Q" fontName="Segoe UI"/>
@@ -520,9 +546,9 @@
   <edges xmi:type="notation:Connector" xmi:id="_jzgAgL5QEeOc9PBpln996Q" type="1013" source="_ixQgYL5QEeOc9PBpln996Q" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_jzgAgb5QEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_jzeLUL5QEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jzgAgr5QEeOc9PBpln996Q" points="[0, 0, -147, -60]$[147, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jzgAgr5QEeOc9PBpln996Q" points="[0, 0, 373, -60]$[-373, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jzjD0L5QEeOc9PBpln996Q" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fDuAL5QEeOc9PBpln996Q" id="(0.37,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fDuAL5QEeOc9PBpln996Q" id="(0.77,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_seuEML5QEeOc9PBpln996Q" type="4002" source="_poJfsL5QEeOc9PBpln996Q" target="_PNnjMLAOEeO_IpBo_jcT-A" lineColor="0">
     <children xmi:type="notation:DecorationNode" xmi:id="_seurQL5QEeOc9PBpln996Q" type="6007">
@@ -547,33 +573,46 @@
   <edges xmi:type="notation:Connector" xmi:id="_4Fq5ML5QEeOc9PBpln996Q" type="1013" source="_z2CQAL5QEeOc9PBpln996Q" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_4Fq5Mb5QEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_4FpEAb5QEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4Fq5Mr5QEeOc9PBpln996Q" points="[0, 0, 148, -60]$[-148, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4Fq5Mr5QEeOc9PBpln996Q" points="[0, 0, -223, -60]$[223, 60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4Ft8gL5QEeOc9PBpln996Q" id="(0.5,1.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fFjML5QEeOc9PBpln996Q" id="(0.62,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5fFjML5QEeOc9PBpln996Q" id="(0.33,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_hhAAIL5VEeOc9PBpln996Q" type="1013" source="_cS7_0L5VEeOc9PBpln996Q" target="_b17TsL5VEeOc9PBpln996Q" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_hhAAIb5VEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_hg-K8b5VEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hhAAIr5VEeOc9PBpln996Q" points="[82, -22, -131, 26]$[205, -73, -8, -25]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hhDDcL5VEeOc9PBpln996Q" id="(0.18,0.67)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hhAAIr5VEeOc9PBpln996Q" points="[0, 0, -135, -60]$[135, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hhDDcL5VEeOc9PBpln996Q" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Y3YSIL8JEeOTAoXVXbRXxg" id="(0.25,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_h4fTEL5VEeOc9PBpln996Q" type="1013" source="_ffL5YL5VEeOc9PBpln996Q" target="_b17TsL5VEeOc9PBpln996Q" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_h4fTEb5VEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_h4dd4b5VEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_h4fTEr5VEeOc9PBpln996Q" points="[-8, -54, 36, 81]$[6, -143, 50, -8]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4iWYL5VEeOc9PBpln996Q" id="(0.7520661157024794,0.54)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_h4fTEr5VEeOc9PBpln996Q" points="[0, 0, 145, -60]$[-145, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4iWYL5VEeOc9PBpln996Q" id="(0.49586776859504134,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Y3cjkL8JEeOTAoXVXbRXxg" id="(0.75,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_iT7R4L5VEeOc9PBpln996Q" type="1013" source="_d4xVML5VEeOc9PBpln996Q" target="_b17TsL5VEeOc9PBpln996Q" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_iT7R4b5VEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_iT5csb5VEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_iT7R4r5VEeOc9PBpln996Q" points="[-50, -4, 113, 9]$[-146, -15, 17, -2]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_iT-8QL5VEeOc9PBpln996Q" id="(0.5,0.21)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_iT-8Qb5VEeOc9PBpln996Q" id="(0.83,0.44)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_iT7R4r5VEeOc9PBpln996Q" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_iT-8QL5VEeOc9PBpln996Q" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_iT-8Qb5VEeOc9PBpln996Q" id="(0.5,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_N4Q6cL5fEeOc9PBpln996Q" type="1013" source="_KbcOQL5fEeOc9PBpln996Q" target="_OvbyYLAOEeO_IpBo_jcT-A" lineColor="0">
     <styles xmi:type="notation:FontStyle" xmi:id="_N4Q6cb5fEeOc9PBpln996Q" fontName="Segoe UI"/>
     <element xmi:type="uml:Extension" href="Profile-SCRUM.profile.uml#_N4PFQL5fEeOc9PBpln996Q"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_N4Q6cr5fEeOc9PBpln996Q" points="[25, 50, -122, -236]$[138, 274, -9, -12]"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_N4Uk0L5fEeOc9PBpln996Q" id="(0.41,0.24)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_N4Q6cr5fEeOc9PBpln996Q" points="[0, 0, 224, -60]$[-224, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Y3ZgQL8JEeOTAoXVXbRXxg" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_N4Uk0L5fEeOc9PBpln996Q" id="(0.66,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_T5I2gL8JEeOTAoXVXbRXxg" type="4002" source="_R7hTQL8JEeOTAoXVXbRXxg" target="_ixQgYL5QEeOc9PBpln996Q" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_T5JdkL8JEeOTAoXVXbRXxg" type="6007">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_T5Jdkb8JEeOTAoXVXbRXxg" x="5" y="34"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_T5I2gb8JEeOTAoXVXbRXxg" fontName="Segoe UI"/>
+    <element xmi:type="uml:Generalization" href="Profile-SCRUM.profile.uml#_T4PeoL8JEeOTAoXVXbRXxg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T5I2gr8JEeOTAoXVXbRXxg" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T5NvAL8JEeOTAoXVXbRXxg" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Y3YSIb8JEeOTAoXVXbRXxg" id="(0.5,0.0)"/>
   </edges>
 </notation:Diagram>
