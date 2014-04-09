@@ -28,7 +28,6 @@ public class ProjectView {
 		this.name = name;
 	}
 	
-	@XmlAttribute(name="link")
 	public String getRestUrl() {
 		return restUrl;
 	}
@@ -50,6 +49,13 @@ public class ProjectView {
 		this.setRestUrl("http://localhost:8080/ScrumREST/projects/project/" + project.getProjectNo());
 	}
 	
+	public final static String Atom = "http://www.w3.org/2005/Atom";
 	
 	
+	@XmlElement(name = "link", namespace = Atom)
+    public AtomLink getLink() throws Exception {
+        return new AtomLink(restUrl, "get-project");
+    }	
 }
+
+// http://www.w3.org/2005/Atom
