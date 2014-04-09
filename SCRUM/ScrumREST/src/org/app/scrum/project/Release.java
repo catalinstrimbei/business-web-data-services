@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,7 +38,7 @@ public class Release implements Serializable{
 	@ManyToOne
 	private Project project;
 
-	@OneToMany(cascade = ALL)
+	@OneToMany(cascade = ALL, fetch=FetchType.EAGER)
 	private List<Feature> features = new ArrayList<>();
 	
 	@XmlElement
@@ -79,7 +81,8 @@ public class Release implements Serializable{
 		this.project = project;
 	}
 	
-	@XmlTransient
+	@XmlElementWrapper(name = "features")
+    @XmlElement(name = "feature")
 	public List<Feature> getFeatures() {
 		return features;
 	}

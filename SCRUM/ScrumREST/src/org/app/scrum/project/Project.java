@@ -20,10 +20,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.app.scrum.team.ProjectManager;
+
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.FetchType.EAGER;
 
@@ -44,6 +47,7 @@ public class Project implements Serializable{
 	private ProjectManager projectManager;
 	
 	// Added
+//	@XmlElement(required = true)
 	@OneToMany(mappedBy="project", cascade = ALL, fetch = EAGER, orphanRemoval = false)
 	private List<Release> releases = new ArrayList<>();
 	
@@ -66,7 +70,7 @@ public class Project implements Serializable{
 		this.name = name;
 	}
 	
-	@XmlTransient
+//	@XmlTransient
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -91,6 +95,8 @@ public class Project implements Serializable{
 	}
 	
 //	@XmlTransient
+	@XmlElementWrapper(name = "releases")
+    @XmlElement(name = "release")
 	public List<Release> getReleases() {
 		return releases;
 	}
@@ -98,7 +104,7 @@ public class Project implements Serializable{
 		this.releases = releases;
 	}
 	
-	@XmlTransient
+//	@XmlTransient
 	public Release getCurrentRelease() {
 		return currentRelease;
 	}
