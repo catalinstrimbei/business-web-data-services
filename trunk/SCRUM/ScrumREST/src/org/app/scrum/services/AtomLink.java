@@ -24,10 +24,10 @@ public class AtomLink implements Serializable {
     public String getRel() {
         return rel;
     }
-//    @XmlAttribute(name = "type")
-//    public String getType() {
-//        return type;
-//    }
+    @XmlAttribute(name = "type")
+    public String getType() {
+        return type;
+    }
 //    @XmlAttribute(name = "hreflang")
 //    public String getHreflang() {
 //        return hreflang;
@@ -49,6 +49,7 @@ public class AtomLink implements Serializable {
 		super();
 		this.href = new URI(href);
 		this.rel = rel;
+		this.type = "text/html";
 	}
 	public AtomLink() {
 		super();
