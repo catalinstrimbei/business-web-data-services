@@ -9,24 +9,24 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.app.scrum.ejb.ScrumProjectDataService;
-import org.app.scrum.ejb.ScrumProjectDataServiceEJB;
+import org.app.scrum.services.ProjectSprintDataService;
+import org.app.scrum.services.ProjectSprintDataServiceEJB;
 
-public class ScrumProjectDataServiceEJBFactory {
-	private static Logger logger = Logger.getLogger(ScrumProjectDataServiceEJBFactory.class.getName());
+public class ProjectSprintDataServiceEJBFactory {
+	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJBFactory.class.getName());
 	
-	public static ScrumProjectDataService getScrumProjectRepositoryService() throws Exception{
+	public static ProjectSprintDataService getScrumProjectRepositoryService() throws Exception{
 		return lookupEJBService();
 	}
 	
 	private static String MODULE_NAME = "ScrumREST";
-	private static String SERVICE_NAME = ScrumProjectDataServiceEJB.class.getSimpleName();
-	private static String REMOTE_INTERFACE_NAME = ScrumProjectDataService.class.getName();
+	private static String SERVICE_NAME = ProjectSprintDataServiceEJB.class.getSimpleName();
+	private static String REMOTE_INTERFACE_NAME = ProjectSprintDataService.class.getName();
 	
 	
     private static <T> T lookupEJBService() throws Exception {
     	// workaround
-		URL url = new URL("http://localhost:8080/ScrumREST/scrum");
+    	URL url = new URL("http://localhost:8080/ScrumREST/projects");
 		URLConnection conn = url.openConnection();
 		conn.getInputStream();    	
     	//
