@@ -10,6 +10,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
+import org.app.patterns.DataRepositoryBean;
 import org.app.patterns.EntityRepository;
 import org.app.scrum.team.Member;
 

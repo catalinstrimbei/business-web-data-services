@@ -1,4 +1,4 @@
-package org.app.patterns;
+package org.app.scrum.team;
 
 public class TeamBuilder {
 
