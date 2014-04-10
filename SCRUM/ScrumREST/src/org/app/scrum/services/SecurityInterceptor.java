@@ -1,4 +1,4 @@
-package org.app.scrum.ejb;
+package org.app.scrum.services;
 
 import java.io.Serializable;
 import java.security.Principal;
@@ -60,8 +60,3 @@ public class SecurityInterceptor implements Serializable{
 		
 	}	
 }
-
-/*
-	@Resource
-    protected SessionContext sessionCtx;	
-*/

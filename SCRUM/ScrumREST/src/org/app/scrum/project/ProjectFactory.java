@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Singleton;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-@Named
-@RequestScoped
-public class ProjectBuilder{
+@Singleton
+public class ProjectFactory{
 	public static Project buildProiect(Integer projectID, String name, Integer releaseCount){
 		
 		Project project = new Project(projectID, name + "." + projectID , new Date());

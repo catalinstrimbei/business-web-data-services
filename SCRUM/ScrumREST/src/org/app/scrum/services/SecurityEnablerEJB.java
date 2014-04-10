@@ -1,4 +1,4 @@
-package org.app.scrum.ejb;
+package org.app.scrum.services;
 
 import java.util.ArrayList;
 import java.util.Comparator;

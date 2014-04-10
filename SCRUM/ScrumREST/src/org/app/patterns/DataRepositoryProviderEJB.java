@@ -11,9 +11,6 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.app.scrum.ejb.DataServiceBean;
-import org.app.scrum.ejb.ScrumSprintDataService;
-import org.app.scrum.ejb.ScrumSprintDataServiceEJB;
 import org.app.scrum.project.Project;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Member;
@@ -25,12 +22,6 @@ public class DataRepositoryProviderEJB {
 	
 	@PersistenceContext(unitName="ScrumEJB")
 	private EntityManager emForRepositoryBeans;
-	
-	@Produces @DataServiceBean
-	public ScrumSprintDataService getSprintEntityRepository(){
-		logger.info("DEBUG: ScrumDataServiceProviderEJB produces " + "DataServiceBeans");
-		return new ScrumSprintDataServiceEJB(emForRepositoryBeans, Sprint.class);
-	}
 	
 	@Produces @DataRepositoryBean(entityType=Project.class)
 	public EntityRepository getEntityRepository(InjectionPoint injectionPoint) throws Exception{

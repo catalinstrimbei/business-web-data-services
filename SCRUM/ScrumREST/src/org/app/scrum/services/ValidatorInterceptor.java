@@ -1,4 +1,4 @@
-package org.app.scrum.ejb;
+package org.app.scrum.services;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class ValidatorInterceptor {
 	private static Logger logger = Logger.getLogger(ValidatorInterceptor.class.getName());
 	
 	@AroundInvoke
-	private Object securityCheck(InvocationContext ctx) throws Exception{
+	private Object validationCheck(InvocationContext ctx) throws Exception{
 		 // Decode invocation context info
 	    Class targetBeanClass = ctx.getTarget().getClass();
 	    String invokedMethodName = ctx.getMethod().getName();
