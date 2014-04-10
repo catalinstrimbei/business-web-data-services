@@ -16,6 +16,7 @@ public class ProjectView {
 	
 	private Integer projectNo;
 	private String name;
+	private Integer releaseCount = 0;
 	
 	public Integer getProjectNo() {
 		return projectNo;
@@ -29,6 +30,12 @@ public class ProjectView {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Integer getReleaseCount() {
+		return releaseCount;
+	}
+	public void setReleaseCount(Integer releaseCount) {
+		this.releaseCount = releaseCount;
+	}
 	public ProjectView(Integer projectNo, String name) {
 		super();
 		this.projectNo = projectNo;
@@ -41,6 +48,8 @@ public class ProjectView {
 	public ProjectView(Project project) {
 		this.setProjectNo(project.getProjectNo());
 		this.setName(project.getName());
+		if (project.getReleases() != null)
+			this.setReleaseCount(project.getReleases().size());
 	}
 	
 	

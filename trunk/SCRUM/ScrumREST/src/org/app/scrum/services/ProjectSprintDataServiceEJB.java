@@ -2,68 +2,91 @@ package org.app.scrum.services;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.app.patterns.DataRepositoryBean;
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
-import org.app.scrum.project.Feature;
 import org.app.scrum.project.Project;
-import org.app.scrum.project.ProjectBuilder;
+import org.app.scrum.project.ProjectFactory;
 import org.app.scrum.project.Release;
+import org.app.scrum.rest.CredentialBean;
+import org.app.scrum.sprint.Sprint;
 
 @Path("projects") /* http://localhost:8080/ScrumREST/projects */
-@Stateless @LocalBean
+@Stateless @LocalBean 
+@Interceptors({SecurityInterceptor.class})
 public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project> 
 	implements ProjectSprintDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
 	
+	@EJB
+	private TeamDataServiceEJB teamDataService;
+	
+	@Inject @DataRepositoryBean(entityType=Sprint.class)
+	private EntityRepository<Sprint> sprintRepository;
+	
 	@Inject @DataRepositoryBean(entityType=Release.class)
-	private EntityRepository<Release> releaseEntityRepository;
+	private EntityRepository<Release> releaseRepository;
+	
+	@Inject
+	private ProjectFactory projectFactory;
+	
+	@Inject CredentialBean credentialBean;
+	
+    @PostConstruct
+	public void init(){
+    	// check injected references
+		logger.info("Initialized releaseRepository : " + releaseRepository.size());
+		logger.info("Initialized teamDataService : " + teamDataService.size());	
+		logger.info("Initialized sprintRepository : " + sprintRepository.size());
+		logger.info("Initialized credentialBean : " + credentialBean);
+	}		
 	
 	public Project createNewProject(){
-		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
+		Project project = projectFactory.buildProiect(1001, "NEW Project", 3);
 		this.add(project);
 		return getProjectDTOAggregate(project);
-	}
+	}	
 	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
 	@GET @Produces("application/xml")
 	public Project[] getProjectList(){
 		return getProjectDTOList();
 	}	
 	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	@GET @Path("project/{id}") @Produces("application/xml")
 	public Project getProjectById(@PathParam("id") Integer id){
 		Project project = super.getById(id);
 		return getProjectDTOAggregate(project);
 	}	
 	
+	@Interceptors({ValidatorInterceptor.class})
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/xml")
 	public Release getReleaseById(
 			@PathParam("projectid") Integer projectid,
 			@PathParam("releaseid") Integer releaseid){
-		
-		logger.info("*** DEBUG: accessed URL " + "project/" + projectid + "/release/" + releaseid);
-		Release release = releaseEntityRepository.getById(releaseid);
-		logger.info("*** DEBUG: accessed release from releaseEntityRepository: *** " + release);
-		
+		Release release = releaseRepository.getById(releaseid);
 		return release.getReleaseDTO();
 	}
 	
-	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project addProject(Project project){
 		// restore project
 		// merge projectDTO with project
@@ -73,9 +96,10 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return getProjectDTOAggregate(project);
 	}
 	
-	public ProjectView getProjectViewById(Integer id){
-		Project project = super.getById(id);
-		return new ProjectView(project);
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
+	@GET @Path("views") @Produces("application/xml")
+	public ProjectView[] getProjectViews(){
+		return getProjectViewList();
 	}
 	
 	/* DTO assembler business logic */
@@ -83,11 +107,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		if (project == null)
 			return null;
 		Project projectDTO = project.getProjectDTO();
-		logger.info("+++++++++++++ DEBUG projectDTOAggregate - releases before " + project.getReleases());
-		
 		List<Release> releasesDTO = getReleaseDTOList(project.getReleases());
-		
-		logger.info("+++++++++++++ DEBUG projectDTOAggregate - releases after" + releasesDTO);
 		projectDTO.setReleases(releasesDTO);
 		
 		return projectDTO;
@@ -99,7 +119,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 			projectDTOList.add(p.getProjectDTO());
 		}
 		return projectDTOList.toArray(new Project[0]);
-	}	
+	}
 	
 	private List<Release> getReleaseDTOList(List<Release> releases){
 		List<Release> releaseDTOList = new ArrayList<>();
@@ -108,6 +128,14 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		}
 		return releaseDTOList;
 	}
+	
+	private ProjectView[] getProjectViewList(){
+		List<ProjectView> projectViewList = new ArrayList<>();
+		for(Project p: this.toCollection()){
+			projectViewList.add(new ProjectView(p));
+		}
+		return projectViewList.toArray(new ProjectView[0]);
+	}	
 	
 	/* dummy validation rest */
 	@GET @Path("/test")
