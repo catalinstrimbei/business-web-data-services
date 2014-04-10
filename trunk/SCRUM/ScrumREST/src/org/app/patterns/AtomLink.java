@@ -1,4 +1,4 @@
-package org.app.scrum.services;
+package org.app.patterns;
 
 import java.io.Serializable;
 import java.net.URI;
@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 @XmlAccessorType(value = XmlAccessType.NONE)
 public class AtomLink implements Serializable {
+	public final static String ATOM_NAMESPACE = "http://www.w3.org/2005/Atom";
+	
 	private URI href;
 	private String rel;
 	private String type;
@@ -36,21 +38,23 @@ public class AtomLink implements Serializable {
 //    public String getTitle() {
 //        return title;
 //    }
-	public AtomLink(URI href, String rel, String type, String hreflang,
-			String title) {
-		super();
-		this.href = href;
-		this.rel = rel;
-		this.type = type;
-		this.hreflang = hreflang;
-		this.title = title;
-	}
+//	public AtomLink(URI href, String rel, String type, String hreflang,
+//			String title) {
+//		super();
+//		this.href = href;
+//		this.rel = rel;
+//		this.type = type;
+//		this.hreflang = hreflang;
+//		this.title = title;
+//	}
+	
 	public AtomLink(String href, String rel) throws Exception {
 		super();
 		this.href = new URI(href);
 		this.rel = rel;
 		this.type = "text/html";
-	}
+	}	
+	
 	public AtomLink() {
 		super();
 	}	
