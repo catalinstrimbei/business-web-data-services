@@ -40,8 +40,11 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	@Inject @DataRepositoryBean(entityType=Sprint.class)
 	private EntityRepository<Sprint> sprintRepository;
 	
-	@Inject @DataRepositoryBean(entityType=Release.class)
-	private EntityRepository<Release> releaseRepository;
+	
+//	@Inject @DataRepositoryBean(entityType=Release.class)
+//	private EntityRepository<Release> releaseRepository;	
+	/* sau fara injectie: instantiere locala ... !*/
+	 private EntityRepository<Release> releaseRepository;
 	
 	@Inject
 	private ProjectFactory projectFactory;
@@ -50,6 +53,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
     @PostConstruct
 	public void init(){
+    	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
     	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
 		logger.info("Initialized teamDataService : " + teamDataService.size());	
