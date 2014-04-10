@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.app.patterns.AtomLink;
 import org.app.scrum.team.ProjectManager;
 
 import static javax.persistence.FetchType.LAZY;
@@ -145,4 +146,11 @@ public class Project implements Serializable{
 		return "Project [projectNo=" + projectNo + ", name=" + name + "]";
 	}
 	
+	/* Rest Resource URL*/
+	private static String BASE_URL = "http://localhost:8080/ScrumREST/projects/project/";
+	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getProjectNo();
+        return new AtomLink(restUrl, "get-project");
+    }	
 }

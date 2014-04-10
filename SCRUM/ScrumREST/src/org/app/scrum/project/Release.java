@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.app.patterns.AtomLink;
+
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Release implements Serializable{
@@ -144,5 +146,12 @@ public class Release implements Serializable{
 				+ ", indicative=" + indicative + "]";
 	}
 
+	/* Rest Resource URL*/
+	private static String BASE_URL = "http://localhost:8080/ScrumREST/projects/project/";
+	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getReleaseId();
+        return new AtomLink(restUrl, "get-project");
+    }	
 	
 }

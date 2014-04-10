@@ -3,6 +3,7 @@ package org.app.scrum.services;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -33,14 +34,17 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return getProjectAggregateDTO(project);
 	}
 	
+//	@GET
+//	@Produces("application/xml")
+//	public ProjectView[] getProjectList(){
+//		return getProjectViewList(this.toCollection()).toArray(new ProjectView[0]);
+//	}
+	
 	@GET
 	@Produces("application/xml")
-	public ProjectView[] getProjectList(){
-		//return getProjectListDTO(this.toCollection());
-		return getProjectViewList(this.toCollection()).toArray(new ProjectView[0]);
-//		List<ProjectView> result = getProjectViewList(this.toCollection());
-//		return Response.ok().type(MediaType.TEXT_XML).entity(result).build();
-	}
+	public Project[] getProjectList(){
+		return getProjectDTOList();
+	}	
 	
 	public Project addProject(Project project){
 		// restore project
@@ -89,6 +93,16 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 			projectList.add(new ProjectView(p));
 		}
 		return projectList;
+	}	
+	
+	private Project[] getProjectDTOList(){
+		Project[] projects = this.toCollection().toArray(new Project[0]);
+		for(Project p: projects){
+			p.setCurrentRelease(null);
+			p.setProjectManager(null);
+			p.setReleases(null);
+		}
+		return projects;
 	}	
 	
 	// dummy validation rest
