@@ -7,5 +7,6 @@ import org.app.scrum.project.Project;
 
 @Remote
 public interface ProjectSprintDataService extends EntityRepository<Project>{
-
+	public String getMessage();
+	public Project createNewProject(Integer id);
 }

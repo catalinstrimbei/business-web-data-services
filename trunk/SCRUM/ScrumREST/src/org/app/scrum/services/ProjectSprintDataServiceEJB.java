@@ -56,19 +56,14 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		logger.info("Initialized sprintRepository : " + sprintRepository.size());
 		logger.info("Initialized credentialBean : " + credentialBean);
 	}		
-	
-	public Project createNewProject(){
-		Project project = projectFactory.buildProiect(1001, "NEW Project", 3);
-		this.add(project);
-		return getProjectDTOAggregate(project);
-	}	
-	
+    
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
 	@GET @Produces("application/xml")
 	public Project[] getProjectList(){
 		return getProjectDTOList();
 	}	
 	
+	@Interceptors({ValidatorInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	@GET @Path("project/{id}") @Produces("application/xml")
 	public Project getProjectById(@PathParam("id") Integer id){
@@ -76,7 +71,6 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return getProjectDTOAggregate(project);
 	}	
 	
-	@Interceptors({ValidatorInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/xml")
 	public Release getReleaseById(
@@ -86,21 +80,31 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return release.getReleaseDTO();
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public Project addProject(Project project){
-		// restore project
-		// merge projectDTO with project
-		
-		// save project
-		project = this.add(project);
-		return getProjectDTOAggregate(project);
-	}
 	
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
 	@GET @Path("views") @Produces("application/xml")
 	public ProjectView[] getProjectViews(){
 		return getProjectViewList();
 	}
+	
+	/* EJB calls*/
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	public Project addProject(Project project){
+		// restore project
+		// merge projectDTO with project
+		logger.info(">>>>> DEBUG: saving project dto" + project);
+		// save project
+		project = this.add(project);
+		logger.info(">>>>> DEBUG: project saved" + project);
+		return getProjectDTOAggregate(project);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	public Project createNewProject(Integer id){
+		Project project = projectFactory.buildProiect(id, "NEW Project", 3);
+		this.add(project);
+		return getProjectDTOAggregate(project);
+	}	
 	
 	/* DTO assembler business logic */
 	private Project getProjectDTOAggregate(Project project){
