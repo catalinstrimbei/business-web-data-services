@@ -1,4 +1,4 @@
-package org.app.patterns;
+package org.app.scrum.project;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,9 +6,6 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-
-import org.app.scrum.project.Project;
-import org.app.scrum.project.Release;
 
 @Named
 @RequestScoped

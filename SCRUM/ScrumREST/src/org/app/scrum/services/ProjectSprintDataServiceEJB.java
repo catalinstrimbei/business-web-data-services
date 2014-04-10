@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -16,9 +17,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.app.patterns.DataRepositoryBean;
+import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
-import org.app.patterns.ProjectBuilder;
+import org.app.scrum.project.Feature;
 import org.app.scrum.project.Project;
+import org.app.scrum.project.ProjectBuilder;
 import org.app.scrum.project.Release;
 
 @Path("projects") /* http://localhost:8080/ScrumREST/projects */
@@ -27,24 +31,38 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	implements ProjectSprintDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
 	
+	@Inject @DataRepositoryBean(entityType=Release.class)
+	private EntityRepository<Release> releaseEntityRepository;
 	
 	public Project createNewProject(){
 		Project project = ProjectBuilder.buildProiect(1001, "NEW Project", 3);
 		this.add(project);
-		return getProjectAggregateDTO(project);
+		return getProjectDTOAggregate(project);
 	}
 	
-//	@GET
-//	@Produces("application/xml")
-//	public ProjectView[] getProjectList(){
-//		return getProjectViewList(this.toCollection()).toArray(new ProjectView[0]);
-//	}
-	
-	@GET
-	@Produces("application/xml")
+	@GET @Produces("application/xml")
 	public Project[] getProjectList(){
 		return getProjectDTOList();
 	}	
+	
+	@GET @Path("project/{id}") @Produces("application/xml")
+	public Project getProjectById(@PathParam("id") Integer id){
+		Project project = super.getById(id);
+		return getProjectDTOAggregate(project);
+	}	
+	
+	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/xml")
+	public Release getReleaseById(
+			@PathParam("projectid") Integer projectid,
+			@PathParam("releaseid") Integer releaseid){
+		
+		logger.info("*** DEBUG: accessed URL " + "project/" + projectid + "/release/" + releaseid);
+		Release release = releaseEntityRepository.getById(releaseid);
+		logger.info("*** DEBUG: accessed release from releaseEntityRepository: *** " + release);
+		
+		return release.getReleaseDTO();
+	}
+	
 	
 	public Project addProject(Project project){
 		// restore project
@@ -52,7 +70,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		
 		// save project
 		project = this.add(project);
-		return getProjectAggregateDTO(project);
+		return getProjectDTOAggregate(project);
 	}
 	
 	public ProjectView getProjectViewById(Integer id){
@@ -60,57 +78,41 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return new ProjectView(project);
 	}
 	
-	@GET @Path("project/{id}") @Produces("application/xml")
-	public Project getProjectById(@PathParam("id") Integer id){
-		Project project = super.getById(id);
-		return getProjectAggregateDTO(project);
-	}	
-	
 	/* DTO assembler business logic */
-	private Project getProjectAggregateDTO(Project project){
+	private Project getProjectDTOAggregate(Project project){
 		if (project == null)
 			return null;
+		Project projectDTO = project.getProjectDTO();
+		logger.info("+++++++++++++ DEBUG projectDTOAggregate - releases before " + project.getReleases());
 		
-		List<Release> releasesDTO = new ArrayList<>();
-		releasesDTO.addAll(project.getReleases());
-		project.setReleases(releasesDTO);
+		List<Release> releasesDTO = getReleaseDTOList(project.getReleases());
 		
-		return project;
+		logger.info("+++++++++++++ DEBUG projectDTOAggregate - releases after" + releasesDTO);
+		projectDTO.setReleases(releasesDTO);
+		
+		return projectDTO;
 	}
-	
-	private List<Project> getProjectListDTO(Collection<Project> projects){
-		for(Project p: projects){
-			p.setCurrentRelease(null);
-			p.setProjectManager(null);
-			p.setReleases(null);
-		}
-		return new ArrayList<>(projects);
-	}
-
-	private List<ProjectView> getProjectViewList(Collection<Project> projects){
-		List<ProjectView> projectList = new ArrayList<>();
-		for(Project p: projects){
-			projectList.add(new ProjectView(p));
-		}
-		return projectList;
-	}	
 	
 	private Project[] getProjectDTOList(){
-		Project[] projects = this.toCollection().toArray(new Project[0]);
-		for(Project p: projects){
-			p.setCurrentRelease(null);
-			p.setProjectManager(null);
-			p.setReleases(null);
+		List<Project> projectDTOList = new ArrayList<>();
+		for(Project p: this.toCollection()){
+			projectDTOList.add(p.getProjectDTO());
 		}
-		return projects;
+		return projectDTOList.toArray(new Project[0]);
 	}	
 	
-	// dummy validation rest
+	private List<Release> getReleaseDTOList(List<Release> releases){
+		List<Release> releaseDTOList = new ArrayList<>();
+		for(Release r: releases){
+			releaseDTOList.add(r.getReleaseDTO());
+		}
+		return releaseDTOList;
+	}
+	
+	/* dummy validation rest */
 	@GET @Path("/test")
 	@Produces("text/html")
 	public String getMessage(){
 		return "ProjectSprintDataService is working...";
 	}
 }
-
-

@@ -35,8 +35,8 @@ import javax.ws.rs.Produces;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
-import org.app.patterns.ProjectBuilder;
 import org.app.scrum.project.Project;
+import org.app.scrum.project.ProjectBuilder;
 import org.app.scrum.project.Release;
 import org.app.scrum.rest.ApplicationConfigBean;
 import org.app.scrum.rest.CredentialBean;

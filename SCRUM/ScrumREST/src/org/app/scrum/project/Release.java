@@ -1,5 +1,7 @@
 package org.app.scrum.project;
 
+import static javax.persistence.CascadeType.ALL;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,24 +9,21 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import static javax.persistence.CascadeType.ALL;
-
-import javax.persistence.GeneratedValue;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.app.patterns.AtomLink;
 
+@XmlRootElement(name="release")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Release implements Serializable{
@@ -75,7 +74,7 @@ public class Release implements Serializable{
 		this.publishDate = publishDate;
 	}
 	
-	@XmlTransient
+//	@XmlTransient
 	public Project getProject() {
 		return project;
 	}
@@ -150,8 +149,11 @@ public class Release implements Serializable{
 	private static String BASE_URL = "http://localhost:8080/ScrumREST/projects/project/";
 	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
     public AtomLink getLink() throws Exception {
-		String restUrl = BASE_URL + this.getReleaseId();
+		String restUrl = BASE_URL + this.getProject().getProjectNo() + "/release/" + this.getReleaseId();
         return new AtomLink(restUrl, "get-project");
     }	
-	
+
+	public Release getReleaseDTO(){
+		return new Release(releaseId, indicative, publishDate, project.getProjectDTO());
+	}
 }

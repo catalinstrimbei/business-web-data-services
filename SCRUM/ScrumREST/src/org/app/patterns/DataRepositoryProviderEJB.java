@@ -1,4 +1,4 @@
-package org.app.scrum.ejb;
+package org.app.patterns;
 
 import java.lang.annotation.Annotation;
 import java.util.logging.Logger;
@@ -11,23 +11,24 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.app.patterns.EntityRepository;
-import org.app.patterns.EntityRepositoryBase;
+import org.app.scrum.ejb.DataServiceBean;
+import org.app.scrum.ejb.ScrumSprintDataService;
+import org.app.scrum.ejb.ScrumSprintDataServiceEJB;
 import org.app.scrum.project.Project;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Member;
 
 @Singleton
 @LocalBean
-public class ScrumDataServiceProviderEJB {
-	private static Logger logger = Logger.getLogger(ScrumDataServiceProviderEJB.class.getName());
+public class DataRepositoryProviderEJB {
+	private static Logger logger = Logger.getLogger(DataRepositoryProviderEJB.class.getName());
 	
 	@PersistenceContext(unitName="ScrumEJB")
 	private EntityManager emForRepositoryBeans;
 	
 	@Produces @DataServiceBean
 	public ScrumSprintDataService getSprintEntityRepository(){
-		logger.info("DEBUG: ScrumDataServiceProviderEJB produces " + "ScrumSprintDataService");
+		logger.info("DEBUG: ScrumDataServiceProviderEJB produces " + "DataServiceBeans");
 		return new ScrumSprintDataServiceEJB(emForRepositoryBeans, Sprint.class);
 	}
 	

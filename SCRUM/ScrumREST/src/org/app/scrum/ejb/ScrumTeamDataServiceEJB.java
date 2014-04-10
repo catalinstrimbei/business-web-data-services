@@ -10,10 +10,11 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
+import org.app.patterns.DataRepositoryBean;
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
-import org.app.patterns.ProjectBuilder;
 import org.app.scrum.project.Project;
+import org.app.scrum.project.ProjectBuilder;
 import org.app.scrum.project.Release;
 import org.app.scrum.team.Team;
 
