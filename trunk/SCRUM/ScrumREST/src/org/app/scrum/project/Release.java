@@ -20,13 +20,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import org.app.patterns.AtomLink;
 
+@org.jboss.resteasy.annotations.providers.jaxb.IgnoreMediaTypes("application/*+json")
 @XmlRootElement(name="release")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
+//@XmlType(propOrder = {"releaseId", "codeName", "indicative"})
 @Entity
 public class Release implements Serializable{
+	/* internal member fields*/
 	@Id @GeneratedValue
 	private Integer releaseId;
 	private String codeName; // NEW born
@@ -42,6 +47,7 @@ public class Release implements Serializable{
 	@OneToMany(cascade = ALL, fetch=FetchType.EAGER)
 	private List<Feature> features = new ArrayList<>();
 	
+	/* properties for xmls and json dtos*/
 	@XmlElement
 	public Integer getReleaseId() {
 		return releaseId;
@@ -49,24 +55,32 @@ public class Release implements Serializable{
 	public void setReleaseId(Integer releaseId) {
 		this.releaseId = releaseId;
 	}
+	
+	@XmlElement
 	public String getCodeName() {
 		return codeName;
 	}
 	public void setCodeName(String codeName) {
 		this.codeName = codeName;
 	}
+	
+	@XmlElement
 	public String getIndicative() {
 		return indicative;
 	}
 	public void setIndicative(String indicative) {
 		this.indicative = indicative;
 	}
+	
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@XmlElement
 	public Date getPublishDate() {
 		return publishDate;
 	}
@@ -74,7 +88,7 @@ public class Release implements Serializable{
 		this.publishDate = publishDate;
 	}
 	
-//	@XmlTransient
+	@XmlElement
 	public Project getProject() {
 		return project;
 	}
@@ -90,6 +104,8 @@ public class Release implements Serializable{
 	public void setFeatures(List<Feature> features) {
 		this.features = features;
 	}
+	
+	/* constructors*/
 	public Release() {
 		super();
 	}
@@ -153,6 +169,7 @@ public class Release implements Serializable{
         return new AtomLink(restUrl, "get-project");
     }	
 
+//	@XmlElement
 	public Release getReleaseDTO(){
 		return new Release(releaseId, indicative, publishDate, project.getProjectDTO());
 	}
