@@ -24,13 +24,15 @@ public class TestScrumProjectDataService {
 	public void createNewProject(){
 		logger.info("START TEST createNewProject ...");
 		
-		Project project = service.createNewProject(1003);
+		Project project = service.createNewProject(1005);
 		assertTrue("Fail to create new project in repository", service.size() > 0);
 
 		List<Release> releases = project.getReleases();
 		logger.info("DEBUG releases: " + releases);
 				
 		project.setName(project.getName() + " - changed by test client");
+		project.setStartDate(null);
+		project.setReleases(null);
 		project = service.add(project);
 		logger.info("DEBUG project changed: " + project);
 		
