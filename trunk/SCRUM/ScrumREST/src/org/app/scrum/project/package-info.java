@@ -1,4 +1,5 @@
 @XmlSchema(
+	namespace = "http://www.w3.org/2005/Atom",
     xmlns = { 
         @XmlNs(namespaceURI = "http://www.w3.org/2005/Atom", prefix = "atom")
     },

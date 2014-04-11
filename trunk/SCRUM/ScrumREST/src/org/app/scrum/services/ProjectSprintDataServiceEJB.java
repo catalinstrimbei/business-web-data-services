@@ -17,6 +17,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.app.patterns.DataRepositoryBean;
 import org.app.patterns.EntityRepository;
@@ -62,31 +63,35 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	}		
     
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
-	@GET @Produces("application/xml")
+	@GET 
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project[] getProjectList(){
 		return getProjectDTOList();
 	}	
 	
 	@Interceptors({ValidatorInterceptor.class})
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("project/{id}") @Produces("application/xml")
+	@GET @Path("project/{id}")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project getProjectById(@PathParam("id") Integer id){
 		Project project = super.getById(id);
 		return getProjectDTOAggregate(project);
 	}	
 	
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/json")
+	@GET @Path("project/{projectid}/release/{releaseid}") 
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Release getReleaseById(
 			@PathParam("projectid") Integer projectid,
 			@PathParam("releaseid") Integer releaseid){
 		Release release = releaseRepository.getById(releaseid);
-		return release.getReleaseDTO();
+		return release.newReleaseDTO();
 	}
 	
 	
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
-	@GET @Path("views") @Produces("application/xml")
+	@GET @Path("views")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public ProjectView[] getProjectViews(){
 		return getProjectViewList();
 	}
@@ -114,7 +119,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	private Project getProjectDTOAggregate(Project project){
 		if (project == null)
 			return null;
-		Project projectDTO = project.getProjectDTO();
+		Project projectDTO = project.newProjectDTO();
 		List<Release> releasesDTO = getReleaseDTOList(project.getReleases());
 		projectDTO.setReleases(releasesDTO);
 		
@@ -124,7 +129,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	private Project[] getProjectDTOList(){
 		List<Project> projectDTOList = new ArrayList<>();
 		for(Project p: this.toCollection()){
-			projectDTOList.add(p.getProjectDTO());
+			projectDTOList.add(p.newProjectDTO());
 		}
 		return projectDTOList.toArray(new Project[0]);
 	}
@@ -132,7 +137,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	private List<Release> getReleaseDTOList(List<Release> releases){
 		List<Release> releaseDTOList = new ArrayList<>();
 		for(Release r: releases){
-			releaseDTOList.add(r.getReleaseDTO());
+			releaseDTOList.add(r.newReleaseDTO());
 		}
 		return releaseDTOList;
 	}
