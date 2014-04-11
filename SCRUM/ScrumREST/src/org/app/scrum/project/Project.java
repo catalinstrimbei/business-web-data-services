@@ -25,10 +25,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.app.patterns.AtomLink;
 import org.app.scrum.team.ProjectManager;
 
-@XmlRootElement(name="project")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@org.jboss.resteasy.annotations.providers.jaxb.IgnoreMediaTypes("application/*+json")
+@XmlRootElement(name="project") 
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Project implements Serializable{
+	/* internal stucture: member fields*/
 	@Id
 	private Integer projectNo;
 
@@ -41,15 +43,14 @@ public class Project implements Serializable{
 	@Transient
 	private ProjectManager projectManager;
 	
-	// Added
-//	@XmlElement(required = true)
 	@OneToMany(mappedBy="project", cascade = ALL, fetch = EAGER, orphanRemoval = false)
 	private List<Release> releases = new ArrayList<>();
 	
 	@OneToOne(cascade = ALL)
 	private Release currentRelease;
 	
-//	@XmlElement
+	/* getters for xmls*/
+	@XmlElement
 	public Integer getProjectNo() {
 		return projectNo;
 	}
@@ -57,7 +58,7 @@ public class Project implements Serializable{
 		this.projectNo = projectNo;
 	}
 	
-//	@XmlElement
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -65,31 +66,22 @@ public class Project implements Serializable{
 		this.name = name;
 	}
 	
-//	@XmlTransient
+	@XmlElement
 	public Date getStartDate() {
 		return startDate;
 	}
 	public void setStartDate(Date startName) {
 		this.startDate = startName;
 	}
+	
+//	@XmlElement
 	public ProjectManager getProjectManager() {
 		return projectManager;
 	}
 	public void setProjectManager(ProjectManager projectManager) {
 		this.projectManager = projectManager;
 	}
-	public Project(Integer projectNo, String name, Date startDate) {
-		super();
-		this.projectNo = projectNo;
-		this.name = name;
-		this.startDate = startDate;
-	}
-	public Project() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-//	@XmlTransient
 	@XmlElementWrapper(name = "releases")
     @XmlElement(name = "release")
 	public List<Release> getReleases() {
@@ -99,13 +91,25 @@ public class Project implements Serializable{
 		this.releases = releases;
 	}
 	
-//	@XmlTransient
+//	@XmlElement
 	public Release getCurrentRelease() {
 		return currentRelease;
 	}
 	public void setCurrentRelease(Release currentRelease) {
 		this.currentRelease = currentRelease;
+	}	
+	
+	/* Constructors */
+	public Project(Integer projectNo, String name, Date startDate) {
+		super();
+		this.projectNo = projectNo;
+		this.name = name;
+		this.startDate = startDate;
 	}
+	public Project() {
+	}
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -142,13 +146,17 @@ public class Project implements Serializable{
 	
 	/* Rest Resource URL*/
 	private static String BASE_URL = "http://localhost:8080/ScrumREST/projects/project/";
+	
 	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
     public AtomLink getLink() throws Exception {
 		String restUrl = BASE_URL + this.getProjectNo();
         return new AtomLink(restUrl, "get-project");
     }	
 	
+	// @XmlElement
 	public Project getProjectDTO(){
-		return new Project(projectNo, name, startDate);
+		Project projectDTO =new Project(projectNo, name, startDate); 
+		projectDTO.setReleases(null);
+		return projectDTO;
 	}
 }

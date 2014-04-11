@@ -76,7 +76,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	}	
 	
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/xml")
+	@GET @Path("project/{projectid}/release/{releaseid}") @Produces("application/json")
 	public Release getReleaseById(
 			@PathParam("projectid") Integer projectid,
 			@PathParam("releaseid") Integer releaseid){
