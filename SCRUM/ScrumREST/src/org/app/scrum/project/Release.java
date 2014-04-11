@@ -20,15 +20,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.app.patterns.AtomLink;
 
-@org.jboss.resteasy.annotations.providers.jaxb.IgnoreMediaTypes("application/*+json")
+
 @XmlRootElement(name="release")
 @XmlAccessorType(XmlAccessType.NONE)
-//@XmlType(propOrder = {"releaseId", "codeName", "indicative"})
 @Entity
 public class Release implements Serializable{
 	/* internal member fields*/
@@ -170,7 +167,7 @@ public class Release implements Serializable{
     }	
 
 //	@XmlElement
-	public Release getReleaseDTO(){
-		return new Release(releaseId, indicative, publishDate, project.getProjectDTO());
+	public Release newReleaseDTO(){
+		return new Release(releaseId, indicative, publishDate, project.newProjectDTO());
 	}
 }

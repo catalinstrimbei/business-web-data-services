@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.app.patterns.AtomLink;
 import org.app.scrum.team.ProjectManager;
 
-@org.jboss.resteasy.annotations.providers.jaxb.IgnoreMediaTypes("application/*+json")
 @XmlRootElement(name="project") 
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity
@@ -154,7 +153,7 @@ public class Project implements Serializable{
     }	
 	
 	// @XmlElement
-	public Project getProjectDTO(){
+	public Project newProjectDTO(){
 		Project projectDTO =new Project(projectNo, name, startDate); 
 		projectDTO.setReleases(null);
 		return projectDTO;
