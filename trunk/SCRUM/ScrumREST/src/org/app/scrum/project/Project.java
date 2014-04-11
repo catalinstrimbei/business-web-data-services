@@ -149,6 +149,6 @@ public class Project implements Serializable{
     }	
 	
 	public Project getProjectDTO(){
-		return new Project(projectNo, name);
+		return new Project(projectNo, name, startDate);
 	}
 }
