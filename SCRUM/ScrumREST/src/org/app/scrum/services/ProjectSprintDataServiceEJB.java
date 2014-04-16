@@ -1,5 +1,8 @@
 package org.app.scrum.services;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.app.patterns.DataRepositoryBean;
 import org.app.patterns.EntityRepository;
@@ -150,10 +158,48 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return projectViewList.toArray(new ProjectView[0]);
 	}	
 	
-	/* dummy validation rest */
+	/* dummy validation rest: http://localhost:8080/ScrumREST/projects/test */
 	@GET @Path("/test")
 	@Produces("text/html")
 	public String getMessage(){
 		return "ProjectSprintDataService is working...";
 	}
+	
+	/* dummy validation Rest: http://localhost:8080/ScrumREST/projects/showtext/test */
+	@GET @Path("/showtext/{text}")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Object getText(@PathParam("text") String text){
+		String jsonData = "{message: " + text + "}";
+		Response response = Response
+				.status(Status.OK)
+				.type(MediaType.APPLICATION_XML)
+				.type(MediaType.APPLICATION_JSON)
+				.entity(jsonData)
+				.build();
+		//return "\"" + response.getEntity().toString() + "\"";
+		//return response.getEntity();
+		return response;
+	}
+	
+	/* dummy XML marshall Rest: http://localhost:8080/ScrumREST/projects/projectdata */
+	@GET @Path("/projectdata")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Response getProjectData() throws Exception{
+		Project dto = new Project(1111, "Pro 1111");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
+		Marshaller marshaller = jaxbContext.createMarshaller();
+		
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		marshaller.marshal(dto, os);
+		String aString = new String(os.toByteArray(),"UTF-8");
+		
+		Response response = Response
+				.status(Status.OK)
+				.type(MediaType.TEXT_PLAIN)
+				.entity("OK: " + aString)
+				.build();
+		
+		return response;
+	}	
+	
 }
