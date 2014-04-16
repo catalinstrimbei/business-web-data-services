@@ -23,7 +23,7 @@ public class TestRestProjectResource {
 				null); //DELETEpath		
 	}
 	
-//	@Test
+	@Test
 	public void testGETProjectResource() throws Exception{
 		Project project = projectResource.get();
 		logger.info("DEBUG TEST RESOURCE: " + project);
