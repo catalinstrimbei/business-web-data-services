@@ -16,7 +16,9 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -106,6 +108,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
 	/* EJB calls*/
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	@PUT @Path("project/save") @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project addProject(Project project){
 		// restore project
 		// merge projectDTO with project
@@ -196,7 +199,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		Response response = Response
 				.status(Status.OK)
 				.type(MediaType.TEXT_PLAIN)
-				.entity("OK: " + aString)
+				.entity(aString)
 				.build();
 		
 		return response;
