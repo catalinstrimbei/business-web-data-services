@@ -10,6 +10,14 @@ import org.app.scrum.project.Project;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 
+/*
+ * REST Resource CRUD convention:
+ * * GET will return desired resource entity instance;
+ * * POST, PUT will return transacted resource in its new state;
+ * * DELETE will return null or error object in case of failure; 
+ * 
+ */
+
 public class RESTResource <T extends Object> {
 	private static Logger logger = Logger.getLogger(RESTResource.class.getName());
 	
@@ -129,81 +137,55 @@ public class RESTResource <T extends Object> {
 	public T get() throws Exception{
 		if(this.GETrequest == null)
 			throw new Exception("Failed REST: GET request object not initialized!");
-			
-		ClientResponse<T> response = this.GETrequest.get(this.entityResourceClass);
-		int getResponseCode = response.getResponseStatus().getStatusCode();
-	    if(getResponseCode != 200)
-	    {
-	        throw new RuntimeException("Failed with HTTP error code : " + getResponseCode);
-	    }
-	    //Get entity from response
-	    return (T) response.getEntity();
+		return (T) this.invokeResourceRequest(GETrequest, null);
 	}
 	public T put(T entity) throws Exception{
 		if(this.PUTrequest == null)
 			throw new Exception("Failed REST: PUT request object not initialized!");
-		logger.info("DEBUG PUTpath " + this.PUTpath);
-		logger.info("DEBUG PUTrequest " + this.PUTrequest.getUri());
-		
-		String s = mapEntityToMediaType(entity);
-		logger.info("DEBUG PUTrequest entity: " + s);
-		
-	    this.PUTrequest.body(this.mediaType, s);
-	     
-	    //Send the request
-	    ClientResponse<T> response = this.PUTrequest.put();
-//	    T resource = response.getEntity(this.entityResourceClass);
-//	    logger.info("DEBUG PUTrequest resource: " + resource);
-	    
-	    int putResponseCode = response.getResponseStatus().getStatusCode();
-	    logger.info("DEBUG PUTrequest" + putResponseCode);
-	    
-	    if(putResponseCode != 200)
-	    {
-	        throw new RuntimeException("Failed with HTTP error code : " + putResponseCode);
-	    }	    
-	    
-	    if (response.getEntity(this.entityResourceClass) != null)
-	    	return (T) response.getEntity(this.entityResourceClass);
-	    return null;
+		return (T) this.invokeResourceRequest(PUTrequest, entity);
 	}	
 	public T post(T entity) throws Exception{
 		if(this.POSTrequest == null)
 			throw new Exception("Failed REST: POST request object not initialized!");
-		
-	    this.POSTrequest.body(this.mediaType, mapEntityToMediaType(entity));
-	     
-	    //Send the request
-	    ClientResponse<T> response = this.POSTrequest.post();
-	    int postResponseCode = response.getResponseStatus().getStatusCode();
-	    if(postResponseCode != 200)
-	    {
-	        throw new RuntimeException("Failed with HTTP error code : " + postResponseCode);
-	    }	    
-	    
-	    if (response.getEntity(this.entityResourceClass) != null)
-	    	return (T) response.getEntity(this.entityResourceClass);
-	    return null;
+		return (T) this.invokeResourceRequest(POSTrequest, entity);
 	}	
 	public Object delete(T entity) throws Exception{
 		if(this.DELETErequest == null)
 			throw new Exception("Failed REST: DELETE request object not initialized!");
-		
-	    this.DELETErequest.body(this.mediaType, mapEntityToMediaType(entity));
-	     
-	    //Send the request
-//	    ClientResponse<T> response = this.DELETErequest.delete();
-	    ClientResponse response = this.DELETErequest.delete();
-	    int deleteResponseCode = response.getResponseStatus().getStatusCode();
-	    if(deleteResponseCode != 200)
-	    {
-	        throw new RuntimeException("Failed with HTTP error code : " + deleteResponseCode);
-	    }	    
-	    
-//	    if (response.getEntity(this.entityResourceClass) != null)
-//	    	return (T) response.getEntity(this.entityResourceClass);
+		this.invokeResourceRequest(DELETErequest, entity);
 	    return null;
 	}	
+	
+	@SuppressWarnings("unchecked")
+	private  T invokeResourceRequest(ClientRequest resourceRequest, T entity) throws Exception{
+		if(resourceRequest == null)
+			throw new Exception("Failed REST: REST request object not initialized!");
+		logger.info("DEBUG resource request " + resourceRequest.getUri());
+		if(entity != null)
+			resourceRequest.body(this.mediaType, mapEntityToMediaType(entity));
+		ClientResponse<T> response = null;
+		//Send the request
+		if(resourceRequest == this.GETrequest)
+			response = this.GETrequest.get();
+		if(resourceRequest == this.PUTrequest)
+			response = this.PUTrequest.put();
+		if(resourceRequest == this.POSTrequest)
+			response = this.POSTrequest.post();
+		if(resourceRequest == this.DELETErequest)
+			response = this.DELETErequest.delete();
+	    int responseCode = response.getResponseStatus().getStatusCode();
+	    if(responseCode != 200){
+	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
+	    }	    
+	    try{
+	    if (response.getEntity(this.entityResourceClass) != null)
+	    	return (T) response.getEntity(this.entityResourceClass);
+	    }catch(Exception ex){
+	    	logger.info("DEBUG resource request ERROR " + ex.getMessage());
+	    }
+	    return null;		
+	}
+	
 	private String mapEntityToMediaType(T entity) throws Exception{
 		StringWriter writer = new StringWriter();
 	    JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
