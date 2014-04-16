@@ -108,15 +108,18 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
 	/* EJB calls*/
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	@PUT @Path("project/save") @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@PUT @Path("project/save") 
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project addProject(Project project){
 		// restore project
 		// merge projectDTO with project
 		logger.info(">>>>> DEBUG: saving project dto" + project);
 		// save project
 		project = this.add(project);
+		project =  getProjectDTOAggregate(project);
 		logger.info(">>>>> DEBUG: project saved" + project);
-		return getProjectDTOAggregate(project);
+		return project;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction

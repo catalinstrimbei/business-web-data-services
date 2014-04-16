@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
 import org.app.scrum.project.Project;
+import org.app.test.rest.patterns.RESTResource;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.junit.Test;
@@ -15,8 +16,8 @@ import org.junit.Test;
 public class TestRestProjectSprintDataService {
 	private static Logger logger = Logger.getLogger(TestRestProjectSprintDataService.class.getName());
 	
-	@Test
-	public void testGETProject() throws Exception{
+//	@Test
+	public void testGET() throws Exception{
 		ClientRequest request = new ClientRequest("http://localhost:8080/ScrumREST/projects/project/1001");
 		//Set the accept header to tell the accepted response format
 	    request.accept("application/xml");
@@ -33,12 +34,25 @@ public class TestRestProjectSprintDataService {
 	     
 	    //Get the project object from entity
 	    Project project = response.getEntity();		
-	    
+
 	    logger.info("DEBUG TEST: " + project);
+	    
+	    // second
+	    response = request.get(Project.class);
+	     
+	    //Check response status code
+	    apiResponseCode = response.getResponseStatus().getStatusCode();
+	    if(response.getResponseStatus().getStatusCode() != 200)
+	    {
+	        throw new RuntimeException("Failed with HTTP error code : " + apiResponseCode);
+	    }	    
+	    project = response.getEntity();		
+
+	    logger.info("DEBUG TEST SECOND: " + project);	    
 	}
 	
 	@Test
-	public void testPOSTProject() throws Exception{
+	public void testPOST() throws Exception{
 		ClientRequest request = new ClientRequest("http://localhost:8080/ScrumREST/projects/project/1001");
 		//Set the accept header to tell the accepted response format
 	    request.accept("application/xml");
@@ -73,15 +87,18 @@ public class TestRestProjectSprintDataService {
 	    requestPut.body("application/xml", writer.getBuffer().toString());
 	     
 	    //Send the request
-	    ClientResponse responsePut = requestPut.put();
+	    ClientResponse<Project> responsePut = requestPut.put();
+	    
 	     
 	    //First validate the api status code
 	    int putResponseCode = response.getResponseStatus().getStatusCode();
 	    if(response.getResponseStatus().getStatusCode() != 200)
 	    {
 	        throw new RuntimeException("Failed with HTTP error code : " + putResponseCode);
-	    }	    
+	    }
 	    
-	    
+	    project = response.getEntity();	
+	    logger.info("DEBUG TEST PUT : " + project);
 	}
+	
 }
