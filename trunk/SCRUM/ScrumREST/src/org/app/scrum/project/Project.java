@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.app.patterns.AtomLink;
@@ -83,6 +84,7 @@ public class Project implements Serializable{
 	
 	@XmlElementWrapper(name = "releases")
     @XmlElement(name = "release")
+//	@XmlElements({ @XmlElement(name = "release_s", type = Release.class) })
 	public List<Release> getReleases() {
 		return releases;
 	}
