@@ -1,10 +1,12 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 @Entity
-public abstract class Client {
+public abstract class Client implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idClient;
@@ -81,6 +83,16 @@ public abstract class Client {
 	}
 	public void setContBanca(String contBanca) {
 		this.contBanca = contBanca;
+	}
+
+
+	public Integer getIdClient() {
+		return idClient;
+	}
+
+
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
 	}
 
 	

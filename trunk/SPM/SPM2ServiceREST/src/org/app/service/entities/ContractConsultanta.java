@@ -2,18 +2,20 @@ package org.app.service.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @Entity
-@MappedSuperclass
+//@MappedSuperclass
 public class ContractConsultanta extends Contract{
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="id_contractVanzare")
 	private ContractVanzare contractVanzare;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="id_contractLeasing")
 	private ContractLeasing contractLeasing;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="id_activitateConsultanta")
 	private Activitate activitateConsultanta;
 	
 	public ContractConsultanta(Integer nrContract, Client client,

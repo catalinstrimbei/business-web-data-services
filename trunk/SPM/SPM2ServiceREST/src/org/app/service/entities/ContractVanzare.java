@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @Entity
-@MappedSuperclass
+//@MappedSuperclass
 public class ContractVanzare extends Contract{
 	@ManyToOne
 	private ContractSuport contractSuport;
