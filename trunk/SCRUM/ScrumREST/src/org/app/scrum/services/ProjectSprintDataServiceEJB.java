@@ -34,6 +34,7 @@ import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
 import org.app.scrum.project.Project;
 import org.app.scrum.project.ProjectFactory;
+import org.app.scrum.project.ProjectView;
 import org.app.scrum.project.Release;
 import org.app.scrum.rest.CredentialBean;
 import org.app.scrum.sprint.Sprint;
@@ -76,7 +77,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	@GET 
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project[] getProjectList(){
-		return getProjectDTOList();
+		return Project.toDTOList(this.toCollection());
 	}	
 	
 	@Interceptors({ValidatorInterceptor.class})
@@ -85,7 +86,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project getProjectById(@PathParam("id") Integer id){
 		Project project = super.getById(id);
-		return getProjectDTOAggregate(project);
+		return Project.toDTOAggregate(project);
 	}	
 	
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
@@ -95,7 +96,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 			@PathParam("projectid") Integer projectid,
 			@PathParam("releaseid") Integer releaseid){
 		Release release = releaseRepository.getById(releaseid);
-		return release.newReleaseDTO();
+		return release.toDTO();
 	}
 	
 	
@@ -103,7 +104,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	@GET @Path("views")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public ProjectView[] getProjectViews(){
-		return getProjectViewList();
+		return ProjectView.getProjectViewList(this.toCollection());
 	}
 	
 	/* EJB calls*/
@@ -112,12 +113,12 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Project addProject(Project project){
-		// restore project
+		// restore project: null are merged. Ok!
 		// merge projectDTO with project
 		logger.info(">>>>> DEBUG: saving project dto" + project);
 		// save project
 		project = this.add(project);
-		project =  getProjectDTOAggregate(project);
+		project =  Project.toDTOAggregate(project);
 		logger.info(">>>>> DEBUG: project saved" + project);
 		return project;
 	}
@@ -126,43 +127,8 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	public Project createNewProject(Integer id){
 		Project project = projectFactory.buildProiect(id, "NEW Project", 3);
 		this.add(project);
-		return getProjectDTOAggregate(project);
-	}	
-	
-	/* DTO assembler business logic */
-	private Project getProjectDTOAggregate(Project project){
-		if (project == null)
-			return null;
-		Project projectDTO = project.newProjectDTO();
-		List<Release> releasesDTO = getReleaseDTOList(project.getReleases());
-		projectDTO.setReleases(releasesDTO);
-		
-		return projectDTO;
+		return Project.toDTOAggregate(project);
 	}
-	
-	private Project[] getProjectDTOList(){
-		List<Project> projectDTOList = new ArrayList<>();
-		for(Project p: this.toCollection()){
-			projectDTOList.add(p.newProjectDTO());
-		}
-		return projectDTOList.toArray(new Project[0]);
-	}
-	
-	private List<Release> getReleaseDTOList(List<Release> releases){
-		List<Release> releaseDTOList = new ArrayList<>();
-		for(Release r: releases){
-			releaseDTOList.add(r.newReleaseDTO());
-		}
-		return releaseDTOList;
-	}
-	
-	private ProjectView[] getProjectViewList(){
-		List<ProjectView> projectViewList = new ArrayList<>();
-		for(Project p: this.toCollection()){
-			projectViewList.add(new ProjectView(p));
-		}
-		return projectViewList.toArray(new ProjectView[0]);
-	}	
 	
 	/* dummy validation rest: http://localhost:8080/ScrumREST/projects/test */
 	@GET @Path("/test")

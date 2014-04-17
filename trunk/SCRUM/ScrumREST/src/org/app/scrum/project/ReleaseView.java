@@ -1,4 +1,4 @@
-package org.app.scrum.services;
+package org.app.scrum.project;
 
 import java.util.Date;
 
@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.app.patterns.AtomLink;
-import org.app.scrum.project.Release;
 
 @XmlRootElement(name="project")
 @XmlAccessorType(XmlAccessType.PROPERTY)

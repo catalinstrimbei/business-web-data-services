@@ -1,4 +1,8 @@
-package org.app.scrum.services;
+package org.app.scrum.project;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,7 +11,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.app.patterns.AtomLink;
-import org.app.scrum.project.Project;
 
 @XmlRootElement(name="project")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -84,6 +87,14 @@ public class ProjectView {
 		String restUrl = BASE_URL + this.getProjectNo();
         return new AtomLink(restUrl, "get-project");
     }
+	
+	public static ProjectView[] getProjectViewList(Collection<Project> projects){
+		List<ProjectView> projectViewList = new ArrayList<>();
+		for(Project p: projects){
+			projectViewList.add(new ProjectView(p));
+		}
+		return projectViewList.toArray(new ProjectView[0]);
+	}	
 }
 
 // http://www.w3.org/2005/Atom

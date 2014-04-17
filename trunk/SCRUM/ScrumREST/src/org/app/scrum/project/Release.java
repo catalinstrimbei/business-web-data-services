@@ -168,8 +168,16 @@ public class Release implements Serializable{
         return new AtomLink(restUrl, "get-project");
     }	
 
-//	@XmlElement
-	public Release newReleaseDTO(){
-		return new Release(releaseId, indicative, publishDate, project.newProjectDTO());
+	/* DTO Logic*/
+	public Release toDTO(){
+		return new Release(releaseId, indicative, publishDate, project.toDTO());
 	}
+	
+	public static List<Release> toDTOList(List<Release> releases){
+		List<Release> releaseDTOList = new ArrayList<>();
+		for(Release r: releases){
+			releaseDTOList.add(r.toDTO());
+		}
+		return releaseDTOList;
+	}	
 }
