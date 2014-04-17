@@ -4,6 +4,7 @@ import static javax.persistence.FetchType.EAGER;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -93,11 +94,6 @@ public class Project implements Serializable{
         return new AtomLink(restUrl, "get-project");
     }	
 	
-	public Project newProjectDTO(){
-		Project projectDTO =new Project(projectNo, name, startDate); 
-		projectDTO.setReleases(null);
-		return projectDTO;
-	}
 	@Override
 	public String toString() {
 		return "Project [projectNo=" + projectNo + ", name=" + name + "]";
@@ -142,4 +138,31 @@ public class Project implements Serializable{
 		this.name = numeProiect;
 	}
 
+	/* DTO Logic*/
+	public Project toDTO(){
+		Project projectDTO =new Project(projectNo, name, startDate); 
+//		projectDTO.setReleases(null);
+//		projectDTO.setProjectManager(null);
+//		projectDTO.setCurrentRelease(null);
+		return projectDTO;
+	}
+	
+	public static Project toDTOAggregate(Project project){
+		if (project == null)
+			return null;
+		Project projectDTO = project.toDTO();
+		List<Release> releasesDTO = Release.toDTOList(project.getReleases());
+		projectDTO.setReleases(releasesDTO);
+		
+		return projectDTO;
+	}
+	
+	public static Project[] toDTOList(Collection<Project> projects){
+		List<Project> projectDTOList = new ArrayList<>();
+		for(Project p: projects){
+			projectDTOList.add(p.toDTO());
+		}
+		return projectDTOList.toArray(new Project[0]);
+	}	
+	
 }
