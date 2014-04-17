@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -31,7 +32,7 @@ import org.app.scrum.team.ProjectManager;
 @Entity
 public class Project implements Serializable{
 	/* internal stucture: member fields*/
-	@Id
+	@Id @GeneratedValue
 	private Integer projectNo;
 	private String name;
 	@Temporal(TemporalType.DATE)

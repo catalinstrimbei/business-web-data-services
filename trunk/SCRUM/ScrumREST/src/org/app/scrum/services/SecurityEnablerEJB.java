@@ -20,6 +20,7 @@ public class SecurityEnablerEJB {
 	private static Logger logger = Logger.getLogger(SecurityEnablerEJB.class.getName());
 	
 	@Inject @DataRepositoryBean(entityType=Member.class)
+//	private EntityRepository<Member, Integer> memberEntityRepository;
 	private EntityRepository<Member> memberEntityRepository;
 	
 	private List<Member> members = new ArrayList<>();

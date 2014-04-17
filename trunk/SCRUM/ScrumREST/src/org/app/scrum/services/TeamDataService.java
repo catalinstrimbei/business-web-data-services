@@ -8,6 +8,8 @@ import org.app.scrum.team.Team;
 
 
 @Remote
-public interface TeamDataService extends EntityRepository<Team>{
+public interface TeamDataService 
+	//extends EntityRepository<Team, Integer>{
+	extends EntityRepository<Team>{
 
 }

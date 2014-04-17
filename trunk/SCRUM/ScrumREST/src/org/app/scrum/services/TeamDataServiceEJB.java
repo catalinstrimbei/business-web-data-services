@@ -19,11 +19,14 @@ import org.app.scrum.team.TeamFactory;
 
 @Path("teams") /* http://localhost:8080/ScrumREST/teams */
 @Stateless @LocalBean
-public class TeamDataServiceEJB extends EntityRepositoryBase<Team> 
+public class TeamDataServiceEJB 
+//	extends EntityRepositoryBase<Team, Integer> 
+	extends EntityRepositoryBase<Team>
 	implements TeamDataService, Serializable{
 	private static Logger logger = Logger.getLogger(TeamDataServiceEJB.class.getName());
 	
 	@Inject @DataRepositoryBean(entityType=Member.class)
+//	private EntityRepository<Member, Integer> memberRepository;
 	private EntityRepository<Member> memberRepository;
 	
 	@Inject
