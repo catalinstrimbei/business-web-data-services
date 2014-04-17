@@ -23,7 +23,7 @@ public class TestRestProjectResource {
 				null); //DELETEpath		
 	}
 	
-	@Test
+//	@Test
 	public void testGETProjectResource() throws Exception{
 		Project project = projectResource.get();
 		logger.info("DEBUG TEST RESOURCE: " + project);
@@ -38,7 +38,18 @@ public class TestRestProjectResource {
 		
 		Object result = projectResource.put(project);
 		logger.info("DEBUG TEST RESOURCE PUT: " +  result);
-		
 	}
+	
+	@Test
+	public void testPUTNewProjectResource() throws Exception{
+		Project project = new Project();
+		project.setName("NEW Project");
+		project.setName(project.getName() + "_REST");
+		logger.info("DEBUG TEST RESOURCE GET: " +  project);
+		
+		Object result = projectResource.put(project);
+		logger.info("DEBUG TEST RESOURCE PUT: " +  result);
+	}
+	
 
 }
