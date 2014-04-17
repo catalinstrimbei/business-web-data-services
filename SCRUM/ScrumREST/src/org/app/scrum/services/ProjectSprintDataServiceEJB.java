@@ -42,7 +42,9 @@ import org.app.scrum.sprint.Sprint;
 @Path("projects") /* http://localhost:8080/ScrumREST/projects */
 @Stateless @LocalBean 
 @Interceptors({SecurityInterceptor.class})
-public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project> 
+public class ProjectSprintDataServiceEJB 
+	extends EntityRepositoryBase<Project> 
+//	extends EntityRepositoryBase<Project, Integer> 
 	implements ProjectSprintDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
 	
@@ -50,13 +52,14 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	private TeamDataServiceEJB teamDataService;
 	
 	@Inject @DataRepositoryBean(entityType=Sprint.class)
+//	private EntityRepository<Sprint, Integer> sprintRepository;
 	private EntityRepository<Sprint> sprintRepository;
-	
 	
 //	@Inject @DataRepositoryBean(entityType=Release.class)
 //	private EntityRepository<Release> releaseRepository;	
 	/* sau fara injectie: instantiere locala ... !*/
-	 private EntityRepository<Release> releaseRepository;
+//	private EntityRepository<Release, Integer> releaseRepository;
+	private EntityRepository<Release> releaseRepository;
 	
 	@Inject
 	private ProjectFactory projectFactory;
@@ -65,6 +68,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
     @PostConstruct
 	public void init(){
+//    	releaseRepository = new EntityRepositoryBase<Release, Integer>(this.em, Release.class);
     	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
     	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());

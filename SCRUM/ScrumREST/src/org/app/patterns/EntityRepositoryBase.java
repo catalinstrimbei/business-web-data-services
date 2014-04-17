@@ -16,21 +16,27 @@ import java.util.logging.Logger;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.ManagedType;
+import javax.persistence.metamodel.Metamodel;
+import javax.persistence.metamodel.SingularAttribute;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  * 
  * @author catalin
  */
+//public class EntityRepositoryBase<T extends Object, Z extends Object> implements EntityRepository<T, Z> {
 public class EntityRepositoryBase<T extends Object> implements EntityRepository<T> {
-
+	
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@PersistenceContext(unitName="ScrumEJB")
@@ -38,6 +44,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	
 	protected Class<T> repositoryType;
 	protected String genericSQL;
+//	protected Class<? extends Object> idType;
 
 	@Override
 	public void setEm(EntityManager em) {
@@ -77,8 +84,11 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
 	 */
-//	@GET @Path("/getbyid/{id}") @Produces("application/json")
+//	@GET @Path("entity/{id}")
+//	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
+//	public T getById(@PathParam("id") Z id) {
+//	public <E> T getById(@PathParam("id") E id) {
 	public T getById(@PathParam("id") Object id) {
 		return (T) em.find(repositoryType, id);
 	}
@@ -182,7 +192,13 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	@Override @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T add(T entity) {
 		try {
-			em.merge(entity);
+			Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
+			if (id == null || em.find(repositoryType, id) == null)
+				em.persist(entity);
+			else
+				em.merge(entity);
+			em.flush();
+			
 			return entity;
 		} catch (Exception e) {
 			logger.info("ERROR: " + " not able to ADD " + entity + "!");
@@ -201,7 +217,8 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 		try {
 			for (T entity : entities) {
-				em.merge(entity);
+//				em.merge(entity);
+				add(entity);
 			}
 			return entities;
 		} catch (Exception e) {
@@ -289,4 +306,14 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
 	    return (Class<T>)extractClassFromType(actualArg);
 	}		
+	
+//	private void getEntityID(T entity){
+//		
+//		Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
+//		/* http://www.objectdb.com/java/jpa/persistence/metamodel */
+//		Metamodel metamodel = em.getMetamodel();
+//		ManagedType<T> managedType = metamodel.managedType(this.repositoryType);
+//		EntityType<T> entityType = metamodel.entity(this.repositoryType);
+//		SingularAttribute<?, Long> id1 = entityType.getId(Long.class);
+//	}
 }
