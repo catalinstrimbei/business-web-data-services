@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
 
 @Entity
-@MappedSuperclass
+//@MappedSuperclass
 public class PersoanaJuridica extends Client{
 	private String denumire;
 	private Integer CUI;
