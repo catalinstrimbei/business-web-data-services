@@ -2,6 +2,8 @@ package org.app.scrum.ejb.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -19,31 +21,84 @@ public class TestScrumProjectDataService {
 	public static void setUpBeforeClass() throws Exception {
 		service = ProjectSprintDataServiceEJBFactory.getScrumProjectRepositoryService();
 	}
-
+	
+	/* CHECK EJB live test*/
 	@Test
-	public void createNewProject(){
-		logger.info("START TEST createNewProject ...");
-		
-		Project project = service.createNewProject(1005);
-		assertTrue("Fail to create new project in repository", service.size() > 0);
+	public void testGetMessage(){
+		String message = service.getMessage();
+		assertNotNull("Message not returnet from service!", message);
+		logger.info("DEBUG testGetMessage: " + message);
+	}
 
-		List<Release> releases = project.getReleases();
-		logger.info("DEBUG releases: " + releases);
-				
-		project.setName(project.getName() + " - changed by test client");
-		project.setStartDate(null);
-		project.setReleases(null);
+	/* CREATE Test 1 (create-read)*/
+	@Test
+	public void testCreateProject(){
+		Project project = new Project(777, "Project Test 7001", new Date());
 		project = service.add(project);
-		logger.info("DEBUG project changed: " + project);
-		
-		logger.info("... END TEST createNewProject!");
+		logger.info("DEBUG createProject: saved project: " + project);
+		assertNotNull("Fail to create new project in repository!", project);
+		project = service.getById(7001);
+		assertNotNull("Fail to find new project in repository!", project);
+		logger.info("DEBUG createProject: queried project" + project);
 	}
 	
-//	@Test
-	public void getProject(){
-		logger.info("START TEST getProject ...");
-		Project project = service.getById(null);
-		assertNotNull("Fail to create get project from repository (is null)", project);
-		logger.info("END TEST getProject ...");
+	/* CREATE Test 2: create aggregate*/
+	@Test
+	public void testCreateNewProject(){
+		Project project = service.createNewProject(7002);
+		assertNotNull("Fail to create new project in repository!", project);
+		// update project
+		project.setName(project.getName() + " - changed by test client");		
+		List<Release> releases = project.getReleases();
+		// update project components
+		for(Release r: releases)
+			r.setIndicative(r.getIndicative() + " - changed by test client");
+		project = service.add(project);
+		assertNotNull("Fail to save new project in repository!", project);
+		logger.info("DEBUG createNewProject: project changed: " + project);
+		// check read
+		project = service.getById(7001);
+		assertNotNull("Fail to find changed project in repository!", project);
+		logger.info("DEBUG createNewProject: queried project" + project);
+	}	
+	
+	/* READ Test (read-collection) */
+	@Test
+	public void testToCollection(){
+		Collection<Project> projects = service.toCollection();
+		assertTrue("Fail to read projects from repository!", projects != null);
+		logger.info("DEBUG testToCollection:" + projects.size());
+		assertTrue("Fail to read any project from repository!", projects.size() > 0);
 	}
+	
+	/* UPDATE Test (read-instance&update)*/
+	@Test
+	public void testAdd(){
+		Project project = service.getById(7001);
+		assertNotNull("Fail to get project from repository!", project);
+		project.setName(project.getName() + " - updated by test client");
+		project = service.add(project);
+		assertNotNull("Fail to save updated project in repository!", project);
+		// check read
+		project = service.getById(7001);
+		assertNotNull("Fail to find updated project in repository!", project);
+		logger.info("DEBUG testAdd: project updated: " + project);		
+	}
+	
+	/* REMOVE Test */
+	@Test
+	public void testRemove(){
+		Project project = service.getById(7001);
+		assertNotNull("Fail to get project from repository!", project);
+		service.remove(project);
+		// check read
+		project = service.getById(7001);
+		logger.info("DEBUG testAdd: project removed: " + project);
+		assertNull("Fail to remove project in repository!", project);
+	}
+
 }
+
+
+
+

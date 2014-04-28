@@ -20,17 +20,14 @@ public class ProjectSprintDataServiceEJBFactory {
 	}
 	
 	private static String MODULE_NAME = "ScrumREST";
+	
 	private static String SERVICE_NAME = ProjectSprintDataServiceEJB.class.getSimpleName();
+	
 	private static String REMOTE_INTERFACE_NAME = ProjectSprintDataService.class.getName();
 	
 	
     private static <T> T lookupEJBService() throws Exception {
-    	// workaround
-    	URL url = new URL("http://localhost:8080/ScrumREST/projects");
-		URLConnection conn = url.openConnection();
-		conn.getInputStream();    	
-    	//
-		
+		// lookup ejb
         final Hashtable jndiProperties = new Hashtable();
         jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");        
         final Context context = new InitialContext(jndiProperties);
@@ -41,3 +38,14 @@ public class ProjectSprintDataServiceEJBFactory {
         return (T) context.lookup(lookUpURL);
     }
 }
+
+
+/*
+    	// workaround 
+    	URL url = new URL("http://localhost:8080/ScrumREST/projects");
+		URLConnection conn = url.openConnection();
+		conn.getInputStream();
+*/
+		
+		
+
