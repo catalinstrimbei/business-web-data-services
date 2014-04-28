@@ -16,5 +16,5 @@ import javax.inject.Qualifier;
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
 public @interface DataRepositoryBean {
-	@Nonbinding public Class entityType();
+	@Nonbinding public Class<?> entityType();
 }
