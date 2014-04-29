@@ -5,6 +5,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -39,94 +42,21 @@ import org.app.scrum.project.Release;
 import org.app.scrum.rest.CredentialBean;
 import org.app.scrum.sprint.Sprint;
 
-@Path("projects") /* http://localhost:8080/ScrumREST/projects */
 @Stateless @LocalBean 
-@Interceptors({SecurityInterceptor.class})
-public class ProjectSprintDataServiceEJB 
-	extends EntityRepositoryBase<Project> 
-//	extends EntityRepositoryBase<Project, Integer> 
-	implements ProjectSprintDataService, Serializable{
+public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project> 
+		implements ProjectSprintDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
-	
-	@EJB
-	private TeamDataServiceEJB teamDataService;
-	
-	@Inject @DataRepositoryBean(entityType=Sprint.class)
-//	private EntityRepository<Sprint, Integer> sprintRepository;
-	private EntityRepository<Sprint> sprintRepository;
-	
-//	@Inject @DataRepositoryBean(entityType=Release.class)
-//	private EntityRepository<Release> releaseRepository;	
-	/* sau fara injectie: instantiere locala ... !*/
-//	private EntityRepository<Release, Integer> releaseRepository;
 	private EntityRepository<Release> releaseRepository;
-	
-	@Inject
-	private ProjectFactory projectFactory;
-	
-	@Inject CredentialBean credentialBean;
-	
-    @PostConstruct
-	public void init(){
-//    	releaseRepository = new EntityRepositoryBase<Release, Integer>(this.em, Release.class);
+	@Inject private ProjectFactory projectFactory;
+	@Inject private EntityRepository<Sprint> sprintRepository;
+    @PostConstruct public void init(){
     	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
+    	sprintRepository.setEm(this.em);
     	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
-		logger.info("Initialized teamDataService : " + teamDataService.size());	
 		logger.info("Initialized sprintRepository : " + sprintRepository.size());
-		logger.info("Initialized credentialBean : " + credentialBean);
 	}		
-    
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
-	@GET 
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Project[] getProjectList(){
-		return Project.toDTOList(this.toCollection());
-	}	
-	
-	@Interceptors({ValidatorInterceptor.class})
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("project/{id}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Project getProjectById(@PathParam("id") Integer id){
-		Project project = super.getById(id);
-		return Project.toDTOAggregate(project);
-	}	
-	
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("project/{projectid}/release/{releaseid}") 
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Release getReleaseById(
-			@PathParam("projectid") Integer projectid,
-			@PathParam("releaseid") Integer releaseid){
-		Release release = releaseRepository.getById(releaseid);
-		return release.toDTO();
-	}
-	
-	
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
-	@GET @Path("views")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public ProjectView[] getProjectViews(){
-		return ProjectView.getProjectViewList(this.toCollection());
-	}
-	
-	/* EJB calls*/
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	@PUT @Path("project/save") 
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Project addProject(Project project){
-		// restore project: null are merged. Ok!
-		// merge projectDTO with project
-		logger.info(">>>>> DEBUG: saving project dto" + project);
-		// save project
-		project = this.add(project);
-		project =  Project.toDTOAggregate(project);
-		logger.info(">>>>> DEBUG: project saved" + project);
-		return project;
-	}
-	
+    	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project createNewProject(Integer id){
 		Project project = projectFactory.buildProiect(id, "NEW Project", 3);
@@ -134,49 +64,26 @@ public class ProjectSprintDataServiceEJB
 		return Project.toDTOAggregate(project);
 	}
 	
-	/* dummy validation rest: http://localhost:8080/ScrumREST/projects/test */
-	@GET @Path("/test")
-	@Produces("text/html")
 	public String getMessage(){
 		return "ProjectSprintDataService is working...";
+	}	
+	
+	@Override
+	public Project getById(Object id){
+		Project project = super.getById(id);
+		return Project.toDTOAggregate(project);
 	}
 	
-	/* dummy validation Rest: http://localhost:8080/ScrumREST/projects/showtext/test */
-	@GET @Path("/showtext/{text}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Object getText(@PathParam("text") String text){
-		String jsonData = "{message: " + text + "}";
-		Response response = Response
-				.status(Status.OK)
-				.type(MediaType.APPLICATION_XML)
-				.type(MediaType.APPLICATION_JSON)
-				.entity(jsonData)
-				.build();
-		//return "\"" + response.getEntity().toString() + "\"";
-		//return response.getEntity();
-		return response;
+	@Override
+	public Collection<Project> toCollection() {
+		Collection<Project> projects = this.toCollection();
+		Project[] projectArray = Project.toDTOList(projects);
+		return Arrays.asList(projectArray);
 	}
 	
-	/* dummy XML marshall Rest: http://localhost:8080/ScrumREST/projects/projectdata */
-	@GET @Path("/projectdata")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response getProjectData() throws Exception{
-		Project dto = new Project(1111, "Pro 1111");
-		JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
-		Marshaller marshaller = jaxbContext.createMarshaller();
-		
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		marshaller.marshal(dto, os);
-		String aString = new String(os.toByteArray(),"UTF-8");
-		
-		Response response = Response
-				.status(Status.OK)
-				.type(MediaType.TEXT_PLAIN)
-				.entity(aString)
-				.build();
-		
-		return response;
+	@Override
+	public Project add(Project project) {
+		project = this.add(project);
+		return Project.toDTOAggregate(project);
 	}
-	
-	
 }
