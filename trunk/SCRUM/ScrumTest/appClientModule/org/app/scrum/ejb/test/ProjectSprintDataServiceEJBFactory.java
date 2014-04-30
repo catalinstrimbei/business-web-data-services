@@ -27,6 +27,11 @@ public class ProjectSprintDataServiceEJBFactory {
 	
 	
     private static <T> T lookupEJBService() throws Exception {
+    	// workaround 
+//    	URL url = new URL("http://localhost:8080/ScrumREST/projects");
+//		URLConnection conn = url.openConnection();
+//		conn.getInputStream();
+		
 		// lookup ejb
         final Hashtable jndiProperties = new Hashtable();
         jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");        

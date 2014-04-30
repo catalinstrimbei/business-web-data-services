@@ -46,15 +46,19 @@ import org.app.scrum.sprint.Sprint;
 public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project> 
 		implements ProjectSprintDataService, Serializable{
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
+	
 	private EntityRepository<Release> releaseRepository;
+	
 	@Inject private ProjectFactory projectFactory;
-	@Inject private EntityRepository<Sprint> sprintRepository;
-    @PostConstruct public void init(){
+	
+//	@Inject private EntityRepository<Sprint> sprintRepository; // !!! Bug on initialization
+    
+	@PostConstruct public void init(){
     	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
-    	sprintRepository.setEm(this.em);
+//    	sprintRepository.setEm(this.em);
     	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
-		logger.info("Initialized sprintRepository : " + sprintRepository.size());
+//		logger.info("Initialized sprintRepository : " + sprintRepository.size());
 	}		
     	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
@@ -76,14 +80,14 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
 	@Override
 	public Collection<Project> toCollection() {
-		Collection<Project> projects = this.toCollection();
+		Collection<Project> projects = super.toCollection(); // !!!
 		Project[] projectArray = Project.toDTOList(projects);
 		return Arrays.asList(projectArray);
 	}
 	
 	@Override
 	public Project add(Project project) {
-		project = this.add(project);
+		project = super.add(project); // !!!
 		return Project.toDTOAggregate(project);
 	}
 }
