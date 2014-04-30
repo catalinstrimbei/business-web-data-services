@@ -193,7 +193,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	public T add(T entity) {
 		try {
 			Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
-			if (id == null || em.find(repositoryType, id) == null)
+			if (id == null) // || em.find(repositoryType, id) == null) // !!! - case of Generated value to test
 				em.persist(entity);
 			else
 				em.merge(entity);
