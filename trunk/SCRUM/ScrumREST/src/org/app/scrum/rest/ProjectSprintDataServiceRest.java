@@ -43,7 +43,7 @@ import org.app.scrum.services.TeamDataServiceEJB;
 import org.app.scrum.services.ValidatorInterceptor;
 import org.app.scrum.sprint.Sprint;
 
-@Path("projects") /* http://localhost:8080/ScrumREST/projects */
+@Path("projects2") /* http://localhost:8080/ScrumREST/projects */
 @Stateless @LocalBean 
 @Interceptors({SecurityInterceptor.class})
 public class ProjectSprintDataServiceRest 
