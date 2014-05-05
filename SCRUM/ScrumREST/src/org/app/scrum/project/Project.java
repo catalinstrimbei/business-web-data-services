@@ -88,7 +88,7 @@ public class Project implements Serializable{
 	}	
 	
 	/* Rest Resource URL*/
-	private static String BASE_URL = "http://localhost:8080/ScrumREST/projects/project/";
+	public static String BASE_URL = "http://localhost:8080/ScrumREST/projects/";
 	@XmlElement(name = "link")
     public AtomLink getLink() throws Exception {
 		String restUrl = BASE_URL + this.getProjectNo();
@@ -164,6 +164,15 @@ public class Project implements Serializable{
 			projectDTOList.add(p.toDTO());
 		}
 		return projectDTOList.toArray(new Project[0]);
+	}	
+	
+	public static Collection<Project> toDTOs(Collection<Project> projects){
+		List<Project> projectDTOList = new ArrayList<>();
+		for(Project p: projects){
+			projectDTOList.add(p.toDTO());
+		}
+		//return projectDTOList.toArray(new Project[0]);
+		return projectDTOList;
 	}	
 	
 }

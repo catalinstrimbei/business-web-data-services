@@ -67,10 +67,10 @@ public class RESTResource <T extends Object> {
 		if (path != null){
 			if (!path.startsWith("/") && !this.basePath.endsWith("/"))
 				path = "/" + path;
-			
 			this.GETpath = path;
 			this.GETrequest = new ClientRequest(basePath + path);
 			this.GETrequest.accept(mediaType);
+			logger.info("DEBUG GET path: " + this.GETpath);
 		}
 	}
 
@@ -82,10 +82,10 @@ public class RESTResource <T extends Object> {
 		if (path != null){
 			if (!path.startsWith("/") && !this.basePath.endsWith("/"))
 				path = "/" + path;
-			
 			this.POSTpath = path;
 			this.POSTrequest = new ClientRequest(basePath + path);
 			this.POSTrequest.accept(mediaType);
+			logger.info("DEBUG POST path: " + this.POSTpath);
 		}
 	}
 
@@ -97,10 +97,10 @@ public class RESTResource <T extends Object> {
 		if (path != null){
 			if (!path.startsWith("/") && !this.basePath.endsWith("/"))
 				path = "/" + path;
-			
 			this.PUTpath = path;
 			this.PUTrequest = new ClientRequest(basePath + path);
 			this.PUTrequest.accept(mediaType);
+			logger.info("DEBUG PUT path: " + this.PUTpath);
 		}
 	}
 
@@ -112,10 +112,10 @@ public class RESTResource <T extends Object> {
 		if (path != null){
 			if (!path.startsWith("/") && !this.basePath.endsWith("/"))
 				path = "/" + path;
-			
 			this.DELETEpath = path;
 			this.DELETErequest = new ClientRequest(basePath + path);
 			this.DELETErequest.accept(mediaType);
+			logger.info("DEBUG DELETE path: " + this.DELETEpath);
 		}
 	}
 
@@ -156,6 +156,26 @@ public class RESTResource <T extends Object> {
 	    return null;
 	}	
 	
+	/* Free Form Methods*/
+	public Object get(String customPath) throws Exception{
+		if (customPath != null){
+			if (!customPath.startsWith("/") && !this.basePath.endsWith("/"))
+				customPath = "/" + customPath;
+			customPath = basePath + customPath;
+			logger.info("DEBUG custom GET path: " + customPath);
+			ClientRequest customGETRequest = new ClientRequest(customPath);
+			
+			ClientResponse response = customGETRequest.get();
+			int responseCode = response.getResponseStatus().getStatusCode();
+		    if(responseCode != 200){
+		        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
+		    }
+		    return response.getEntity(String.class);
+		}
+		return null;
+	}
+	
+	/* Internals */
 	@SuppressWarnings("unchecked")
 	private  T invokeResourceRequest(ClientRequest resourceRequest, T entity) throws Exception{
 		if(resourceRequest == null)
@@ -178,8 +198,8 @@ public class RESTResource <T extends Object> {
 	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
 	    }	    
 	    try{
-	    if (response.getEntity(this.entityResourceClass) != null)
-	    	return (T) response.getEntity(this.entityResourceClass);
+		    if (response.getEntity(this.entityResourceClass) != null)
+		    	return (T) response.getEntity(this.entityResourceClass);
 	    }catch(Exception ex){
 	    	logger.info("DEBUG resource request ERROR " + ex.getMessage());
 	    }
