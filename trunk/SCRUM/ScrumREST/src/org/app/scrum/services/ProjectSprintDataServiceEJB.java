@@ -80,14 +80,24 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	
 	@Override
 	public Collection<Project> toCollection() {
-		Collection<Project> projects = super.toCollection(); // !!!
-		Project[] projectArray = Project.toDTOList(projects);
-		return Arrays.asList(projectArray);
+		return Project.toDTOs(super.toCollection());
 	}
 	
 	@Override
 	public Project add(Project project) {
-		project = super.add(project); // !!!
+		project = super.add(project);
 		return Project.toDTOAggregate(project);
+	}
+	
+	@Override
+	public boolean remove(Project project) {
+		return super.remove(project);
+	}	
+	
+	public Release getReleaseById(
+//			Integer projectid, 
+			Integer releaseid){
+		Release release = releaseRepository.getById(releaseid);
+		return release.toDTO();
 	}
 }

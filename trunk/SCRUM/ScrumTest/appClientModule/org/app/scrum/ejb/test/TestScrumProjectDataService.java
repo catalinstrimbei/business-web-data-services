@@ -88,15 +88,24 @@ public class TestScrumProjectDataService {
 	/* REMOVE Test */
 	@Test
 	public void testRemove(){
-		Project project = service.getById(7002);
+		Integer projectNo = 7001;
+		Project project = service.getById(projectNo);
 		assertNotNull("Fail to get project from repository!", project);
 		service.remove(project);
 		// check read
-		project = service.getById(7001);
+		project = service.getById(projectNo);
 		logger.info("DEBUG testAdd: project removed: " + project);
 		assertNull("Fail to remove project in repository!", project);
 	}
 
+	
+	/* READ Test (read-collection-aggregate-components) */
+//	@Test
+	public void testGetReleaseById(){
+		Release release = service.getReleaseById(305);
+		assertTrue("Fail to read releases from repository!", release != null);
+		logger.info("DEBUG testGetReleaseById:" + release);
+	}
 }
 
 

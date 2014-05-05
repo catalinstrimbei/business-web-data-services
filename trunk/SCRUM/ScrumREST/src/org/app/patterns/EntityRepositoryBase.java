@@ -89,7 +89,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	@Override
 //	public T getById(@PathParam("id") Z id) {
 //	public <E> T getById(@PathParam("id") E id) {
-	public T getById(@PathParam("id") Object id) {
+	public T getById(Object id) {
 		return (T) em.find(repositoryType, id);
 	}
 
