@@ -16,17 +16,25 @@ public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
 	
 	static RESTResource<Project> projectResource;
+	static RESTResource projectsResource;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		projectsResource = new RESTResource<Project>(
+				"http://localhost:8080/ScrumREST/projects/", 
+				Project.class, "application/xml", 
+				"/", 			//GETpath
+				"/",			//POSTpath 
+				null, 			//PUTpath 
+				null); 			//DELETEpath
+		
 		projectResource = new RESTResource<Project>(
 				"http://localhost:8080/ScrumREST/projects/", 
 				Project.class, "application/xml", 
-				//"project/1002", //GETpath
-				//"project", //GETpath
-				"/", //GETpath
+				"/1002", 		//GETpath
 				"/",			//POSTpath 
 				"/", 			//PUTpath 
-				"/"); 			//DELETEpath		
+				"/"); 			//DELETEpath	
 	}
 	
 	/* CHECK EJB live test*/

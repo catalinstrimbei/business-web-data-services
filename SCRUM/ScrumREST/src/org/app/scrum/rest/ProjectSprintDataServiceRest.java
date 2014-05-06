@@ -59,7 +59,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	
 	/* scrum/projects/{id} REST-resource: project-entity*/
 	
-	@GET @Path("newproject/{id}") // @POST
+	@GET @Path("newproject/{id}") // @POST !? WebAPI principle break
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project createNewProject(@PathParam("id") Integer id){
@@ -82,7 +82,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOAggregate(project);
 	}
 	
-	@GET
+	@GET /* RestAPI: /scrum/projects */
 	@Override
 	public Collection<Project> toCollection() {
 		return Project.toDTOs(super.toCollection());
@@ -147,3 +147,17 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return response;
 	}	
 }
+
+/*
+URL								HTTP Request	CRUD
+-------------------------------------------------------------------------
+/scrum/projects					GET			 	read project collection
+/scrum/projects					POST			create (save) new project
+-------------------------------------------------------------------------
+/scrum/projects/{id}			GET				read existing project
+/scrum/projects/{id}			PUT				update existing project
+/scrum/projects/{id}			DELETE			delete existing project
+-------------------------------------------------------------------------
+/scrum/releases/{id}			GET				read existing release
+
+*/
