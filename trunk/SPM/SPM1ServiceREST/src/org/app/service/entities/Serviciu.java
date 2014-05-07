@@ -3,6 +3,7 @@ package org.app.service.entities;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity 
-public class Serviciu {
+public class Serviciu implements Serializable{
 
 	@Id @GeneratedValue
 	private Integer idServiciu;
