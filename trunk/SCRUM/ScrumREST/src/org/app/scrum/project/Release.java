@@ -159,14 +159,14 @@ public class Release implements Serializable{
 	}
 
 	/* Rest Resource URL*/
-	public static String BASE_URL = "http://localhost:8080/ScrumREST/releases/";
+//	public static String BASE_URL = "http://localhost:8080/ScrumREST/projects/";
+	public static String BASE_URL = Project.BASE_URL;
+	
 //	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
 	@XmlElement(name = "link")
-			
     public AtomLink getLink() throws Exception {
-//		String restUrl = BASE_URL + this.getProject().getProjectNo() + "/release/" + this.getReleaseId();
-		String restUrl = BASE_URL + this.getReleaseId();
-        return new AtomLink(restUrl, "get-project");
+		String restUrl = BASE_URL + this.getProject().getProjectNo() + "/releases/" + this.getReleaseId();
+        return new AtomLink(restUrl, "get-release");
     }	
 
 	/* DTO Logic*/
