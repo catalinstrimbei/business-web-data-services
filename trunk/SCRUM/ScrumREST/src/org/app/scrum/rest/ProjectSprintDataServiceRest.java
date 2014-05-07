@@ -90,10 +90,10 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	
 	@DELETE @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public boolean remove(@PathParam("id")Integer id) {
+	public void remove(@PathParam("id")Integer id) {
 		logger.info("DEBUG: called REMOVE - ById() for projects >>>>>>>>>>>>>> simplified ! + id");
 		Project project = super.getById(id);
-		return super.remove(project); // !!!
+		super.remove(project); // !!!
 	}	
 	
 	// GET method on second repository for Release-type entities
