@@ -24,6 +24,7 @@ public class RESTfullResource <T extends Object> {
 	
 	private String basePath;
 	private Class<T> entityResourceClass;
+//	private Class entityResourceClass;
 	private String mediaType = "application/xml";
 	
 	private ClientRequest request;
@@ -40,7 +41,7 @@ public class RESTfullResource <T extends Object> {
 		return entityResourceClass;
 	}
 
-	public void setEntityResourceClass(Class<T> entityResourceClass) {
+	public void setEntityResourceClass(Class entityResourceClass) {
 		this.entityResourceClass = entityResourceClass;
 	}
 
@@ -52,14 +53,19 @@ public class RESTfullResource <T extends Object> {
 		this.mediaType = mediaType;
 	}
 
-	public RESTfullResource(String basePath, Class<T> entityResourceClass, String mediaType) {
-		super();
+	public RESTfullResource(String basePath, Class entityResourceClass, String mediaType) {
 		this.basePath = basePath;
 		this.entityResourceClass = entityResourceClass;
 		this.mediaType = mediaType;
 		this.request = new ClientRequest(basePath);
 		this.request.accept(mediaType);		
 	}
+	
+	public RESTfullResource(String basePath) {
+		this.basePath = basePath;
+		this.entityResourceClass = (Class<T>) String.class;
+		this.request = new ClientRequest(basePath);
+	}	
 
 	/* CRUD Methods */
 	public T get() throws Exception{
@@ -125,12 +131,14 @@ public class RESTfullResource <T extends Object> {
 	    int responseCode = response.getResponseStatus().getStatusCode();
 	    if(responseCode != 200){
 	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
-	    }	    
+	    }	  
+	    logger.info("DEBUG resource RESPONSE " + response + " --- " + this.entityResourceClass);
 	    try{
 		    if (response.getEntity(this.entityResourceClass) != null)
 		    	return (T) response.getEntity(this.entityResourceClass);
 	    }catch(Exception ex){
-	    	logger.info("DEBUG resource request ERROR " + ex.getMessage());
+	    	ex.printStackTrace();
+	    	logger.info("DEBUG resource request ERROR INVOCATION " + ex.getMessage());
 	    }
 	    return null;		
 	}
@@ -162,6 +170,4 @@ public class RESTfullResource <T extends Object> {
 	    //Get entity from response
 	    return (T) response.getEntity();
 	}
-	
-	
 }

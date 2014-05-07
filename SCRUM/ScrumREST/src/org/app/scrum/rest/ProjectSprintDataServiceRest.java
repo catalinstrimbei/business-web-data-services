@@ -52,14 +52,62 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
     	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
 //		logger.info("Initialized sprintRepository : " + sprintRepository.size());
-	}		
-    
-	/* scrum/projects REST-resource: projects-collection repository*/
+	}	
+	
+	@Override
+	@GET 					/* scrum/projects 		REST-resource: projects-collection*/
+	public Collection<Project> toCollection() {
+		return Project.toDTOs(super.toCollection());
+	}	
+	
+	@POST 					/* scrum/projects 		REST-resource: projects-collection*/
+	@PUT @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/	
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	@Override
+	public Project add(Project project) {
+		project = super.add(project);
+		return Project.toDTOAggregate(project);
+	}	
+	
+//	@Override // Changed argument from Object to Integer so overridden is not correct anymore	
+	@GET @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	public Project getById(@PathParam("id") Integer id){ 
+		Project project = super.getById(id);
+		return Project.toDTOAggregate(project);
+	}
 	
 	
-	/* scrum/projects/{id} REST-resource: project-entity*/
+	@DELETE 				/* scrum/projects 		REST-resource: projects-collection*/
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	@Override
+	public boolean remove(Project project) {
+		return super.remove(project); // !!!
+	}
 	
-	@GET @Path("new/{id}")
+	@DELETE @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
+	public boolean remove(@PathParam("id")Integer id) {
+		logger.info("DEBUG: called REMOVE - ById() for projects >>>>>>>>>>>>>> simplified ! + id");
+		Project project = super.getById(id);
+		return super.remove(project); // !!!
+	}	
+	
+	// GET method on second repository for Release-type entities
+	@GET @Path("/{projectid}/releases/{releaseid}")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Release getReleaseById(@PathParam("releaseid") Integer releaseid){
+		logger.info("DEBUG: called getReleaseById() for projects >>>>>>>>>>>>>> simplified !");
+		Release release = releaseRepository.getById(releaseid);
+		return release.toDTO();
+	}
+	
+	/* Other test-proposal methods ************************************************************/
+	@GET @Path("/new/{id}")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project createNewProject(@PathParam("id") Integer id){
@@ -68,59 +116,15 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOAggregate(project);
 	}
 	
-	@GET @Path("test") // Check if resource is up ...
+	@GET @Path("/test") // Check if resource is up ...
 	@Produces({ MediaType.TEXT_PLAIN})
 	public String getMessage(){
 		return "ProjectSprint DataService is working...";
-	}	
-	
-	@GET @Path("{id}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
-//	@Override // Changed argument from Object to Integer so overridden is not correct anymore
-	public Project getById(@PathParam("id") Integer id){ 
-		Project project = super.getById(id);
-		return Project.toDTOAggregate(project);
 	}
 	
-	@GET /* RestAPI: /scrum/projects */
-	@Override
-	public Collection<Project> toCollection() {
-		return Project.toDTOs(super.toCollection());
-	}
-	
-	@POST @PUT @Path("projects/{id}") 
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	@Override
-	public Project add(Project project) {
-		project = super.add(project);
-		return Project.toDTOAggregate(project);
-	}
-	
-	@DELETE 
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	@Override
-	public boolean remove(Project project) {
-		return super.remove(project); // !!!
-	}
-	
-	// GET method on second repository for Release-type entities
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	@GET @Path("releases/{releaseid}")
-	// @Path("project/{projectid}/release/{releaseid}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Release getReleaseById(@PathParam("releaseid") Integer releaseid){
-		logger.info("DEBUG: called getReleaseById() for projects >>>>>>>>>>>>>> simplified !");
-		Release release = releaseRepository.getById(releaseid);
-		return release.toDTO();
-	}
-	
-	/* Other test-proposal methods ************************************************************/
 	// Example of DTO as view-objects on JPA-entities 
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // read only
-	@GET @Path("views")
+	@GET @Path("/views")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public ProjectView[] getProjectViews(){
 		return ProjectView.getProjectViewList(this.toCollection());
@@ -153,14 +157,14 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 URL									HTTP Req.		CRUD									Mapping								|
 ---------------------------------------------------------------------------------------------------------------------------------
 /scrum/projects						GET			 	read project collection					toCollection()						|
-/scrum/projects						POST			Save new project						add(Project)						|
-/scrum/projects/create/{id}			GET				Create new project aggregate?			createNewProject(Integer)			|
+/scrum/projects						POST			add/save new project					add(Project)						|
+/scrum/projects						DELETE			remove existing project					remove(Project)						|
 ---------------------------------------------------------------------------------------------------------------------------------
 /scrum/projects/{id}				GET				read existing project					getById(Integer)					|
-/scrum/projects/{id}				PUT				save new project?						add_(Project)						|
-/scrum/projects/{id}				PUT				update existing project					add_(Project)						|
-/scrum/projects/{id}				DELETE			delete existing project					remove(Project)						|
+/scrum/projects/{id}				PUT				save new or existing project			add(Project)						|
+/scrum/projects/{id}				DELETE			delete existing project					remove(Integer)						|
 ---------------------------------------------------------------------------------------------------------------------------------
 /scrum/projects/{id}/releases/{id}	GET				read existing release					getReleaseById(Integer)				|
+/scrum/projects/create/{id}			GET				Create new project aggregate			createNewProject(Integer)			|
 ---------------------------------------------------------------------------------------------------------------------------------
 */
