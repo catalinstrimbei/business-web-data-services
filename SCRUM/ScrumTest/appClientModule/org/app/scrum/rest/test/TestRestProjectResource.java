@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import org.app.scrum.project.Project;
 import org.app.test.rest.patterns.RESTResource;
+import org.app.test.rest.patterns.RESTfullResource;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,8 +16,8 @@ import org.junit.Test;
 public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
 	
-	static RESTResource<Project> projectResource;
-	static RESTResource projectsResource;
+	static RESTfullResource<Project> projectResource;
+	static RESTfullResource projectsResource;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -40,13 +41,13 @@ public class TestRestProjectResource {
 	/* CHECK EJB live test*/
 	@Test
 	public void testGetMessage() throws Exception{
-		String message = (String) projectResource.get("test");
+		String message = (String) projectsResource.get("test");
 		assertNotNull("Message not returned from service!", message);
 		logger.info("DEBUG testGetMessage: " + message);		
 	}
 	
 	/* CREATE Test 1 (create-read)*/
-	@Test
+//	@Test
 	public void testCreateProject() throws Exception{
 		Project project = new Project(7001, "Project Test 7001", new Date());
 		project = projectResource.post(project); // HTTP

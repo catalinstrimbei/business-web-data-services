@@ -59,7 +59,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	
 	/* scrum/projects/{id} REST-resource: project-entity*/
 	
-	@GET @Path("newproject/{id}") // @POST !? WebAPI principle break
+	@GET @Path("new/{id}")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project createNewProject(@PathParam("id") Integer id){
@@ -88,7 +88,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOs(super.toCollection());
 	}
 	
-	@POST @PUT 
+	@POST @PUT @Path("projects/{id}") 
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
@@ -149,15 +149,18 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 }
 
 /*
-URL								HTTP Request	CRUD
--------------------------------------------------------------------------
-/scrum/projects					GET			 	read project collection
-/scrum/projects					POST			create (save) new project
--------------------------------------------------------------------------
-/scrum/projects/{id}			GET				read existing project
-/scrum/projects/{id}			PUT				update existing project
-/scrum/projects/{id}			DELETE			delete existing project
--------------------------------------------------------------------------
-/scrum/releases/{id}			GET				read existing release
-
+---------------------------------------------------------------------------------------------------------------------------------
+URL									HTTP Req.		CRUD									Mapping								|
+---------------------------------------------------------------------------------------------------------------------------------
+/scrum/projects						GET			 	read project collection					toCollection()						|
+/scrum/projects						POST			Save new project						add(Project)						|
+/scrum/projects/create/{id}			GET				Create new project aggregate?			createNewProject(Integer)			|
+---------------------------------------------------------------------------------------------------------------------------------
+/scrum/projects/{id}				GET				read existing project					getById(Integer)					|
+/scrum/projects/{id}				PUT				save new project?						add_(Project)						|
+/scrum/projects/{id}				PUT				update existing project					add_(Project)						|
+/scrum/projects/{id}				DELETE			delete existing project					remove(Project)						|
+---------------------------------------------------------------------------------------------------------------------------------
+/scrum/projects/{id}/releases/{id}	GET				read existing release					getReleaseById(Integer)				|
+---------------------------------------------------------------------------------------------------------------------------------
 */
