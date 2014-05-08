@@ -1,13 +1,14 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 @Entity
-public class Cerere_training extends Cerere{
+public class Cerere_training extends Cerere
+implements Serializable{
 
  Integer idCerereTraining;
 	Date dataCerereTraining;

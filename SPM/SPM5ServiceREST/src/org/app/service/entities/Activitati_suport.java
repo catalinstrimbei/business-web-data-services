@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Activitati_suport {
+public class Activitati_suport implements Serializable {
 @Id
  Integer IdActivitateSuport;
 	Date dataActivitateSuport;
@@ -34,6 +35,8 @@ public class Activitati_suport {
 	@ManyToOne
 	private Responsabili responsabili;
 	 
+
+	
 	public Integer getIdActivitateSuport() {
 		return IdActivitateSuport;
 	}

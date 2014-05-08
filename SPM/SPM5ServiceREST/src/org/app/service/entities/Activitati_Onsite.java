@@ -1,11 +1,13 @@
 package org.app.service.entities;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Activitati_Onsite extends Activitati_suport{
+public class Activitati_Onsite extends Activitati_suport
+implements Serializable{
 
 //	 Integer idActOnsite;
 	String durataActOnsite;
