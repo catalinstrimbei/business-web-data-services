@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -20,9 +21,51 @@ public class Serviciu implements Serializable{
 	private String denServiciu;
 	private String categorie;
 	
-	@OneToMany(mappedBy = "serviciu", cascade = ALL, fetch = EAGER)
+	@OneToMany(cascade = ALL, fetch = FetchType.EAGER)
 	private List<SAAS> saasuri = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "serviciu", cascade = ALL, fetch = EAGER)
+	@OneToMany(cascade = ALL, fetch = FetchType.LAZY)
 	private List<Suport> suporturi = new ArrayList<>();
+
+	public Integer getIdServiciu() {
+		return idServiciu;
+	}
+
+	public void setIdServiciu(Integer idServiciu) {
+		this.idServiciu = idServiciu;
+	}
+
+	public String getDenServiciu() {
+		return denServiciu;
+	}
+
+	public void setDenServiciu(String denServiciu) {
+		this.denServiciu = denServiciu;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public List<SAAS> getSaasuri() {
+		return saasuri;
+	}
+
+	public void setSaasuri(List<SAAS> saasuri) {
+		this.saasuri = saasuri;
+	}
+
+	public List<Suport> getSuporturi() {
+		return suporturi;
+	}
+
+	public void setSuporturi(List<Suport> suporturi) {
+		this.suporturi = suporturi;
+	}
+	
+	
 }

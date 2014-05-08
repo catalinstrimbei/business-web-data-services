@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,9 +20,9 @@ public class Solutie implements Serializable{
 	private Integer idSolutie;
 	private String denSolutie;
 	
-	@OneToMany(mappedBy = "solutie", cascade = ALL, fetch = EAGER)
+	@OneToMany(cascade = ALL, fetch = EAGER)
 	private List<Produs> produse = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "produs", cascade = ALL, fetch = EAGER)
+	@OneToMany(cascade = ALL, fetch = FetchType.LAZY)
 	private List<Serviciu> servicii = new ArrayList<>();
 }

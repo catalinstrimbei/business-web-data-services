@@ -26,12 +26,12 @@ public class ProdusFactory {
 		 Long interval= (long) (301 /*zile*/* 24 /*ore*/* 60 /*min*/* 60/*s*/* 1000/*milis*/);
 		 
 		 for ( int i=0; i<= versiuniCount-1; i++){
-			 versiuniCount.add(new Versiune( null, "V: " + produs.getIdProdus() + "." + i, new Date(dataLansare.getTime()+i*interval), produs));
+			 versiuniProdus.add(new Versiune( null, "V: " + produs.getIdProdus() + "." + i, new Date(dataLansare.getTime()+i*interval), produs));
 		 }
 		 produs.setVersiuni(versiuniProdus);
 		 
 		 for ( int i=0; i<= editiiCount-1; i++){
-			 editiiCount.add(new Editie( null, "E: " + produs.getIdProdus() + "." + i, produs));	
+			 editiiProdus.add(new Editie( null, "E: " + produs.getIdProdus() + "." + i, produs));	
 		 }
 		 produs.setEditii(editiiProdus);
 		 
