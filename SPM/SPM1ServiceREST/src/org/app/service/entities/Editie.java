@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -24,11 +25,11 @@ public class Editie implements Serializable{
 	@ManyToOne
 	private Produs produs;
 
-	@OneToMany(cascade = ALL, fetch = EAGER)
+	@OneToMany(cascade = ALL, fetch = FetchType.LAZY)
 	private List<Optiuni> optiuni=new ArrayList<>();
 	
 	///////////??????????????????????????????????????????????????????????????????
-	@OneToOne(fetch = EAGER, cascade = ALL, mappedBy = "editie")
+	@OneToMany(fetch = FetchType.LAZY, cascade = ALL)
 	private List<Pret> preturi=new ArrayList<>();
 	
 	public void add(){
@@ -42,6 +43,10 @@ public class Editie implements Serializable{
 		this.idEditie = idEditie;
 		this.denEditie = denEditie;
 		this.produs = produs;
+	}
+
+	public Editie() {
+		super();
 	}
 	
 	

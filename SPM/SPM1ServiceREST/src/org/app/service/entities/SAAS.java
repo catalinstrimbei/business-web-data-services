@@ -16,5 +16,17 @@ public class SAAS implements Serializable{
 	@Id @GeneratedValue
 	private Integer idSAAS;
 	private String denSAAS;
+	public Integer getIdSAAS() {
+		return idSAAS;
+	}
+	public void setIdSAAS(Integer idSAAS) {
+		this.idSAAS = idSAAS;
+	}
+	public String getDenSAAS() {
+		return denSAAS;
+	}
+	public void setDenSAAS(String denSAAS) {
+		this.denSAAS = denSAAS;
+	}
 	
 }

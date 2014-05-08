@@ -10,11 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
 @Entity 
-@Inheritance(strategy = JOINED)
 public class Suport implements Serializable{
 
 	@Id @GeneratedValue
 	private Integer idSuport;
 	private String denSuport;
+	public Integer getIdSuport() {
+		return idSuport;
+	}
+	public void setIdSuport(Integer idSuport) {
+		this.idSuport = idSuport;
+	}
+	public String getDenSuport() {
+		return denSuport;
+	}
+	public void setDenSuport(String denSuport) {
+		this.denSuport = denSuport;
+	}
 	
 }

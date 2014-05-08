@@ -1,4 +1,4 @@
-package org.app.scrum.services;
+package org.app.service.ejb;
 
 import org.app.patterns.EntityRepository;
 import org.app.service.entities.Produs;

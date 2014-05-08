@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -22,13 +23,13 @@ public class Produs implements Serializable{
 	private String denProdus;
 	private String categorieProdus;
 	
-	@OneToMany(mappedBy = "produs", cascade = ALL, fetch = EAGER)
+	@OneToMany(mappedBy = "produs", cascade = ALL, fetch = FetchType.LAZY)
 	private List<Versiune> versiuni = new ArrayList<>();
 	
-	@OneToOne(fetch = EAGER, cascade = ALL, mappedBy = "produs")
-	private List<Versiune> versiuneCurenta = new ArrayList<>();
+	@OneToOne(fetch = FetchType.LAZY, cascade = ALL)
+	private Versiune versiuneCurenta;
 	
-	@OneToMany(cascade = ALL, fetch = EAGER, mappedBy = "produs")
+	@OneToMany(cascade = ALL, fetch = FetchType.LAZY, mappedBy = "produs")
 	private List<Editie> editii = new ArrayList<>();
 	
 	//@Transient
@@ -74,11 +75,13 @@ public class Produs implements Serializable{
 	List<Versiune> versiuneDTO = Versiune.toDTOList(produs.getVersiuni());
 	produsDTO.setVersiuni(versiuneDTO);
 	
+	// ptr editii
+	
 	return produsDTO;
 	}
 
 	public Produs toDTO() {
-		return null;
+		return new Produs(this.idProdus, this.denProdus, this.categorieProdus);
 	}
 
 	public static Produs[] toDTOList(Collection<Produs> produse){
@@ -95,6 +98,10 @@ public class Produs implements Serializable{
 
 	public void setDenProdus(String denProdus) {
 		this.denProdus = denProdus;
+	}
+
+	public Produs() {
+		super();
 	}
 	
 	

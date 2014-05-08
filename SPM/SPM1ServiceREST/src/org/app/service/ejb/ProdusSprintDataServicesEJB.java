@@ -1,8 +1,9 @@
-package org.app.scrum.services;
+package org.app.service.ejb;
 
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.util.Arrays;
 import java.util.Collection;
 
+@Stateless
 public class ProdusSprintDataServicesEJB extends EntityRepositoryBase<Produs> implements Serializable {
 
 	private static Logger logger = Logger.getLogger(ProdusSprintDataServicesEJB.class.getName());
@@ -28,16 +30,11 @@ public class ProdusSprintDataServicesEJB extends EntityRepositoryBase<Produs> im
 	@Inject
 	private ProdusFactory produsFactory;
 	
-	@Inject
-	private EntityRepository<Sprint> sprintRepository;
-	
 	@PostConstruct
 	public void init(){
 		versiuneRepository = new EntityRepositoryBase<Versiune>(this.em, Versiune.class);
-		sprintRepository.setEm(this.em);
 		
-		Logger.info("Initialized versiuneRepository: " + versiuneRepository.size());
-		Logger.info("Initialized sprintRepository: " + sprintRepository.size());
+		logger.info("Initialized versiuneRepository: " + versiuneRepository.size());
 	
 	/*
 		editieRepository = new EntityRepositoryBase<Editie>(this.em, Editie.class);
@@ -65,14 +62,14 @@ public class ProdusSprintDataServicesEJB extends EntityRepositoryBase<Produs> im
 	
 	@Override
 	public Collection<Produs> toCollection(){
-		Collection<Produs> produse = this.toCollection();
+		Collection<Produs> produse = super.toCollection();
 		Produs[] produsArray = Produs.toDTOList(produse);
 		return Arrays.asList(produsArray);
 	}
 	
 	@Override
 	public Produs add(Produs produs){
-		produs = this.add(produs);
+		produs = super.add(produs);
 		return Produs.toDTOAggregate(produs);
 	}
 }
