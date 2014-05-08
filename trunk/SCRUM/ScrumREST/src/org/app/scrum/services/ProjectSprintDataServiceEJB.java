@@ -48,17 +48,11 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 	private static Logger logger = Logger.getLogger(ProjectSprintDataServiceEJB.class.getName());
 	
 	private EntityRepository<Release> releaseRepository;
-	
 	@Inject private ProjectFactory projectFactory;
-	
-//	@Inject private EntityRepository<Sprint> sprintRepository; // !!! Bug on initialization
     
 	@PostConstruct public void init(){
     	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
-//    	sprintRepository.setEm(this.em);
-    	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
-//		logger.info("Initialized sprintRepository : " + sprintRepository.size());
 	}		
     	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction

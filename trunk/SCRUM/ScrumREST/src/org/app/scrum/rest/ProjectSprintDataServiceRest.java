@@ -43,19 +43,15 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	private EntityRepository<Release> releaseRepository;
 	
 	@Inject private ProjectFactory projectFactory;
-	
-//	@Inject private EntityRepository<Sprint> sprintRepository; // !!! Bug on initialization
     
 	@PostConstruct public void init(){
     	releaseRepository = new EntityRepositoryBase<Release>(this.em, Release.class);
-//    	sprintRepository.setEm(this.em);
-    	// check injected references
 		logger.info("Initialized releaseRepository : " + releaseRepository.size());
-//		logger.info("Initialized sprintRepository : " + sprintRepository.size());
 	}	
 	
 	@Override
 	@GET 					/* scrum/projects 		REST-resource: projects-collection*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Collection<Project> toCollection() {
 		return Project.toDTOs(super.toCollection());
 	}	
@@ -78,7 +74,9 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOAggregate(project);
 	}	
 	
-//	@Override // Changed argument from Object to Integer so overridden is not correct anymore	
+//	@Override // Changed argument from Object to Integer so overridden is not correct anymore
+	
+	
 	@GET @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Project getById(@PathParam("id") Integer id){ 
