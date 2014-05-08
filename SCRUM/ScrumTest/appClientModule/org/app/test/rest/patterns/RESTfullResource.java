@@ -21,6 +21,7 @@ import org.jboss.resteasy.util.GenericType;
  * * POST, PUT will return transacted resource in its new state;
  * * DELETE will return null or error object in case of failure; 
  * 
+ * T class parameter represent the response type (if exists)
  */
 
 public class RESTfullResource <T extends Object> {
@@ -29,8 +30,10 @@ public class RESTfullResource <T extends Object> {
 	
 	private String basePath;
 	
+	// pentru DTO simple
 	private Class<T> entityResourceClass;
 	
+	// pentru DTO in colectii
 	private GenericType resourceGenericType;
 	
 	private String mediaType;
@@ -60,7 +63,14 @@ public class RESTfullResource <T extends Object> {
 	public void setMediaType(String mediaType) {
 		this.mediaType = mediaType;
 	}
-
+	
+	// Constructor pentru cereri generice (fara tipizare raspuns interpretat ca simple String)
+	public RESTfullResource(String basePath) {
+		this.basePath = basePath;
+		this.entityResourceClass = (Class<T>) String.class;
+	}		
+	
+	// Constructor pentru Reourse simple
 	public RESTfullResource(String basePath, Class entityResourceClass, String mediaType) {
 		this.basePath = basePath;
 		
@@ -70,25 +80,16 @@ public class RESTfullResource <T extends Object> {
 			this.entityResourceClass = (Class<T>) String.class;
 		
 		this.mediaType = mediaType;
-//		this.request = new ClientRequest(basePath);
-//		this.request.accept(mediaType);		
 	}
-	
-	public RESTfullResource(String basePath) {
-		this.basePath = basePath;
-		this.entityResourceClass = (Class<T>) String.class;
-//		this.request = new ClientRequest(basePath);
-	}		
 
+	// Constructor pentru Resurse colectii
 	public RESTfullResource(String basePath,String mediaType, GenericType genericType) {
 		this(basePath, null, mediaType);
 		this.resourceGenericType = genericType;
 	}
 	
-	/* CRUD Methods */
+	/* HTTP Methods */
 	public T get() throws Exception{
-//		if(this.request == null)
-//			throw new Exception("Failed REST: GET request object not initialized!");
 		return (T) this.invokeResourceRequest(HTTP_METHOD.GET, null);
 	}
 	public T put(Object entity) throws Exception{
@@ -103,22 +104,11 @@ public class RESTfullResource <T extends Object> {
 	public void delete() throws Exception{
 		this.invokeResourceRequest(HTTP_METHOD.DELETE, null);
 	}	
-
-	
-	/* Free Form Methods*/
-	public T getCollection() throws Exception{			
-		ClientResponse response = this.request.get();
-		int responseCode = response.getResponseStatus().getStatusCode();
-	    if(responseCode != 200){
-	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
-	    }
-	    return (T) response.getEntity(this.resourceGenericType);
-	    
-	}	
 	
 	/* Internals */
 	@SuppressWarnings("unchecked")
 	private  T invokeResourceRequest(HTTP_METHOD requestType, Object entity) throws Exception{
+		// Creare cerere
 		this.request = new ClientRequest(this.basePath);
 		if(this.mediaType != null)
 			this.request.accept(this.mediaType);			
@@ -127,12 +117,12 @@ public class RESTfullResource <T extends Object> {
 			throw new Exception("Failed REST: REST request object not initialized!");
 		logger.info("DEBUG resource request " + request.getUri());
 		
+		// Cererile GET nu trebuie sa aiba body
 		if(entity != null && !requestType.equals(HTTP_METHOD.GET))
 			this.request.body(this.mediaType, mapEntityToMediaType(entity));
 		
+		// Trimitere cerere si receptionare raspuns
 		ClientResponse<T> response = null;
-		
-		//Send the request
 		if(requestType.equals(HTTP_METHOD.GET)){
 			response = this.request.get();
 			this.request.clear();
@@ -144,23 +134,26 @@ public class RESTfullResource <T extends Object> {
 		if(requestType.equals(HTTP_METHOD.DELETE))
 			response = this.request.delete();
 	    
+		// Verificare Status raspuns
 		int responseCode = response.getResponseStatus().getStatusCode();
-		
+		logger.info("DEBUG resource RESPONSE --- CODE: " + responseCode);
 		if(requestType.equals(HTTP_METHOD.GET)){
 			if(responseCode != 200){
 		        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
 		    }			
 		}
 	    
-	    logger.info("DEBUG resource RESPONSE --- CODE: " + responseCode);
+		// Decodificare raspuns
 	    try{
+	    	// pentru colectii
 	    	if (this.resourceGenericType != null){
 	    		return (T) response.getEntity(this.resourceGenericType);
 	    	}
+	    	// pentru tipuri DTO simple
 		    if (response.getEntity(this.entityResourceClass) != null)
 		    	return (T) response.getEntity(this.entityResourceClass);
 	    }catch(Exception ex){
-//	    	ex.printStackTrace();
+	    	// ex.printStackTrace();
 	    	logger.info("DEBUG resource request ERROR PARSING RESPONSE " + ex.getMessage());
 	    }
 	    return null;		
