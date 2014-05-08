@@ -1,6 +1,10 @@
 package org.app.test.rest.patterns;
 
 import java.io.StringWriter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import javax.xml.bind.JAXBContext;
@@ -9,6 +13,7 @@ import javax.xml.bind.Marshaller;
 import org.app.scrum.project.Project;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.util.GenericType;
 
 /*
  * REST Resource CRUD convention:
@@ -23,9 +28,12 @@ public class RESTfullResource <T extends Object> {
 	private enum HTTP_METHOD {GET, POST, PUT, DELETE};
 	
 	private String basePath;
+	
 	private Class<T> entityResourceClass;
-//	private Class entityResourceClass;
-	private String mediaType = "application/xml";
+	
+	private GenericType resourceGenericType;
+	
+	private String mediaType;
 	
 	private ClientRequest request;
 	
@@ -55,119 +63,114 @@ public class RESTfullResource <T extends Object> {
 
 	public RESTfullResource(String basePath, Class entityResourceClass, String mediaType) {
 		this.basePath = basePath;
-		this.entityResourceClass = entityResourceClass;
+		
+		if(entityResourceClass != null)
+			this.entityResourceClass = entityResourceClass;
+		else
+			this.entityResourceClass = (Class<T>) String.class;
+		
 		this.mediaType = mediaType;
-		this.request = new ClientRequest(basePath);
-		this.request.accept(mediaType);		
+//		this.request = new ClientRequest(basePath);
+//		this.request.accept(mediaType);		
 	}
 	
 	public RESTfullResource(String basePath) {
 		this.basePath = basePath;
 		this.entityResourceClass = (Class<T>) String.class;
-		this.request = new ClientRequest(basePath);
-	}	
+//		this.request = new ClientRequest(basePath);
+	}		
 
+	public RESTfullResource(String basePath,String mediaType, GenericType genericType) {
+		this(basePath, null, mediaType);
+		this.resourceGenericType = genericType;
+	}
+	
 	/* CRUD Methods */
 	public T get() throws Exception{
 //		if(this.request == null)
 //			throw new Exception("Failed REST: GET request object not initialized!");
 		return (T) this.invokeResourceRequest(HTTP_METHOD.GET, null);
 	}
-	public T put(T entity) throws Exception{
+	public T put(Object entity) throws Exception{
 		return (T) this.invokeResourceRequest(HTTP_METHOD.PUT, entity);
 	}	
-	public T post(T entity) throws Exception{
+	public T post(Object entity) throws Exception{
 		return (T) this.invokeResourceRequest(HTTP_METHOD.POST, entity);
 	}	
-	public Object delete(T entity) throws Exception{
+	public void delete(Object entity) throws Exception{
 		this.invokeResourceRequest(HTTP_METHOD.DELETE, entity);
-	    return null;
 	}	
-	public Object delete() throws Exception{
+	public void delete() throws Exception{
 		this.invokeResourceRequest(HTTP_METHOD.DELETE, null);
-	    return null;
 	}	
 
 	
 	/* Free Form Methods*/
-	public Object get(String customPath) throws Exception{
-		if (customPath != null){
-			if (!customPath.startsWith("/") && !this.basePath.endsWith("/"))
-				customPath = "/" + customPath;
-			customPath = basePath + customPath;
-			logger.info("DEBUG custom GET path: " + customPath);
-			ClientRequest customGETRequest = new ClientRequest(customPath);
-			
-			ClientResponse response = customGETRequest.get();
-			int responseCode = response.getResponseStatus().getStatusCode();
-		    if(responseCode != 200){
-		        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
-		    }
-		    return response.getEntity(String.class);
-		}
-		return null;
-	}
+	public T getCollection() throws Exception{			
+		ClientResponse response = this.request.get();
+		int responseCode = response.getResponseStatus().getStatusCode();
+	    if(responseCode != 200){
+	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
+	    }
+	    return (T) response.getEntity(this.resourceGenericType);
+	    
+	}	
 	
 	/* Internals */
 	@SuppressWarnings("unchecked")
-	private  T invokeResourceRequest(HTTP_METHOD requestType, T entity) throws Exception{
+	private  T invokeResourceRequest(HTTP_METHOD requestType, Object entity) throws Exception{
+		this.request = new ClientRequest(this.basePath);
+		if(this.mediaType != null)
+			this.request.accept(this.mediaType);			
+		
 		if(this.request == null)
 			throw new Exception("Failed REST: REST request object not initialized!");
 		logger.info("DEBUG resource request " + request.getUri());
 		
-		if(entity != null)
+		if(entity != null && !requestType.equals(HTTP_METHOD.GET))
 			this.request.body(this.mediaType, mapEntityToMediaType(entity));
+		
 		ClientResponse<T> response = null;
 		
 		//Send the request
-		if(requestType.equals(HTTP_METHOD.GET))
+		if(requestType.equals(HTTP_METHOD.GET)){
 			response = this.request.get();
+			this.request.clear();
+		}
 		if(requestType.equals(HTTP_METHOD.PUT))
 			response = this.request.put();
 		if(requestType.equals(HTTP_METHOD.POST))
 			response = this.request.post();
 		if(requestType.equals(HTTP_METHOD.DELETE))
 			response = this.request.delete();
-	    int responseCode = response.getResponseStatus().getStatusCode();
-	    if(responseCode != 200){
-	        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
-	    }	  
-	    logger.info("DEBUG resource RESPONSE " + response + " --- " + this.entityResourceClass);
+	    
+		int responseCode = response.getResponseStatus().getStatusCode();
+		
+		if(requestType.equals(HTTP_METHOD.GET)){
+			if(responseCode != 200){
+		        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
+		    }			
+		}
+	    
+	    logger.info("DEBUG resource RESPONSE --- CODE: " + responseCode);
 	    try{
+	    	if (this.resourceGenericType != null){
+	    		return (T) response.getEntity(this.resourceGenericType);
+	    	}
 		    if (response.getEntity(this.entityResourceClass) != null)
 		    	return (T) response.getEntity(this.entityResourceClass);
 	    }catch(Exception ex){
-	    	ex.printStackTrace();
-	    	logger.info("DEBUG resource request ERROR INVOCATION " + ex.getMessage());
+//	    	ex.printStackTrace();
+	    	logger.info("DEBUG resource request ERROR PARSING RESPONSE " + ex.getMessage());
 	    }
 	    return null;		
 	}
 	
-	private String mapEntityToMediaType(T entity) throws Exception{
+	private String mapEntityToMediaType(Object entity) throws Exception{
 		StringWriter writer = new StringWriter();
 	    JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
 	    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 	    jaxbMarshaller.marshal(entity, writer);
 	    return writer.getBuffer().toString();
-	}
-	
-	/* Simple GET Test*/
-	public static <T extends Object> T getResource(String restURL, String mediaType, Class<T> entityClass) throws Exception{
-		ClientRequest request = new ClientRequest(restURL);
-		//Set the accept header to tell the accepted response format
-	    request.accept(mediaType);
-	     
-	    //RESTEasy client automatically map response entity to target entity.
-	    ClientResponse<T> response = request.get(entityClass);
-	     
-	    //Check response status code
-	    int apiResponseCode = response.getResponseStatus().getStatusCode();
-	    if(response.getResponseStatus().getStatusCode() != 200)
-	    {
-	        throw new RuntimeException("Failed with HTTP error code : " + apiResponseCode);
-	    }
-	     
-	    //Get entity from response
-	    return (T) response.getEntity();
 	}
 }

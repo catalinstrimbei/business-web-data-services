@@ -61,6 +61,13 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	}	
 	
 	@POST 					/* scrum/projects 		REST-resource: projects-collection*/
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	public Collection<Project> addNew(Project project) {
+		super.add(project);
+		return Project.toDTOs(super.toCollection());
+	}
+	
 	@PUT @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/	
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
@@ -79,13 +86,12 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOAggregate(project);
 	}
 	
-	
+	@Override
 	@DELETE 				/* scrum/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	@Override
 	public boolean remove(Project project) {
-		return super.remove(project); // !!!
+		return super.remove(project);
 	}
 	
 	@DELETE @Path("/{id}") 	/* scrum/projects/{id} 	REST-resource: project-entity*/	
@@ -93,7 +99,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	public void remove(@PathParam("id")Integer id) {
 		logger.info("DEBUG: called REMOVE - ById() for projects >>>>>>>>>>>>>> simplified ! + id");
 		Project project = super.getById(id);
-		super.remove(project); // !!!
+		super.remove(project);
 	}	
 	
 	// GET method on second repository for Release-type entities
