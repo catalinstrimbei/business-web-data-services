@@ -1,4 +1,4 @@
-package org.app.scrum.rest.test;
+package org.app.test.rest.patterns;
 
 import java.io.StringWriter;
 import java.util.logging.Logger;
@@ -7,7 +7,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
 import org.app.scrum.project.Project;
-import org.app.test.rest.patterns.RESTResource;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.junit.Test;

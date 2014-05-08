@@ -27,61 +27,45 @@ import org.jboss.resteasy.util.GenericType;
 public class RESTfullResource <T extends Object> {
 	private static Logger logger = Logger.getLogger(RESTfullResource.class.getName());
 	private enum HTTP_METHOD {GET, POST, PUT, DELETE};
-	
 	private String basePath;
-	
-	// pentru DTO simple
+	// for simple DTO
 	private Class<T> entityResourceClass;
-	
-	// pentru DTO in colectii
+	// for collection DTO
 	private GenericType resourceGenericType;
-	
 	private String mediaType;
-	
 	private ClientRequest request;
-	
 	public String getBasePath() {
 		return basePath;
 	}
-
 	public void setBasePath(String basePath) {
 		this.basePath = basePath;
 	}
-
 	public Class<T> getEntityResourceClass() {
 		return entityResourceClass;
 	}
-
 	public void setEntityResourceClass(Class entityResourceClass) {
 		this.entityResourceClass = entityResourceClass;
 	}
-
 	public String getMediaType() {
 		return mediaType;
 	}
-
 	public void setMediaType(String mediaType) {
 		this.mediaType = mediaType;
 	}
-	
 	// Constructor pentru cereri generice (fara tipizare raspuns interpretat ca simple String)
 	public RESTfullResource(String basePath) {
 		this.basePath = basePath;
 		this.entityResourceClass = (Class<T>) String.class;
 	}		
-	
 	// Constructor pentru Reourse simple
 	public RESTfullResource(String basePath, Class entityResourceClass, String mediaType) {
 		this.basePath = basePath;
-		
 		if(entityResourceClass != null)
 			this.entityResourceClass = entityResourceClass;
 		else
 			this.entityResourceClass = (Class<T>) String.class;
-		
 		this.mediaType = mediaType;
 	}
-
 	// Constructor pentru Resurse colectii
 	public RESTfullResource(String basePath,String mediaType, GenericType genericType) {
 		this(basePath, null, mediaType);
@@ -107,20 +91,18 @@ public class RESTfullResource <T extends Object> {
 	
 	/* Internals */
 	@SuppressWarnings("unchecked")
+	
 	private  T invokeResourceRequest(HTTP_METHOD requestType, Object entity) throws Exception{
 		// Creare cerere
 		this.request = new ClientRequest(this.basePath);
 		if(this.mediaType != null)
 			this.request.accept(this.mediaType);			
-		
 		if(this.request == null)
 			throw new Exception("Failed REST: REST request object not initialized!");
 		logger.info("DEBUG resource request " + request.getUri());
-		
 		// Cererile GET nu trebuie sa aiba body
 		if(entity != null && !requestType.equals(HTTP_METHOD.GET))
 			this.request.body(this.mediaType, mapEntityToMediaType(entity));
-		
 		// Trimitere cerere si receptionare raspuns
 		ClientResponse<T> response = null;
 		if(requestType.equals(HTTP_METHOD.GET)){
@@ -133,7 +115,6 @@ public class RESTfullResource <T extends Object> {
 			response = this.request.post();
 		if(requestType.equals(HTTP_METHOD.DELETE))
 			response = this.request.delete();
-	    
 		// Verificare Status raspuns
 		int responseCode = response.getResponseStatus().getStatusCode();
 		logger.info("DEBUG resource RESPONSE --- CODE: " + responseCode);
@@ -142,13 +123,11 @@ public class RESTfullResource <T extends Object> {
 		        throw new RuntimeException("Failed with HTTP error code : " + responseCode);
 		    }			
 		}
-	    
 		// Decodificare raspuns
 	    try{
 	    	// pentru colectii
-	    	if (this.resourceGenericType != null){
+	    	if (this.resourceGenericType != null)
 	    		return (T) response.getEntity(this.resourceGenericType);
-	    	}
 	    	// pentru tipuri DTO simple
 		    if (response.getEntity(this.entityResourceClass) != null)
 		    	return (T) response.getEntity(this.entityResourceClass);

@@ -16,8 +16,6 @@ import org.jboss.resteasy.util.GenericType;
 /* Test CRUD on Rest with POST, GET, PUT, DELETE requests*/
 public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
-	
-	/* CHECK Rest live test*/
 	@Test
 	public void testGetMessage() throws Exception{
 		RESTfullResource<String> resource = new RESTfullResource("http://localhost:8080/ScrumREST/projects/test");
@@ -34,9 +32,7 @@ public class TestRestProjectResource {
 				new GenericType<Collection<Project>>(){});			
 		
 		Collection<Project> projects = resource.get();
-		
 		assertNotNull("Message not returned from service!", projects);
-		
 		for(Project p: projects)
 			logger.info("DEBUG testGetProjects: queried project" + projects);
 	}
@@ -57,12 +53,10 @@ public class TestRestProjectResource {
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/ScrumREST/projects/1002", 
 				Project.class, "application/xml");
-		
 		Project project = resource.get();
 		logger.info("DEBUG TEST RESOURCE GET: " +  project);
 		assertNotNull("Resource queried [/projects/1002] not returned from service!", project);
 		project.setName(project.getName() + "_REST");
-		
 		Project result = resource.put(project);
 		logger.info("DEBUG testPUTUpdatedProjectResource: " +  result);
 		assertNotNull("Resource updated [/projects/1002] not returned from service!", result);
