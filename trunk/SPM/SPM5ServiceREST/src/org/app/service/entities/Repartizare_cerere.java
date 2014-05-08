@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 @Entity
-public class Repartizare_cerere {
+public class Repartizare_cerere implements Serializable{
 @Id
 Integer idRepartizare;
 	Date DataRepartizare;

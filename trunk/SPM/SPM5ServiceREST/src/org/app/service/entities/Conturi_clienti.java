@@ -1,12 +1,14 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Conturi_clienti {
+public class Conturi_clienti implements Serializable {
 
 	@Id
 	@GeneratedValue Integer UserName;

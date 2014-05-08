@@ -1,13 +1,14 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 @Entity
-public class Cereri_suport extends Cerere{
+public class Cereri_suport extends Cerere
+implements Serializable{
 
 Integer idCerereSuport;
 	String ProdusSuport;

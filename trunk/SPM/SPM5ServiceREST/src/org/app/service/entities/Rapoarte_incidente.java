@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,7 +8,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Rapoarte_incidente  extends Cerere{
+public class Rapoarte_incidente  extends Cerere
+implements Serializable{
 
 Integer idRaport;
 	Date dataRaport;

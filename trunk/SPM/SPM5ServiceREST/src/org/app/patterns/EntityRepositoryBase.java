@@ -18,6 +18,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.app.service.entities.Produse;
+
 /**
  * 
  * @author catalin
@@ -288,5 +290,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
 	    return (Class<T>)extractClassFromType(actualArg);
-	}		
+	}
+
+	
 }
