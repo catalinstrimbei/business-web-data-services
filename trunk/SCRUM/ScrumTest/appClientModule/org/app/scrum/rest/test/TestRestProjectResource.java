@@ -18,7 +18,7 @@ public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
 	
 	/* CHECK Rest live test*/
-//	@Test
+	@Test
 	public void testGetMessage() throws Exception{
 		RESTfullResource<String> resource = new RESTfullResource("http://localhost:8080/ScrumREST/projects/test");
 		String message = resource.get();
@@ -26,7 +26,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testGetMessage: " + message);		
 	}
 	
-//	@Test
+	@Test
 	public void testGetProjects() throws Exception{
 		RESTfullResource<Collection<Project>> resource = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",
@@ -41,7 +41,7 @@ public class TestRestProjectResource {
 			logger.info("DEBUG testGetProjects: queried project" + projects);
 	}
 	
-//	@Test 
+	@Test 
 	public void testGetProject() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/ScrumREST/projects/1002", 
@@ -106,7 +106,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testPOSTNewProjectResource: queried projects count: " + projects.size());
 	}	
 	
-	@Test
+//	@Test
 	public void testDELETEProjectResource() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/ScrumREST/projects/3003", 
@@ -120,7 +120,7 @@ public class TestRestProjectResource {
 		
 	}	
 
-	@Test
+//	@Test
 	public void testDELETEProjectsResource() throws Exception{
 		RESTfullResource<Collection<Project>> resourceProjects = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",
@@ -131,7 +131,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testDELETEProjectsResource: queried projects count: " + projects.size());	
 		
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
-				"http://localhost:8080/ScrumREST/projects/3001", 
+				"http://localhost:8080/ScrumREST/projects/325", 
 				Project.class, "application/xml");
 		
 		Project project = resource.get();
