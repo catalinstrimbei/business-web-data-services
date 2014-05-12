@@ -25,5 +25,19 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/rest-client/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/httpclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/httpcore-4.1.4.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/httpmime-4.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/jaxb-impl-2.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/jboss-jaxrs-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/resteasy-jackson-provider-2.3.2.Final.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/resteasy-jaxb-provider-2.3.2.Final.jar"/>
+	<classpathentry kind="lib" path="lib/rest-client/resteasy-jaxrs-2.3.2.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
