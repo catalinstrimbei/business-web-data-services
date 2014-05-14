@@ -120,23 +120,17 @@ public class TestRestProjectResource {
 				"http://localhost:8080/ScrumREST/projects/",
 				"application/xml",
 				new GenericType<Collection<Project>>(){});
-		
 		Collection<Project> projects = resourceProjects.get();
 		logger.info("DEBUG testDELETEProjectsResource: queried projects count: " + projects.size());	
-		
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/ScrumREST/projects/325", 
 				Project.class, "application/xml");
-		
 		Project project = resource.get();
 		logger.info("DEBUG testDELETEProjectsResource: " +  project);
 		assertNotNull("DEBUG testDELETEProjectsResource: Resource queried [/projects/3001] not returned from service!", project);
-		
 		resourceProjects.delete(project);
-		
 		projects = resourceProjects.get();
 		logger.info("DEBUG testDELETEProjectsResource: queried projects count: " + projects.size());		
-		
 	}	
 	
 }

@@ -10,13 +10,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 @XmlAccessorType(value = XmlAccessType.NONE)
 public class AtomLink implements Serializable {
-	public final static String ATOM_NAMESPACE = "http://www.w3.org/2005/Atom";
-	
 	private URI href;
 	private String rel;
 	private String type;
-	private String hreflang;
-	private String title;
 	
     @XmlAttribute(name = "href")
     public URI getHref() {
@@ -30,33 +26,13 @@ public class AtomLink implements Serializable {
     public String getType() {
         return type;
     }
-//    @XmlAttribute(name = "hreflang")
-//    public String getHreflang() {
-//        return hreflang;
-//    }
-//    @XmlAttribute(name = "title")
-//    public String getTitle() {
-//        return title;
-//    }
-//	public AtomLink(URI href, String rel, String type, String hreflang,
-//			String title) {
-//		super();
-//		this.href = href;
-//		this.rel = rel;
-//		this.type = type;
-//		this.hreflang = hreflang;
-//		this.title = title;
-//	}
 	
 	public AtomLink(String href, String rel) throws Exception {
 		super();
 		this.href = new URI(href);
 		this.rel = rel;
 		this.type = "text/html";
-	}	
-	
-	public AtomLink() {
-		super();
-	}	
-	
+	}
+	public AtomLink() { }	
 }
+
