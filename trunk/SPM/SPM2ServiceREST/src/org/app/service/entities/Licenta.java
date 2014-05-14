@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Licenta {
+public class Licenta implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idLicenta;

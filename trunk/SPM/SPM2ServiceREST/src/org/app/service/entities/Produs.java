@@ -1,22 +1,29 @@
 package org.app.service.entities;
 
+import static javax.persistence.CascadeType.ALL;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Produs {
+public class Produs implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idProdus;
 	private String nume;
-	@ManyToOne
-	private Licenta licenta;
+	@OneToMany(/*mappedBy="contract"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	private List<Licenta> licenta = new ArrayList<Licenta>();
 	@ManyToOne
 	private Garantie garantie;
 	
-	public Produs(String nume, Licenta licenta, Garantie garantie) {
+	public Produs(String nume, List<Licenta> licenta, Garantie garantie) {
 		super();
 		this.nume = nume;
 		this.licenta = licenta;
@@ -66,11 +73,11 @@ public class Produs {
 		this.nume = nume;
 	}
 
-	public Licenta getLicenta() {
+	public List<Licenta> getLicenta() {
 		return licenta;
 	}
 
-	public void setLicenta(Licenta licenta) {
+	public void setLicenta(List<Licenta> licenta) {
 		this.licenta = licenta;
 	}
 

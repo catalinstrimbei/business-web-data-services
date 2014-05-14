@@ -1,6 +1,8 @@
 package org.app.service.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,23 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Inheritance(strategy=InheritanceType.JOINED)
 @Entity
 public abstract class Contract {
 	@Id
 	@GeneratedValue
-	private Integer nrContract;
+	protected Integer nrContract;
 	@ManyToOne
-	private Client client;
-	@ManyToOne
-	private Produs produs;
-	private Date dataContract;
-	private Date dataInceput;
-	private Date dataIncheiere;
-	private String observatii;
+	protected Client client;
+	@OneToMany(/*mappedBy="contract"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	protected List<Produs> produs = new ArrayList<Produs>();
+	protected Date dataContract;
+	protected Date dataInceput;
+	protected Date dataIncheiere;
+	protected String observatii;
 	
-	public Contract(Integer nrContract, Client client, Produs produs,
+	public Contract(Integer nrContract, Client client, List<Produs> produs,
 			Date dataContract, Date dataInceput, Date dataIncheiere,
 			String observatii) {
 		super();
@@ -60,11 +65,11 @@ public abstract class Contract {
 		this.client = client;
 	}
 
-	public Produs getProdus() {
+	public List<Produs> getProdus() {
 		return produs;
 	}
 
-	public void setProdus(Produs produs) {
+	public void setProdus(List<Produs> produs) {
 		this.produs = produs;
 	}
 
@@ -72,8 +77,8 @@ public abstract class Contract {
 		return dataContract;
 	}
 
-	public void setDataContract(Date dataContract) {
-		this.dataContract = dataContract;
+	public void setDataContract(Date date) {
+		this.dataContract = date;
 	}
 
 	public Date getDataInceput() {
@@ -98,6 +103,18 @@ public abstract class Contract {
 
 	public void setObservatii(String observatii) {
 		this.observatii = observatii;
+	}
+
+
+	public static List<Contract> toDTOList(Object contract) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Contract toDTO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

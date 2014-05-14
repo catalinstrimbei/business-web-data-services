@@ -1,22 +1,34 @@
 package org.app.service.entities;
 
-import java.io.Serializable;
+import static javax.persistence.CascadeType.ALL;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity
-public abstract class Client implements Serializable{
+public abstract class Client {
 	@Id
 	@GeneratedValue
-	private Integer idClient;
-	private String adresa;
-	private String telefon;
-	private String email;
-	private String contBanca;
+	protected Integer idClient;
+	protected String adresa;
+	protected String telefon;
+	protected String email;
+	protected String contBanca;
+	@OneToMany(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	protected List<Contract> contract = new ArrayList<Contract>();
 	
 	
 	
+	public Client(List<Contract> contract) {
+		super();
+		this.contract = contract;
+	}
+
+
 	public Client(String adresa, String telefon, String email, String contBanca) {
 		super();
 		this.adresa = adresa;
@@ -94,6 +106,19 @@ public abstract class Client implements Serializable{
 	public void setIdClient(Integer idClient) {
 		this.idClient = idClient;
 	}
+
+
+
+ void setContract(List<Contract> contracteClient) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+public static Client toDTOAggregate(Client client) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 	
 }
