@@ -1,4 +1,4 @@
-package org.app.test.rest.patterns;
+package org.ejb.client.test;
 
 import java.io.StringWriter;
 import java.util.logging.Logger;

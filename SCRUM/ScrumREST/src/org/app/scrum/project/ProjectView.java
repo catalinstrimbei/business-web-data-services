@@ -82,7 +82,7 @@ public class ProjectView {
 	}	
 	
 	/* Rest Resource URL*/
-	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
+//	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
     public AtomLink getLink() throws Exception {
 		String restUrl = BASE_URL + this.getProjectNo();
         return new AtomLink(restUrl, "get-project");

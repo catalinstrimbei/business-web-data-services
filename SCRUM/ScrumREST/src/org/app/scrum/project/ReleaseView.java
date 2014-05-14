@@ -119,7 +119,7 @@ public class ReleaseView {
 	}
 	
 	/* REST Resource URL */	
-	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
+//	@XmlElement(name = "link", namespace = AtomLink.ATOM_NAMESPACE)
     public AtomLink getLink() throws Exception {
 		String restUrl = BASE_URL + this.getReleaseId();
         return new AtomLink(restUrl, "get-project");
