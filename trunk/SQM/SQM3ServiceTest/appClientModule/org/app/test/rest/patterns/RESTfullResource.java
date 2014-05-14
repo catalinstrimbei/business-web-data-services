@@ -4,7 +4,6 @@ import java.io.StringWriter;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import org.app.scrum.project.Project;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.util.GenericType;
@@ -126,7 +125,7 @@ public class RESTfullResource <T extends Object> {
 	
 	private String mapEntityToMediaType(Object entity) throws Exception{
 		StringWriter writer = new StringWriter();
-	    JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
+	    JAXBContext jaxbContext = JAXBContext.newInstance(entity.getClass());
 	    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 	    jaxbMarshaller.marshal(entity, writer);
 	    return writer.getBuffer().toString();
