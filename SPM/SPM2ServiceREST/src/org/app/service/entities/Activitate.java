@@ -1,15 +1,21 @@
 package org.app.service.entities;
 
+import static javax.persistence.CascadeType.ALL;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
-public class Activitate {
+public class Activitate implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idActivitate;
@@ -19,6 +25,11 @@ public class Activitate {
 	private Integer oreFacturate;
 	private String obiectActivitate;
 	private String tipActivitate;
+	
+	@OneToMany
+	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	protected List<ContractSuport> contract = new ArrayList<ContractSuport>();
+	
 	
 	public Activitate(Integer idActivitate, Operator operator,
 			Date dataActivitate, Integer oreFacturate, String obiectActivitate,

@@ -1,13 +1,19 @@
 package org.app.service.entities;
 
+import static javax.persistence.CascadeType.ALL;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Garantie {
+public class Garantie implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idGarantie;
@@ -15,6 +21,9 @@ public class Garantie {
 	private Date dataSfarsit;
 	private Date dataInterventie;
 	private String observatii;
+	
+	@OneToMany(/*mappedBy="contract"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	private List<Produs> produs = new ArrayList<Produs>();
 	
 	public Garantie(Date dataInceput, Date dataSfarsit, Date dataInterventie,
 			String observatii) {

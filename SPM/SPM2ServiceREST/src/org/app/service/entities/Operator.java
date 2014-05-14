@@ -1,11 +1,18 @@
 package org.app.service.entities;
 
+import static javax.persistence.CascadeType.ALL;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Operator {
+public class Operator implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idOperator;
@@ -13,6 +20,10 @@ public class Operator {
 	private String prenume;
 	private String adresa;
 	private String email;
+	
+	@OneToMany
+	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	protected List<Activitate> activitate = new ArrayList<Activitate>();
 	
 	public Operator(String nume, String prenume, String adresa, String email) {
 		super();
