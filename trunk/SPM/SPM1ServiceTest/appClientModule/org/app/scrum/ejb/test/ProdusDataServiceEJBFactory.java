@@ -10,15 +10,17 @@ import javax.naming.NamingException;
 
 import org.app.service.ejb.DataService;
 import org.app.service.ejb.DataServiceEJB;
+import org.app.service.ejb.ProdusSprintDataService;
+import org.app.service.ejb.ProdusSprintDataServiceEJB;
 
 public class ProdusDataServiceEJBFactory {
 	private static Logger logger = Logger.getLogger(ProdusDataServiceEJBFactory.class.getName());
 	
-	public static DataService getScrumProjectRepositoryService() throws Exception{
+	public static ProdusSprintDataService getService() throws Exception{
 		return lookupEJBService();
 	}
 	
-	private static String MODULE_NAME = "ScrumREST";
+	private static String MODULE_NAME = "SPM1ServiceREST";
 	private static String SERVICE_NAME = ProdusSprintDataServiceEJB.class.getSimpleName();
 	private static String REMOTE_INTERFACE_NAME = ProdusSprintDataService.class.getName();
 	

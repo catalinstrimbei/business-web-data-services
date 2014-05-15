@@ -21,7 +21,7 @@ public class TestScrumProdusDataServiceEJB {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		service = ProdusSprintDataServiceEJBFactory.getScrumProjectRepositoryService();
+		service = ProdusDataServiceEJBFactory.getService();
 	}
 	
 	/*check ejb live test*/
@@ -36,7 +36,7 @@ public class TestScrumProdusDataServiceEJB {
 
 
 	/* create test1 create-read*/
-	 @Test
+//	 @Test
 	public void testCreateProdus() {
 		 Produs produs= new Produs(1,"Produs Test 101","categ test 1");
 		 produs= service.add(produs);
@@ -49,7 +49,7 @@ public class TestScrumProdusDataServiceEJB {
 	 /* create test 2- create aggregate*/
 	 @Test
 		public void testCreateNewProdus() {
-			 Produs produs= service.createNewProdus(2);
+			 Produs produs= service.createNewProdus(3);
 			 assertNotNull("Fail to Create new Produs in repository!", produs);
 			 //update produs
 			 produs.setDenProdus(produs.getDenProdus()+" - changed by test client");
@@ -62,13 +62,13 @@ public class TestScrumProdusDataServiceEJB {
 			assertNotNull("Fail to save new Produs in repository!", produs);
 			logger.info("DEBUG:  createNewProdus:  Produs changed: "+produs);
 			//check read
-			 produs= service.getById(1);
+			 produs= service.getById(3);
 			assertNotNull("Fail to find changed Produs in repository!", produs);
 			logger.info("DEBUG: createNewProdus: queried Produs: "+produs);
 		}
 	 
 	 //read test read collection
-	 @Test
+//	 @Test
 		public void testToCollection() {
 			 //?????????????????????????????????????(List<Produs>) trebuie???????????????
 			 List<Produs> produse=(List<Produs>) service.toCollection();
@@ -80,7 +80,7 @@ public class TestScrumProdusDataServiceEJB {
 		}
 	 
 	 //update test - read instances&update
-	 @Test
+//	 @Test
 		public void testAdd() {
 			Produs produs= service.getById(1);
 			 assertNotNull("Fail to get Produs from repository!", produs);
@@ -96,7 +96,7 @@ public class TestScrumProdusDataServiceEJB {
 	 
 	 //remove test 
 
-	 @Test
+//	 @Test
 		public void testRemove() {
 			Produs produs= service.getById(1);
 			 assertNotNull("Fail to get Produs from repository!", produs);
