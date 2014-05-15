@@ -13,10 +13,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.app.service.rest.AtomLink;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
+@XmlRootElement(name="versiune")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity 
 public class Versiune implements Serializable{
 	
@@ -123,6 +131,11 @@ public class Versiune implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 */
-	
+	public static String BASE_URL = Produs.BASE_URL;
+	@XmlElement(name= "link")
+	public AtomLink getLink() throws Exception{
+		String restUrl = BASE_URL + this.getProdus().getIdProdus() + "/versiuni/" + this.getIdVersiune();
+			return new AtomLink(restUrl, "get-versiune");
+	}
 
 }

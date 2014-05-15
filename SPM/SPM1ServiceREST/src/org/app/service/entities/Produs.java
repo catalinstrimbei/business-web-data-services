@@ -11,11 +11,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.app.service.rest.AtomLink;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
-
+@XmlRootElement(name="produs")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity 
 public class Produs implements Serializable{
 	@Id @GeneratedValue
@@ -35,6 +43,7 @@ public class Produs implements Serializable{
 	//@Transient
 	//private ProductManager productManager;
 	
+	@XmlElementWrapper(name="versiuni") @XmlElement(name="versiune")
 	public List<Versiune> getVersiuni() {
 		return versiuni;
 	}
@@ -43,6 +52,7 @@ public class Produs implements Serializable{
 		this.versiuni = versiuni;
 	}
 
+	@XmlElement
 	public Integer getIdProdus() {
 		return idProdus;
 	}
@@ -59,6 +69,7 @@ public class Produs implements Serializable{
 		this.categorieProdus = categorieProdus;
 	}
 
+	@XmlElementWrapper(name="editii") @XmlElement(name="editie")
 	public List<Editie> getEditii() {
 		return editii;
 	}
@@ -92,6 +103,7 @@ public class Produs implements Serializable{
 		return produsDTOList.toArray(new Produs[0]);
 	}
 
+	@XmlElement
 	public String getDenProdus() {
 		return denProdus;
 	}
@@ -104,7 +116,12 @@ public class Produs implements Serializable{
 		super();
 	}
 	
-	
-	
+	public static String BASE_URL = "http://localhost:8080/ScrumREST/produse/";
+	@XmlElement(name= "link")
+	public AtomLink getLink() throws Exception{
+		String restUrl = BASE_URL + this.getIdProdus();
+			return new AtomLink(restUrl, "get-produs");
+			
+	}	
 
 }

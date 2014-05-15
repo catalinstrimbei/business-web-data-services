@@ -14,7 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.app.service.rest.AtomLink;
+
+@XmlRootElement(name="editie")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity 
 public class Editie implements Serializable{
 	@Id @GeneratedValue
@@ -47,6 +55,60 @@ public class Editie implements Serializable{
 
 	public Editie() {
 		super();
+	}
+	public static String BASE_URL = Produs.BASE_URL;
+	@XmlElement(name= "link")
+	public AtomLink getLink() throws Exception{
+		String restUrl = BASE_URL + this.getProdus().getIdProdus() + "/editii/" + this.getIdEditie();
+			return new AtomLink(restUrl, "get-editie");
+	}
+
+	public Integer getIdEditie() {
+		return idEditie;
+	}
+
+	public void setIdEditie(Integer idEditie) {
+		this.idEditie = idEditie;
+	}
+
+	public String getDenEditie() {
+		return denEditie;
+	}
+
+	public void setDenEditie(String denEditie) {
+		this.denEditie = denEditie;
+	}
+
+	public String getDescriere() {
+		return descriere;
+	}
+
+	public void setDescriere(String descriere) {
+		this.descriere = descriere;
+	}
+
+	public Produs getProdus() {
+		return produs;
+	}
+
+	public void setProdus(Produs produs) {
+		this.produs = produs;
+	}
+
+	public List<Optiuni> getOptiuni() {
+		return optiuni;
+	}
+
+	public void setOptiuni(List<Optiuni> optiuni) {
+		this.optiuni = optiuni;
+	}
+
+	public List<Pret> getPreturi() {
+		return preturi;
+	}
+
+	public void setPreturi(List<Pret> preturi) {
+		this.preturi = preturi;
 	}
 	
 	
