@@ -54,17 +54,17 @@ public class ProdusSprintDataServicesRest extends EntityRepositoryBase<Produs> i
 	
 	@TransactionAttribute (TransactionAttributeType.REQUIRES_NEW)
 	public Produs createNewProdus(Integer id){
-		Produs produs = produsFactory.buildProdus(id, "NEW Produs", "categ 1",4,2);
+		Produs produs = ProdusFactory.buildProdus(id, "NEW Produs", "categ 1",4,2);
 		this.add(produs);
 		return Produs.toDTOAggregate(produs);
 	}
 	public String getMessage(){
 		return "ProdusSprintDataServices is working...";
 	}
-	@Override
+//	@Override
 	@GET @Path("/{id}")   /* scrum/produse/{id} REST- resource:produs-entity*/
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Produs getById (@PathParam("id") Object id){
+	public Produs getById (@PathParam("id") Integer id){
 		Produs produs = super.getById(id);
 		return Produs.toDTOAggregate(produs);
 	}

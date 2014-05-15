@@ -27,11 +27,11 @@ import java.util.Collection;
 
 @Path("produse") /*  http://localhost:8080/ScrumREST/produse    */
 @Stateless @LocalBean
-
 //@Stateless
-public class ProdusSprintDataServiceEJB extends EntityRepositoryBase<Produs> implements ProdusSprintDataService, Serializable {
+public class ProdusSprintDataServiceEJB extends EntityRepositoryBase<Produs>
+implements ProdusSprintDataService, Serializable {
 
-	private static Logger logger = Logger.getLogger(ProdusSprintDataServicesEJB.class.getName());
+	private static Logger logger = Logger.getLogger(ProdusSprintDataServiceEJB.class.getName());
 	
 	private EntityRepository<Versiune> versiuneRepository;
 	
@@ -44,7 +44,7 @@ public class ProdusSprintDataServiceEJB extends EntityRepositoryBase<Produs> imp
 		
 		logger.info("Initialized versiuneRepository: " + versiuneRepository.size());
 		
-		
+		logger.info("Initialized produsFactory: " + produsFactory);
 	/*
 		editieRepository = new EntityRepositoryBase<Editie>(this.em, Editie.class);
 		sprintRepository.setEm(this.em);
@@ -57,7 +57,7 @@ public class ProdusSprintDataServiceEJB extends EntityRepositoryBase<Produs> imp
 	
 	@TransactionAttribute (TransactionAttributeType.REQUIRES_NEW)
 	public Produs createNewProdus(Integer id){
-		Produs produs = produsFactory.buildProdus(id, "NEW Produs", "categ 1",4,2);
+		Produs produs = ProdusFactory.buildProdus(id, "NEW Produs", "categ 1",4,2);
 		this.add(produs);
 		return Produs.toDTOAggregate(produs);
 	}

@@ -16,7 +16,7 @@ import org.app.service.entities.Versiune;
 public class ProdusFactory {
 	
 	
-	 public Produs buildProdus(Integer idProdus, String denProdus,String categorieProdus,Integer versiuniCount, Integer editiiCount){
+	 public static Produs buildProdus(Integer idProdus, String denProdus,String categorieProdus,Integer versiuniCount, Integer editiiCount){
 		 Produs produs = new Produs(idProdus, denProdus + "." +  idProdus, categorieProdus);
 		 List <Versiune> versiuniProdus = new ArrayList<>();
 		 List <Versiune> versiuneCurentaProdus = new ArrayList<>();
