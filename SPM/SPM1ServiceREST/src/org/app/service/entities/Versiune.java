@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.app.service.rest.AtomLink;
@@ -65,7 +66,7 @@ public class Versiune implements Serializable{
 	private List<Optiuni> optiuni=new ArrayList<>();
 	
 	//getteri si setteri
-	
+	@XmlElement
 	public Integer getIdVersiune() {
 		return idVersiune;
 	}
@@ -106,6 +107,7 @@ public class Versiune implements Serializable{
 		this.produs = produs;
 	}
 
+	@XmlElementWrapper(name="optiuni") @XmlElement(name="optiune")
 	public List<Optiuni> getOptiuni() {
 		return optiuni;
 	}
@@ -124,6 +126,17 @@ public class Versiune implements Serializable{
 	
 	public Versiune() {
 		super();
+		
+		
+	}
+
+	@XmlElement
+	public String getDenVersiune() {
+		return denVersiune;
+	}
+
+	public void setDenVersiune(String denVersiune) {
+		this.denVersiune = denVersiune;
 	}
 
 	/*

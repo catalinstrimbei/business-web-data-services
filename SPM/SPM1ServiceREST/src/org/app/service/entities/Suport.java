@@ -28,6 +28,7 @@ public class Suport implements Serializable{
 	@ManyToOne
 	private Serviciu serviciu;
 	
+	@XmlElement
 	public Integer getIdSuport() {
 		return idSuport;
 	}

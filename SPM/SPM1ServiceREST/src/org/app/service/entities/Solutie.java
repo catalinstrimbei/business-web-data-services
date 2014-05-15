@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 @Entity
 public class Solutie implements Serializable{
@@ -25,4 +27,41 @@ public class Solutie implements Serializable{
 	
 	@OneToMany(cascade = ALL, fetch = FetchType.LAZY)
 	private List<Serviciu> servicii = new ArrayList<>();
+
+	@XmlElement
+	public Integer getIdSolutie() {
+		return idSolutie;
+	}
+
+	public void setIdSolutie(Integer idSolutie) {
+		this.idSolutie = idSolutie;
+	}
+
+	public String getDenSolutie() {
+		return denSolutie;
+	}
+
+	public void setDenSolutie(String denSolutie) {
+		this.denSolutie = denSolutie;
+	}
+
+	@XmlElementWrapper(name="produse") @XmlElement(name="produs")
+	public List<Produs> getProduse() {
+		return produse;
+	}
+
+	public void setProduse(List<Produs> produse) {
+		this.produse = produse;
+	}
+
+	@XmlElementWrapper(name="servicii") @XmlElement(name="serviciu")
+	public List<Serviciu> getServicii() {
+		return servicii;
+	}
+
+	public void setServicii(List<Serviciu> servicii) {
+		this.servicii = servicii;
+	}
+	
+	
 }
