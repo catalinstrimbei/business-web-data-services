@@ -5,11 +5,13 @@ import java.util.logging.Logger;
 
 import org.app.service.ejb.DataService;
 import org.app.service.ejb.ProdusSprintDataService;
+import org.app.service.ejb.*;
 import org.app.service.entities.Editie;
 import org.app.service.entities.Produs;
 import org.app.service.entities.Versiune;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.app.scrum.ejb.test.*;
 
 import static org.junit.Assert.*;
 
