@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.app.service.rest.AtomLink;
@@ -62,7 +63,7 @@ public class Editie implements Serializable{
 		String restUrl = BASE_URL + this.getProdus().getIdProdus() + "/editii/" + this.getIdEditie();
 			return new AtomLink(restUrl, "get-editie");
 	}
-
+	@XmlElement
 	public Integer getIdEditie() {
 		return idEditie;
 	}
@@ -71,6 +72,7 @@ public class Editie implements Serializable{
 		this.idEditie = idEditie;
 	}
 
+	@XmlElement
 	public String getDenEditie() {
 		return denEditie;
 	}
@@ -94,7 +96,7 @@ public class Editie implements Serializable{
 	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
-
+	@XmlElementWrapper(name="optiuni") @XmlElement(name="optiune")
 	public List<Optiuni> getOptiuni() {
 		return optiuni;
 	}
@@ -102,7 +104,7 @@ public class Editie implements Serializable{
 	public void setOptiuni(List<Optiuni> optiuni) {
 		this.optiuni = optiuni;
 	}
-
+	@XmlElementWrapper(name="preturi") @XmlElement(name="pret")
 	public List<Pret> getPreturi() {
 		return preturi;
 	}

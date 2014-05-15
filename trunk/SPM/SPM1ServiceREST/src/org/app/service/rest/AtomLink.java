@@ -46,6 +46,8 @@ public AtomLink(String href, String rel) throws Exception{
 	this.type = "text/html";
 }
 
+//rest resource url
+
 //public static String BASE_URL = "http://localhost:8080/ScrumREST/produse/";
 //@XmlElement(name=link)
 //public AtomLink getLink() throws Exception{

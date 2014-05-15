@@ -29,6 +29,7 @@ public class SAAS implements Serializable{
 	@ManyToOne
 	private Serviciu serviciu;
 	
+	@XmlElement
 	public Integer getIdSAAS() {
 		return idSAAS;
 	}
