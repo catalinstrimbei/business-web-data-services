@@ -26,7 +26,7 @@ import static javax.persistence.FetchType.EAGER;
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity 
 public class Produs implements Serializable{
-	@Id @GeneratedValue
+	@Id //@GeneratedValue
 	private Integer idProdus;
 	private String denProdus;
 	private String categorieProdus;
@@ -116,7 +116,7 @@ public class Produs implements Serializable{
 		super();
 	}
 	
-	public static String BASE_URL = "http://localhost:8080/ScrumREST/produse/";
+	public static String BASE_URL = "http://localhost:8080/SPM1ServiceREST/produse/";
 	@XmlElement(name= "link")
 	public AtomLink getLink() throws Exception{
 		String restUrl = BASE_URL + this.getIdProdus();

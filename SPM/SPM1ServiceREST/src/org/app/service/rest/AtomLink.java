@@ -45,6 +45,9 @@ public AtomLink(String href, String rel) throws Exception{
 	this.rel = rel;
 	this.type = "text/html";
 }
+public AtomLink() {
+	super();
+}
 
 //rest resource url
 
