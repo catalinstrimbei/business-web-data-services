@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Start AngularJS App</title>
+	<link rel="stylesheet" href="css/app.css"/>
+</head>
+
+<body ng-app="ScrumApp" ng-controller="projectsController">
+	<h1>SCRUM App</h1>
+	
+	<table>
+	    <thead>
+	      <tr><th colspan="4">Projects List</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="project in projectsList">
+	        <td>{{$index + 1}}</td>
+	        <td>{{project.projectNo}}</td>
+	        <td>{{project.name}}</td>
+	        <td>{{project.startDate}}</td>
+	      </tr>
+	    </tbody>
+	  </table>	
+	
+	<script src="lib/angular.min.js"></script>
+	<script src="js/controllers.js"></script>
+</body>
+</html>
