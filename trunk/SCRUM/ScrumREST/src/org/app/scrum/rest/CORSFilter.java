@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-@WebFilter(urlPatterns="/*")
+@WebFilter(urlPatterns="*")
 public class CORSFilter implements Filter{
 	private static final Logger logger = Logger.getLogger(CORSFilter.class);
 	
