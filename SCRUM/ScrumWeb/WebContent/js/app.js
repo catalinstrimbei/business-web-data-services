@@ -1,3 +1,5 @@
+//http://localhost:8080/ScrumWeb/Start.html
+
 var app = angular.module('App', ['ngGrid', 'ngRoute', 'ngResource']);
 var projectsRestURL = 'http://localhost:8080/ScrumREST/projects';
 var x2js = new X2JS();  
@@ -60,7 +62,7 @@ app.controller('view1Controller', function($scope, $http) {
 
 
 //view2 controller
-app.controller('view2Controller', function($scope, $http) {
+app.controller('view2Controller', function($scope, $http, $location) {
 	console.log("view2Controller");
 	
 	$scope.view2_name = "Project edit form";
@@ -86,27 +88,44 @@ app.controller('view2Controller', function($scope, $http) {
     	
     	        
         // JSON to DOM: Content-Type:application/xml
-    	console.log($scope.projectsSelected[0]);
-        xmlDoc = x2js.json2xml_str($scope.projectsSelected[0]);
-    	console.log(xmlDoc);
+//    	console.log($scope.projectsSelected[0]);
+//        xmlDoc = x2js.json2xml_str($scope.projectsSelected[0]);
+//    	console.log(xmlDoc);
     	
     	//$http.put($scope.projectsSelected[0].link.href, xmlDoc, {headers: {'Content-Type':'application/xml'}})
-    	$http.put($scope.projectsSelected[0].link.href,$scope.projectsSelected[0])
+    	project = $scope.projectsSelected[0];
+    	link = project.link.href;
+    	delete project.link;
+    	
+    	console.log("view2Controller link: " + link);
+    	console.log(project);
+    	
+//    	$http.put($scope.projectsSelected[0].link.href,$scope.projectsSelected[0])
+    	$http.put(link,project)
     	.success(function(data){
     		console.log("view2Controller: PUT action");
     		console.log(data);
-    		
+
+        	// restore link (workaround for json deserialization problem)
+        	$scope.projectsSelected[0].link = link;
+        	console.log("view2Controller: relink: " + $scope.projectsSelected[0].link);
     	})
     	.error(function(data){console.log('ERROR');});    	
+    	
     };
     
     $scope.cancel = function(){
     	console.log("view2Controller: cancel action");
     };    
+    
+    
+    $scope.go = function ( path ) {
+    	  $location.path( path );
+    };
 });
 
 //view3 controller
-app.controller('view3Controller', function($scope, $http) {
+app.controller('view3Controller', function($scope, $http, $location) {
 	console.log("view3Controller");
 	
     $scope.detailGrid = { 
@@ -136,6 +155,10 @@ app.controller('view3Controller', function($scope, $http) {
 		$scope.releasesList = $scope.project.releases;
 	})
 	.error(function(data){console.log('ERROR');});
+	
+	$scope.go = function ( path ) {
+  	  $location.path( path );
+  };	
 	
 });
 
