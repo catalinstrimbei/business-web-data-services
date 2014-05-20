@@ -96,6 +96,8 @@ public class Project implements Serializable{
         return new AtomLink(restUrl, "get-project");
     }	
 	
+	public void setLink(AtomLink link){}
+	
 	@Override
 	public String toString() {
 		return "Project [projectNo=" + projectNo + ", name=" + name + "]";

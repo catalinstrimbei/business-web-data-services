@@ -170,6 +170,7 @@ public class Release implements Serializable{
 				+ this.getReleaseId();
         return new AtomLink(restUrl, "get-release");
     }	
+	public void setLink(AtomLink link){}
 
 	/* DTO Logic*/
 	public Release toDTO(){
