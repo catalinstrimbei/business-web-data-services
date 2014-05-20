@@ -1,7 +1,4 @@
 <div data-ng-controller="view2Controller">
-	<h3>VIEW2: {{view2_name}}</h3>
-	
-	
 		<div id="container">
     		<div id="header">
     			<p>Project Selection to EDIT: {{projectsSelected[0].name}}</p>
@@ -16,28 +13,30 @@
     				<table style="width:500px;" cellpadding="0" cellspacing="0">
     				
     					<tr>
-    						<td><label for="projectNo">Project Number:</label></td>
-					    	<td><input id="projectNo" type="number" ng-model="projectsSelected[0].projectNo" /></td>
+    						<td align="left"><label for="projectNo" >Project Number:</label></td>
+					    	<td align="left"><input id="projectNo" type="number" ng-model="projectsSelected[0].projectNo" style="width: 100%;"/></td>
     					</tr>
     						
     					<tr>
-							<td><label for="name">Name:</label></td>
-					    	<td><input id="name" type="text" ng-model="projectsSelected[0].name" /></td> 					
+							<td  align="left"><label for="name">Name:</label></td>
+					    	<td  align="left"><input id="name" type="text" ng-model="projectsSelected[0].name" style="width: 100%;"/></td> 					
     					</tr>
     						
     					<tr> 
-							<td><label for="startDate">Start Date:</label></td>
-					    	<td><input id="startDate" type="date" ng-model="projectsSelected[0].startDate"/></td>   					
+							<td  align="left"><label for="startDate" align="left">Starting Date:</label></td>
+					    	<td  align="left"><input id="startDate" type="date" ng-model="projectsSelected[0].startDate" style="width: 100%;"/></td>   					
     					</tr>
     					
 						<tr> 
-							<td><button data-ng-click="save()">Save</button></td>
-					    	<td><button data-ng-click="cancel()">Cancel</button></td> 					
-					    	<td><button data-ng-click="go('/view3');">Edit releases</button></td>
+							<td colspan="2" align="right">
+								<button data-ng-click="add()">Add new</button>
+								<button data-ng-click="save()">Save</button>
+								<button data-ng-click="remove()">Delete</button>
+								<button data-ng-click="cancel()">Cancel</button>
+								<button data-ng-click="go('/view3');">Edit releases</button>
+							</td> 					
     					</tr>    					
-    					
-					 </table>  			
-    			
+					 </table>
     		</div>
     		
 			<div id="footer">

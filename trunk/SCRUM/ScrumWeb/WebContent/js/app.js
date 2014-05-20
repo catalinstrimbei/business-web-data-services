@@ -5,7 +5,7 @@ var projectsRestURL = 'http://localhost:8080/ScrumREST/projects';
 var x2js = new X2JS();  
 
 // main controller
-app.controller('mainController', function($scope, $http) {
+app.controller('mainController', function($scope, $http, $timeout) {
 	console.log("mainController");
 	
 	$scope.projectsSelected = [];
@@ -62,7 +62,7 @@ app.controller('view1Controller', function($scope, $http) {
 
 
 //view2 controller
-app.controller('view2Controller', function($scope, $http, $location) {
+app.controller('view2Controller', function($scope, $http, $location, $timeout) {
 	console.log("view2Controller");
 	
 	$scope.view2_name = "Project edit form";
@@ -78,37 +78,57 @@ app.controller('view2Controller', function($scope, $http, $location) {
       heigh: 100,
       columnDefs: [{ field: "projectNo", width: 120, displayName: 'ID'},
                    { field: "name", width: 300 , displayName: 'Name' }]
-    };	
+    };
+//    $timeout(function() { $scope.gridOptions.selectRow(0, true); });
+    
+    $scope.add = function(){
+    	console.log("view2Controller: add action");
+    	project = $scope.projectsSelected[0];
+    	newProject = JSON.parse(JSON.stringify(project));
+    	//
+    	newProject.projectNo = 9999;
+    	newProject.name = "New project 9999";
+    	newProject.releases = [];
+    	
+    	today = new Date();
+    	dd = today.getDate();
+    	mm = today.getMonth()+1; //January is 0!
+    	yyyy = today.getFullYear();
+    	if (mm < 10)
+    		mm = '0' + mm;
+    	newProject.startDate = yyyy + "-" + mm + "-" + dd;
+    	console.log(newProject.startDate);
+    	newProject.link.href = newProject.link.href.replace(project.projectNo, newProject.projectNo);
+    	console.log(newProject.link.href);
+    	
+    	//
+    	$scope.projectsList.push(newProject);
+    	idx = $scope.projectsList.indexOf(newProject);
+    	
+    	$timeout(function() {
+    		console.log(idx);
+    		$timeout(function() { $scope.gridOptions.selectRow(idx, true); });
+    	});    	
+    	
+    };
     
     $scope.save = function(){
     	console.log("view2Controller: save action");
     	
     	if($scope.projectsSelected[0] == null)
     		return;
-    	
-    	        
-        // JSON to DOM: Content-Type:application/xml
-//    	console.log($scope.projectsSelected[0]);
-//        xmlDoc = x2js.json2xml_str($scope.projectsSelected[0]);
-//    	console.log(xmlDoc);
-    	
     	//$http.put($scope.projectsSelected[0].link.href, xmlDoc, {headers: {'Content-Type':'application/xml'}})
     	project = $scope.projectsSelected[0];
-    	link = project.link.href;
+    	link = JSON.parse(JSON.stringify(project.link.href));
     	delete project.link;
-    	
-    	console.log("view2Controller link: " + link);
-    	console.log(project);
-    	
-//    	$http.put($scope.projectsSelected[0].link.href,$scope.projectsSelected[0])
     	$http.put(link,project)
     	.success(function(data){
     		console.log("view2Controller: PUT action");
     		console.log(data);
-
         	// restore link (workaround for json deserialization problem)
-        	$scope.projectsSelected[0].link = link;
+        	$scope.projectsSelected[0].link = {href: link};
         	console.log("view2Controller: relink: " + $scope.projectsSelected[0].link);
+        	console.log($scope.projectsSelected[0]);
     	})
     	.error(function(data){console.log('ERROR');});    	
     	
@@ -118,6 +138,23 @@ app.controller('view2Controller', function($scope, $http, $location) {
     	console.log("view2Controller: cancel action");
     };    
     
+    $scope.remove = function(){
+    	console.log("view2Controller: remove action");
+    	project = $scope.projectsSelected[0];
+    	link = project.link.href;
+    	
+    	// remove local model
+    	var idx = $scope.projectsList.indexOf(project);
+    	
+    	$http.delete(link)
+	    	.success(function(data){
+	    		console.log("view2Controller: DELETE action : " + idx);
+	    		$scope.projectsList.splice(idx, 1);
+	    		$timeout(function() { $scope.gridOptions.selectRow(0, true); });
+	    	})
+	    	.error(function(data){console.log('ERROR');});        	
+    	
+    };    
     
     $scope.go = function ( path ) {
     	  $location.path( path );
@@ -147,18 +184,47 @@ app.controller('view3Controller', function($scope, $http, $location) {
 	// projects data model
     projectRestURL = $scope.projectsSelected[0].link.href;
 	console.log("projectsRestURL: " + projectRestURL);
-	
+	//
 	$http.get(projectRestURL)
 	.success(function(data){
+		console.log("view3Controller cleaning releases: ");
+		
 		console.log(data);
 		$scope.project = data;
+		
+		for(i in $scope.project.releases){
+			r = $scope.project.releases[i];
+//			delete r.link;
+			delete r.project.link;
+			console.log("view3Controller cleaned release: ");
+			console.log(r);
+		}
+		
 		$scope.releasesList = $scope.project.releases;
+		console.log($scope.project.releases);
 	})
 	.error(function(data){console.log('ERROR');});
-	
+	//
 	$scope.go = function ( path ) {
   	  $location.path( path );
-  };	
+	};
+	//
+	$scope.save = function(){
+    	console.log("view3Controller: save action");
+    	if($scope.projectsSelected[0] == null)
+    		return;
+    	project = $scope.project; // save project with releases
+    	link = JSON.parse(JSON.stringify(project.link.href));
+    	delete project.link;
+    	console.log("view3Controller: save action : project to save -> ");
+    	console.log(project);
+    	$http.put(link,project)
+    	.success(function(data){
+    		$scope.projectsSelected[0].link = {href: link};
+        	console.log("view3Controller: relink: " + $scope.projectsSelected[0].link);
+    	})
+    	.error(function(data){console.log('ERROR');});
+    };	
 	
 });
 
