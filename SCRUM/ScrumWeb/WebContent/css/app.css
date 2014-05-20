@@ -96,7 +96,8 @@ nav.projectForm 	.projectForm,
 nav.projectReleases .projectReleases,
 nav.about 			.about
 {
-	background-color:#e35885;
+	background-color: #C0C0C0;
+	/* background-color:#e35885;*/
 }
 
 p{

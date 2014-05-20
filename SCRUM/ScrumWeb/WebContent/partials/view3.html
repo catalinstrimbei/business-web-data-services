@@ -1,41 +1,37 @@
 <div data-ng-controller="view3Controller">
-	<h3>VIEW3: {{view3_name}}</h3>
-	
 <div id="container">
     		<div id="header">
     			<p>Project Selection to EDIT: {{projectsSelected[0].name}}</p>
     		</div>
    
-   				<table style="width:500px;" cellpadding="0" cellspacing="0">
+   				<table style="width:500px;" cellpadding="1" cellspacing="1" align="left">
    				
    					<tr>
-   						<td><label for="projectNo">Project Number:</label></td>
-				    	<td><input id="projectNo" type="number" ng-model="projectsSelected[0].projectNo" /></td>
+   						<td  align="left"><label for="projectNo">Project Number:</label></td>
+				    	<td  align="left"><input id="projectNo" type="number" ng-model="projectsSelected[0].projectNo"  style="width: 100%;"/></td>
    					</tr>
    						
    					<tr>
-						<td><label for="name">Name:</label></td>
-				    	<td><input id="name" type="text" ng-model="projectsSelected[0].name" /></td> 					
+						<td  align="left"><label for="name">Name:</label></td>
+				    	<td  align="left"><input id="name" type="text" ng-model="projectsSelected[0].name"  style="width: 100%;"/></td> 					
    					</tr>
    						
    					<tr> 
-						<td><label for="startDate">Start Date:</label></td>
-				    	<td><input id="startDate" type="date" ng-model="projectsSelected[0].startDate"/></td>   					
+						<td  align="left"><label for="startDate">Starting Date:</label></td>
+				    	<td  align="left"><input id="startDate" type="date" ng-model="projectsSelected[0].startDate"  style="width: 100%;"/></td>   					
    					</tr>
    					<tr> 
-   						<td><a href="{{project.link.href}}">{{projectsSelected[0].link.href}}</a></td>
-   						<td><button data-ng-click="go('/view2');">Back to projects</button></td>  
+   						<td  align="left"><a href="{{project.link.href}}"  style="width: 100%;">{{projectsSelected[0].link.href}}</a></td>
+   						<td  align="left">
+   							<button data-ng-click="save()"  style="width: 100%;">Save</button>
+   							<button data-ng-click="go('/view2');"  style="width: 100%;">Back to project</button>
+   						</td>  
    					</tr>
-				 </table>  			
-   			
-    		
-    		
-			<div id="menu" style="float:left;">
-    			<div id="listDiv" class="gridReleasesStyle" ng-grid="detailGrid"></div>
-    		</div>
-    		
-    				
-    			
-    	</div>	
-	
+   					<tr>
+   						<td colspan="2">
+   							<div id="listDiv" class="gridReleasesStyle" ng-grid="detailGrid"></div>
+   						</td>
+   					</tr>
+				 </table>
+    	</div>
 </div>
