@@ -89,6 +89,7 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public boolean remove(Project project) {
+		logger.info("DEBUG: called REMOVE - project: " + project);
 		return super.remove(project);
 	}
 	
