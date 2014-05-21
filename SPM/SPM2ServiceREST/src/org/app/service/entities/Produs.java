@@ -23,12 +23,24 @@ public class Produs implements Serializable{
 	@ManyToOne
 	private Garantie garantie;
 	
-	public Produs(String nume, List<Licenta> licenta, Garantie garantie) {
-		super();
-		this.nume = nume;
-		this.licenta = licenta;
-		this.garantie = garantie;
+	public static Produs toDTOAggregate(Produs produs){
+		if(produs==null)
+			return null;
+		Produs produsDTO=produs.toDTO();
+		List<Licenta> licentaDTO= Licenta.toDTOList(produs.getLicenta());
+		return produsDTO;
 	}
+		
+		
+		private Produs toDTO() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
+		public Produs(String nume, List<Licenta> licenta, Garantie garantie) {
+			
+		}
 
 	
 	public Produs() {
@@ -77,9 +89,7 @@ public class Produs implements Serializable{
 		return licenta;
 	}
 
-	public void setLicenta(List<Licenta> licenta) {
-		this.licenta = licenta;
-	}
+	
 
 	public Garantie getGarantie() {
 		return garantie;
@@ -89,7 +99,10 @@ public class Produs implements Serializable{
 		this.garantie = garantie;
 	}
 	
-	
+
+	public void setLicenta(List<Licenta> licenta) {
+		this.licenta = licenta;
+	}
 	
 
 }

@@ -62,10 +62,6 @@ public class ContractSuport extends Contract implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-
-
 	public ContractSuport(Integer nrContract, Client client,
 			List<Produs> produs, Date dataContract, Date dataInceput,
 			Date dataIncheiere, String observatii) {
@@ -81,6 +77,14 @@ public class ContractSuport extends Contract implements Serializable{
 
 	public void setActivitateSuport(Activitate activitateSuport) {
 		this.activitateSuport = activitateSuport;
+	}
+	public static ContractSuport toDTOAggregate(ContractSuport contract2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setActivitateSuport(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

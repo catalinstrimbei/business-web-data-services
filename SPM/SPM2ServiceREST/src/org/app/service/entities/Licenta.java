@@ -2,6 +2,7 @@ package org.app.service.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -96,7 +97,10 @@ public class Licenta implements Serializable{
 	public void setPret(Double pret) {
 		this.pret = pret;
 	}
-	
+	public static List<Licenta> toDTOList(List<Licenta> licenta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

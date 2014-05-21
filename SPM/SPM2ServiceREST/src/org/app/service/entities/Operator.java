@@ -24,6 +24,23 @@ public class Operator implements Serializable{
 	@OneToMany
 	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
 	protected List<Activitate> activitate = new ArrayList<Activitate>();
+	public static Operator toDTOAggregate(Operator operator){
+		if(operator==null)
+			return null;
+		Operator operatorDTO=operator.toDTO();
+		List<Activitate> activitateDTO= Activitate.toDTOList(operator.getActivitate());
+		return operatorDTO;
+	}
+	private Object getActivitate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Operator toDTO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	public Operator(String nume, String prenume, String adresa, String email) {
 		super();
@@ -32,7 +49,9 @@ public class Operator implements Serializable{
 		this.adresa = adresa;
 		this.email = email;
 	}
-
+	@OneToMany
+	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
+	protected List<Activitate> activitati = new ArrayList<Activitate>();
 	
 	public Operator() {
 		super();
