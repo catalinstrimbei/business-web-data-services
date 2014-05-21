@@ -83,7 +83,7 @@ app.factory('restResource', ['$http', '$q', function($http,  $q){
 			console.log(deleteData);
 			
 			var config = {
-					method : 'GET',
+					method : 'DELETE',
 					url : this.url,
 					data : deleteData,
 					headers: {'Content-Type':'application/json;charset=UTF-8'}
