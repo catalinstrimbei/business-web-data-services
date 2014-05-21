@@ -7,6 +7,7 @@ app.controller('mainController',
 	$scope.projectsSelected = [];
 	$scope.releasesList = [];
 	$scope.releaseSelected = [];
+	
 }]);
 
 // view1 controller
@@ -68,8 +69,17 @@ app.controller('view2Controller',
 		console.log(data);
 		$scope.projectsList = data;
 		$timeout(function() {
-			if ($scope.projectsSelected.length == 0)
-				try{ $scope.gridOptions.selectRow(0, true); } catch(e){}
+			idx = 0;
+			console.log("project to select [back]: ");
+			console.log($scope.projectsSelected[0]);			
+			if ($scope.projectsSelected[0] != null){
+				for(i in $scope.projectsList){
+					if ($scope.projectsList[i].projectNo == $scope.projectsSelected[0].projectNo)
+						idx = i;
+				}
+			}
+			
+			try{ $scope.gridOptions.selectRow(idx, true); } catch(e){}
 		});
 	});	    
     
@@ -162,7 +172,6 @@ app.controller('view3Controller',
     projectRestURL = $scope.projectsSelected[0].link.href;
 	console.log("projectsRestURL:::: " + projectRestURL);
 	//
-	
 	restResource.get(projectRestURL).then(function (data) {
 		console.log(data);
 		$scope.project = data;
