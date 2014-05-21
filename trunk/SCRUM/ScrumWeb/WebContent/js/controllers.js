@@ -26,10 +26,21 @@ app.controller('view1Controller',
 		                   { field: "name", width: 300 , displayName: 'Name' }]   
 		    };		
 	
-	restResource.get(projectsRestURL).then(function (data) {
-		console.log(data);
+	
+	$http.get(projectsRestURL)
+	.success(function(data){
+		console.log("view1Controller:GET URL : " + projectsRestURL);
 		$scope.projectsList = data;
-	});	
+	})
+	.error(function(data){
+		console.log('ERROR');
+		console.log(data);
+	});		
+	
+//	restResource.get(projectsRestURL).then(function (data) {
+//		console.log(data);
+//		$scope.projectsList = data;
+//	});	
 	
 	$scope.view1_name = "Project list";
 }]);
@@ -37,8 +48,8 @@ app.controller('view1Controller',
 
 //view2 controller
 app.controller('view2Controller', 
-		  ['$scope', '$http', '$timeout', 'restResource',	// dependencies
-		  function($scope, $http, $timeout, restResource) {	// implementation
+  ['$scope', '$http', '$timeout', '$location', 'restResource',	// dependencies
+  function($scope, $http, $timeout, $location, restResource) {	// implementation
 	console.log("view2Controller");
 	
     $scope.gridOptions = { 
@@ -53,12 +64,12 @@ app.controller('view2Controller',
                    { field: "name", width: 300 , displayName: 'Name' }]
     };
 
-    this.restResource = restResource;
-	this.restResource.get(projectsRestURL).then(function (data) {
+	restResource.get(projectsRestURL).then(function (data) {
 		console.log(data);
 		$scope.projectsList = data;
 		$timeout(function() {
-			try{ $scope.gridOptions.selectRow(0, true); } catch(e){}
+			if ($scope.projectsSelected.length == 0)
+				try{ $scope.gridOptions.selectRow(0, true); } catch(e){}
 		});
 	});	    
     
@@ -127,8 +138,8 @@ app.controller('view2Controller',
 
 //view3 controller
 app.controller('view3Controller', 
-  ['$scope', '$http', '$timeout', 'restResource',	// dependencies
-  function($scope, $http, $timeout, restResource) {	// implementation
+  ['$scope', '$http', '$timeout', '$location', 'restResource',	// dependencies
+  function($scope, $http, $timeout, $location, restResource) {	// implementation
 	console.log("view3Controller");
 	
     $scope.detailGrid = { 
@@ -173,15 +184,3 @@ app.controller('view3Controller',
     };
 	
 }]);
-
-// App navigation control
-app.config(
-		function($routeProvider){
-			$routeProvider
-				.when('/', 		{controller:'view1Controller', templateUrl: 'partials/view1.html'})
-				.when('/view1', {controller:'view1Controller', templateUrl: 'partials/view1.html'})
-				.when('/view2', {controller:'view2Controller', templateUrl: 'partials/view2.html'})
-				.when('/view3', {controller:'view3Controller', templateUrl: 'partials/view3.html'})
-				.otherwise({redirectTo: '/'});
-		}
-);
