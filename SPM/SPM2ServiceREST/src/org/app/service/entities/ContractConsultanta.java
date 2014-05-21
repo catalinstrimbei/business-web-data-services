@@ -10,7 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
+@XmlRootElement(name="contract")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 //@MappedSuperclass
 public class ContractConsultanta extends Contract implements Serializable{
@@ -31,6 +38,17 @@ public class ContractConsultanta extends Contract implements Serializable{
 		}
 		return contracteDTOList;
 	}
+	public static String BASE_URL= Client.BASE_URL;
+	@XmlElement(name="link")
+	
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL 
+				+ this.getClient().getIdClient()
+				+"/contract/"
+				+this.getNrContract();
+		return new AtomLink(restUrl, "get-contract");
+	}
+	
 	public ContractConsultanta(Integer nrContract, Client client,
 			List<Produs> produs, Date dataContract, Date dataInceput,
 			Date dataIncheiere, String observatii,

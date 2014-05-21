@@ -9,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.sun.xml.internal.txw2.annotation.XmlElement;
 @Entity
 public abstract class Client {
+	public static String BASE_URL;
 	@Id
 	@GeneratedValue
 	protected Integer idClient;
@@ -97,7 +100,7 @@ public abstract class Client {
 		this.contBanca = contBanca;
 	}
 
-
+	@XmlElement()
 	public Integer getIdClient() {
 		return idClient;
 	}

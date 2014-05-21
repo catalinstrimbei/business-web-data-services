@@ -20,7 +20,7 @@ public interface ClientDataService {
 	public PersoanaFizica getById(int i);
 	public PersoanaJuridica getByIdJ(int i);
 
-	public PersoanaJuridica add(PersoanaJuridica clientJ);
+	public PersoanaJuridica add(PersoanaJuridica clientj);
 
 	public PersoanaFizica createNewClient(int i);
 

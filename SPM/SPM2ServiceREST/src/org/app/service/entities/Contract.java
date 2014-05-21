@@ -13,7 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import static javax.persistence.CascadeType.ALL;
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
+@XmlRootElement(name="contract")
+@XmlAccessorType(XmlAccessType.NONE)
 @Inheritance(strategy=InheritanceType.JOINED)
 @Entity
 public abstract class Contract {
@@ -48,7 +54,7 @@ public abstract class Contract {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	@XmlElement
 	public Integer getNrContract() {
 		return nrContract;
 	}
