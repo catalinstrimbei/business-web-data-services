@@ -30,6 +30,24 @@ public class Activitate implements Serializable{
 	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
 	protected List<ContractSuport> contract = new ArrayList<ContractSuport>();
 	
+	public static Activitate toDTOAggregate(Activitate activitate){
+		if(activitate==null)
+			return null;
+		Activitate activitateDTO=activitate.toDTO();
+		List<ContractSuport> activitatiDTO= ContractSuport.toDTOList(activitate.getContractSuport());
+		return activitateDTO;
+}
+	
+	private List<ContractSuport> getContractSuport() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Activitate toDTO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	public Activitate(Integer idActivitate, Operator operator,
 			Date dataActivitate, Integer oreFacturate, String obiectActivitate,
@@ -123,6 +141,11 @@ public class Activitate implements Serializable{
 
 	public void setTipActivitate(String tipActivitate) {
 		this.tipActivitate = tipActivitate;
+	}
+
+	public static List<Activitate> toDTOList(Object activitate) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
