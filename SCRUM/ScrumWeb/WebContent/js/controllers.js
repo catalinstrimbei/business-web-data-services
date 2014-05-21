@@ -8,6 +8,11 @@ app.controller('mainController',
 	$scope.releasesList = [];
 	$scope.releaseSelected = [];
 	
+	$http.get(projectsRestURL)
+	.success(function(data){
+		console.log("mainController:GET URL : " + projectsRestURL);
+		$scope.projectsList = data;
+	});
 }]);
 
 // view1 controller
