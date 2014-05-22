@@ -35,6 +35,7 @@ public class Suport implements Serializable{
 	public void setIdSuport(Integer idSuport) {
 		this.idSuport = idSuport;
 	}
+	@XmlElement
 	public String getDenSuport() {
 		return denSuport;
 	}
@@ -42,7 +43,7 @@ public class Suport implements Serializable{
 		this.denSuport = denSuport;
 	}
 	
-	
+	@XmlElement
 	public Serviciu getServiciu() {
 		return serviciu;
 	}

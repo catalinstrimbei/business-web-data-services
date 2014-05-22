@@ -8,7 +8,10 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -78,10 +81,40 @@ public class ProdusSprintDataServicesRest extends EntityRepositoryBase<Produs> i
 		return Arrays.asList(produsArray);
 	}
 	
+	@GET @Path("/{id}")   /* scrum/produse/{id} REST- resource:produs-entity*/
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)  //autonomuous transaction
 	@Override
 	public Produs add(Produs produs){
 		produs = super.add(produs);
 		return Produs.toDTOAggregate(produs);
+	}
+	
+
+	@POST /*scrum/produse      REST-resource> produse-collection*/
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Produs[] addNew(Produs produs){
+		super.add(produs);
+		return Produs.toDTOList(super.toCollection());
+	}
+	
+	@Override
+	@DELETE /*scrum/produse      REST-resource> produse-collection*/
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)  //autonomuous transaction
+	public boolean remove(Produs produs){
+		return super.remove(produs);
+	}
+	
+	@DELETE @Path("/{id}")   /* scrum/produse/{id} REST- resource:produs-entity*/
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)  //autonomuous transaction
+	public void remove(@PathParam("id")Integer id)
+	{
+		logger.info("DEBUG: called REMOVE - ById() for produse >>>>>>>>>>>>>>>>>> simplified! + id ");
+		Produs produs =super.getById(id);
+		super.remove(produs);
 	}
 	
 }
