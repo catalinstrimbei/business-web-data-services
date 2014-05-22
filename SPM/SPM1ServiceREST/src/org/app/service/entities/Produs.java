@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -95,6 +98,7 @@ public class Produs implements Serializable{
 		return new Produs(this.idProdus, this.denProdus, this.categorieProdus);
 	}
 
+	
 	public static Produs[] toDTOList(Collection<Produs> produse){
 		List<Produs> produsDTOList = new ArrayList<>();
 		for (Produs p: produse){

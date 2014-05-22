@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.xml.bind.annotation.XmlElement;
 
+import org.app.service.rest.AtomLink;
+
 @Entity 
 public class Pret implements Serializable{
 	@Id @GeneratedValue
@@ -25,18 +27,21 @@ public class Pret implements Serializable{
 	public void setIdPret(Integer idPret) {
 		this.idPret = idPret;
 	}
+	@XmlElement
 	public Integer getNrUtilizatori() {
 		return nrUtilizatori;
 	}
 	public void setNrUtilizatori(Integer nrUtilizatori) {
 		this.nrUtilizatori = nrUtilizatori;
 	}
+	@XmlElement
 	public Double getPretPerUtilizator() {
 		return pretPerUtilizator;
 	}
 	public void setPretPerUtilizator(Double pretPerUtilizator) {
 		this.pretPerUtilizator = pretPerUtilizator;
 	}
+	@XmlElement
 	public Double getValoare() {
 		return valoare;
 	}
@@ -44,5 +49,10 @@ public class Pret implements Serializable{
 		this.valoare = valoare;
 	}
 	
-	
+//	public static String BASE_URL = Produs.BASE_URL;
+//	@XmlElement(name= "link")
+//	public AtomLink getLink() throws Exception{
+//		String restUrl = BASE_URL + this + "/versiuni/" + this.getIdVersiune();
+//			return new AtomLink(restUrl, "get-versiune");
+//	}
 }

@@ -36,13 +36,14 @@ public class SAAS implements Serializable{
 	public void setIdSAAS(Integer idSAAS) {
 		this.idSAAS = idSAAS;
 	}
+	@XmlElement
 	public String getDenSAAS() {
 		return denSAAS;
 	}
 	public void setDenSAAS(String denSAAS) {
 		this.denSAAS = denSAAS;
 	}
-	
+	@XmlElement
 	public Serviciu getServiciu() {
 		return serviciu;
 	}

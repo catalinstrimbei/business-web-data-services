@@ -81,6 +81,7 @@ public class Editie implements Serializable{
 		this.denEditie = denEditie;
 	}
 
+	@XmlElement
 	public String getDescriere() {
 		return descriere;
 	}
@@ -112,6 +113,7 @@ public class Editie implements Serializable{
 	public void setPreturi(List<Pret> preturi) {
 		this.preturi = preturi;
 	}
+	
 	
 	
 }

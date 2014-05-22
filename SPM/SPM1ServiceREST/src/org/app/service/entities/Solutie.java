@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
+import org.app.service.rest.AtomLink;
+
 @Entity
 public class Solutie implements Serializable{
 
@@ -37,6 +39,7 @@ public class Solutie implements Serializable{
 		this.idSolutie = idSolutie;
 	}
 
+	@XmlElement
 	public String getDenSolutie() {
 		return denSolutie;
 	}
@@ -63,5 +66,11 @@ public class Solutie implements Serializable{
 		this.servicii = servicii;
 	}
 	
-	
+	public static String BASE_URL = "http://localhost:8080/SPM1ServiceREST/solutii/";
+	@XmlElement(name= "link")
+	public AtomLink getLink() throws Exception{
+		String restUrl = BASE_URL + this.getIdSolutie();
+			return new AtomLink(restUrl, "get-solutie");
+			
+	}
 }

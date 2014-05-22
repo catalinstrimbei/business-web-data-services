@@ -75,6 +75,7 @@ public class Versiune implements Serializable{
 		this.idVersiune = idVersiune;
 	}
 
+	@XmlElement
 	public Date getDataLansare() {
 		return dataLansare;
 	}
@@ -83,6 +84,7 @@ public class Versiune implements Serializable{
 		this.dataLansare = dataLansare;
 	}
 
+	@XmlElement
 	public Integer getNrVersiuni() {
 		return nrVersiuni;
 	}
@@ -91,6 +93,7 @@ public class Versiune implements Serializable{
 		this.nrVersiuni = nrVersiuni;
 	}
 
+	@XmlElement
 	public String getDescriere() {
 		return descriere;
 	}
@@ -99,6 +102,7 @@ public class Versiune implements Serializable{
 		this.descriere = descriere;
 	}
 
+	@XmlElement
 	public Produs getProdus() {
 		return produs;
 	}
