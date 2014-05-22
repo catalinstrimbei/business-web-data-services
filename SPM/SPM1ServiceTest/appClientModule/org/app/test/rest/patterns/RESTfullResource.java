@@ -2,11 +2,15 @@ package org.app.test.rest.patterns;
 
 import java.io.StringWriter;
 import java.util.logging.Logger;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+
+import org.app.service.entities.Produs;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.util.GenericType;
+import org.junit.Test;
 
 
 public class RESTfullResource <T extends Object> {
@@ -130,4 +134,39 @@ public class RESTfullResource <T extends Object> {
 	    jaxbMarshaller.marshal(entity, writer);
 	    return writer.getBuffer().toString();
 	}
+	
+	
+//	
+//	
+//	@Test
+//	public void testGET throws Exception{
+//
+//		ClientRequest request=new ClientRequest("http://localhost:8080/SPM1ServiceREST/produse/produs/1"); 
+//		//set...
+//		request.accept("application/xml");
+//		//RESTEasy
+//		ClientResponse<Produs> response=request.get(Produs.class);
+//		//check
+//		int apiResponseCode=response.getResponseStatus().getStatusCode();
+//		if(response.getResponseStatus().getStatusCode()!=200){
+//			throw new RuntimeException("Failed with HTTP error code : "+apiResponseCode);
+//		}
+//		Produs produs=response.getEntity();
+//		
+//		logger.info("DEBUG TEST: "+produs);
+//		
+//		//second
+//		response=request.get(Produs.class);
+//		//check
+//		apiResponseCode=response.getResponseStatus().getStatusCode();
+//		
+//		if(response.getResponseStatus().getStatusCode()!=200){
+//			throw new RuntimeException("Failed with HTTP error code : "+apiResponseCode);
+//		}
+//		produs=response.getEntity();
+//		
+//		logger.info("DEBUG TEST SECOND: "+produs);
+//	}
+	
+	
 }
