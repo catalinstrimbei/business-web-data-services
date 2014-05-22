@@ -32,7 +32,6 @@ app.controller('view1Controller',
 		                   { field: "name", width: 300 , displayName: 'Name' }]   
 		    };		
 	
-	
 	$http.get(projectsRestURL)
 	.success(function(data){
 		console.log("view1Controller:GET URL : " + projectsRestURL);
@@ -42,11 +41,6 @@ app.controller('view1Controller',
 		console.log('ERROR');
 		console.log(data);
 	});		
-	
-//	restResource.get(projectsRestURL).then(function (data) {
-//		console.log(data);
-//		$scope.projectsList = data;
-//	});	
 	
 	$scope.view1_name = "Project list";
 }]);
@@ -83,7 +77,6 @@ app.controller('view2Controller',
 						idx = i;
 				}
 			}
-			
 			try{ $scope.gridOptions.selectRow(idx, true); } catch(e){}
 		});
 	});	    
