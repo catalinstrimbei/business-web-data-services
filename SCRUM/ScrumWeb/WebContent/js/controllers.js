@@ -20,12 +20,20 @@ app.controller('view1Controller',
   ['$scope', '$http', '$timeout', 'restResource',	// dependencies
   function($scope, $http, $timeout, restResource) {	// implementation
 	console.log("view1Controller");
+	
+	$scope.filterOptions = {
+		    filterText: ''
+	};
+	
 	$scope.gridOptions = { 
 		      data: 'projectsList',
 		      selectedItems: $scope.projectsSelected,
 		      enablePaging: true,
 		      multiSelect: false,
 		      resizable: true,
+		      showFilter: true, showColumnMenu:true,
+		      sortInfo: { fields: ['projectNo'], directions: ['asc'] },
+		      filterOptions: $scope.filterOptions,
 		      width: 420,
 		      heigh: 100,
 		      columnDefs: [{ field: "projectNo", width: 120, displayName: 'ID'},
@@ -58,6 +66,7 @@ app.controller('view2Controller',
       enablePaging: true,
       multiSelect: false,
       resizable: true,
+      sortInfo: { fields: ['projectNo'], directions: ['asc'] },
       width: 420,
       heigh: 100,
       columnDefs: [{ field: "projectNo", width: 120, displayName: 'ID'},
