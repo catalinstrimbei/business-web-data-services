@@ -13,8 +13,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
 //import com.sun.xml.internal.txw2.annotation.XmlElement;
-@XmlRootElement(name="client")
-@XmlAccessorType(XmlAccessType.NONE)
+//@XmlRootElement(name="client")
+//@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 //@MappedSuperclass
 public class PersoanaFizica extends Client implements Serializable{

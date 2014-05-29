@@ -9,8 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
+
+//import com.sun.xml.internal.txw2.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+import javax.xml.bind.annotation.XmlElement;
+@XmlRootElement(name="client")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public abstract class Client {
 	public static String BASE_URL;
