@@ -88,15 +88,15 @@ public class TestRestProdusResource {
 			result);
 			}
 			
-			@Test
-			public void testDELETEProdusResource() throws Exception{
-			RESTfullResource<Produs> resource = new RESTfullResource<Produs>(
-			"http://localhost:8080/SPM1ServiceREST/produse/3003",
-			Produs.class, "application/xml");
-			Produs produs = resource.get();
-			logger.info("DEBUG testDELETEProjectResource: " + produs);
-			assertNotNull("Resource queried [/projects/3001] not returned from service!",
-			produs);
-			resource.delete(null);
-			}
+//			@Test
+//			public void testDELETEProdusResource() throws Exception{
+//			RESTfullResource<Produs> resource = new RESTfullResource<Produs>(
+//			"http://localhost:8080/SPM1ServiceREST/produse/3003",
+//			Produs.class, "application/xml");
+//			Produs produs = resource.get();
+//			logger.info("DEBUG testDELETEProjectResource: " + produs);
+//			assertNotNull("Resource queried [/projects/3001] not returned from service!",
+//			produs);
+//			resource.delete(null);
+//			}
 }

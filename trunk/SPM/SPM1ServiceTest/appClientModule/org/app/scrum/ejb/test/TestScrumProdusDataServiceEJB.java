@@ -36,67 +36,67 @@ public class TestScrumProdusDataServiceEJB {
 
 
 	/* create test1 create-read*/
-//	 @Test
-	public void testCreateProdus() {
-		 Produs produs= new Produs(1,"Produs Test 101","categ test 1");
-		 produs= service.add(produs);
-		logger.info("DEBUG:  create Produs: Saved Produs: "+produs);
-		assertNotNull("Fail to Create new Produs in repository!", produs);
-		 produs= service.getById(1);
-		assertNotNull("Fail to find new Produs in repository!", produs);
-		logger.info("DEBUG: create Produs: queried Produs: "+produs);
-	}
+//	@Test
+//	public void testCreateProdus() {
+//		 Produs produs= new Produs(1,"Produs Test 101","categ test 1");
+//		 produs= service.add(produs);
+//		logger.info("DEBUG:  create Produs: Saved Produs: "+produs);
+//		assertNotNull("Fail to Create new Produs in repository!", produs);
+//		 produs= service.getById(1);
+//		assertNotNull("Fail to find new Produs in repository!", produs);
+//		logger.info("DEBUG: create Produs: queried Produs: "+produs);
+//	}
 	 /* create test 2- create aggregate*/
-	 @Test
-		public void testCreateNewProdus() {
-			 Produs produs= service.createNewProdus(3);
-			 assertNotNull("Fail to Create new Produs in repository!", produs);
-			 //update produs
-			 produs.setDenProdus(produs.getDenProdus()+" - changed by test client");
-			 List<Versiune>versiuni=produs.getVersiuni();
-			 List<Editie>editii=produs.getEditii();
-			 //update produs components
-			 for (Versiune v: versiuni)
-				 v.setDescriere(v.getDescriere()+ " - changed by test client");
-			 produs= service.add(produs);
-			assertNotNull("Fail to save new Produs in repository!", produs);
-			logger.info("DEBUG:  createNewProdus:  Produs changed: "+produs);
-			//check read
-			 produs= service.getById(3);
-			assertNotNull("Fail to find changed Produs in repository!", produs);
-			logger.info("DEBUG: createNewProdus: queried Produs: "+produs);
-		}
+//	 @Test
+//		public void testCreateNewProdus() {
+//			 Produs produs= service.createNewProdus(3);
+//			 assertNotNull("Fail to Create new Produs in repository!", produs);
+//			 //update produs
+//			 produs.setDenProdus(produs.getDenProdus()+" - changed by test client");
+//			 List<Versiune>versiuni=produs.getVersiuni();
+//			 List<Editie>editii=produs.getEditii();
+//			 //update produs components
+//			 for (Versiune v: versiuni)
+//				 v.setDescriere(v.getDescriere()+ " - changed by test client");
+//			 produs= service.add(produs);
+//			assertNotNull("Fail to save new Produs in repository!", produs);
+//			logger.info("DEBUG:  createNewProdus:  Produs changed: "+produs);
+//			//check read
+//			 produs= service.getById(3);
+//			assertNotNull("Fail to find changed Produs in repository!", produs);
+//			logger.info("DEBUG: createNewProdus: queried Produs: "+produs);
+//		}
 	 
 	 //read test read collection
-//	 @Test
-		public void testToCollection() {
-			 //?????????????????????????????????????(List<Produs>) trebuie???????????????
-			 List<Produs> produse=(List<Produs>) service.toCollection();
-			 
-			assertTrue("Fail to read produse from repository!", produse!=null);
-			logger.info("DEBUG: testToCollection: "+produse.size());
-			assertTrue("Fail to read any produs from repository!", produse.size()>0);
-			
-		}
+//		@Test
+//		public void testToCollection() {
+//			 //?????????????????????????????????????(List<Produs>) trebuie???????????????
+//			 List<Produs> produse=(List<Produs>) service.toCollection();
+//			 
+//			assertTrue("Fail to read produse from repository!", produse!=null);
+//			logger.info("DEBUG: testToCollection: "+produse.size());
+//			assertTrue("Fail to read any produs from repository!", produse.size()>0);
+//			
+//		}
 	 
 	 //update test - read instances&update
 //	 @Test
-		public void testAdd() {
-			Produs produs= service.getById(1);
-			 assertNotNull("Fail to get Produs from repository!", produs);
-			
-			 produs.setDenProdus(produs.getDenProdus()+" - updated by test client");	
-			 produs= service.add(produs);
-			assertNotNull("Fail to save updated Produs in repository!", produs);
-			//check read
-			 produs= service.getById(1);
-			assertNotNull("Fail to find updated Produs in repository!", produs);
-			logger.info("DEBUG: testAdd: Produs updated: "+produs);
-		}
+//		public void testAdd() {
+//			Produs produs= service.getById(1);
+//			 assertNotNull("Fail to get Produs from repository!", produs);
+//			
+//			 produs.setDenProdus(produs.getDenProdus()+" - updated by test client");	
+//			 produs= service.add(produs);
+//			assertNotNull("Fail to save updated Produs in repository!", produs);
+//			//check read
+//			 produs= service.getById(1);
+//			assertNotNull("Fail to find updated Produs in repository!", produs);
+//			logger.info("DEBUG: testAdd: Produs updated: "+produs);
+//		}
 	 
 	 //remove test 
 
-//	 @Test
+		@Test
 		public void testRemove() {
 			Produs produs= service.getById(1);
 			 assertNotNull("Fail to get Produs from repository!", produs);
