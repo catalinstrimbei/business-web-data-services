@@ -1,7 +1,6 @@
 package org.app.service.ejb;
 
-import java.awt.PageAttributes.MediaType;
-import java.awt.PageAttributes.MediaType.*;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -12,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
@@ -23,16 +23,16 @@ import org.app.service.entities.Produs;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.enterprise.inject.Produces;
 
-@Path("client")/*http://localhost:8080/ScrumREST/client*/
+
+@Path("clienti") /*http://localhost:8080/SPM2ServiceREST/clienti*/
 @Stateless @LocalBean
 public class ClientDataServiceEJB extends EntityRepositoryBase<Client> implements ClientDataService, Serializable{
 	private static Logger logger = Logger.getLogger (ClientDataServiceEJB.class.getName());
 	private EntityRepository<Contract> contracteRepository;
-//	@Inject
-//	private PersoanaFizica client;
-//	@Inject
+	@Inject
+	private PersoanaFizica client;
+	@Inject
 	private EntityRepository<Produs> produsRepository;
 	@PostConstruct
 	public void init(){
@@ -51,10 +51,11 @@ public class ClientDataServiceEJB extends EntityRepositoryBase<Client> implement
 	
 	@Override
 	@GET
-	@Produces/*({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})*/
+	@Produces({javax.ws.rs.core.MediaType.APPLICATION_XML, javax.ws.rs.core.MediaType.APPLICATION_JSON})
 	public Collection<Client> toCollection(){
+		logger.info("GET Clienti");
 		return PersoanaFizica.toDTOs(super.toCollection());
-		
+		//return super.toCollection();
 	}
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public PersoanaJuridica createNewPersoanaJuridica(Integer idClient){
@@ -79,6 +80,7 @@ public class ClientDataServiceEJB extends EntityRepositoryBase<Client> implement
 	/* (non-Javadoc)
 	 * @see org.app.service.ejb.ClientDataService#test()
 	 */
+	@GET @Path("/test")
 	@Override
 	public String test(){
 		return "Hello from ClientDataServiceEJB.";
