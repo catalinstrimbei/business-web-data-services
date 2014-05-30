@@ -48,6 +48,9 @@ public class DynamicJPAService {
         // Create JPA Dynamic Helper (with the emf above) and after the types
         JPADynamicHelper helper = new JPADynamicHelper(em);
         helper.addTypes(true, true, addressType);
+        
+        /* If SQL table exists, PG transaction will be rolled back, and subsequent JPA actions will fail!*/
+        
         // Create database and populate
         SchemaManager schemaManager = new SchemaManager(helper.getSession());
         schemaManager.replaceDefaultTables();
