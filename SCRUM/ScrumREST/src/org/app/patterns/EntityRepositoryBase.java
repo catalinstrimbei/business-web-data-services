@@ -3,6 +3,8 @@ package org.app.patterns;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -18,6 +20,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.metamodel.EntityType;
@@ -34,7 +38,6 @@ import javax.ws.rs.core.MediaType;
  * 
  * @author catalin
  */
-//public class EntityRepositoryBase<T extends Object, Z extends Object> implements EntityRepository<T, Z> {
 public class EntityRepositoryBase<T extends Object> implements EntityRepository<T> {
 	
 	private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -44,7 +47,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	
 	protected Class<T> repositoryType;
 	protected String genericSQL;
-//	protected Class<? extends Object> idType;
+	private Boolean isIDGeneratedValue = false;
 
 	@Override
 	public void setEm(EntityManager em) {
@@ -62,6 +65,9 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 				+ " o";
 		logger.info("init generic JPAQL: " + genericSQL);		
 		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);
+		
 		logger.info("... END DEFAULT INIT: ENTITY REPOSITORY!");
 	}
 	
@@ -71,6 +77,9 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("generic JPAQL: " + genericSQL);
+		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);		
 	}
 
 	public EntityRepositoryBase(Class<T> t) {
@@ -78,27 +87,17 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("generic JPAQL: " + genericSQL);
+		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);		
 	}	
 	
-	// Repository query implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
-	 */
-//	@GET @Path("entity/{id}")
-//	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
-//	public T getById(@PathParam("id") Z id) {
-//	public <E> T getById(@PathParam("id") E id) {
 	public T getById(Object id) {
 		return (T) em.find(repositoryType, id);
 	}
-
-
 	
 	// QBExample
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#get(T)
-	 */
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection<T> get(T entitySample) {
@@ -158,9 +157,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toCollection()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<T> toCollection() {
@@ -169,9 +165,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return em.createQuery(genericSQL).getResultList();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toArray()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
@@ -186,18 +179,28 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	}
 
 	// Repository transaction implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#add(T)
-	 */
 	@Override @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T add(T entity) {
 		try {
 			Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
-			if (id == null) // || em.find(repositoryType, id) == null) // !!! - case of Generated value to test
+			
+			logger.info("ADD entity: ID is " + id);
+			logger.info("ADD entity: em.contains(entity) is " + em.contains(entity));
+			logger.info("ADD entity: em.find(repositoryType, id) " + em.find(repositoryType, id));
+			logger.info("ADD entity: isIDGeneratedValue " + this.isIDGeneratedValue);
+			
+			// if ID GeneratedValue and is not new instance
+//			if (id != null && this.isIDGeneratedValue && em.find(repositoryType, id) == null) 
+				
+			// if ID is null entity could have GenerateValue for ID
+//			if (id == null || em.find(repositoryType, id) == null )
+			if (id == null && this.isIDGeneratedValue)
 				em.persist(entity);
 			else
 				em.merge(entity);
 			em.flush();
+			
+			
 			
 			return entity;
 		} catch (Exception e) {
@@ -209,15 +212,11 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#addAll(java.util.Collection)
-	 */
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
 
 		try {
 			for (T entity : entities) {
-//				em.merge(entity);
 				add(entity);
 			}
 			return entities;
@@ -227,9 +226,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#remove(T)
-	 */
 	@Override
 	public boolean remove(T entity) {
 		try {
@@ -244,9 +240,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#removeAll(java.util.Collection)
-	 */
 	@Override
 	public boolean removeAll(Collection<T> entities) {
 
@@ -262,10 +255,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	}
 
 	// Others
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#size()
-	 */
-	@GET @Path("/size") @Produces("application/json")
 	@Override
 	public int size() {
 		String sqlCount = "SELECT count(o) FROM "
@@ -277,9 +266,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return size.intValue();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#refresh(T)
-	 */
 	@Override
 	public T refresh(T entity) {
 		entity = em.merge(entity);
@@ -305,15 +291,28 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
 	    return (Class<T>)extractClassFromType(actualArg);
-	}		
+	}
 	
-//	private void getEntityID(T entity){
-//		
-//		Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
-//		/* http://www.objectdb.com/java/jpa/persistence/metamodel */
-//		Metamodel metamodel = em.getMetamodel();
-//		ManagedType<T> managedType = metamodel.managedType(this.repositoryType);
-//		EntityType<T> entityType = metamodel.entity(this.repositoryType);
-//		SingularAttribute<?, Long> id1 = entityType.getId(Long.class);
-//	}
+	private Boolean isIDGeneratedValue(){
+		if (this.repositoryType == null)
+			return false;
+		
+		Field[] entityFields = this.repositoryType.getDeclaredFields();
+		Boolean isId = false;
+		Boolean isGeneratedValue = false;
+		for(Field field: entityFields){
+			Annotation[] annotations = field.getDeclaredAnnotations();
+			for(Annotation annotation : annotations){
+				if(annotation instanceof Id)
+					isId = true;
+				if(annotation instanceof GeneratedValue)
+					isGeneratedValue = true;
+				
+//				logger.info("isIDGeneratedValue -- isId_isGeneratedValue = " + isId + "..."  + isGeneratedValue);
+			}
+			if (isId && isGeneratedValue)
+				return true;
+		}
+		return false;
+	}
 }

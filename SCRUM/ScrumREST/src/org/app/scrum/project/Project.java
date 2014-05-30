@@ -32,7 +32,8 @@ import org.app.scrum.team.ProjectManager;
 @Entity
 public class Project implements Serializable{
 	/* internal stucture: member fields*/
-	@Id // @GeneratedValue // !!!
+	@Id 
+	@GeneratedValue
 	private Integer projectNo;
 	private String name;
 	@Temporal(TemporalType.DATE)
