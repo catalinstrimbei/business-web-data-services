@@ -22,7 +22,7 @@ public class Complaints extends Comunication implements Serializable {
 
 	private Integer complaintsId;  
 	private  int ComplaintsNumber; 
-	private ComplaintsType complaintType; 
+	private  ComplaintsType complaintType; 
     @Temporal(TemporalType.DATE)
     private Date dateOfClosedCompl;
     
@@ -35,7 +35,7 @@ public class Complaints extends Comunication implements Serializable {
     @ManyToOne
     private Employee employee; 
     
-    @OneToMany(mappedBy="complaint")
+    @OneToMany(mappedBy="complaint", cascade =CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
 	private List<ComplaintsStatus> complaintStatus=new ArrayList<ComplaintsStatus>();
  
  //construsctors  
@@ -50,6 +50,7 @@ public class Complaints extends Comunication implements Serializable {
 	}
 	/*REST RESOURCE URL*/
 	public static String BASE_URL="http://localhost:8000/SQM3ServiceREST/complaints/";
+	
 	@XmlElement(name="link")
 	public AtomLink getLink() throws Exception{
 		String restUrl=BASE_URL+this.getComplaintsNumber();
@@ -69,6 +70,9 @@ public class Complaints extends Comunication implements Serializable {
 			return complaintsId;
 		}
 
+	public void setComplaintType(ComplaintsType complaintType) {
+		this.complaintType = complaintType;
+	}
 	public void setComplaintsNumber(Integer complaintsNumber) {
 			this.ComplaintsNumber=complaintsNumber;
 		}
@@ -114,6 +118,7 @@ public class Complaints extends Comunication implements Serializable {
 	public void setComunication(Comunication comunication) {
 		this.comunication = comunication;
 	}
+	
 	@XmlElementWrapper(name="complaintsStatus") @XmlElement(name="complaintsStatus")
 	public List<ComplaintsStatus> getComplaintStatus() {
 		return complaintStatus;
@@ -132,7 +137,7 @@ public class Complaints extends Comunication implements Serializable {
 		complaintDTO.setComplaintStatus(complaintStatusDTO);
 		return complaintDTO;
 	}
-	private Complaints toDTO() {
+	public Complaints toDTO() {
 		// TODO Auto-generated method stub
 		Complaints complaintDTO = new Complaints(complaintsId,complaintType,dateOfClosedCompl);		
 		return complaintDTO;
@@ -145,8 +150,5 @@ public class Complaints extends Comunication implements Serializable {
 		// TODO Auto-generated method stub
 		return complaintsDTO;
 
-		
-				
-		
 	}
 }

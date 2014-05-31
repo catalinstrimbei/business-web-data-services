@@ -18,7 +18,7 @@ enum Status{
   finished 
 }
 @XmlRootElement(name="complaintsStatus")
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class ComplaintsStatus implements Serializable {
 
@@ -116,7 +116,8 @@ public class ComplaintsStatus implements Serializable {
 
 	private ComplaintsStatus toDTO() {
 		// TODO Auto-generated method stub
-		return new ComplaintsStatus(this.complaintsStatusId,this.status, this.statusDescription,this.dateOfChangeStatus,this.complaint);
+		return new ComplaintsStatus(this.complaintsStatusId,this.status, this.statusDescription,this.dateOfChangeStatus,
+				complaint.toDTO());
 	}
 	
 }
