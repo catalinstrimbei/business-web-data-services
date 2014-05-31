@@ -2,7 +2,7 @@
     <wb-module deploy-name="SAM4ServiceREST">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="SAM4ServiceREST"/>
         <property name="java-output-path" value="/SAM4ServiceREST/build/classes"/>
+        <property name="context-root" value="SAM4ServiceREST/service"/>
     </wb-module>
 </project-modules>
