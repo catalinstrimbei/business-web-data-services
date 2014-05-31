@@ -14,7 +14,7 @@ public class ResolvedComplaints  implements Serializable {
 	protected Integer resolvedComplaintsId;
     @Temporal(TemporalType.DATE)
 	private Date date;
-   	//this is the employee who resolved the issue
+   	//this is the employee who resolved the
 	@ManyToOne
 	private Employee employee; 
 	

@@ -1,5 +1,13 @@
 
 package org.app.service.ejb;
+
+import java.util.Collection;
+
+import javax.ejb.*;
+
+import org.app.patterns.EntityRepository;
+import org.app.patterns.EntityRepositoryBase;
+import org.app.service.entities.Complaints;
 import org.app.patterns.*;
 import org.app.service.entities.*;
 import org.app.service.entities.Complaints.*;
@@ -26,9 +34,9 @@ import javax.ws.rs.core.MediaType;
 
 @Path("complaints")
 @Stateless @LocalBean
-public class ComplaintsDataServicesEJB extends EntityRepositoryBase<Complaints> implements Serializable,IComplaintsDataServices{
+public class ComplaintsDataServiceEJB extends EntityRepositoryBase<Complaints> implements Serializable,ComplaintsDataService{
  
-	private  static Logger LOGGER = Logger.getLogger(ComplaintsDataServicesEJB.class.getName());
+	private  static Logger LOGGER = Logger.getLogger(ComplaintsDataServiceEJB.class.getName());
 	
 	private EntityRepository<ComplaintsStatus> complaintsStatusRepository;
 	
