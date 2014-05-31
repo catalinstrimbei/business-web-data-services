@@ -9,7 +9,7 @@
 	<classpathentry kind="lib" path="lib/hibernate-infinispan-4.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-as-naming-7.1.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-ejb-api_3.1_spec-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="lib/jboss-ejb-client-1.0.5.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-ejb-client-1.0.5.Final.jar" sourcepath="C:/Users/Ana/.m2/repository/org/jboss/jboss-ejb-client/1.0.5.Final/jboss-ejb-client-1.0.5.Final-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-marshalling-1.3.11.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-marshalling-river-1.3.11.GA.jar"/>
