@@ -18,17 +18,7 @@ public class Licenta implements Serializable{
 	private Date dataSfarsit;
 	private Double pret;
 	
-	public Licenta(String tipLicenta, Date dataInceput, Date dataSfarsit,
-			Double pret) {
-		super();
-		this.tipLicenta = tipLicenta;
-		this.dataInceput = dataInceput;
-		this.dataSfarsit = dataSfarsit;
-		this.pret = pret;
-	}
 	
-
-
 	public Licenta() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -100,6 +90,30 @@ public class Licenta implements Serializable{
 	public static List<Licenta> toDTOList(List<Licenta> licenta) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	public Integer getIdLicenta() {
+		return idLicenta;
+	}
+
+
+
+	public void setIdLicenta(Integer idLicenta) {
+		this.idLicenta = idLicenta;
+	}
+
+
+
+	public Licenta(Integer idLicenta, String tipLicenta, Date dataInceput,
+			Date dataSfarsit, Double pret) {
+		super();
+		this.idLicenta = idLicenta;
+		this.tipLicenta = tipLicenta;
+		this.dataInceput = dataInceput;
+		this.dataSfarsit = dataSfarsit;
+		this.pret = pret;
 	}
 	
 	

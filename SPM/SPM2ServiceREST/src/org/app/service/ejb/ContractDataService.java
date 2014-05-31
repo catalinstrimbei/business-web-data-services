@@ -4,8 +4,7 @@
 package org.app.service.ejb;
 
 import org.app.service.entities.Contract;
-import org.app.service.entities.ContractSuport;
-import org.app.service.entities.PersoanaJuridica;
+
 
 /**
  * @author Alina
@@ -16,18 +15,18 @@ public interface ContractDataService {
 
 	public String getMessage();
 
-	public ContractSuport add(ContractSuport contract);
+	public Contract add(Contract contract);
 
-	public ContractSuport getById(int i);
-	public ContractSuport getByIdJ(int i);
+	public Contract getById(int i);
+	public Contract getByIdJ(int i);
 
-	public PersoanaJuridica add(PersoanaJuridica clientJ);
+	
 
-	public ContractSuport createNewContract(int i);
+	public Contract createNewContract(Integer id);
 
-	public ContractSuport getByID(int i);
+	public Contract getByID(int i);
 
-	public void remove(ContractSuport contract);
+	public void remove(Contract contract);
 
 	Contract save(Contract contract);
 }

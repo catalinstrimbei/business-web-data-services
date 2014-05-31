@@ -1,10 +1,14 @@
 package org.app.service.ejb;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import javax.ejb.Remote;
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
 
 import org.app.service.entities.Client;
-import org.app.service.entities.PersoanaFizica;
-import org.app.service.entities.PersoanaJuridica;
+
 
 @Remote
 public interface ClientDataService {
@@ -15,17 +19,26 @@ public interface ClientDataService {
 
 	public String getMessage();
 
-	public PersoanaFizica add(PersoanaFizica client);
+	public Client add(Client client);
 
-	public PersoanaFizica getById(int i);
-	public PersoanaJuridica getByIdJ(int i);
+	public Client getById(int i);
+	
 
-	public PersoanaJuridica add(PersoanaJuridica clientj);
+	//public Client createNewClient(int i);
 
-	public PersoanaFizica createNewClient(int i);
+	public Client getByID(int i);
 
-	public PersoanaFizica getByID(int i);
+	public void remove(Client client);
+	public String getMessag();
+	public Client createNewClient(Integer id);
 
-	public void remove(PersoanaFizica client);
+	Client createNewClientFactory(int i);
 
+	public Collection<Client> toCollection();
+
+	//Client createNewClient(Integer id);
+
+	
+
+	
 }
