@@ -28,12 +28,13 @@ import org.eclipse.persistence.jpa.dynamic.JPADynamicHelper;
 import org.eclipse.persistence.jpa.dynamic.JPADynamicTypeBuilder;
 import org.eclipse.persistence.tools.schemaframework.SchemaManager;
 
-@Path("/dynamicjpa") /* http://localhost:8080/ScrumREST/dynamicjpa/test */
+@Path("/dynamicjpa") /* http://localhost:8080/ScrumREST/dynamicjpa */
 @Stateless
+//@TransactionManagement(TransactionManagementType.CONTAINER)
 public class DynamicJPAService {
 	private static Logger logger = Logger.getLogger(DynamicJPAService.class.getName());
 
-	@PersistenceContext(unitName="target")
+	@PersistenceContext(unitName="targetORCL")
 	private EntityManager em;
 	
 	@Resource
@@ -47,15 +48,17 @@ public class DynamicJPAService {
         
         // Create JPA Dynamic Helper (with the emf above) and after the types
         JPADynamicHelper helper = new JPADynamicHelper(em);
-        helper.addTypes(true, true, addressType);
+        logger.info(">>>>> HELPER: NOT doing create table and fkey ....");
+//        helper.addTypes(true, true, addressType);
+        helper.addTypes(false, false, addressType);
         
-        /* If SQL table exists, PG transaction will be rolled back, and subsequent JPA actions will fail!*/
+        /* With PG transaction could be rolled back, and subsequent JPA actions will fail!*/
+        /* With ORCL seems to be ok!*/
         
         // Create database and populate
         SchemaManager schemaManager = new SchemaManager(helper.getSession());
+        logger.info(">>>>> SchemaManager: replace default tables ...");
         schemaManager.replaceDefaultTables();
-        
-        logger.info("getRollbackOnly ? " + context.getRollbackOnly());
         
         logger.info("address instance: " + saveDynamicEntity());
         
@@ -63,13 +66,24 @@ public class DynamicJPAService {
 	}
 	
 	@GET @Path("/save")	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+//	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public String saveDynamicEntity(){
+		// Create a dynamic class loader and create the types.
+        DynamicClassLoader dcl = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
+        DynamicType addressType = configureAddress(dcl, "example.entities");
+        
+        // Create JPA Dynamic Helper (with the emf above) and after the types
+        JPADynamicHelper helper = new JPADynamicHelper(em);
+        logger.info(">>>>> HELPER: register dynamic type ....");
+        helper.addTypes(false, false, addressType); // no table generation, not fk generation		
+		
 		DynamicEntity address = createInstance(em, "Address");
+		
 		logger.info("address instance: " + address.get("city"));
 		
 		em.getTransaction().begin();
 		em.persist(address);
+		logger.info(">>>>> EM: insert dynamic instance ....");
 		em.flush();
 		em.getTransaction().commit();
 	        
@@ -101,7 +115,7 @@ public class DynamicJPAService {
         address.addDirectMapping("city", String.class, "CITY");
         address.addDirectMapping("province", String.class, "PROV");
         address.addDirectMapping("postalCode", String.class, "P_CODE");
-        address.addDirectMapping("country", String.class, "COUNTRY");
+        address.addDirectMapping("country_en", String.class, "COUNTRY_EN");
 
 //        address.configureSequencing("ADDR_SEQ", "ADDR_ID");
         
@@ -112,12 +126,12 @@ public class DynamicJPAService {
     private static DynamicEntity createInstance(EntityManager em, String entityAlias){
     	ClassDescriptor descriptor = JpaHelper.getEntityManager(em).getActiveSession().getDescriptorForAlias(entityAlias);
     	DynamicEntity address = (DynamicEntity) descriptor.getInstantiationPolicy().buildNewInstance();
-    	address.set("id", 2);
+    	address.set("id", 1);
         address.set("city", "IASI");
         address.set("postalCode", "123456");
         address.set("province", "IS");
         address.set("street", "Carol 1");
-        address.set("country", "Romania");    	
+        address.set("country_en", "Romania");    	
         return address;
     }
 }    
@@ -136,13 +150,5 @@ public class DynamicJPAService {
 <driver name="postgresql" module="org.postgresql">
                         <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
                     </driver>
-
-
-
-
-
-
-
-
- */
+*/
 
