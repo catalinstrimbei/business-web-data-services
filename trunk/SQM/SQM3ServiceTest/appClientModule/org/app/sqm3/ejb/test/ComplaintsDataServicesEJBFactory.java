@@ -11,8 +11,6 @@ import javax.naming.InitialContext;
 import org.app.service.ejb.ComplaintsDataService;
 import org.app.service.ejb.ComplaintsDataServiceEJB;
 
-
-
 public class ComplaintsDataServicesEJBFactory {
 	private  static Logger LOGGER = Logger.getLogger(ComplaintsDataServicesEJBFactory.class.getName());
 	

@@ -18,7 +18,7 @@ public class TestRest {
 	
 	@Test
 	public void testGetComplaint() throws Exception{
-		RESTfullResource<Complaints> resource=new RESTfullResource("http://localhost:8000/SQM3ServiceREST/complaints/",Complaints.class,"application/xml");
+		RESTfullResource<Complaints> resource=new RESTfullResource("http://localhost:8080/SQM3ServiceREST/complaints/",Complaints.class,"application/xml");
 		Complaints complaint=resource.get();
 		assertNotNull("Resource [/complaints/3001] not returned from service!",complaint);
 		logger.info("DEBUG testGetComplaint: queried complaint"+complaint);
@@ -28,7 +28,7 @@ public class TestRest {
 	public void testGetComplaints() throws Exception{
 		RESTfullResource<Collection<Complaints>> resource=
 				new RESTfullResource<Collection<Complaints>>(
-						"http://localhost:8000/SQM3ServiceREST/complaints/",
+						"http://localhost:8080/SQM3ServiceREST/complaints/",
 						"application/xml",
 						new GenericType<Collection<Complaints>>(){});
 		Collection<Complaints> complaints=resource.get();
@@ -41,7 +41,7 @@ public class TestRest {
 	public void testPOSTNewProjectResource() throws Exception{
 		RESTfullResource<Collection<Complaints>> resource=
 				new RESTfullResource<Collection<Complaints>>(
-						"http://localhost:8000/SQM3ServiceREST/complaints/",
+						"http://localhost:8080/SQM3ServiceREST/complaints/",
 						"application/xml",
 						new GenericType<Collection<Complaints>>(){});
 		Collection<Complaints> complaints=resource.get();
@@ -60,13 +60,13 @@ public class TestRest {
 	public void testDELETENewProjectResource() throws Exception{
 		RESTfullResource<Collection<Complaints>> resourceComplaint=
 				new RESTfullResource<Collection<Complaints>>(
-						"http://localhost:8000/SQM3ServiceREST/complaints/",
+						"http://localhost:8080/SQM3ServiceREST/complaints/",
 						"application/xml",
 						new GenericType<Collection<Complaints>>(){});
 		Collection<Complaints> complaints=resourceComplaint.get();
 		logger.info("DEBUG testDELETENewProjectResource: queried complaint count: "+complaints.size());
 		RESTfullResource<Complaints> resource=
-				new RESTfullResource<Complaints>("http://localhost:8000/SQM3ServiceREST/complaints/325",Complaints.class,"application/xml");
+				new RESTfullResource<Complaints>("http://localhost:8080/SQM3ServiceREST/complaints/325",Complaints.class,"application/xml");
 						
 		Complaints complaint=resource.get();
 		
@@ -81,7 +81,7 @@ public class TestRest {
 	 public void testPUTNewProjectResource() throws Exception{
 		RESTfullResource<Collection<Complaints>> resource=
 				new RESTfullResource<Collection<Complaints>>(
-						"http://localhost:8000/SQM3ServiceREST/complaints/3001",
+						"http://localhost:8080/SQM3ServiceREST/complaints/3001",
 						Complaints.class,"application/xml");
 		Complaints complaint=new Complaints();
 		complaint.setComplaintsNumber(3001);
@@ -99,7 +99,7 @@ public class TestRest {
 		public void testDELETEProjectResource() throws Exception{
 			
 			RESTfullResource<Complaints> resource=
-					new RESTfullResource<Complaints>("http://localhost:8000/SQM3ServiceREST/complaints/325",Complaints.class,"application/xml");
+					new RESTfullResource<Complaints>("http://localhost:8080/SQM3ServiceREST/complaints/325",Complaints.class,"application/xml");
 							
 			Complaints complaint=resource.get();
 			

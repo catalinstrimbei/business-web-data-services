@@ -34,11 +34,10 @@ public class TestComplainsDataService {
 	// @Test
 	 public void test() {
 	  logger.info("DEBUG: Junit TESTING ...");
-
 	  logger.info("DEBUG: EJB Response ..." + service.test());
 	 }
 	 
-	 /*
+	 
 	 @Test
 	 public void testSave() {
 	  logger.info("DEBUG: Junit TESTING ...");
@@ -56,7 +55,7 @@ public class TestComplainsDataService {
 	  c1.setComplaintsNumber(1231);
 	  logger.info("DEBUG: EJB Response ..." + c1);
 	 }
-	
+	/*
 	 @Test
 	public void testCreateComplanint(){
 		Complaints complaint = new Complaints(1201,ComplaintsType.downtime,new Date());
