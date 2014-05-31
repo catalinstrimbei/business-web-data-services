@@ -24,7 +24,7 @@
       		
 	</persistence-unit>
 	
-	<persistence-unit name="target">
+	<persistence-unit name="targetPG">
 		<jta-data-source>java:/PGFeaaMSD</jta-data-source>
 		
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
@@ -33,4 +33,14 @@
             <property name="eclipselink.weaving" value="static"/>
         </properties>
     </persistence-unit>	
+    
+	<persistence-unit name="targetORCL">
+		<jta-data-source>java:/ORCLFeaadmScrum</jta-data-source>
+		
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.weaving" value="static"/>
+        </properties>
+    </persistence-unit>    
 </persistence>
