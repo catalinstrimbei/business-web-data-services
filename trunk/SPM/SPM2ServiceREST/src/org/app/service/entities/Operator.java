@@ -42,13 +42,6 @@ public class Operator implements Serializable{
 	}
 
 	
-	public Operator(String nume, String prenume, String adresa, String email) {
-		super();
-		this.nume = nume;
-		this.prenume = prenume;
-		this.adresa = adresa;
-		this.email = email;
-	}
 	@OneToMany
 	(/*mappedBy="client"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
 	protected List<Activitate> activitati = new ArrayList<Activitate>();
@@ -117,6 +110,33 @@ public class Operator implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Integer getIdOperator() {
+		return idOperator;
+	}
+	public void setIdOperator(Integer idOperator) {
+		this.idOperator = idOperator;
+	}
+	public List<Activitate> getActivitati() {
+		return activitati;
+	}
+	public void setActivitati(List<Activitate> activitati) {
+		this.activitati = activitati;
+	}
+	public void setActivitate(List<Activitate> activitate) {
+		this.activitate = activitate;
+	}
+	public Operator(Integer idOperator, String nume, String prenume,
+			String adresa, String email, List<Activitate> activitate,
+			List<Activitate> activitati) {
+		super();
+		this.idOperator = idOperator;
+		this.nume = nume;
+		this.prenume = prenume;
+		this.adresa = adresa;
+		this.email = email;
+		this.activitate = activitate;
+		this.activitati = activitati;
 	}
 	
 	

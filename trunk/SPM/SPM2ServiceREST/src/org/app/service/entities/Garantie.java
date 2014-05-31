@@ -25,14 +25,7 @@ public class Garantie implements Serializable{
 	@OneToMany(/*mappedBy="contract"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
 	private List<Produs> produs = new ArrayList<Produs>();
 	
-	public Garantie(Date dataInceput, Date dataSfarsit, Date dataInterventie,
-			String observatii) {
-		super();
-		this.dataInceput = dataInceput;
-		this.dataSfarsit = dataSfarsit;
-		this.dataInterventie = dataInterventie;
-		this.observatii = observatii;
-	}
+	
 	
 	
 
@@ -104,10 +97,42 @@ public class Garantie implements Serializable{
 	public void setObservatii(String observatii) {
 		this.observatii = observatii;
 	}
-	
-	
-	
-	
-	
+
+
+
+	public Integer getIdGarantie() {
+		return idGarantie;
+	}
+
+
+
+	public void setIdGarantie(Integer idGarantie) {
+		this.idGarantie = idGarantie;
+	}
+
+
+
+	public List<Produs> getProdus() {
+		return produs;
+	}
+
+
+
+	public void setProdus(List<Produs> produs) {
+		this.produs = produs;
+	}
+
+
+
+	public Garantie(Integer idGarantie, Date dataInceput, Date dataSfarsit,
+			Date dataInterventie, String observatii, List<Produs> produs) {
+		super();
+		this.idGarantie = idGarantie;
+		this.dataInceput = dataInceput;
+		this.dataSfarsit = dataSfarsit;
+		this.dataInterventie = dataInterventie;
+		this.observatii = observatii;
+		this.produs = produs;
+	}	
 	
 }

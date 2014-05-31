@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -18,8 +19,8 @@ public class Produs implements Serializable{
 	@GeneratedValue
 	private Integer idProdus;
 	private String nume;
-	@OneToMany(/*mappedBy="contract"*/ cascade=ALL, /*fetch= EAGER*/orphanRemoval=false)
-	private List<Licenta> licenta = new ArrayList<Licenta>();
+	@OneToMany(cascade=ALL, fetch= FetchType.EAGER)
+	private List<Licenta> licente = new ArrayList<>();
 	@ManyToOne
 	private Garantie garantie;
 	
@@ -86,7 +87,7 @@ public class Produs implements Serializable{
 	}
 
 	public List<Licenta> getLicenta() {
-		return licenta;
+		return licente;
 	}
 
 	
@@ -101,7 +102,37 @@ public class Produs implements Serializable{
 	
 
 	public void setLicenta(List<Licenta> licenta) {
-		this.licenta = licenta;
+		this.licente = licenta;
+	}
+
+
+	public Integer getIdProdus() {
+		return idProdus;
+	}
+
+
+	public void setIdProdus(Integer idProdus) {
+		this.idProdus = idProdus;
+	}
+
+
+	public List<Licenta> getLicente() {
+		return licente;
+	}
+
+
+	public void setLicente(List<Licenta> licente) {
+		this.licente = licente;
+	}
+
+
+	public Produs(Integer idProdus, String nume, List<Licenta> licente,
+			Garantie garantie) {
+		super();
+		this.idProdus = idProdus;
+		this.nume = nume;
+		this.licente = licente;
+		this.garantie = garantie;
 	}
 	
 

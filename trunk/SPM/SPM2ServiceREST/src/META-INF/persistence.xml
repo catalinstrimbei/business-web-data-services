@@ -5,15 +5,9 @@
 		<class>org.app.service.entities.Activitate</class>
 		<class>org.app.service.entities.Client</class>
 		<class>org.app.service.entities.Contract</class>
-		<class>org.app.service.entities.ContractConsultanta</class>
-		<class>org.app.service.entities.ContractLeasing</class>
-		<class>org.app.service.entities.ContractSuport</class>
-		<class>org.app.service.entities.ContractVanzare</class>
 		<class>org.app.service.entities.Garantie</class>
 		<class>org.app.service.entities.Licenta</class>
 		<class>org.app.service.entities.Operator</class>
-		<class>org.app.service.entities.PersoanaFizica</class>
-		<class>org.app.service.entities.PersoanaJuridica</class>
 		<class>org.app.service.entities.Produs</class>
 		
       <properties>
