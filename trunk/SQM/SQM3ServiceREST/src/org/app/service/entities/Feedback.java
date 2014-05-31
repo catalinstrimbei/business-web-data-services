@@ -7,9 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
-public class Feedback  implements Serializable {
+public class Feedback extends Comunication implements Serializable {
 	
-	  @Id @GeneratedValue 
 	  private Integer feedbackId;
 	  private String description;
 	  

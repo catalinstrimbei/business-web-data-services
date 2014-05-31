@@ -189,6 +189,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	/* (non-Javadoc)
 	 * @see org.app.patterns.EntityRepositoryService#addAll(java.util.Collection)
 	 */
+
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
 //		em.getTransaction().begin();
@@ -288,5 +289,7 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
 	    return (Class<T>)extractClassFromType(actualArg);
-	}		
+	}
+
+		
 }

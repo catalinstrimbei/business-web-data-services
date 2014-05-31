@@ -1,4 +1,3 @@
-
 package org.app.service.ejb;
 
 import java.util.Collection;
@@ -11,7 +10,7 @@ import org.app.service.entities.Complaints;
 
 //facade interface
 @Remote
-public interface IComplaintsDataServices extends EntityRepository<Complaints>{
+public interface ComplaintsDataService extends EntityRepository<Complaints>{
 //CRUD methods
 	
 	public String getMessage();
@@ -28,3 +27,4 @@ public interface IComplaintsDataServices extends EntityRepository<Complaints>{
 	 public boolean remove(Complaints complaint);
 	
 }
+
