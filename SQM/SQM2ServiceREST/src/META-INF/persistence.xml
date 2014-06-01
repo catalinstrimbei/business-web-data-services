@@ -2,6 +2,27 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="SQM2ServiceREST">
 		<jta-data-source>java:/ORCLFeaaMSD</jta-data-source>
+		<class>org.app.service.entities.ExecuteTest</class>
+		<class>org.app.service.entities.Feature</class>
+		<class>org.app.service.entities.FeatureCategory</class>
+		<class>org.app.service.entities.ImprovementSolution</class>
+		<class>org.app.service.entities.ImprovementStatus</class>
+		<class>org.app.service.entities.Member</class>
+		<class>org.app.service.entities.OptimizationSolutions</class>
+		<class>org.app.service.entities.Optimize</class>
+		<class>org.app.service.entities.Project</class>
+		<class>org.app.service.entities.ProjectStatus</class>
+		<class>org.app.service.entities.Release</class>
+		<class>org.app.service.entities.Role</class>
+		<class>org.app.service.entities.Specialization</class>
+		<class>org.app.service.entities.Task</class>
+		<class>org.app.service.entities.TaskCategory</class>
+		<class>org.app.service.entities.TaskImprovement</class>
+		<class>org.app.service.entities.TaskStatus</class>
+		<class>org.app.service.entities.Team</class>
+		<class>org.app.service.entities.TeamMembers</class>
+		<class>org.app.service.entities.Test</class>
+		<class>org.app.service.entities.TestResult</class>
 		
       <properties>
          <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
