@@ -13,18 +13,17 @@ import org.app.service.entities.Complaints;
 public interface ComplaintsDataService extends EntityRepository<Complaints>{
 //CRUD methods
 	
-	public String getMessage();
+	public String getMessage();	
+	public String test();
 	public Complaints createNewComplaints(Integer Id);
-	
-	 public String test();
-	 public Collection<Complaints> toCollection();
-	 public Complaints save(Complaints complaint);
+	public Collection<Complaints> toCollection();
+	public Complaints save(Complaints complaint);
 	 //CREATE and Update
-	 public Complaints add(Complaints complaint);
+	public Complaints add(Complaints complaint);
 	 //READ
-	 public Complaints getById(Integer Id);
+	public Complaints getById(Integer Id);
 	 //DELETE
-	 public boolean remove(Complaints complaint);
+	public boolean remove(Complaints complaint);
 	
 }
 
