@@ -12,17 +12,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.sun.xml.internal.txw2.annotation.XmlElement;
 
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.CascadeType.ALL;
 
 
-
+@XmlRootElement(name="planaudit")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 
 public class PlanAudit implements Serializable{
 	
-
+@XmlElement
 	public int getIdplan() {
 		return idplan;
 	}
@@ -55,6 +62,8 @@ public class PlanAudit implements Serializable{
 		this.deadline = deadline;
 	}
 
+	@XmlElementWrapper(name="echipa")
+	@XmlElement(ns="echipa1")
 	public List<Echipa> getEchipa() {
 		return echipa;
 	}
@@ -122,7 +131,20 @@ public void setName(String string) {
 	
 }
 
+public static String BASE_URL = "http://localhost:8080/ScrumREST/plan/";
+@XmlElement (ns = "link")
+public AtomLink getLink() throws Exception {
+	
+	String restUrl=BASE_URL + this.getIdplan();
+	return new AtomLink (restUrl, "get-plan");
+	
+	
+}
 
+public String size() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 
 
