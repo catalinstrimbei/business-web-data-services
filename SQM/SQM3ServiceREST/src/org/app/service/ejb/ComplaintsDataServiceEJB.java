@@ -38,11 +38,9 @@ public class ComplaintsDataServiceEJB extends EntityRepositoryBase<Complaints> i
  
 	private  static Logger LOGGER = Logger.getLogger(ComplaintsDataServiceEJB.class.getName());
 	
+	@Inject ComplaintsFactory complaintsFactory;
 	private EntityRepository<ComplaintsStatus> complaintsStatusRepository;
 	
-	//needs more repository
-	@Inject
-	private ComplaintsFactory complainstFactory;
 	
 	@PostConstruct
 	public void init(){
@@ -53,7 +51,7 @@ public class ComplaintsDataServiceEJB extends EntityRepositoryBase<Complaints> i
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Override
 	public Complaints createNewComplaints(Integer Id) {
-		Complaints complaint = complainstFactory.buildComplaint(Id,ComplaintsType.downtime , 100);
+		Complaints complaint = complaintsFactory.buildComplaint(Id,ComplaintsType.downtime , 3);
 		this.add(complaint);
 		return Complaints.toDTOAggregate(complaint);	
 	}
