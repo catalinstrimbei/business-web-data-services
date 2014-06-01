@@ -13,8 +13,8 @@ public class KnowledgeBase  implements Serializable {
 	private Integer topicId;
 	private String solution;
 	
-	@OneToMany(mappedBy="topicKnowledgeBase")
-	private List<Complaints> complaints=new ArrayList<Complaints>();
+	//@OneToMany(mappedBy="topicKnowledgeBase")
+	//private List<Complaints> complaints=new ArrayList<Complaints>();
 	
 	public Integer getTopicId() {
 		return topicId;
