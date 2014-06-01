@@ -22,15 +22,15 @@ enum Status{
 @Entity
 public class ComplaintsStatus implements Serializable {
 
-	@Id @GeneratedValue 
+	@Id 
+	//@GeneratedValue 
 	private Integer complaintsStatusId;  
 	private Status status;
 	private String statusDescription;
 	@Temporal(TemporalType.DATE)
     private Date dateOfChangeStatus;
 	//the employee who changed status of complain
-	@ManyToOne
-	private Employee employee; 
+	private Integer employeeId; 
 	
 	@ManyToOne
 	private Complaints complaint;
@@ -89,12 +89,12 @@ public class ComplaintsStatus implements Serializable {
 		this.dateOfChangeStatus = dateOfChangeStatus;
 	}
    
-	public Employee getEmployee() {
-		return employee;
+	public Integer getEmployee() {
+		return employeeId;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployee(Integer employee) {
+		this.employeeId = employee;
 	}
 	@XmlElement
 	public Complaints getComplaint() {

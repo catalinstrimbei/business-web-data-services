@@ -17,23 +17,21 @@ import java.util.ArrayList;
 @XmlRootElement(name="complaints")
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Complaints extends Comunication implements Serializable {
 
+public class Complaints implements Serializable {
+
+	@Id 
+	//@GeneratedValue 
 	private Integer complaintsId;  
 	private  int ComplaintsNumber; 
 	private  ComplaintsType complaintType; 
     @Temporal(TemporalType.DATE)
     private Date dateOfClosedCompl;
-    
-    @ManyToOne
-    private KnowledgeBase topicKnowledgeBase;
-    
-    @OneToOne(mappedBy="complaint")
-    private Comunication comunication;
-    //this is the first employee who recorded the complaint
-    @ManyToOne
-    private Employee employee; 
+
+   private String topicKnowledgeBase; 
+   private String comunicationType;
+
+    private Integer employeeId; 
     
     @OneToMany(mappedBy="complaint", cascade =CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
 	private List<ComplaintsStatus> complaintStatus=new ArrayList<ComplaintsStatus>();
@@ -48,8 +46,15 @@ public class Complaints extends Comunication implements Serializable {
 		this.complaintType = complaintType;
 		this.dateOfClosedCompl = dateOfClosedCompl;
 	}
+	
+	public Complaints(Integer complaintsId, ComplaintsType complaintType,Integer complaintsNumber ) {
+		super();
+		this.complaintsId = complaintsId;
+		this.complaintType = complaintType;
+		this.ComplaintsNumber = complaintsNumber;
+	}
 	/*REST RESOURCE URL*/
-	public static String BASE_URL="http://localhost:8000/SQM3ServiceREST/complaints/";
+	public static String BASE_URL="http://localhost:8080/SQM3ServiceREST/complaints/";
 	
 	@XmlElement(name="link")
 	public AtomLink getLink() throws Exception{
@@ -95,28 +100,28 @@ public class Complaints extends Comunication implements Serializable {
 		this.dateOfClosedCompl = dateOfClosedCompl;
 	}
   
-	public KnowledgeBase getTopicKnowledgeBase() {
+	public String getTopicKnowledgeBase() {
 		return topicKnowledgeBase;
 	}
 
-	public void setTopicKnowledgeBase(KnowledgeBase topicKnowledgeBase) {
+	public void setTopicKnowledgeBase(String topicKnowledgeBase) {
 		this.topicKnowledgeBase = topicKnowledgeBase;
 	}
-	@XmlElement
-	public Employee getEmployee() {
-		return employee;
+	
+	public Integer getEmployee() {
+		return employeeId;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployee(Integer employee) {
+		this.employeeId = employee;
 	}
     
-	public Comunication getComunication() {
-		return comunication;
+	public String getComunication() {
+		return comunicationType;
 	}
    
 	public void setComunication(Comunication comunication) {
-		this.comunication = comunication;
+	this.comunicationType = comunicationType;
 	}
 	
 	@XmlElementWrapper(name="complaintsStatus") @XmlElement(name="complaintsStatus")
@@ -127,6 +132,7 @@ public class Complaints extends Comunication implements Serializable {
 	public void setComplaintStatus(List<ComplaintsStatus> complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
+	
 	public static Complaints toDTOAggregate(Complaints complaint) {
 		// TODO Auto-generated method stub
 		if(complaint == null){

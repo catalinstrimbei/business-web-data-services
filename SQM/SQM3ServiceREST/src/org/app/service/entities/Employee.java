@@ -21,13 +21,7 @@ public class Employee  implements Serializable {
 	  private Date dateOfEmpl;
 	  
 	  @OneToMany(mappedBy="employee")
-	  private List<Complaints> complaints=new ArrayList<Complaints>();
-	  
-	  @OneToMany(mappedBy="employee")
 	  private List<ResolvedComplaints> resolvedComplaints=new ArrayList<ResolvedComplaints>();
-	  
-	  @OneToMany(mappedBy="employee")
-	  private List<ComplaintsStatus> complaintStatus=new ArrayList<ComplaintsStatus>();
 	  
 	  @ManyToOne
 	  private EmployeeLevel employeeLevel; 
@@ -88,13 +82,7 @@ public class Employee  implements Serializable {
 		this.dateOfEmpl = dateOfEmpl;
 	}
 
-	public List<Complaints> getComplaints() {
-		return complaints;
-	}
-
-	public void setComplaints(List<Complaints> complaints) {
-		this.complaints = complaints;
-	}
+	
 
 	public EmployeeLevel getEmployeeLevel() {
 		return employeeLevel;
@@ -111,13 +99,7 @@ public class Employee  implements Serializable {
 			this.resolvedComplaints = resolvedComplaints;
 		}
 
-		public List<ComplaintsStatus> getComplaintStatus() {
-			return complaintStatus;
-		}
-
-		public void setComplaintStatus(List<ComplaintsStatus> complaintStatus) {
-			this.complaintStatus = complaintStatus;
-		}
+		
 
 		
 

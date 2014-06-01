@@ -1,39 +1,56 @@
 package org.app.service.entities;
 import javax.persistence.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import static javax.persistence.CascadeType.ALL;
 import java.util.*;
 import java.io.Serializable;
-
 
 enum ComunicationType{
 	  phone,
 	  fax,
 	  email,
 	  facetoface
-	}
+}
 
+@XmlRootElement(name="suport")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Comunication implements Serializable{
+public class Comunication  implements Serializable{
 	
 
 	@Id @GeneratedValue 
 	private Integer comunicationId;  
 	private ComunicationType comunicationType;
 	@Temporal(TemporalType.DATE)
-    private Date dateOfReporting;
-	
+    private Date dateOfReporting;	
 	private Integer productId;
 	
 	@ManyToOne
 	private Client client;
 	
+	
+	
+	@OneToOne
+    private Complaints complaint;
+	
 	public Complaints getComplaint() {
-		return complaint;
+	    return complaint;
 	}
 
 	public void setComplaint(Complaints complaint) {
-		this.complaint = complaint;
+	   this.complaint = complaint;
 	}
 
 	public Feedback getFeedback() {
@@ -43,9 +60,7 @@ public class Comunication implements Serializable{
 	public void setFeedback(Feedback feedback) {
 		this.feedback = feedback;
 	}
-
-	@OneToOne
-    private Complaints complaint;
+	
 	
 	@OneToOne
 	private Feedback feedback;
