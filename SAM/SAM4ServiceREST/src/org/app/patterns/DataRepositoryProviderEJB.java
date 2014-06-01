@@ -13,9 +13,12 @@ import javax.persistence.PersistenceContext;
 
 
 
-import org.app.scrum.project.Proiect;
-import org.app.scrum.sprint.Sprint;
-import org.app.scrum.team.Member;
+
+
+
+import org.app.service.project.Proiect;
+import org.app.service.sprint.Sprint;
+import org.app.service.team.Member;
 
 @Singleton
 @LocalBean

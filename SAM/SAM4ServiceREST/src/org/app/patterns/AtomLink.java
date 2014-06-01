@@ -34,4 +34,9 @@ public class AtomLink implements Serializable {
 		this.type = "text/html";
 	}
 	public AtomLink() { }	
+	
+
+	
 }
+
+
