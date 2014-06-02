@@ -31,7 +31,7 @@ public class TestComplainsDataService {
 		assertNotNull("Message was not returned!", message);
 		logger.info("DEBUG testGetMessage" + message);
 	}
-	// @Test
+	 @Test
 	 public void test() {
 	  logger.info("DEBUG: Junit TESTING ...");
 	  logger.info("DEBUG: EJB Response ..." + service.test());
@@ -42,29 +42,29 @@ public class TestComplainsDataService {
 	 public void testSave() {
 	  logger.info("DEBUG: Junit TESTING ...");
 	  Complaints c = new Complaints();
-	  c.setComplaintsId(101);
+	  c.setComplaintsId(104);
 	  c.setComplaintsType(ComplaintsType.incident);
 	  c.setComplaintsNumber(1230);
 	  c=service.save(c);
-	  
-	  logger.info("DEBUG: EJB Response ..." + c);
+	  logger.info("DEBUG: EJB first item save Response ..." + c);
 	  logger.info("DEBUG: Junit TESTING ...");
 	  Complaints c1 = new Complaints();
-	  c1.setComplaintsId(102);
+	  c1.setComplaintsId(106);
 	  c1.setComplaintsType(ComplaintsType.downtime);
 	  c1.setComplaintsNumber(1231);
-	  logger.info("DEBUG: EJB Response ..." + c1);
+	  c1=service.save(c1);
+	  logger.info("DEBUG: EJB second item save Response ..." + c1);
 	 }
-	/*
+	
 	 @Test
 	public void testCreateComplanint(){
-		Complaints complaint = new Complaints(1201,ComplaintsType.downtime,new Date());
+		Complaints complaint = new Complaints(1201,ComplaintsType.downtime,132);
 		complaint=service.add(complaint);
-		logger.info("DEBUG create complaint : save complaint"+complaint);
-		assertNotNull("Failed to create a new complaint in repository!", complaint);
+		logger.info("DEBUG create new complaint : save complaint "+complaint);
+		assertNotNull("Failed to create a new complaint in repository! ", complaint);
 		complaint=service.getById(1201);
-		assertNotNull("Failed to find  new complaint in repository!", complaint);
-		logger.info("DEBUG create complaint : queried complaint"+complaint);
+		assertNotNull("Failed to find  new complaint in repository! ", complaint);
+		logger.info("DEBUG create complaint : queried complaint "+complaint);
 			
 		}
 	@Test
@@ -102,8 +102,7 @@ public class TestComplainsDataService {
 		complaints.setComplaintsNumber(102);
 		complaints = service.add(complaints);
 		assertNotNull("Failed to save updated complaints in repository!",complaints);
-		
-		
+
 		Complaints complaints1 = service.getById(103);
 		assertNotNull("Failed to find updated complaints repository!",complaints);
 		complaints1.setComplaintsNumber(143);
@@ -121,6 +120,6 @@ public class TestComplainsDataService {
 		complaints = service.getById(101);
 		logger.info("Debug testAdd: complaints removed" + complaints);
 		assertNull("Failed to remove complaints in repository!", complaints);
-	}*/
+	}
 	
 }
