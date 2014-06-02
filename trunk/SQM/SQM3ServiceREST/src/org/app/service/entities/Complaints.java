@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @XmlRootElement(name="complaints")
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 
 public class Complaints implements Serializable {
@@ -124,7 +124,7 @@ public class Complaints implements Serializable {
 	this.comunicationType = comunicationType;
 	}
 	
-	@XmlElementWrapper(name="complaintsStatus") @XmlElement(name="complaintsStatus")
+	//@XmlElementWrapper(name="complaintsStatus") @XmlElement(name="complaintsStatus")
 	public List<ComplaintsStatus> getComplaintStatus() {
 		return complaintStatus;
 	}

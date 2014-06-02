@@ -22,8 +22,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-@XmlRootElement(name="comunication")
-@XmlAccessorType(XmlAccessType.NONE)
+
 @Entity
 public class Client implements Serializable{
 	
@@ -65,17 +64,7 @@ public class Client implements Serializable{
 		return new AtomLink(restUrl, "get_clinti");
 	}
 	
- /* public static Client toDTOAggregate(Client client){
-			if (client == null)
-				return null;
-			Client clientDTO = client.toDTO();
-			List<Comunication> comunicationDTO = Comunication.toDTOList(client.getActivitati());
-			clientDTO.setActivitati(activitati_suportDTO);
-			return clientDTO;
-		}
-	public Client() {
-	super();
-}*/
+
 	@Override
 	public String toString() {
 		return "Clienti [idClient=" + clientId + ", NumeClient="
