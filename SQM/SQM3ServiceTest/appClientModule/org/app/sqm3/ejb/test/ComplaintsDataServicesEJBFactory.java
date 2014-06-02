@@ -26,7 +26,9 @@ public class ComplaintsDataServicesEJBFactory {
 	private static <T> T LookupEJBService() throws Exception{
 		// TODO Auto-generated method stub
 		final Hashtable jndiProperties = new Hashtable();
-		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+		
+		jndiProperties.put("jboss.naming.client.ejb.context", true);
+        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		final Context context = new InitialContext(jndiProperties);
 		String lookUpURL = "ejb:/" + MODULE_NAME + "//" + SERVICE_NAME + "!" + REMOTE_INTERFACE_NAME;
 		LOGGER.info("!DEBUG: lookUpURL = " + lookUpURL + "\n");
