@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 public class Member {
 
@@ -34,6 +38,7 @@ public class Member {
 		this.task = task;
 	}
 
+	
 	public String getFisrtName() {
 		return fisrtName;
 	}
@@ -41,7 +46,7 @@ public class Member {
 	public void setFisrtName(String fisrtName) {
 		this.fisrtName = fisrtName;
 	}
-
+  
 	public int getIdMember() {
 		return idMember;
 	}
@@ -74,7 +79,5 @@ public class Member {
 		this.task = task;
 	}
 
-	
-	
 
 }

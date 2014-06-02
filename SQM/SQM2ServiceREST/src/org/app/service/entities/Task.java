@@ -10,9 +10,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.app.patterns.AtomLink;
 
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.CascadeType.ALL;
+
+@XmlRootElement(name="task") 
+@XmlAccessorType(XmlAccessType.NONE ) 
 @Entity
 public class Task implements Serializable {
 
@@ -80,6 +90,16 @@ public class Task implements Serializable {
 		this.members = members;
 	}
 
+	/* Rest Resource URL*/
+	public static String BASE_URL = "http://localhost:8080/SQM2ServiceREST/tasks/";
+	@XmlElement(name = "link")
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getIdTask();
+        return new AtomLink(restUrl, "get-task");
+    }	
+	
+	public void setLink(AtomLink link){}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -87,7 +107,8 @@ public class Task implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+ 
+	
 	public int getEstimateDurationDays() {
 		return estimateDurationDays;
 	}
@@ -96,6 +117,7 @@ public class Task implements Serializable {
 		this.estimateDurationDays = estimateDurationDays;
 	}
 
+	@XmlElement
 	public int getIdTask() {
 		return idTask;
 	}
@@ -104,6 +126,7 @@ public class Task implements Serializable {
 		this.idTask = idTask;
 	}
 
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -112,6 +135,7 @@ public class Task implements Serializable {
 		this.name = name;
 	}
 
+	@XmlElement
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -128,6 +152,7 @@ public class Task implements Serializable {
 		IdFeature = idFeature;
 	}
 
+	@XmlElementWrapper(name="tests") @XmlElement(name="test") 
 	public List<Test> getTests() {
 		return tests;
 	}
@@ -135,7 +160,7 @@ public class Task implements Serializable {
 	public void setTests(List<Test> tests) {
 		this.tests = tests;
 	}
-
+	@XmlElementWrapper(name="members") @XmlElement(name="member") 
 	public List<Member> getMembers() {
 		return members;
 	}
@@ -193,6 +218,7 @@ public class Task implements Serializable {
 		this.startDate = startDate;
 		this.optimizations = optimizations;
 	}
-
+	
+	
 	
 }
