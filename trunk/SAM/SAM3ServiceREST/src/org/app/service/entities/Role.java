@@ -1,6 +1,6 @@
 package org.app.service.entities;
 
-public enum role {
+public enum Role {
 
 	INITIATOR,
 	PROGRAMMER,
