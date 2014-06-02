@@ -9,12 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.app.patterns.AtomLink;
 
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.CascadeType.ALL;
 
 
 @Entity
+@XmlRootElement(name="test") 
+@XmlAccessorType(XmlAccessType.NONE )
+
 public class Test implements Serializable {
 
 	private String acceptableLimit;
@@ -63,6 +72,7 @@ public class Test implements Serializable {
 		this.acceptableLimit = acceptableLimit;
 	}
 
+	@XmlElement 
 	public String getDescription() {
 		return description;
 	}
@@ -71,6 +81,7 @@ public class Test implements Serializable {
 		this.description = description;
 	}
 
+	@XmlElement 
 	public int getIdTest() {
 		return idTest;
 	}
@@ -87,6 +98,15 @@ public class Test implements Serializable {
 		this.task = task;
 	}
 	
-
+	public static String BASE_URL = Task.BASE_URL;
+	@XmlElement(name = "link")
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL 
+				+ this.getTask().getIdTask() 
+				+ "/tests/" 
+				+ this.getIdTest();
+        return new AtomLink(restUrl, "get-test");
+    }	
+	public void setLink(AtomLink link){}
 	
 }
