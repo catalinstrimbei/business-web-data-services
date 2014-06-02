@@ -30,7 +30,7 @@ public class TestDataServiceEJB {
 	}
 	
 	/* CREATE Test 1 (create-read)*/
-   	@Test
+//   	@Test
 	public void testCreateTask(){
 		Task task = new Task(7001, "Project Test 7001", new Date()); // !!!
 		task = service.add(task);
@@ -42,7 +42,7 @@ public class TestDataServiceEJB {
 	}
 	
 	/* CREATE Test 2: create aggregate*/
-	@Test
+//	@Test
 	public void testCreateNewTask(){
 		Task task = service.createNewTask(7002);
 		assertNotNull("Fail to create new task in repository!", task);
@@ -62,14 +62,14 @@ public class TestDataServiceEJB {
 	}	
 	
 	/* READ Test (read-collection) */
-	@Test
+//	@Test
 	public void testToCollection(){
 		Collection tasks = (Collection) service.toCollection();
 		assertTrue("Fail to read tasks from repository!", tasks != null);
 	}
 	
 	/* UPDATE Test (read-instance&update)*/
-	@Test
+//	@Test
 	public void testAdd(){
 		Task task = service.getById(7001);
 		assertNotNull("Fail to get task from repository!", task);
@@ -83,7 +83,7 @@ public class TestDataServiceEJB {
 	}
 	
 	/* REMOVE Test */
-	@Test
+//	@Test
 	public void testRemove(){
 		Integer taskNo = 7001;
 		Task task = service.getById(taskNo);
