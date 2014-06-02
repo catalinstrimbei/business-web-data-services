@@ -16,7 +16,7 @@ public class ComplaintsFactory {
 	    Long interval=30l*24*60*60*1000;
 	    
 	    for(int i=0;i<complStatusCount;i++){
-	    	complaintStatus.add(new ComplaintsStatus(null,null,null,new Date(dateOfChangeStatus.getDate()+i*interval),complaint));
+	    	complaintStatus.add(new ComplaintsStatus(null,null,"sts complaints "+complaint.getComplaintsId()+" i",new Date(dateOfChangeStatus.getDate()+i*interval),complaint));
 		}
 		complaint.setComplaintStatus(complaintStatus);
 		return complaint;

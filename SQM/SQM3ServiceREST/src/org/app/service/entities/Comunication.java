@@ -40,19 +40,6 @@ public class Comunication  implements Serializable{
 	@ManyToOne
 	private Client client;
 	
-	
-	
-	@OneToOne
-    private Complaints complaint;
-	
-	public Complaints getComplaint() {
-	    return complaint;
-	}
-
-	public void setComplaint(Complaints complaint) {
-	   this.complaint = complaint;
-	}
-
 	public Feedback getFeedback() {
 		return feedback;
 	}
@@ -60,8 +47,7 @@ public class Comunication  implements Serializable{
 	public void setFeedback(Feedback feedback) {
 		this.feedback = feedback;
 	}
-	
-	
+
 	@OneToOne
 	private Feedback feedback;
 	
