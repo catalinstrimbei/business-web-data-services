@@ -1,6 +1,6 @@
 package org.app.service.entities;
 
-public enum phase {
+public enum Phase {
 
 	IMPLEMENTATION,
 	MARKET,
