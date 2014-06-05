@@ -1,5 +1,8 @@
 package org.demo.services;
 
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +15,9 @@ import javax.persistence.Query;
 import org.datanucleus.enhancer.DataNucleusEnhancer;
 import org.office.access.ProductCategory;
 import org.office.xls.AdvertisingExpense;
+
+import com.myarch.reloader.ClassCollectionController;
+import com.myarch.reloader.Reloader;
 
 
 
@@ -65,8 +71,19 @@ public class DemoDataEngine {
 	 * Format XLS 97-2003
 	 */
 	public String generateXLSAdvertisingExpenses(){
+		CustomClassLoader cstLoader = new CustomClassLoader();
+		EntityManagerFactory emf = null;
+		try {
+			Method method = cstLoader.loadClass(Persistence.class.getName()).getMethod("createEntityManagerFactory", String.class);
+			emf = (EntityManagerFactory) method.invoke(null, "XLS_LOCAL");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// XLS_LOCAL
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("XLS_LOCAL");
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("XLS_LOCAL");
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("DELETE FROM AdvertisingExpense a");
 	    int numberInstancesDeleted = q.executeUpdate();		
@@ -89,19 +106,21 @@ public class DemoDataEngine {
 		return "Ok";
 	}
 	private void enhanceDataNucleusPersistentUnitEntities(){
+		
 		DataNucleusEnhancer enhancer = new DataNucleusEnhancer("JPA", null);
 		enhancer.setVerbose(true);
 		enhancer.addPersistenceUnit("XLS_LOCAL");
 		enhancer.enhance();
 		
-		ClassLoader classLoader = DemoDataEngine.class.getClassLoader();
-
-	    try {
-	        Class enhClass = classLoader.loadClass("org.office.xls.AdvertisingExpense");
-	        logger.info("Enhanced class name = " + enhClass.getName());
-	    } catch (ClassNotFoundException e) {
-	        e.printStackTrace();
-	    }		
+		CustomClassLoader cstLoader = new CustomClassLoader();
+		try {
+			cstLoader.loadClass(AdvertisingExpense.class.getName());
+			logger.info("Custom class loader " + cstLoader);
+			logger.info("Default class loader " + this.getClass().getClassLoader());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args){
