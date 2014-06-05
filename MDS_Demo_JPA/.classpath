@@ -45,5 +45,6 @@
 	<classpathentry kind="lib" path="lib/datanucleus/poi-ooxml-3.6.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/time-api-0.6.3.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/jdo-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/datanucleus/reloader.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

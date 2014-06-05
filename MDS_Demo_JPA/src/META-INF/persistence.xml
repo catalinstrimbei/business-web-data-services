@@ -55,6 +55,7 @@
 				<properties>
 		            <property name="javax.persistence.jdbc.url" value="excel:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xls"/>
 		            <property name="datanucleus.autoCreateSchema" value="false"/>
+		            <property name="datanucleus.jpa.addClassTransformer" value="true"/>
 		            <property name="datanucleus.validateTables" value="false"/>
 		            <property name="datanucleus.validateConstraints" value="false"/>
        	 		</properties>			
