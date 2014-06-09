@@ -1,11 +1,18 @@
 package org.demo.services;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtField;
+import javassist.util.HotSwapper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,13 +21,22 @@ import javax.persistence.Query;
 
 import org.datanucleus.enhancer.DataNucleusEnhancer;
 import org.office.access.ProductCategory;
+//import org.office.xls.AdvertisingExpense;
+
+
+
+
+
+
 import org.office.xls.AdvertisingExpense;
 
 import com.myarch.reloader.ClassCollectionController;
 import com.myarch.reloader.Reloader;
 
 
-
+/*
+ * Runtime configuration: -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus/datanucleus-core-3.2.5.jar"=-api=JPA,org.office.xls
+ */
 public class DemoDataEngine {
 	Logger logger = Logger.getLogger(DemoDataEngine.class.getName());
 	public String generateERPProductSales(){
@@ -70,66 +86,59 @@ public class DemoDataEngine {
 	/*
 	 * Format XLS 97-2003
 	 */
-	public String generateXLSAdvertisingExpenses(){
-		CustomClassLoader cstLoader = new CustomClassLoader();
-		EntityManagerFactory emf = null;
-		try {
-			Method method = cstLoader.loadClass(Persistence.class.getName()).getMethod("createEntityManagerFactory", String.class);
-			emf = (EntityManagerFactory) method.invoke(null, "XLS_LOCAL");
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public String generateXLSAdvertisingExpenses() throws Exception{
 		
 		// XLS_LOCAL
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("XLS_LOCAL");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("XLS_LOCAL");
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("DELETE FROM AdvertisingExpense a");
-	    int numberInstancesDeleted = q.executeUpdate();		
-		
+	    int numberInstancesDeleted = q.executeUpdate();
+	    
+	    
+	    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		AdvertisingExpense expense = new AdvertisingExpense();
 		expense.setProductCode(1001);
 		expense.setAdvExpCateg("media test");
 		expense.setAdvExpAmount(1000.0);
+		expense.setPeriodStartDate(format.parse("01/05/2014"));
+		expense.setPeriodEndDate(format.parse("01/06/2014"));
+		expense.setProductSales(150.0);
 		
 		em.persist(expense);
+		
 		em.getTransaction().begin();
 		em.getTransaction().commit();
 		
 		List<AdvertisingExpense> exps = em.createQuery("SELECT a FROM AdvertisingExpense a").getResultList();
 		for(AdvertisingExpense a: exps)
-			logger.info(a.toString());		
+			logger.info(a.toString());	
+		
+		
 		
 		logger.info("INIT XLS_LOCAL ... FINISH");	
 		
 		return "Ok";
 	}
-	private void enhanceDataNucleusPersistentUnitEntities(){
+	private void enhanceDataNucleusPersistentUnitEntities() throws Exception{
 		
 		DataNucleusEnhancer enhancer = new DataNucleusEnhancer("JPA", null);
 		enhancer.setVerbose(true);
 		enhancer.addPersistenceUnit("XLS_LOCAL");
 		enhancer.enhance();
-		
-		CustomClassLoader cstLoader = new CustomClassLoader();
-		try {
-			cstLoader.loadClass(AdvertisingExpense.class.getName());
-			logger.info("Custom class loader " + cstLoader);
-			logger.info("Default class loader " + this.getClass().getClassLoader());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ClassPool cp = ClassPool.getDefault();
+        CtClass cc = cp.get("org.office.xls.AdvertisingExpense");
+        byte[] classFile = cc.toBytecode();
+        HotSwapper hs = new HotSwapper(8000);
+        hs.reload("org.office.xls.AdvertisingExpense", classFile);        
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		DemoDataEngine dataEngine = new DemoDataEngine();
-//		dataEngine.generateERPProductSales();
-//		dataEngine.generateCRMCustomerProfiles();
-//		dataEngine.generateACCESSProductCategories();
+		dataEngine.generateERPProductSales();
+		dataEngine.generateCRMCustomerProfiles();
+		dataEngine.generateACCESSProductCategories();
 		
-		dataEngine.enhanceDataNucleusPersistentUnitEntities();
+//		dataEngine.enhanceDataNucleusPersistentUnitEntities();
 		dataEngine.generateXLSAdvertisingExpenses();
 	}
 }
@@ -202,4 +211,36 @@ public class DemoDataEngine {
  	<property name="hibernate.dialect" value="com.hxtt.support.hibernate.HxttAccessDialect"/>
  	<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 </properties>
+*/
+
+
+/*
+CustomClassLoader cstLoader = new CustomClassLoader();
+Object emf = null;
+Object em = null;
+Object q = null;
+
+Method method = cstLoader.loadClass("javax.persistence.Persistence").getMethod("createEntityManagerFactory", String.class);
+emf = method.invoke(null, "XLS_LOCAL");
+logger.info(">>>>>>>>>>> DEBUG emf = " + emf);
+method = cstLoader.loadClass("javax.persistence.EntityManagerFactory").getMethod("createEntityManager", null);
+em = method.invoke(emf, null);
+logger.info(">>>>>>>>>>> DEBUG em = " + em);
+method = cstLoader.loadClass("javax.persistence.EntityManager").getMethod("createQuery", String.class);
+q =  method.invoke(em, "DELETE FROM AdvertisingExpense a");
+method = cstLoader.loadClass("javax.persistence.Query").getMethod("executeUpdate", null);
+method.invoke(q, null);
+//method = cstLoader.loadClass(EntityManager.class.getName()).getMethod("persist", Object.class);
+//method.invoke(em, expense);		
+
+CustomClassLoader cstLoader = new CustomClassLoader();
+Class entityClass = cstLoader.loadClass("org.office.xls.AdvertisingExpense");
+Object expense = entityClass.newInstance();
+
+entityClass.getMethod("setProductCode", Integer.class).invoke(expense, 1001);
+entityClass.getMethod("setAdvExpCateg", String.class).invoke(expense, "media test");
+entityClass.getMethod("setAdvExpAmount", Double.class).invoke(expense, 1000.0)
+List<Object> exps = em.createQuery("SELECT a FROM AdvertisingExpense a").getResultList();
+for(Object a: exps)
+	logger.info(a.toString());	
 */
