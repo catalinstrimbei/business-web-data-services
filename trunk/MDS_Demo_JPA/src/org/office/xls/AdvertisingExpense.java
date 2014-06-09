@@ -2,30 +2,35 @@ package org.office.xls;
 
 import java.util.Date;
 
-import javax.persistence.Column;
+import javax.jdo.annotations.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.datanucleus.api.jpa.annotations.ColumnPosition;
+import org.datanucleus.api.jpa.annotations.Extension;
+
 @Entity @Table(name="ADVERTISING_EXPENSES")
+@Extension(vendorName="datanucleus", key="include-column-headers", value="true")
 public class AdvertisingExpense {
-	@Id @Column(name="product_code") 
+	@Id @Column(name="product_code") @ColumnPosition(0)
 	private Integer productCode;
 	
-	@Temporal(TemporalType.DATE) @Column(name="per_start_date") 
+	@Temporal(TemporalType.DATE) @Column(name="per_start_date") @ColumnPosition(2) 
 	private Date periodStartDate;
 	
-	@Temporal(TemporalType.DATE) @Column(name="per_end_date") 
+	@Temporal(TemporalType.DATE) @Column(name="per_end_date") @ColumnPosition(3)
 	private Date periodEndDate;
 	
-	@Column(name="adv_exp_categ")
+	@Column(name="adv_exp_categ") @ColumnPosition(1)
 	private String advExpCateg;
 	
-	@Column(name="adv_exp_amount")
+	@Column(name="adv_exp_amount") @ColumnPosition(4)
 	private Double advExpAmount;
 
+	@Column(name="product_sales") @ColumnPosition(5)
 	private Double productSales;
 	
 	public Integer getProductCode() {

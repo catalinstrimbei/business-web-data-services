@@ -53,11 +53,18 @@
 				<class>org.office.xls.AdvertisingExpense</class>
 				<exclude-unlisted-classes/>
 				<properties>
-		            <property name="javax.persistence.jdbc.url" value="excel:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xls"/>
-		            <property name="datanucleus.autoCreateSchema" value="false"/>
+		            <property name="javax.persistence.jdbc.url" value="odf:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.ods"/>
+		            
+		            <property name="datanucleus.autoCreateSchema" value="true"/>
+		            <property name="datanucleus.autoCreateTables" value="true"/>
+		            <property name="datanucleus.autoCreateColumns" value="true"/>
+		            <property name="datanucleus.autoCreateConstraints" value="true"/>
+		            
+		            <property name="javax.jdo.option.Mapping" value="odf"/>
+		            
 		            <property name="datanucleus.jpa.addClassTransformer" value="true"/>
-		            <property name="datanucleus.validateTables" value="false"/>
-		            <property name="datanucleus.validateConstraints" value="false"/>
+		            <property name="datanucleus.validateTables" value="true"/>
+		            <property name="datanucleus.validateConstraints" value="true"/>
        	 		</properties>			
 	</persistence-unit>	
 	
