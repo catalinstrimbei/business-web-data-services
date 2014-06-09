@@ -14,10 +14,10 @@ public class AdvertisingExpense {
 	@Id @Column(name="product_code") 
 	private Integer productCode;
 	
-	@Temporal(TemporalType.DATE) @Column(name="period_start_date") 
+	@Temporal(TemporalType.DATE) @Column(name="per_start_date") 
 	private Date periodStartDate;
 	
-	@Temporal(TemporalType.DATE) @Column(name="period_end_date") 
+	@Temporal(TemporalType.DATE) @Column(name="per_end_date") 
 	private Date periodEndDate;
 	
 	@Column(name="adv_exp_categ")
@@ -26,6 +26,8 @@ public class AdvertisingExpense {
 	@Column(name="adv_exp_amount")
 	private Double advExpAmount;
 
+	private Double productSales;
+	
 	public Integer getProductCode() {
 		return productCode;
 	}
@@ -60,6 +62,16 @@ public class AdvertisingExpense {
 
 	public Double getAdvExpAmount() {
 		return advExpAmount;
+	}
+
+	
+	
+	public Double getProductSales() {
+		return productSales;
+	}
+
+	public void setProductSales(Double productSales) {
+		this.productSales = productSales;
 	}
 
 	public void setAdvExpAmount(Double advExpAmount) {

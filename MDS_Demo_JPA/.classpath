@@ -30,7 +30,6 @@
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-api-jpa-3.3.0-release.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-awtgeom-3.2.0-release.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-cache-3.1.2.jar"/>
-	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-core-3.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-excel-3.2.0-release.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-googlecollections-3.2.2.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-jdo-query-3.0.2.jar"/>
@@ -46,5 +45,8 @@
 	<classpathentry kind="lib" path="lib/datanucleus/time-api-0.6.3.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/jdo-api-3.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus/reloader.jar"/>
+	<classpathentry kind="lib" path="lib/javassist/javassist.jar"/>
+	<classpathentry kind="lib" path="lib/javassist/tools.jar"/>
+	<classpathentry kind="lib" path="lib/datanucleus/datanucleus-core-3.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
