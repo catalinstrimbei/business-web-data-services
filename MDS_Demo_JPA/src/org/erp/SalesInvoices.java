@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity @Table(name="SALES_INVOICES")
 public class SalesInvoices {
-	@Id @Column(name="tranz_id") 
+	@Id @Column(name="tranz_id") //@GeneratedValue
 	private Integer tranzId;
 	
 	@Temporal(TemporalType.DATE) @Column(name="tranz_date") 
@@ -132,7 +133,48 @@ public class SalesInvoices {
 			return false;
 		return true;
 	}
-	
+
+	public SalesInvoices() {
+		super();
+	}
+
+	public SalesInvoices(Date tranzDate, Long invoiceNo, Integer productId,
+			Integer custId, Double quantity, Double unitPrice, Double vatTaxes,
+			Double amount) {
+		super();
+		this.tranzDate = tranzDate;
+		this.invoiceNo = invoiceNo;
+		this.productId = productId;
+		this.custId = custId;
+		this.quantity = quantity;
+		this.unitPrice = unitPrice;
+		this.vatTaxes = vatTaxes;
+		this.amount = amount;
+	}
+
+	public SalesInvoices(Integer tranzId, Date tranzDate, Long invoiceNo,
+			Integer productId, Integer custId, Double quantity,
+			Double unitPrice, Double vatTaxes, Double amount) {
+		super();
+		this.tranzId = tranzId;
+		this.tranzDate = tranzDate;
+		this.invoiceNo = invoiceNo;
+		this.productId = productId;
+		this.custId = custId;
+		this.quantity = quantity;
+		this.unitPrice = unitPrice;
+		this.vatTaxes = vatTaxes;
+		this.amount = amount;
+	}
+
+	@Override
+	public String toString() {
+		return "SalesInvoices [tranzId=" + tranzId + ", tranzDate=" + tranzDate
+				+ ", invoiceNo=" + invoiceNo + ", productId=" + productId
+				+ ", custId=" + custId + ", quantity=" + quantity
+				+ ", unitPrice=" + unitPrice + ", vatTaxes=" + vatTaxes
+				+ ", amount=" + amount + "]";
+	}
 	
 	
 }
