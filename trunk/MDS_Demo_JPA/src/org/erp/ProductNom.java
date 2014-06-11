@@ -2,12 +2,14 @@ package org.erp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity @Table(name="PRODUCT_NOM")
 public class ProductNom {
 	@Id @Column(name="product_id") 
+	//@GeneratedValue
 	private Integer productId;
 	
 	private String name;
@@ -62,6 +64,27 @@ public class ProductNom {
 		} else if (!productId.equals(other.productId))
 			return false;
 		return true;
+	}
+
+	public ProductNom(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+	
+	public ProductNom() {}
+
+	public ProductNom(Integer productId, String name, String description) {
+		super();
+		this.productId = productId;
+		this.name = name;
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductNom [productId=" + productId + ", name=" + name
+				+ ", description=" + description + "]";
 	}
 	
 	

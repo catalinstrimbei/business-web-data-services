@@ -1,12 +1,12 @@
 package org.demo.services;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
-
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.util.HotSwapper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,26 +14,13 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.datanucleus.enhancer.DataNucleusEnhancer;
+import org.erp.ProductNom;
+import org.erp.SalesInvoices;
 import org.office.access.ProductCategory;
-//import org.office.xls.AdvertisingExpense;
 import org.office.xls.AdvertisingExpense;
 
-//import com.myarch.reloader.ClassCollectionController;
-//import com.myarch.reloader.Reloader;
-
-
-/*
- * Runtime configuration: -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus/datanucleus-core-3.2.5.jar"=-api=JPA,org.office.xls
- * <property name="javax.persistence.jdbc.url" value="ooxml:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xlsx"/>
- * <property name="javax.persistence.jdbc.url" value="xls:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xlsx"/>
- * <property name="javax.persistence.jdbc.url" value="odf:file:tutorial.ods"/>
- * <property name="javax.persistence.jdbc.url" value="excel:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xls"/>
- * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus4m4/datanucleus-core-4.0.0-m4.jar"=-api=JPA,org.office.xls
- * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus/datanucleus-core-3.2.5.jar"=-api=JPA,org.office.xls
- * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus-3.3.8/datanucleus-core-3.2.13.jar"=-api=JPA,org.office.xls
- */
 public class DemoDataEngine {
-	Logger logger = Logger.getLogger(DemoDataEngine.class.getName());
+	static Logger logger = Logger.getLogger(DemoDataEngine.class.getName());
 	public String generateERPProductSales(){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ERP_ORCL");
 		EntityManager em = emf.createEntityManager();
@@ -130,6 +117,15 @@ public class DemoDataEngine {
 //		dataEngine.generateACCESSProductCategories();
 		
 //		dataEngine.enhanceDataNucleusPersistentUnitEntities();
-		dataEngine.generateXLSAdvertisingExpenses();
+//		dataEngine.generateXLSAdvertisingExpenses();
+		
+		ERPFactory erpFactory = new ERPFactory();
+		List<ProductNom>  products = erpFactory.generateProductLoad(10);
+//		for(ProductNom p : products)
+//			logger.info(">>>>>>> " + p);
+		
+		List<SalesInvoices> sales = erpFactory.generateSalesLoad(100, products, null);
+//		for(SalesInvoices s: sales)
+//			logger.info(">>>>>>> " + s);
 	}
 }

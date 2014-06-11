@@ -27,6 +27,19 @@ public class DemoDataService {
 */
 
 /*
+ * TODO: Add hibernate profiles pom.xml
+ * 
+ * Runtime configuration: -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus/datanucleus-core-3.2.5.jar"=-api=JPA,org.office.xls
+ * <property name="javax.persistence.jdbc.url" value="ooxml:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xlsx"/>
+ * <property name="javax.persistence.jdbc.url" value="xls:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xlsx"/>
+ * <property name="javax.persistence.jdbc.url" value="odf:file:tutorial.ods"/>
+ * <property name="javax.persistence.jdbc.url" value="excel:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.xls"/>
+ * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus4m4/datanucleus-core-4.0.0-m4.jar"=-api=JPA,org.office.xls
+ * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus/datanucleus-core-3.2.5.jar"=-api=JPA,org.office.xls
+ * -javaagent:"E:/Professional/NextData/MDS-Demo-Data/MDS_Demo_JPA/lib/datanucleus-3.3.8/datanucleus-core-3.2.13.jar"=-api=JPA,org.office.xls
+ */
+
+/*
  * ACCESS:
  * 
  * http://www.javaxt.com/Tutorials/JDBC/How_to_Open_a_JDBC_Connection_to_Microsoft_Access
