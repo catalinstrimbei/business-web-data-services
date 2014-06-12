@@ -72,6 +72,18 @@ public class ProductCategory {
 				+ categName + ", categDescription=" + categDescription + "]";
 	}
 
+	public ProductCategory(Integer categoryId, String categName,
+			String categDescription) {
+		super();
+		this.categoryId = categoryId;
+		this.categName = categName;
+		this.categDescription = categDescription;
+	}
+
+	public ProductCategory() {
+		super();
+	}
+
 	
 	
 }

@@ -12,6 +12,7 @@ import javax.persistence.TemporalType;
 import org.datanucleus.api.jpa.annotations.ColumnPosition;
 import org.datanucleus.api.jpa.annotations.Extension;
 
+
 @Entity @Table(name="ADVERTISING_EXPENSES")
 @Extension(vendorName="datanucleus", key="include-column-headers", value="true")
 public class AdvertisingExpense {

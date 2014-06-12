@@ -19,12 +19,16 @@ public class ERPFactory {
 	
 	private List<ProductNom> productNomLoad = new ArrayList<>();
 	private List<SalesInvoices> salesInvoicesLoad = new ArrayList<>();
-
+	private List<Integer> productRefLoad = new ArrayList<>();
+	private List<Integer> salesRefLoad = new ArrayList<>();
+	
 	public List<ProductNom> generateProductLoad(Integer prodCount) {
 		productNomLoad = new ArrayList<>();
-
-		for (int i = 1; i < prodCount; i++) {
-			productNomLoad.add(new ProductNom(100 + i, "PROD " + i, "Product from ERP " + i));
+		Integer prodId = 0;
+		for (int i = 1; i <= prodCount; i++) {
+			prodId = 100 + i;
+			productNomLoad.add(new ProductNom(prodId, "PROD " + i, "Product from ERP " + i));
+			productRefLoad.add(prodId);
 		}
 
 		return productNomLoad;
@@ -62,7 +66,7 @@ public class ERPFactory {
 		Random dayLoadRandomizer = new Random();
 		Double percentDispached = 0.0;
 		for(Date day: dateLoad.keySet()){
-			dayLoadRnd = nextIntInRange(0, maxDayLoad, dayLoadRandomizer);
+			dayLoadRnd = DataFactoryUtils.nextIntInRange(0, maxDayLoad, dayLoadRandomizer);
 			if (dayLoadCount + dayLoadRnd >=  salesCount)
 				dayLoadRnd = salesCount - dayLoadCount;
 			dateLoad.put(day, dayLoadRnd);
@@ -72,36 +76,24 @@ public class ERPFactory {
 		}
 		
 		percentDispached = new Double(dayLoadCount)/new Double(salesCount);
-		logger.info("---> percentDispached = " + percentDispached);
+		Integer remainingDayLoad = salesCount - dayLoadCount;
+		logger.info("=============== percentDispached = " + percentDispached);
+		logger.info("=============== dayLoadCount = " + dayLoadCount + "+" + remainingDayLoad + "=" + salesCount);
 		
 		Integer dayLoadAdd = 0; dayLoadCount = 0;
-		if(percentDispached < 1.0){
+		//if(percentDispached < 1.0){
+		if(remainingDayLoad > 0){
 			for(Date day: dateLoad.keySet()){
 				dayLoadAdd = new Long(Math.round(dateLoad.get(day) * (1-percentDispached))).intValue() + 1;
+				if (remainingDayLoad < dayLoadAdd)
+					dayLoadAdd = remainingDayLoad;
+				remainingDayLoad = remainingDayLoad - dayLoadAdd;
 				dayLoadAdd += dateLoad.get(day);
-//				logger.info("---> dayLoadCount before = " + dayLoadCount + " :: " + dayLoadAdd);				
-				if(dayLoadCount + dayLoadAdd >= salesCount)
-					dayLoadAdd = salesCount - dayLoadCount;
-//				logger.info("---> dayLoadAdd = " + dayLoadAdd + " :: " + dateLoad.get(day));
 				dateLoad.put(day, dayLoadAdd);
-//				logger.info("---> dayLoadAdded = " + dayLoadAdd + " :: " + dateLoad.get(day));
-				dayLoadCount += dayLoadAdd;
-//				logger.info("---> dayLoadCount after = " + dayLoadCount + " :: " + dayLoadAdd);
-				logger.info("=============== dayLoad = " + day + " ---> " + dateLoad.get(day) + " -----> " + dayLoadCount);
-				if (dayLoadCount >=  salesCount)
+				if(remainingDayLoad==0)
 					break;
 			}
-		}
-		logger.info("=============== dayLoadCount = " + dayLoadCount);
-//		for(Date day: dateLoad.keySet()){
-//			logger.info("---> " + day + " --- " + dateLoad.get(day));
-//		}		
-		dayLoadCount = 0;
-		for(Date day: dateLoad.keySet()){
-			dayLoadCount += dateLoad.get(day);
-		}
-		logger.info("=============== dayLoadCount = " + dayLoadCount);
-		
+		}		
 		// generate sales load
 		Random prodLoadRandomizer = new Random();
 		Random custLoadRandomizer = new Random();
@@ -119,47 +111,31 @@ public class ERPFactory {
 			for(int k=1; k <= dateLoad.get(day); k++){
 				invoiceNo++;
 				tranzId = new Double(day.getTime()/100000).intValue();
-				prodLoadIdx = nextIntInRange(0, productLoad.size()-1, prodLoadRandomizer);
-				custLoadIdx = nextIntInRange(0, custLoad.size()-1, custLoadRandomizer);
-				quatity = truncateDecimal(nextIntInRange(10, 200, quatityLoadRandomizer).doubleValue(),2);
-				price = truncateDecimal(nextIntInRange(150, 1500, priceLoadRandomizer)/1.25,2);
-				taxes = truncateDecimal((quatity  * price) * 0.25,2);
-				amount = truncateDecimal(quatity  * price + taxes,2);
+				prodLoadIdx = DataFactoryUtils.nextIntInRange(0, productLoad.size()-1, prodLoadRandomizer);
+				custLoadIdx = DataFactoryUtils.nextIntInRange(0, custLoad.size()-1, custLoadRandomizer);
+				quatity = DataFactoryUtils.truncateDecimal(DataFactoryUtils.nextIntInRange(10, 200, quatityLoadRandomizer).doubleValue(),2);
+				price = DataFactoryUtils.truncateDecimal(DataFactoryUtils.nextIntInRange(150, 1500, priceLoadRandomizer)/1.25,2);
+				taxes = DataFactoryUtils.truncateDecimal((quatity  * price) * 0.25,2);
+				amount = DataFactoryUtils.truncateDecimal(quatity  * price + taxes,2);
 				salesInvoicesLoad.add(new SalesInvoices(tranzId,
 						day, 
 						new Long(invoiceNo), 
 						productLoad.get(prodLoadIdx).getProductId(), 
 						custLoad.get(custLoadIdx), 
-						quatity, price, taxes, amount));				
+						quatity, price, taxes, amount));	
+				salesRefLoad.add(tranzId);
 			}
 		}
-		
-		
 		return salesInvoicesLoad;
 	}
 
-	private Integer nextIntInRange(int min, int max, Random rng) {
-		if (min > max) {
-			throw new IllegalArgumentException(
-					"Cannot draw random int from invalid range [" + min + ", "
-							+ max + "].");
-		}
-		int diff = max - min;
-		if (diff >= 0 && diff != Integer.MAX_VALUE) {
-			return (min + rng.nextInt(diff + 1));
-		}
-		int i;
-		do {
-			i = rng.nextInt();
-		} while (i < min || i > max);
-		return i;
+	public List<Integer> getProductRefLoad() {
+		return productRefLoad;
 	}
 
-	private static Double truncateDecimal(double x,int numberofDecimals){
-	    if ( x > 0) {
-	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR).doubleValue();
-	    } else {
-	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING).doubleValue();
-	    }
-	}	
+	public List<Integer> getSalesRefLoad() {
+		return salesRefLoad;
+	}
+	
+	
 }

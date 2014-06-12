@@ -75,6 +75,28 @@ public class ProductInCategories {
 			return false;
 		return true;
 	}
+
+	public ProductInCategories() {
+		super();
+	}
+
+	public ProductInCategories(Integer pId, String productName,
+			String productCateg, String productSubCateg) {
+		super();
+		this.pId = pId;
+		this.productName = productName;
+		this.productCateg = productCateg;
+		this.productSubCateg = productSubCateg;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductInCategories [pId=" + pId + ", productName="
+				+ productName + ", productCateg=" + productCateg
+				+ ", productSubCateg=" + productSubCateg + "]";
+	}
+	
+	
 	
 	
 }

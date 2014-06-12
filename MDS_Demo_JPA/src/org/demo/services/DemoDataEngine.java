@@ -13,10 +13,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.crm.CustomerProfile;
 import org.datanucleus.enhancer.DataNucleusEnhancer;
 import org.erp.ProductNom;
 import org.erp.SalesInvoices;
 import org.office.access.ProductCategory;
+import org.office.access.ProductInCategories;
 import org.office.xls.AdvertisingExpense;
 
 public class DemoDataEngine {
@@ -119,13 +121,31 @@ public class DemoDataEngine {
 //		dataEngine.enhanceDataNucleusPersistentUnitEntities();
 //		dataEngine.generateXLSAdvertisingExpenses();
 		
-		ERPFactory erpFactory = new ERPFactory();
-		List<ProductNom>  products = erpFactory.generateProductLoad(10);
+//		ERPFactory erpFactory = new ERPFactory();
+//		List<ProductNom>  products = erpFactory.generateProductLoad(10);
 //		for(ProductNom p : products)
-//			logger.info(">>>>>>> " + p);
-		
-		List<SalesInvoices> sales = erpFactory.generateSalesLoad(100, products, null);
+//			logger.info(">>>>>>> " + p);		
+//		List<SalesInvoices> sales = erpFactory.generateSalesLoad(150, products, null);
 //		for(SalesInvoices s: sales)
 //			logger.info(">>>>>>> " + s);
+		
+//		CRMFactory crmFactory = new CRMFactory();
+//		List<CustomerProfile> customers = crmFactory.generateCustomerProfileLoad(100);
+//		for(CustomerProfile s: customers)
+//			logger.info(">>>>>>> " + s);	
+		
+		ERPFactory erpFactory = new ERPFactory();
+		List<ProductNom>  products = erpFactory.generateProductLoad(100);
+//		for(ProductNom s: products)
+//			logger.info(">>>>>>> " + s);		
+		
+		OfficeAccessFactory officeAccessFactory = new OfficeAccessFactory();
+		List<ProductCategory> categories = officeAccessFactory.generateProductCategoryLoad(4);
+//		for(ProductCategory s: categories)
+//			logger.info(">>>>>>> " + s);
+		
+		List<ProductInCategories> productsInCategories = officeAccessFactory.generateProductInCategoriesLoad(products);
+		for(ProductInCategories s: productsInCategories)
+			logger.info(">>>>>>> " + s);		
 	}
 }
