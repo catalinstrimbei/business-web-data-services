@@ -49,13 +49,16 @@ public class OfficeXLSFactory {
 		Integer categoryIdx = 0;
 		String advExpCateg;
 		Double advExpAmount; Double productSales;
+		Integer expId = 1000;
 		for(ProductNom p : productLoad){
 			for(Date periodStartDate: periods.keySet()){
 				categoryIdx = DataFactoryUtils.nextIntInRange(0, categoryLoad.size()-1, categoryRandomizer);
 				advExpCateg = categoryLoad.get(categoryIdx);
 				advExpAmount = DataFactoryUtils.truncateDecimal(DataFactoryUtils.nextIntInRange(1500, 95000, amountLoadRandomizer)/1.25,2);
 				productSales = DataFactoryUtils.truncateDecimal(DataFactoryUtils.nextIntInRange(10, 200, salesLoadRandomizer).doubleValue(),2);
-				advertisingExpensesLoad.add(new AdvertisingExpense(p.getProductId(), 
+				advertisingExpensesLoad.add(new AdvertisingExpense(
+						++expId,
+						p.getProductId(), 
 						periodStartDate, periods.get(periodStartDate), 
 						advExpCateg, advExpAmount, 
 						productSales));

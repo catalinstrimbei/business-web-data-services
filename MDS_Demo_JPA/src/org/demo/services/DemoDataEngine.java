@@ -27,7 +27,6 @@ public class DemoDataEngine {
 	//Workloads
 	private List<ProductNom>  products;
 	private List<SalesInvoices> sales;
-	
 	public String generateERPProductSales() throws Exception{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ERP_ORCL");
 		EntityManager em = emf.createEntityManager();
@@ -49,14 +48,29 @@ public class DemoDataEngine {
 		salesRepository.addAll(sales);
 		em.getTransaction().commit();
 		
+		logger.info("ERP_SERVER ... FINISH");
+		
 		return "Ok";
 	}
 	
+	private List<CustomerProfile> customers;
 	public String generateCRMCustomerProfiles(){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("CRM_PG");
 		EntityManager em = emf.createEntityManager();
 		
 		logger.info("INIT CRM_PG ...");
+		
+		CRMFactory crmFactory = new CRMFactory();
+		customers = crmFactory.generateCustomerProfileLoad(100);
+//		for(CustomerProfile s: customers)
+//			logger.info(">>>>>>> " + s);			
+		
+		EntityRepository<CustomerProfile> customerProfileRepository = new EntityRepositoryBase<CustomerProfile>(em, CustomerProfile.class);
+		em.getTransaction().begin();
+		customerProfileRepository.addAll(customers);
+		em.getTransaction().commit();		
+		
+		logger.info("CRM_SERVER ... FINISH");
 		
 		return "Ok";
 	}
@@ -65,31 +79,39 @@ public class DemoDataEngine {
 	 * http://ucanaccess.sourceforge.net/site.html
 	 * http://stackoverflow.com/questions/1749464/how-can-i-use-hibernate-with-ms-access
 	 */
+	private List<ProductCategory> categories;
+	private List<ProductInCategories> productsInCategories;
 	public String generateACCESSProductCategories(){
 		// ACCESS_LOCAL
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ACCESS_LOCAL");
 		EntityManager em = emf.createEntityManager();
+		logger.info("INIT ACCESS_LOCAL ...");		
 		
-		ProductCategory prodCtg = new ProductCategory();
-		prodCtg.setCategoryId(1);
-		prodCtg.setCategName("Test");
-		prodCtg.setCategDescription("de test");
-		em.persist(prodCtg);
+		OfficeAccessFactory officeAccessFactory = new OfficeAccessFactory();
+		categories = officeAccessFactory.generateProductCategoryLoad(4);
+//		for(ProductCategory s: categories)
+//			logger.info(">>>>>>> " + s);		
+		productsInCategories = officeAccessFactory.generateProductInCategoriesLoad(products);
+//		for(ProductInCategories s: productsInCategories)
+//			logger.info(">>>>>>> " + s);		
+		
+		EntityRepository<ProductCategory> productCategoryRepository = new EntityRepositoryBase<ProductCategory>(em, ProductCategory.class);
+		EntityRepository<ProductInCategories> productInCategoriesRepository = new EntityRepositoryBase<ProductInCategories>(em, ProductInCategories.class);
 		
 		em.getTransaction().begin();
-		em.getTransaction().commit();
+		productCategoryRepository.addAll(categories);
+		productInCategoriesRepository.addAll(productsInCategories);
+		em.getTransaction().commit();		
 		
-		List<ProductCategory> ctgs = em.createQuery("SELECT c FROM ProductCategory c").getResultList();
-		for(ProductCategory c: ctgs)
-			logger.info(c.toString());
-		
-		logger.info("INIT ACCESS_LOCAL ...");		
+		logger.info("ACCESS_LOCAL ... FINISH");
 		
 		return "Ok";
 	}
+	
 	/*
 	 * Format XLS 97-2003
 	 */
+	private List<AdvertisingExpense> expenses;
 	public String generateXLSAdvertisingExpenses() throws Exception{
 		
 		// XLS_LOCAL
@@ -98,25 +120,19 @@ public class DemoDataEngine {
 		Query q = em.createQuery("DELETE FROM AdvertisingExpense a");
 	    int numberInstancesDeleted = q.executeUpdate();
 	    
+		OfficeXLSFactory officeXLSFactory = new OfficeXLSFactory();
+		expenses = officeXLSFactory.generateAdvertisingExpensesLoad(products);
+//		for(AdvertisingExpense s: expenses)
+//			logger.info(">>>>>>> " + s);		    
 	    
-	    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		AdvertisingExpense expense = new AdvertisingExpense();
-		expense.setProductCode(1001);
-		expense.setAdvExpCateg("media test");
-		expense.setAdvExpAmount(1000.0);
-		expense.setPeriodStartDate(format.parse("01/05/2014"));
-		expense.setPeriodEndDate(format.parse("01/06/2014"));
-		expense.setProductSales(150.0);
-		
-		em.persist(expense);
+		EntityRepository<AdvertisingExpense> advertisingExpenseRepository = new EntityRepositoryBase<AdvertisingExpense>(em, AdvertisingExpense.class);
 		
 		em.getTransaction().begin();
-		em.getTransaction().commit();
+		advertisingExpenseRepository.addAll(expenses);
+		em.getTransaction().commit();			
 		
-		List<AdvertisingExpense> exps = em.createQuery("SELECT a FROM AdvertisingExpense a").getResultList();
-		for(AdvertisingExpense a: exps)
-			logger.info(a.toString());	
-		logger.info("INIT XLS_LOCAL ... FINISH");		
+		logger.info("XLS_LOCAL ... FINISH");
+		
 		return "Ok";
 	}
 	private void enhanceDataNucleusPersistentUnitEntities() throws Exception{
@@ -124,54 +140,16 @@ public class DemoDataEngine {
 		enhancer.setVerbose(true);
 		enhancer.addPersistenceUnit("XLS_LOCAL");
 		enhancer.enhance();
-//		ClassPool cp = ClassPool.getDefault();
-//        CtClass cc = cp.get("org.office.xls.AdvertisingExpense");
-//        byte[] classFile = cc.toBytecode();
-//        HotSwapper hs = new HotSwapper(8000);
-//        hs.reload("org.office.xls.AdvertisingExpense", classFile);
 		logger.info("ENHANCED XLS_LOCAL ... FINISH");	
 	}
 	
 	public static void main(String[] args) throws Exception{
 		DemoDataEngine dataEngine = new DemoDataEngine();
 		dataEngine.generateERPProductSales();
-//		dataEngine.generateCRMCustomerProfiles();
-//		dataEngine.generateACCESSProductCategories();
+		dataEngine.generateCRMCustomerProfiles();
+		dataEngine.generateACCESSProductCategories();
 		
 //		dataEngine.enhanceDataNucleusPersistentUnitEntities();
-//		dataEngine.generateXLSAdvertisingExpenses();
-		
-//		ERPFactory erpFactory = new ERPFactory();
-//		List<ProductNom>  products = erpFactory.generateProductLoad(10);
-//		for(ProductNom p : products)
-//			logger.info(">>>>>>> " + p);		
-//		List<SalesInvoices> sales = erpFactory.generateSalesLoad(150, products, null);
-//		for(SalesInvoices s: sales)
-//			logger.info(">>>>>>> " + s);
-		
-//		CRMFactory crmFactory = new CRMFactory();
-//		List<CustomerProfile> customers = crmFactory.generateCustomerProfileLoad(100);
-//		for(CustomerProfile s: customers)
-//			logger.info(">>>>>>> " + s);	
-		
-//		ERPFactory erpFactory = new ERPFactory();
-//		List<ProductNom>  products = erpFactory.generateProductLoad(100);
-//		for(ProductNom s: products)
-//			logger.info(">>>>>>> " + s);		
-		
-//		OfficeAccessFactory officeAccessFactory = new OfficeAccessFactory();
-//		List<ProductCategory> categories = officeAccessFactory.generateProductCategoryLoad(4);
-//		for(ProductCategory s: categories)
-//			logger.info(">>>>>>> " + s);
-		
-//		List<ProductInCategories> productsInCategories = officeAccessFactory.generateProductInCategoriesLoad(products);
-//		for(ProductInCategories s: productsInCategories)
-//			logger.info(">>>>>>> " + s);	
-		
-//		OfficeXLSFactory officeXLSFactory = new OfficeXLSFactory();
-//		List<AdvertisingExpense> expenses = officeXLSFactory.generateAdvertisingExpensesLoad(products);
-//		for(AdvertisingExpense s: expenses)
-//			logger.info(">>>>>>> " + s);		
-		
+		dataEngine.generateXLSAdvertisingExpenses();		
 	}
 }
