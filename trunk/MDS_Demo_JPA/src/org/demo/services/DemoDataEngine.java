@@ -23,11 +23,31 @@ import org.office.xls.AdvertisingExpense;
 
 public class DemoDataEngine {
 	static Logger logger = Logger.getLogger(DemoDataEngine.class.getName());
-	public String generateERPProductSales(){
+	
+	//Workloads
+	private List<ProductNom>  products;
+	private List<SalesInvoices> sales;
+	
+	public String generateERPProductSales() throws Exception{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ERP_ORCL");
 		EntityManager em = emf.createEntityManager();
-		
 		logger.info("INIT ERP_ORCL ...");
+		
+		ERPFactory erpFactory = new ERPFactory();
+		products = erpFactory.generateProductLoad(10);
+//		for(ProductNom p : products)
+//			logger.info(">>>>>>> " + p);		
+		sales = erpFactory.generateSalesLoad(150, products, null);
+//		for(SalesInvoices s: sales)
+//			logger.info(">>>>>>> " + s);		
+		
+		EntityRepository<ProductNom> productNomRepository = new EntityRepositoryBase<ProductNom>(em, ProductNom.class);
+		EntityRepository<SalesInvoices> salesRepository = new EntityRepositoryBase<SalesInvoices>(em, SalesInvoices.class);
+		
+		em.getTransaction().begin();
+		productNomRepository.addAll(products);
+		salesRepository.addAll(sales);
+		em.getTransaction().commit();
 		
 		return "Ok";
 	}
@@ -114,7 +134,7 @@ public class DemoDataEngine {
 	
 	public static void main(String[] args) throws Exception{
 		DemoDataEngine dataEngine = new DemoDataEngine();
-//		dataEngine.generateERPProductSales();
+		dataEngine.generateERPProductSales();
 //		dataEngine.generateCRMCustomerProfiles();
 //		dataEngine.generateACCESSProductCategories();
 		
@@ -134,18 +154,24 @@ public class DemoDataEngine {
 //		for(CustomerProfile s: customers)
 //			logger.info(">>>>>>> " + s);	
 		
-		ERPFactory erpFactory = new ERPFactory();
-		List<ProductNom>  products = erpFactory.generateProductLoad(100);
+//		ERPFactory erpFactory = new ERPFactory();
+//		List<ProductNom>  products = erpFactory.generateProductLoad(100);
 //		for(ProductNom s: products)
 //			logger.info(">>>>>>> " + s);		
 		
-		OfficeAccessFactory officeAccessFactory = new OfficeAccessFactory();
-		List<ProductCategory> categories = officeAccessFactory.generateProductCategoryLoad(4);
+//		OfficeAccessFactory officeAccessFactory = new OfficeAccessFactory();
+//		List<ProductCategory> categories = officeAccessFactory.generateProductCategoryLoad(4);
 //		for(ProductCategory s: categories)
 //			logger.info(">>>>>>> " + s);
 		
-		List<ProductInCategories> productsInCategories = officeAccessFactory.generateProductInCategoriesLoad(products);
-		for(ProductInCategories s: productsInCategories)
-			logger.info(">>>>>>> " + s);		
+//		List<ProductInCategories> productsInCategories = officeAccessFactory.generateProductInCategoriesLoad(products);
+//		for(ProductInCategories s: productsInCategories)
+//			logger.info(">>>>>>> " + s);	
+		
+//		OfficeXLSFactory officeXLSFactory = new OfficeXLSFactory();
+//		List<AdvertisingExpense> expenses = officeXLSFactory.generateAdvertisingExpensesLoad(products);
+//		for(AdvertisingExpense s: expenses)
+//			logger.info(">>>>>>> " + s);		
+		
 	}
 }

@@ -12,7 +12,7 @@ import org.office.access.ProductCategory;
 import org.office.access.ProductInCategories;
 
 public class OfficeAccessFactory {
-private static Logger logger = Logger.getLogger(OfficeAccessFactory.class.getName());
+	private static Logger logger = Logger.getLogger(OfficeAccessFactory.class.getName());
 	
 	private Map<String, List<String>> categoryLoad = new TreeMap<>();	
 	private List<ProductCategory> productCategLoad = new ArrayList<>();

@@ -41,12 +41,9 @@ public class ERPFactory {
 			for (int i=1; i < salesCount/4; i++)
 				custLoad.add(1000 + i);
 		}
-			
-		
 		// by default generate a product load as 1/3 from sales load
 		if (productLoad == null || productLoad.isEmpty())
-			productLoad = generateProductLoad(salesCount/3);
-		
+			productLoad = generateProductLoad(salesCount/3);		
 		// Transaction Date load must be generated: 3 months before current date
 		Map<Date, Integer> dateLoad = new TreeMap<>();
 		Calendar currentDate = Calendar.getInstance();
@@ -56,7 +53,6 @@ public class ERPFactory {
 			dateLoad.put(beforeDate.getTime(), null);
 			beforeDate.add(Calendar.DAY_OF_MONTH, 1);
 		}
-
 		// Generate dayLoad for salesLoad
 		salesInvoicesLoad = new ArrayList<>();
 		// Maxim 50% more per day 

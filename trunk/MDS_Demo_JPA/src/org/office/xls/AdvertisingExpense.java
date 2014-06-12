@@ -113,8 +113,26 @@ public class AdvertisingExpense {
 	@Override
 	public String toString() {
 		return "AdvertisingExpense [productCode=" + productCode
-				+ ", advExpCateg=" + advExpCateg + ", advExpAmount="
-				+ advExpAmount + "]";
+				+ ", periodStartDate=" + periodStartDate + ", periodEndDate="
+				+ periodEndDate + ", advExpCateg=" + advExpCateg
+				+ ", advExpAmount=" + advExpAmount + ", productSales="
+				+ productSales + "]";
+	}
+
+	public AdvertisingExpense(Integer productCode, Date periodStartDate,
+			Date periodEndDate, String advExpCateg, Double advExpAmount,
+			Double productSales) {
+		super();
+		this.productCode = productCode;
+		this.periodStartDate = periodStartDate;
+		this.periodEndDate = periodEndDate;
+		this.advExpCateg = advExpCateg;
+		this.advExpAmount = advExpAmount;
+		this.productSales = productSales;
+	}
+
+	public AdvertisingExpense() {
+		super();
 	}
 	
 	
