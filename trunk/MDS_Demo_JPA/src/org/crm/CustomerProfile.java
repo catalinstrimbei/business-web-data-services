@@ -94,6 +94,27 @@ public class CustomerProfile {
 		return true;
 	}
 
+	public CustomerProfile() {
+		super();
+	}
+
+	public CustomerProfile(Integer custId, String name, String region,
+			String address, String country, String customerCategory) {
+		super();
+		this.custId = custId;
+		this.name = name;
+		this.region = region;
+		this.address = address;
+		this.country = country;
+		this.customerCategory = customerCategory;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerProfile [custId=" + custId + ", name=" + name
+				+ ", region=" + region + ", address=" + address + ", country="
+				+ country + ", customerCategory=" + customerCategory + "]";
+	}
 	
 	
 }
