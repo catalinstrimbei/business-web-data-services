@@ -16,22 +16,25 @@ import org.datanucleus.api.jpa.annotations.Extension;
 @Entity @Table(name="ADVERTISING_EXPENSES")
 @Extension(vendorName="datanucleus", key="include-column-headers", value="true")
 public class AdvertisingExpense {
-	@Id @Column(name="product_code") @ColumnPosition(0)
+	@Id @Column(name="exp_id") @ColumnPosition(0)
+	private Integer expenseId;
+	
+	@Column(name="product_code") @ColumnPosition(1)
 	private Integer productCode;
 	
-	@Temporal(TemporalType.DATE) @Column(name="per_start_date") @ColumnPosition(2) 
+	@Temporal(TemporalType.DATE) @Column(name="per_start_date") @ColumnPosition(3) 
 	private Date periodStartDate;
 	
-	@Temporal(TemporalType.DATE) @Column(name="per_end_date") @ColumnPosition(3)
+	@Temporal(TemporalType.DATE) @Column(name="per_end_date") @ColumnPosition(4)
 	private Date periodEndDate;
 	
-	@Column(name="adv_exp_categ") @ColumnPosition(1)
+	@Column(name="adv_exp_categ") @ColumnPosition(2)
 	private String advExpCateg;
 	
-	@Column(name="adv_exp_amount") @ColumnPosition(4)
+	@Column(name="adv_exp_amount") @ColumnPosition(5)
 	private Double advExpAmount;
 
-	@Column(name="product_sales") @ColumnPosition(5)
+	@Column(name="product_sales") @ColumnPosition(6)
 	private Double productSales;
 	
 	public Integer getProductCode() {
@@ -110,19 +113,21 @@ public class AdvertisingExpense {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "AdvertisingExpense [productCode=" + productCode
-				+ ", periodStartDate=" + periodStartDate + ", periodEndDate="
-				+ periodEndDate + ", advExpCateg=" + advExpCateg
-				+ ", advExpAmount=" + advExpAmount + ", productSales="
-				+ productSales + "]";
+		return "AdvertisingExpense [expenseId=" + expenseId + ", productCode="
+				+ productCode + ", periodStartDate=" + periodStartDate
+				+ ", periodEndDate=" + periodEndDate + ", advExpCateg="
+				+ advExpCateg + ", advExpAmount=" + advExpAmount
+				+ ", productSales=" + productSales + "]";
 	}
 
-	public AdvertisingExpense(Integer productCode, Date periodStartDate,
-			Date periodEndDate, String advExpCateg, Double advExpAmount,
-			Double productSales) {
+	public AdvertisingExpense(Integer expenseId, Integer productCode,
+			Date periodStartDate, Date periodEndDate, String advExpCateg,
+			Double advExpAmount, Double productSales) {
 		super();
+		this.expenseId = expenseId;
 		this.productCode = productCode;
 		this.periodStartDate = periodStartDate;
 		this.periodEndDate = periodEndDate;

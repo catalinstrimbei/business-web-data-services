@@ -179,10 +179,10 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		try {
 			Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
 			
-			logger.info("ADD entity: ID is " + id);
-			logger.info("ADD entity: em.contains(entity) is " + em.contains(entity));
-			logger.info("ADD entity: em.find(repositoryType, id) " + em.find(repositoryType, id));
-			logger.info("ADD entity: isIDGeneratedValue " + this.isIDGeneratedValue);
+//			logger.info("ADD entity: ID is " + id);
+//			logger.info("ADD entity: em.contains(entity) is " + em.contains(entity));
+//			logger.info("ADD entity: em.find(repositoryType, id) " + em.find(repositoryType, id));
+//			logger.info("ADD entity: isIDGeneratedValue " + this.isIDGeneratedValue);
 			
 			// if ID GeneratedValue and is not new instance
 //			if (id != null && this.isIDGeneratedValue && em.find(repositoryType, id) == null) 
