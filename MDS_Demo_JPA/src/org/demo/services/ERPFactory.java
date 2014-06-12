@@ -98,7 +98,7 @@ public class ERPFactory {
 		Integer prodLoadIdx = 0;
 		Integer custLoadIdx = 0;
 		Integer invoiceNo = 0;
-		Integer tranzId = 0;
+		Integer tranzId = 10000;
 		Double quatity = 0.0;
 		Double price = 0.0;
 		Double taxes = 0.0;
@@ -106,7 +106,8 @@ public class ERPFactory {
 		for(Date day: dateLoad.keySet()){
 			for(int k=1; k <= dateLoad.get(day); k++){
 				invoiceNo++;
-				tranzId = new Double(day.getTime()/100000).intValue();
+				//tranzId = new Double(day.getTime()/100000).intValue();
+				tranzId++;
 				prodLoadIdx = DataFactoryUtils.nextIntInRange(0, productLoad.size()-1, prodLoadRandomizer);
 				custLoadIdx = DataFactoryUtils.nextIntInRange(0, custLoad.size()-1, custLoadRandomizer);
 				quatity = DataFactoryUtils.truncateDecimal(DataFactoryUtils.nextIntInRange(10, 200, quatityLoadRandomizer).doubleValue(),2);

@@ -37,8 +37,8 @@ public class DemoDataEngine {
 //		for(ProductNom p : products)
 //			logger.info(">>>>>>> " + p);		
 		sales = erpFactory.generateSalesLoad(150, products, null);
-//		for(SalesInvoices s: sales)
-//			logger.info(">>>>>>> " + s);		
+		for(SalesInvoices s: sales)
+			logger.info(">>>>>>> " + s);		
 		
 		EntityRepository<ProductNom> productNomRepository = new EntityRepositoryBase<ProductNom>(em, ProductNom.class);
 		EntityRepository<SalesInvoices> salesRepository = new EntityRepositoryBase<SalesInvoices>(em, SalesInvoices.class);
@@ -142,14 +142,13 @@ public class DemoDataEngine {
 		enhancer.enhance();
 		logger.info("ENHANCED XLS_LOCAL ... FINISH");	
 	}
-	
+
+//	dataEngine.enhanceDataNucleusPersistentUnitEntities();
 	public static void main(String[] args) throws Exception{
 		DemoDataEngine dataEngine = new DemoDataEngine();
 		dataEngine.generateERPProductSales();
 		dataEngine.generateCRMCustomerProfiles();
 		dataEngine.generateACCESSProductCategories();
-		
-//		dataEngine.enhanceDataNucleusPersistentUnitEntities();
 		dataEngine.generateXLSAdvertisingExpenses();		
 	}
 }
