@@ -30,6 +30,7 @@ public class DemoDataEngine {
 	public String generateERPProductSales() throws Exception{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ERP_ORCL");
 		EntityManager em = emf.createEntityManager();
+		
 		logger.info("INIT ERP_ORCL ...");
 		
 		ERPFactory erpFactory = new ERPFactory();
@@ -41,6 +42,7 @@ public class DemoDataEngine {
 			logger.info(">>>>>>> " + s);		
 		
 		EntityRepository<ProductNom> productNomRepository = new EntityRepositoryBase<ProductNom>(em, ProductNom.class);
+//		EntityRepository<ProductNom> productNomRepository = new EntityRepositoryBase<ProductNom>(em);
 		EntityRepository<SalesInvoices> salesRepository = new EntityRepositoryBase<SalesInvoices>(em, SalesInvoices.class);
 		
 		em.getTransaction().begin();
@@ -49,7 +51,7 @@ public class DemoDataEngine {
 		em.getTransaction().commit();
 		
 		logger.info("ERP_SERVER ... FINISH");
-		
+		em.close();
 		return "Ok";
 	}
 	
@@ -71,7 +73,7 @@ public class DemoDataEngine {
 		em.getTransaction().commit();		
 		
 		logger.info("CRM_SERVER ... FINISH");
-		
+		em.close();
 		return "Ok";
 	}
 
@@ -104,7 +106,7 @@ public class DemoDataEngine {
 		em.getTransaction().commit();		
 		
 		logger.info("ACCESS_LOCAL ... FINISH");
-		
+		em.close();
 		return "Ok";
 	}
 	
@@ -132,7 +134,7 @@ public class DemoDataEngine {
 		em.getTransaction().commit();			
 		
 		logger.info("XLS_LOCAL ... FINISH");
-		
+		em.close();
 		return "Ok";
 	}
 	private void enhanceDataNucleusPersistentUnitEntities() throws Exception{
@@ -144,11 +146,12 @@ public class DemoDataEngine {
 	}
 
 //	dataEngine.enhanceDataNucleusPersistentUnitEntities();
-	public static void main(String[] args) throws Exception{
-		DemoDataEngine dataEngine = new DemoDataEngine();
-		dataEngine.generateERPProductSales();
-		dataEngine.generateCRMCustomerProfiles();
-		dataEngine.generateACCESSProductCategories();
-		dataEngine.generateXLSAdvertisingExpenses();		
+	public static void main(String... args) throws Exception{
+		logger.info("LOCKED DATA");
+//		DemoDataEngine dataEngine = new DemoDataEngine();
+//		dataEngine.generateERPProductSales();
+//		dataEngine.generateCRMCustomerProfiles();
+//		dataEngine.generateACCESSProductCategories();
+//		dataEngine.generateXLSAdvertisingExpenses();		
 	}
 }
