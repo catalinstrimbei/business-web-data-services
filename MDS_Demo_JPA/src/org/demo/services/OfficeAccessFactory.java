@@ -34,10 +34,10 @@ public class OfficeAccessFactory {
 		productCategLoad = new ArrayList<>();
 		Integer startIdCounter = 100;
 		for (String category: categoryLoad.keySet()) {
-			productCategLoad.add(new ProductCategory(++startIdCounter, category, "Product Categories from Office Access " + startIdCounter));
+			productCategLoad.add(new ProductCategory(++startIdCounter, category, "Product Category from Office Access " + startIdCounter));
 			productCategRefLoad.add(startIdCounter);
 			for(String subcategory: categoryLoad.get(category)){
-				productCategLoad.add(new ProductCategory(++startIdCounter, subcategory, "Product Sub-Categories from Office Access " + startIdCounter));
+				productCategLoad.add(new ProductCategory(++startIdCounter, subcategory, "Product Sub-Category from Office Access " + startIdCounter));
 				productCategRefLoad.add(startIdCounter);				
 			}
 		}

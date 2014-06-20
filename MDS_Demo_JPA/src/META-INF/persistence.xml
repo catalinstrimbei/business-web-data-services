@@ -13,7 +13,8 @@
 			<property name="javax.persistence.jdbc.password" value="erpdemo"/>
 			
          	<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-         	<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+         	<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
+         	<property name="hibernate.hbm2ddl.auto" value="none"/>
 		</properties>		
 	</persistence-unit>
 	
@@ -28,7 +29,8 @@
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			
          	<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-         	<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+         	<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
+         	<property name="hibernate.hbm2ddl.auto" value="none"/>
 		</properties>
 	</persistence-unit>
 	
@@ -42,7 +44,8 @@
 	            <property name="hibernate.connection.driver_class" value="net.ucanaccess.jdbc.UcanaccessDriver"/>
 	            
 	            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-	            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+	            <!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
+         		<property name="hibernate.hbm2ddl.auto" value="none"/>
 	        </properties>			
 	</persistence-unit>	
 	
@@ -54,17 +57,23 @@
 				<exclude-unlisted-classes/>
 				<properties>
 		            <property name="javax.persistence.jdbc.url" value="odf:file://E:/Professional/NextData/MDS-Demo-Data/OfficeDataSource/ExcelTestAccess.ods"/>
-		            
+		            <!-- 
 		            <property name="datanucleus.autoCreateSchema" value="true"/>
 		            <property name="datanucleus.autoCreateTables" value="true"/>
 		            <property name="datanucleus.autoCreateColumns" value="true"/>
 		            <property name="datanucleus.autoCreateConstraints" value="true"/>
-		            
+		             -->
+		            <property name="datanucleus.autoCreateSchema" value="false"/>
+		            <property name="datanucleus.autoCreateTables" value="false"/>
+		            <property name="datanucleus.autoCreateColumns" value="false"/>
+		            <property name="datanucleus.autoCreateConstraints" value="false"/>
+ 		             
+		             
 		            <property name="javax.jdo.option.Mapping" value="odf"/>
 		            
 		            <property name="datanucleus.jpa.addClassTransformer" value="true"/>
-		            <property name="datanucleus.validateTables" value="true"/>
-		            <property name="datanucleus.validateConstraints" value="true"/>
+		            <property name="datanucleus.validateTables" value="false"/>
+		            <property name="datanucleus.validateConstraints" value="false"/>
        	 		</properties>			
 	</persistence-unit>	
 	
