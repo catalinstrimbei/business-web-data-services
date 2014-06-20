@@ -137,6 +137,10 @@ public class DemoDataEngine {
 		em.close();
 		return "Ok";
 	}
+	/*
+	 * Pregrammatically "enhance" DataNucleus Class Entities:
+	 * dataEngine.enhanceDataNucleusPersistentUnitEntities();
+	 */
 	private void enhanceDataNucleusPersistentUnitEntities() throws Exception{
 		DataNucleusEnhancer enhancer = new DataNucleusEnhancer("JPA", null);
 		enhancer.setVerbose(true);
@@ -145,7 +149,7 @@ public class DemoDataEngine {
 		logger.info("ENHANCED XLS_LOCAL ... FINISH");	
 	}
 
-//	dataEngine.enhanceDataNucleusPersistentUnitEntities();
+
 	public static void main(String... args) throws Exception{
 		logger.info("LOCKED DATA");
 //		DemoDataEngine dataEngine = new DemoDataEngine();
