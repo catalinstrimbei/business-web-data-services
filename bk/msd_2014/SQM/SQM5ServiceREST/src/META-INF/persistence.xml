@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="SQM5ServiceREST">
+		<jta-data-source>java:/ORCLFeaaMSD</jta-data-source>
+		<class>org.app.service.entities.Activitate</class>
+		<class>org.app.service.entities.Echipa</class>
+		<class>org.app.service.entities.EfectuareAudit</class>
+		<class>org.app.service.entities.Masuri</class>
+		<class>org.app.service.entities.Membru</class>
+		<class>org.app.service.entities.Modul</class>
+		<class>org.app.service.entities.PlanAudit</class>
+		<class>org.app.service.entities.PlanPropuneri</class>
+		<class>org.app.service.entities.ProceduraControl</class>
+		<class>org.app.service.entities.Proiect</class>
+		<class>org.app.service.entities.RaportRezultateAudit</class>
+		
+      <properties>
+         <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>  -->
+         <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+         <property name="hibernate.hbm2ddl.auto" value="update"/>
+      </properties>		
+      		
+	</persistence-unit>
+</persistence>
