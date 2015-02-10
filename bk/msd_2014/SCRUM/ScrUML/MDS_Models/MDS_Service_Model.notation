@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_M3uq4LdWEeOH5riGJGc5Jg" type="PapyrusUMLClassDiagram" name="NewDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_otDL8LdWEeOH5riGJGc5Jg" type="2004" fontName="Segoe UI" lineColor="0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_otFoMLdWEeOH5riGJGc5Jg" source="ShadowFigure">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_otFoMbdWEeOH5riGJGc5Jg" key="ShadowFigure_Value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_otFoNLdWEeOH5riGJGc5Jg" source="QualifiedName">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_otGPQLdWEeOH5riGJGc5Jg" key="QualifiedNameDepth" value="1000"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g9tmELd0EeOUjJlmCe2wXA" source="displayNameLabelIcon">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g9uNILd0EeOUjJlmCe2wXA" key="displayNameLabelIcon_value" value="true"/>
+    </eAnnotations>
+    <children xmi:type="notation:DecorationNode" xmi:id="_otGPQbdWEeOH5riGJGc5Jg" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_otGPQrdWEeOH5riGJGc5Jg" visible="false" type="7006">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_otGPQ7dWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_otGPRLdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_otGPRbdWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_otGPRrdWEeOH5riGJGc5Jg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_otGPR7dWEeOH5riGJGc5Jg" type="7007">
+      <children xmi:type="notation:Shape" xmi:id="_EAl1oLdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9ibdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAl1obdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAl1ordXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9kLdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAl1o7dXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAmcsLdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9l7dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAmcsbdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAmcsrdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9nrdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAmcs7dXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAmctLdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9ordWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAmctbdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnDwLdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9prdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnDwbdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnDwrdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9rbdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnDw7dXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnDxLdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9tLdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnDxbdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnq0LdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9u7dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnq0bdXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnq0rdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9wrdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnq07dXEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EAnq1LdXEeOH5riGJGc5Jg" type="3007" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9xrdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAnq1bdXEeOH5riGJGc5Jg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_otGPSLdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_otGPSbdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_otGPSrdWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_otGPS7dWEeOH5riGJGc5Jg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_otGPTLdWEeOH5riGJGc5Jg" visible="false" type="7008">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_otGPTbdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_otGPTrdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_otGPT7dWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_otGPULdWEeOH5riGJGc5Jg"/>
+    </children>
+    <element xmi:type="uml:Interface" href="MDS_Service_Model.uml#_m4v9hbdWEeOH5riGJGc5Jg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_otDL8bdWEeOH5riGJGc5Jg" x="264" y="84" width="325" height="217"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_qipboLdWEeOH5riGJGc5Jg" type="2008" fontName="Segoe UI" lineColor="0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiqpwLdWEeOH5riGJGc5Jg" source="ShadowFigure">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qiqpwbdWEeOH5riGJGc5Jg" key="ShadowFigure_Value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiqpwrdWEeOH5riGJGc5Jg" source="displayNameLabelIcon">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qiqpw7dWEeOH5riGJGc5Jg" key="displayNameLabelIcon_value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiqpxLdWEeOH5riGJGc5Jg" source="QualifiedName">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qiqpxbdWEeOH5riGJGc5Jg" key="QualifiedNameDepth" value="1000"/>
+    </eAnnotations>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qiqpxrdWEeOH5riGJGc5Jg" type="5029"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_qiqpx7dWEeOH5riGJGc5Jg" type="7017">
+      <children xmi:type="notation:Shape" xmi:id="_-po_ELdWEeOH5riGJGc5Jg" type="3012" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Property" href="MDS_Service_Model.uml#_m4v8zbdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-po_EbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-po_ErdWEeOH5riGJGc5Jg" type="3012" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Property" href="MDS_Service_Model.uml#_m4v80LdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-po_E7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-ppmILdWEeOH5riGJGc5Jg" type="3012" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Property" href="MDS_Service_Model.uml#_m4v807dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-ppmIbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_qiqpyLdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_qiqpybdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_qiqpyrdWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qiqpy7dWEeOH5riGJGc5Jg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_qiqpzLdWEeOH5riGJGc5Jg" type="7018">
+      <children xmi:type="notation:Shape" xmi:id="_-ppmIrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v817dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-ppmI7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pqNMLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v83rdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pqNMbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pqNMrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v837dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pqNM7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pqNNLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v85rdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pqNNbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pq0QLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v86rdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pq0QbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pq0QrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v88bdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pq0Q7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pq0RLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v8-LdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pq0RbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pq0RrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v8_LdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pq0R7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-prbULdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9ALdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-prbUbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-prbUrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9B7dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-prbU7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-prbVLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9DrdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-prbVbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-psCYLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9FbdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-psCYbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-psCYrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9HLdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-psCY7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-psCZLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9ILdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-psCZbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pspcLdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9J7dWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pspcbdWEeOH5riGJGc5Jg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-pspcrdWEeOH5riGJGc5Jg" type="3013" fontName="Segoe UI" lineColor="0">
+        <element xmi:type="uml:Operation" href="MDS_Service_Model.uml#_m4v9MbdWEeOH5riGJGc5Jg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-pspc7dWEeOH5riGJGc5Jg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_qiqpzbdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_qiqpzrdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_qiqpz7dWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qiqp0LdWEeOH5riGJGc5Jg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_qirQ0LdWEeOH5riGJGc5Jg" visible="false" type="7019">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_qirQ0bdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_qirQ0rdWEeOH5riGJGc5Jg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_qirQ07dWEeOH5riGJGc5Jg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qirQ1LdWEeOH5riGJGc5Jg"/>
+    </children>
+    <element xmi:type="uml:Class" href="MDS_Service_Model.uml#_m4v8xrdWEeOH5riGJGc5Jg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qipbobdWEeOH5riGJGc5Jg" x="192" y="432"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_M3uq4bdWEeOH5riGJGc5Jg"/>
+  <element xmi:type="uml:Model" href="MDS_Service_Model.uml#_M2R5YLdWEeOH5riGJGc5Jg"/>
+  <edges xmi:type="notation:Connector" xmi:id="_paUFILdXEeOH5riGJGc5Jg" type="4003" source="_qipboLdWEeOH5riGJGc5Jg" target="_otDL8LdWEeOH5riGJGc5Jg" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_paUsMLdXEeOH5riGJGc5Jg" type="6008">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_paUsMbdXEeOH5riGJGc5Jg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_paUsMrdXEeOH5riGJGc5Jg" visible="false" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_paUsM7dXEeOH5riGJGc5Jg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_paUFIbdXEeOH5riGJGc5Jg" fontName="Segoe UI"/>
+    <element xmi:type="uml:InterfaceRealization" href="MDS_Service_Model.uml#_paN-gLdXEeOH5riGJGc5Jg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_paUFIrdXEeOH5riGJGc5Jg" points="[-77, -3, 392, 11]$[-453, -41, 16, -27]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_paZksLdXEeOH5riGJGc5Jg" id="(0.4989429175475687,0.03735632183908046)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_paZksbdXEeOH5riGJGc5Jg" id="(0.49538461538461537,0.9308755760368663)"/>
+  </edges>
+</notation:Diagram>

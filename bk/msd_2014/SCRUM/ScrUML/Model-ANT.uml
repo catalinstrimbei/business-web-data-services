@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_YKDkEKNoEeO6u8rQVgJGIA" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_YKDkEaNoEeO6u8rQVgJGIA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gSPMIKNoEeO6u8rQVgJGIA" name="Project">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pv6ngKNoEeO6u8rQVgJGIA" name="targets" type="_h9ChEKNoEeO6u8rQVgJGIA" association="_pv7OkKNoEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pv6ngaNoEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pv6ngqNoEeO6u8rQVgJGIA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LvQa0KNpEeO6u8rQVgJGIA" name="default" type="_h9ChEKNoEeO6u8rQVgJGIA" association="_LvRB4KNpEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LvQa0aNpEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LvQa0qNpEeO6u8rQVgJGIA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Yk-wEKNpEeO6u8rQVgJGIA" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_XHc0kKOJEeO6u8rQVgJGIA" name="properties" type="_P43uAKOJEeO6u8rQVgJGIA" association="_XHdboKOJEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XHc0kaOJEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XHc0kqOJEeO6u8rQVgJGIA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_h9ChEKNoEeO6u8rQVgJGIA" name="Target">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8tmZgKNoEeO6u8rQVgJGIA" name="depends" type="_h9ChEKNoEeO6u8rQVgJGIA" association="_8uKaMKNoEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8tmZgaNoEeO6u8rQVgJGIA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8tmZgqNoEeO6u8rQVgJGIA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EKu5cKNpEeO6u8rQVgJGIA" name="tasks" type="_ksOEIKNoEeO6u8rQVgJGIA" association="_EKu5c6NpEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EKu5caNpEeO6u8rQVgJGIA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EKu5cqNpEeO6u8rQVgJGIA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_a4JFgKNpEeO6u8rQVgJGIA" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ksOEIKNoEeO6u8rQVgJGIA" name="Task" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pv7OkKNoEeO6u8rQVgJGIA" name="project_target_1" memberEnd="_pv7OkaNoEeO6u8rQVgJGIA _pv6ngKNoEeO6u8rQVgJGIA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pv7OkaNoEeO6u8rQVgJGIA" name="project" type="_gSPMIKNoEeO6u8rQVgJGIA" association="_pv7OkKNoEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pv7OkqNoEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pv7Ok6NoEeO6u8rQVgJGIA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8uKaMKNoEeO6u8rQVgJGIA" name="target_target_1" memberEnd="_8uKaMaNoEeO6u8rQVgJGIA _8tmZgKNoEeO6u8rQVgJGIA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_8uKaMaNoEeO6u8rQVgJGIA" name="target" type="_h9ChEKNoEeO6u8rQVgJGIA" association="_8uKaMKNoEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8uKaMqNoEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8uKaM6NoEeO6u8rQVgJGIA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_EKu5c6NpEeO6u8rQVgJGIA" name="target_task_1" memberEnd="_EKu5dKNpEeO6u8rQVgJGIA _EKu5cKNpEeO6u8rQVgJGIA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_EKu5dKNpEeO6u8rQVgJGIA" name="target" type="_h9ChEKNoEeO6u8rQVgJGIA" association="_EKu5c6NpEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EKu5daNpEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EKu5dqNpEeO6u8rQVgJGIA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LvRB4KNpEeO6u8rQVgJGIA" name="project_target_2" memberEnd="_LvRB4aNpEeO6u8rQVgJGIA _LvQa0KNpEeO6u8rQVgJGIA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LvRB4aNpEeO6u8rQVgJGIA" name="project" type="_gSPMIKNoEeO6u8rQVgJGIA" association="_LvRB4KNpEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LvRB4qNpEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LvRB46NpEeO6u8rQVgJGIA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_d5TwcKNpEeO6u8rQVgJGIA" name="mkdir">
+    <generalization xmi:type="uml:Generalization" xmi:id="_rUJk8KNpEeO6u8rQVgJGIA" general="_ksOEIKNoEeO6u8rQVgJGIA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_0A7u4qNpEeO6u8rQVgJGIA" name="dir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hDJ2QKNpEeO6u8rQVgJGIA" name="javac">
+    <generalization xmi:type="uml:Generalization" xmi:id="_rvpOIKNpEeO6u8rQVgJGIA" general="_ksOEIKNoEeO6u8rQVgJGIA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3VNjEKNpEeO6u8rQVgJGIA" name="srcdir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5IjI8KNpEeO6u8rQVgJGIA" name="destdir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jZHBAKNpEeO6u8rQVgJGIA" name="javadoc">
+    <generalization xmi:type="uml:Generalization" xmi:id="_sDhMYKNpEeO6u8rQVgJGIA" general="_ksOEIKNoEeO6u8rQVgJGIA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9jBwMKNpEeO6u8rQVgJGIA" name="destdir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="__K8JMKNpEeO6u8rQVgJGIA" name="sourcepath">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BaKZ0KNqEeO6u8rQVgJGIA" name="packagenames">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lbsj0KNpEeO6u8rQVgJGIA" name="jar">
+    <generalization xmi:type="uml:Generalization" xmi:id="_sd9ssKNpEeO6u8rQVgJGIA" general="_ksOEIKNoEeO6u8rQVgJGIA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Ezu9sKNqEeO6u8rQVgJGIA" name="destdir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_G_iG4KNqEeO6u8rQVgJGIA" name="basedir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_n9JM4KNpEeO6u8rQVgJGIA" name="copy">
+    <generalization xmi:type="uml:Generalization" xmi:id="_s08CQKNpEeO6u8rQVgJGIA" general="_ksOEIKNoEeO6u8rQVgJGIA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NDOHoKNqEeO6u8rQVgJGIA" name="file">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_OiYNQKNqEeO6u8rQVgJGIA" name="todir">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_P43uAKOJEeO6u8rQVgJGIA" name="Property">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UAjVEKOJEeO6u8rQVgJGIA" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VffYQKOJEeO6u8rQVgJGIA" name="value"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_XHdboKOJEeO6u8rQVgJGIA" name="project_property_1" memberEnd="_XHdboaOJEeO6u8rQVgJGIA _XHc0kKOJEeO6u8rQVgJGIA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_XHdboaOJEeO6u8rQVgJGIA" name="project" type="_gSPMIKNoEeO6u8rQVgJGIA" association="_XHdboKOJEeO6u8rQVgJGIA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XHdboqOJEeO6u8rQVgJGIA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XHdbo6OJEeO6u8rQVgJGIA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

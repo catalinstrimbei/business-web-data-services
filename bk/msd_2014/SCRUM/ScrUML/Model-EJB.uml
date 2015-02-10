@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_LZYecLjTEeOM6qTRtgM7Ng" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_LZYecbjTEeOM6qTRtgM7Ng">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_LbW0YLjTEeOM6qTRtgM7Ng" name="Activity1" node="_YkqM8LjTEeOM6qTRtgM7Ng _eH394LjTEeOM6qTRtgM7Ng _j-Aq0LjTEeOM6qTRtgM7Ng _ott7MLjTEeOM6qTRtgM7Ng _rXCt4LjTEeOM6qTRtgM7Ng _zL-CwLjTEeOM6qTRtgM7Ng _8CW0oLjTEeOM6qTRtgM7Ng _a2OKcLjUEeOM6qTRtgM7Ng _bfei0LjUEeOM6qTRtgM7Ng">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_qz2hQLjTEeOM6qTRtgM7Ng">
+      <body>EJB-method @Interceptor A</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_yUZFELjUEeOM6qTRtgM7Ng" annotatedElement="_a2OKcLjUEeOM6qTRtgM7Ng">
+      <body>Client ejb-invocation</body>
+    </ownedComment>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_30iwYLjTEeOM6qTRtgM7Ng" name="ControlFlow1" source="_rXCt4LjTEeOM6qTRtgM7Ng" target="_zL-CwLjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_-pJ3wLjTEeOM6qTRtgM7Ng" name="return context.proceed();" source="_zL-CwLjTEeOM6qTRtgM7Ng" target="_8CW0oLjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_eZXhELjUEeOM6qTRtgM7Ng" name="ControlFlow2" source="_zL-CwLjTEeOM6qTRtgM7Ng" target="_bfei0LjUEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gy1S0LjUEeOM6qTRtgM7Ng" name="ControlFlow3" source="_8CW0oLjTEeOM6qTRtgM7Ng" target="_bfei0LjUEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hzWUoLjUEeOM6qTRtgM7Ng" name="ControlFlow4" source="_a2OKcLjUEeOM6qTRtgM7Ng" target="_YkqM8LjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1iRWULjUEeOM6qTRtgM7Ng" name="ControlFlow5" source="_YkqM8LjTEeOM6qTRtgM7Ng" target="_eH394LjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_2axEkLjUEeOM6qTRtgM7Ng" name="ControlFlow6" source="_eH394LjTEeOM6qTRtgM7Ng" target="_j-Aq0LjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_3yTfQLjUEeOM6qTRtgM7Ng" name="ControlFlow7" source="_j-Aq0LjTEeOM6qTRtgM7Ng" target="_ott7MLjTEeOM6qTRtgM7Ng"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_4VOmILjUEeOM6qTRtgM7Ng" name="ControlFlow8" source="_ott7MLjTEeOM6qTRtgM7Ng" target="_rXCt4LjTEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_YkqM8LjTEeOM6qTRtgM7Ng" name="Container Default @Interceptor" outgoing="_1iRWULjUEeOM6qTRtgM7Ng" incoming="_hzWUoLjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_eH394LjTEeOM6qTRtgM7Ng" name="EJB-class @Interceptor" outgoing="_2axEkLjUEeOM6qTRtgM7Ng" incoming="_1iRWULjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_j-Aq0LjTEeOM6qTRtgM7Ng" name="EJB-method @Interceptor A" outgoing="_3yTfQLjUEeOM6qTRtgM7Ng" incoming="_2axEkLjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ott7MLjTEeOM6qTRtgM7Ng" name="EJB-method @Interceptor B" outgoing="_4VOmILjUEeOM6qTRtgM7Ng" incoming="_3yTfQLjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_rXCt4LjTEeOM6qTRtgM7Ng" name="EJB-method @Interceptor ... X" outgoing="_30iwYLjTEeOM6qTRtgM7Ng" incoming="_4VOmILjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_zL-CwLjTEeOM6qTRtgM7Ng" name="DecisionNode1" outgoing="_-pJ3wLjTEeOM6qTRtgM7Ng _eZXhELjUEeOM6qTRtgM7Ng" incoming="_30iwYLjTEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_8CW0oLjTEeOM6qTRtgM7Ng" name="EJB-method call" outgoing="_gy1S0LjUEeOM6qTRtgM7Ng" incoming="_-pJ3wLjTEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_a2OKcLjUEeOM6qTRtgM7Ng" name="Client ejb-invocation" outgoing="_hzWUoLjUEeOM6qTRtgM7Ng"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_bfei0LjUEeOM6qTRtgM7Ng" name="ActivityFinalNode1" incoming="_eZXhELjUEeOM6qTRtgM7Ng _gy1S0LjUEeOM6qTRtgM7Ng"/>
+  </packagedElement>
+</uml:Model>
