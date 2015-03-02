@@ -8,12 +8,12 @@ import org.apache.commons.math3.random.RandomDataGenerator;
  * Generate a unique number
  *
  */
-public class App 
+public class NumberGeneratorApp 
 {
  
     public static void main( String[] args )
     {
-        App obj = new App();
+        NumberGeneratorApp obj = new NumberGeneratorApp();
         System.out.println("Unique ID : " + obj.generateUniqueKey());
         System.out.println("Unique ID (2): " + obj.generateUniqueKey2());
     }

@@ -1,15 +1,15 @@
 package org.app.test;
 
-import org.app.App;
+import org.app.NumberGeneratorApp;
 import org.junit.Assert;
 import org.junit.Test;
  
-public class AppTest {
+public class NumberGeneratorTest {
  
 	@Test
 	public void testLengthOfTheUniqueKey() {
 		System.out.println("Running Test ... ... ...");
-		App obj = new App();
+		NumberGeneratorApp obj = new NumberGeneratorApp();
 		Assert.assertEquals(36, obj.generateUniqueKey().length());
  
 	}

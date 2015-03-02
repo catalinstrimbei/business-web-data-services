@@ -1,54 +1,74 @@
 <?xml version="1.0"?>
-<project name="Ant-Test" default="main" basedir=".">
-  <!-- Sets variables which can later be used. -->
-  <!-- The value of a property is accessed via ${} -->
-  <property name="src.dir" location="src" />
-  <property name="build.dir" location="bin" />
-  <property name="dist.dir" location="dist" />
-  <property name="docs.dir" location="docs" />
+<project name="NumberGenerator-ANT" default="build-app" basedir=".">
+ 	<property name="src.dir" value="${basedir}/src" />
+ 	<property name="test.dir" value="${basedir}/src" />
+ 	<property name="build-classes.dir" value="${basedir}/build/classes" />
+ 	<property name="build-tests.dir" value="${basedir}/build/tests" />
+ 	<property name="pack-app.dir" value="${basedir}/build/pack" />
+ 	<property name="lib.path" value="${basedir}/libs" />	
+	
+	<property environment="env"/>
+	<property name="java.home" location="${env.JAVA_HOME}"/>
+	
+ 	<target name="test">	
+ 		<echo> ## ANT Calling Test! JAVA_HOME is set to = ${env.JAVA_HOME} </echo>
+ 		<echo message="ANT Calling Test! JAVA_HOME is set to = ${env.JAVA_HOME}"/>
+ 	</target>	
+	
+	<!-- Main target point  -->
+	<target name="build-app">
+		<echo> ## ANT Calling Test! JAVA_HOME is set to = ${env.JAVA_HOME} </echo>
+		<antcall target="package" />
+	</target>
+	
+	<target name="compile-app">
+		<path id="buildClasspath">
+			<fileset dir="${lib.path}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		<!-- Compile  -->
+		<delete dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build/classes" />
+		<mkdir dir="${basedir}/build/tests" />
+		<javac srcdir="${src.dir}" destdir="${build-classes.dir}" classpathref="buildClasspath" />
+	</target>
+	
+	<target name="compile-tests" depends="compile-app">
+		<path id="buildTestsClasspath">
+			<fileset dir="${lib.path}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${build-classes.dir}" />
+		</path>
+		<!-- Compile  -->
+		<delete dir="${build-tests.dir}" />
+		<mkdir dir="${basedir}/build/tests" />
+		<javac srcdir="${test.dir}" destdir="${build-tests.dir}" optimize="off" debug="on" encoding="UTF-8">
+			<classpath refid="buildTestsClasspath" />
+		</javac>
+	</target>
+	
+	<target name="run-tests" depends="compile-tests">
+		<path id="runTestsClasspath">
+			<fileset dir="${lib.path}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${build-classes.dir}" />
+			<pathelement location="${build-tests.dir}" />
+		</path>
+		<junit>
+			<classpath refid="runTestsClasspath" />
+			<formatter type="brief" usefile="false" />
+			<test name="org.app.test.NumberGeneratorTest" />
+		</junit>
+	</target>
 
-  <!-- Deletes the existing build, docs and dist directory-->
-  <target name="clean">
-    <delete dir="${build.dir}" />
-    <delete dir="${docs.dir}" />
-    <delete dir="${dist.dir}" />
-  </target>
-
-  <!-- Creates the  build, docs and dist directory-->
-  <target name="makedir">
-    <mkdir dir="${build.dir}" />
-    <mkdir dir="${docs.dir}" />
-    <mkdir dir="${dist.dir}" />
-  </target>
-
-  <!-- Compiles the java code (including the usage of library for JUnit -->
-  <target name="compile" depends="clean, makedir">
-    <javac srcdir="${src.dir}" destdir="${build.dir}">
-    </javac>
-
-  </target>
-
-  <!-- Creates Javadoc -->
-  <target name="docs" depends="compile">
-    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
-      <!-- Define which files / directory should get included, we include all -->
-       <fileset dir="${src.dir}">
-                <include name="**" />
-           </fileset>
-    </javadoc>
-  </target>
-
-  <!--Creates the deployable jar file  -->
-  <target name="jar" depends="compile">
-    <jar destfile="${dist.dir}\de.vogella.build.test.ant.jar" basedir="${build.dir}">
-      <manifest>
-        <attribute name="Main-Class" value="test.Main" />
-      </manifest>
-    </jar>
-  </target>
-
-  <target name="main" depends="compile, jar, docs">
-    <description>Main target</description>
-  </target>
-
-</project> 
+	<target name="package" depends="run-tests">
+		<jar destfile="${pack-app.dir}/NumberGenerator.jar" duplicate="preserve" compress="false">
+			<fileset dir="${build-classes.dir}" />
+		</jar>
+	</target>
+	
+</project>
