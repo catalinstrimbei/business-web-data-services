@@ -1,8 +1,8 @@
-package org.app;
+package org.app.test;
 
+import org.app.App;
 import org.junit.Assert;
 import org.junit.Test;
-import org.tests.App;
  
 public class AppTest {
  
