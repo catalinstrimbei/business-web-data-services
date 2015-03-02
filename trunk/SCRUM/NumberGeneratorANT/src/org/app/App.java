@@ -1,4 +1,4 @@
-package org.tests;
+package org.app;
  
 import java.util.UUID;
 
