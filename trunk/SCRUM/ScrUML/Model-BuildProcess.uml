@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KahxcMDrEeSVXqeEB20_tQ" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KahxccDrEeSVXqeEB20_tQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_KmX1EMDrEeSVXqeEB20_tQ" name="Build Process" node="_dZsCwMDuEeSVXqeEB20_tQ _LEySkMDvEeSVXqeEB20_tQ _lVHgoMGQEeSVXqeEB20_tQ _kvjDgMGSEeSVXqeEB20_tQ _IWTgkMGTEeSVXqeEB20_tQ _fLSUQMGTEeSVXqeEB20_tQ _EGeNoMGUEeSVXqeEB20_tQ" group="_lVHgoMGQEeSVXqeEB20_tQ _kvjDgMGSEeSVXqeEB20_tQ _IWTgkMGTEeSVXqeEB20_tQ _fLSUQMGTEeSVXqeEB20_tQ _EGeNoMGUEeSVXqeEB20_tQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_wKEtcMGPEeSVXqeEB20_tQ" target="_sWq_cMDuEeSVXqeEB20_tQ" source="_dZsCwMDuEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_u4nasMGREeSVXqeEB20_tQ" target="_2Y22EMDuEeSVXqeEB20_tQ" source="_lVHgoMGQEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_2qTOUMGREeSVXqeEB20_tQ" target="_u8d9AMDuEeSVXqeEB20_tQ" source="_sWq_cMDuEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_3AMJUMGSEeSVXqeEB20_tQ" target="__g7N0MDuEeSVXqeEB20_tQ" source="_2Y22EMDuEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_a7RQkMGTEeSVXqeEB20_tQ" target="_x-4lIMDuEeSVXqeEB20_tQ" source="_kvjDgMGSEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_bglkIMGTEeSVXqeEB20_tQ" target="_6z1zoMDuEeSVXqeEB20_tQ" source="_x-4lIMDuEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ocO7MMGTEeSVXqeEB20_tQ" target="_8mZWYMDuEeSVXqeEB20_tQ" source="_IWTgkMGTEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pOmMQMGTEeSVXqeEB20_tQ" target="_yhpE8MGTEeSVXqeEB20_tQ" source="_8mZWYMDuEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qXPPUMGTEeSVXqeEB20_tQ" target="_kvjDgMGSEeSVXqeEB20_tQ" source="_ENY88MDvEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1YfWQMGTEeSVXqeEB20_tQ" target="_ENY88MDvEeSVXqeEB20_tQ" source="_yhpE8MGTEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_2KbwkMGTEeSVXqeEB20_tQ" target="_OtvuUMGUEeSVXqeEB20_tQ" source="_yhpE8MGTEeSVXqeEB20_tQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_TZpcwMGUEeSVXqeEB20_tQ" target="_LEySkMDvEeSVXqeEB20_tQ" source="_OtvuUMGUEeSVXqeEB20_tQ"/>
+    <structuredNode xmi:type="uml:StructuredActivityNode" xmi:id="_lVHgoMGQEeSVXqeEB20_tQ" name="INIT" outgoing="_u4nasMGREeSVXqeEB20_tQ">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_sWq_cMDuEeSVXqeEB20_tQ" name="Seed project" incoming="_wKEtcMGPEeSVXqeEB20_tQ" outgoing="_2qTOUMGREeSVXqeEB20_tQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_u8d9AMDuEeSVXqeEB20_tQ" name="Configure project&amp;Dependency management" incoming="_2qTOUMGREeSVXqeEB20_tQ"/>
+    </structuredNode>
+    <structuredNode xmi:type="uml:StructuredActivityNode" xmi:id="_kvjDgMGSEeSVXqeEB20_tQ" name="Implementation" incoming="_qXPPUMGTEeSVXqeEB20_tQ" outgoing="_a7RQkMGTEeSVXqeEB20_tQ">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_2Y22EMDuEeSVXqeEB20_tQ" name="Source coding" incoming="_u4nasMGREeSVXqeEB20_tQ" outgoing="_3AMJUMGSEeSVXqeEB20_tQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__g7N0MDuEeSVXqeEB20_tQ" name="xUnit Test coding" incoming="_3AMJUMGSEeSVXqeEB20_tQ"/>
+    </structuredNode>
+    <structuredNode xmi:type="uml:StructuredActivityNode" xmi:id="_IWTgkMGTEeSVXqeEB20_tQ" name="Deployment" outgoing="_ocO7MMGTEeSVXqeEB20_tQ">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_x-4lIMDuEeSVXqeEB20_tQ" name="Compile" incoming="_a7RQkMGTEeSVXqeEB20_tQ" outgoing="_bglkIMGTEeSVXqeEB20_tQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6z1zoMDuEeSVXqeEB20_tQ" name="Local Deployment" incoming="_bglkIMGTEeSVXqeEB20_tQ"/>
+    </structuredNode>
+    <structuredNode xmi:type="uml:StructuredActivityNode" xmi:id="_fLSUQMGTEeSVXqeEB20_tQ" name="Validation">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_8mZWYMDuEeSVXqeEB20_tQ" name="Run xUnit tests" incoming="_ocO7MMGTEeSVXqeEB20_tQ" outgoing="_pOmMQMGTEeSVXqeEB20_tQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_ENY88MDvEeSVXqeEB20_tQ" name="Debug xUnit tests" incoming="_1YfWQMGTEeSVXqeEB20_tQ" outgoing="_qXPPUMGTEeSVXqeEB20_tQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_yhpE8MGTEeSVXqeEB20_tQ" name="DecisionNode1" incoming="_pOmMQMGTEeSVXqeEB20_tQ" outgoing="_1YfWQMGTEeSVXqeEB20_tQ _2KbwkMGTEeSVXqeEB20_tQ"/>
+    </structuredNode>
+    <structuredNode xmi:type="uml:StructuredActivityNode" xmi:id="_EGeNoMGUEeSVXqeEB20_tQ" name="Consolidation">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_OtvuUMGUEeSVXqeEB20_tQ" name="Team publishing code" incoming="_2KbwkMGTEeSVXqeEB20_tQ" outgoing="_TZpcwMGUEeSVXqeEB20_tQ"/>
+    </structuredNode>
+    <node xmi:type="uml:InitialNode" xmi:id="_dZsCwMDuEeSVXqeEB20_tQ" name="Start development" outgoing="_wKEtcMGPEeSVXqeEB20_tQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_LEySkMDvEeSVXqeEB20_tQ" name="Suspend development" incoming="_TZpcwMGUEeSVXqeEB20_tQ"/>
+  </packagedElement>
+</uml:Model>
