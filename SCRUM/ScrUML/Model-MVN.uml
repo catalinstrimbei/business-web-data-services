@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_LINxEJynEeOdVbFTC9_hIw" name="MVN_POM">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_LINxEJynEeOdVbFTC9_hIw" name="MVN_POM">
   <ownedComment xmi:type="uml:Comment" xmi:id="_qcA5QJypEeOdVbFTC9_hIw">
     <body>Maven concepts&#xD;
 POM Files&#xD;
@@ -210,7 +210,7 @@ jar</body>
   <packagedElement xmi:type="uml:Component" xmi:id="_RrPYMJyyEeOdVbFTC9_hIw" name="CentralRepository">
     <generalization xmi:type="uml:Generalization" xmi:id="_Xrax8JyyEeOdVbFTC9_hIw" general="_9hSPEJyrEeOdVbFTC9_hIw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_WhuJgJyzEeOdVbFTC9_hIw" clientDependency="_3p1Z4JyzEeOdVbFTC9_hIw" name="MVN_settings.xml"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_WhuJgJyzEeOdVbFTC9_hIw" name="MVN_settings.xml"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_3p1Z4JyzEeOdVbFTC9_hIw" name="Dependency1" client="_WhuJgJyzEeOdVbFTC9_hIw" supplier="_PyzP4JyyEeOdVbFTC9_hIw"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_9Sz0kJyzEeOdVbFTC9_hIw" name="Repository">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_DIAtYJy0EeOdVbFTC9_hIw" name="id">
@@ -371,5 +371,5 @@ jar</body>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Xbvgo6C3EeOUK8X9enNUaw" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Activity" xmi:id="_TCPrYKFoEeOs5Jt2aE6Erw" name="Software Process"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_TCPrYKFoEeOs5Jt2aE6Erw" name="MVN Build Process"/>
 </uml:Model>
