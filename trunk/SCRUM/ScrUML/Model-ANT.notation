@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <notation:Diagram xmi:id="_YMHZkKNoEeO6u8rQVgJGIA" type="PapyrusUMLClassDiagram" name="D1-ANT Concept Model" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_gT6AEKNoEeO6u8rQVgJGIA" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gUZIQKNoEeO6u8rQVgJGIA" source="ShadowFigure">
@@ -139,7 +139,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d5WMtKNpEeO6u8rQVgJGIA"/>
       </children>
       <element xmi:type="uml:Class" href="Model-ANT.uml#_d5TwcKNpEeO6u8rQVgJGIA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d5U-kaNpEeO6u8rQVgJGIA" x="156" y="312" width="109"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d5U-kaNpEeO6u8rQVgJGIA" x="165" y="312" width="109"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_hDLEYKNpEeO6u8rQVgJGIA" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hDLrcKNpEeO6u8rQVgJGIA" source="ShadowFigure">
@@ -179,7 +179,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hDMShKNpEeO6u8rQVgJGIA"/>
       </children>
       <element xmi:type="uml:Class" href="Model-ANT.uml#_hDJ2QKNpEeO6u8rQVgJGIA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hDLEYaNpEeO6u8rQVgJGIA" x="72" y="492"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hDLEYaNpEeO6u8rQVgJGIA" x="44" y="487"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_jZIPIKNpEeO6u8rQVgJGIA" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jZIPIqNpEeO6u8rQVgJGIA" source="ShadowFigure">
@@ -223,7 +223,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jZI2QKNpEeO6u8rQVgJGIA"/>
       </children>
       <element xmi:type="uml:Class" href="Model-ANT.uml#_jZHBAKNpEeO6u8rQVgJGIA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jZIPIaNpEeO6u8rQVgJGIA" x="360" y="480"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jZIPIaNpEeO6u8rQVgJGIA" x="294" y="476"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_lbtx8KNpEeO6u8rQVgJGIA" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lbtx8qNpEeO6u8rQVgJGIA" source="ShadowFigure">
@@ -263,7 +263,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lbuZE6NpEeO6u8rQVgJGIA"/>
       </children>
       <element xmi:type="uml:Class" href="Model-ANT.uml#_lbsj0KNpEeO6u8rQVgJGIA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lbtx8aNpEeO6u8rQVgJGIA" x="660" y="485"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lbtx8aNpEeO6u8rQVgJGIA" x="562" y="486"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_n9KbAKNpEeO6u8rQVgJGIA" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_n9KbAqNpEeO6u8rQVgJGIA" source="ShadowFigure">
@@ -335,7 +335,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P45jPqOJEeO6u8rQVgJGIA"/>
       </children>
       <element xmi:type="uml:Class" href="Model-ANT.uml#_P43uAKOJEeO6u8rQVgJGIA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P448IaOJEeO6u8rQVgJGIA" x="36" y="312"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P448IaOJEeO6u8rQVgJGIA" x="47" y="311"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_YMHZkaNoEeO6u8rQVgJGIA"/>
     <element xmi:type="uml:Model" href="Model-ANT.uml#_YKDkEKNoEeO6u8rQVgJGIA"/>
@@ -444,7 +444,8 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_rUjNkaNpEeO6u8rQVgJGIA" fontName="Segoe UI"/>
       <element xmi:type="uml:Generalization" href="Model-ANT.uml#_rUJk8KNpEeO6u8rQVgJGIA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rUjNkqNpEeO6u8rQVgJGIA" points="[32, -21, -289, 202]$[288, -173, -33, 50]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rUotIKNpEeO6u8rQVgJGIA" id="(0.88,0.47)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rUotIKNpEeO6u8rQVgJGIA" id="(1.0,0.38)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Get7sMJ2EeSNo_szDTpM6A" id="(0.0,0.5)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_rvp1MKNpEeO6u8rQVgJGIA" type="4002" source="_hDLEYKNpEeO6u8rQVgJGIA" target="_ksPSQKNoEeO6u8rQVgJGIA" lineColor="0">
       <children xmi:type="notation:DecorationNode" xmi:id="_rvqcQKNpEeO6u8rQVgJGIA" type="6007">
@@ -452,8 +453,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_rvp1MaNpEeO6u8rQVgJGIA" fontName="Segoe UI"/>
       <element xmi:type="uml:Generalization" href="Model-ANT.uml#_rvpOIKNpEeO6u8rQVgJGIA"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rvp1MqNpEeO6u8rQVgJGIA" points="[0, -14, -276, 142]$[0, -62, -276, 94]$[276, -62, 0, 94]$[276, -106, 0, 50]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rvutsKNpEeO6u8rQVgJGIA" id="(0.76,0.13)"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rvp1MqNpEeO6u8rQVgJGIA" points="[0, 0, -274, 87]$[274, -87, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rvutsKNpEeO6u8rQVgJGIA" id="(0.7468354430379747,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_H-Qb0MJ2EeSNo_szDTpM6A" id="(0.05,0.93)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_sDhzcKNpEeO6u8rQVgJGIA" type="4002" source="_jZIPIKNpEeO6u8rQVgJGIA" target="_ksPSQKNoEeO6u8rQVgJGIA" lineColor="0">
       <children xmi:type="notation:DecorationNode" xmi:id="_sDiagKNpEeO6u8rQVgJGIA" type="6007">
@@ -461,7 +463,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_sDhzcaNpEeO6u8rQVgJGIA" fontName="Segoe UI"/>
       <element xmi:type="uml:Generalization" href="Model-ANT.uml#_sDhMYKNpEeO6u8rQVgJGIA"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sDhzcqNpEeO6u8rQVgJGIA" points="[15, -50, -69, 202]$[58, -202, -26, 50]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sDhzcqNpEeO6u8rQVgJGIA" points="[0, 0, -47, 76]$[47, -76, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IOsrkMJ2EeSNo_szDTpM6A" id="(0.6714285714285714,0.025)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IOtSoMJ2EeSNo_szDTpM6A" id="(0.58,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_sd-TwKNpEeO6u8rQVgJGIA" type="4002" source="_lbtx8KNpEeO6u8rQVgJGIA" target="_ksPSQKNoEeO6u8rQVgJGIA" lineColor="0">
       <children xmi:type="notation:DecorationNode" xmi:id="_sd-60KNpEeO6u8rQVgJGIA" type="6007">
@@ -469,8 +473,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_sd-TwaNpEeO6u8rQVgJGIA" fontName="Segoe UI"/>
       <element xmi:type="uml:Generalization" href="Model-ANT.uml#_sd9ssKNpEeO6u8rQVgJGIA"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sd-TwqNpEeO6u8rQVgJGIA" points="[0, -18, 286, 135]$[0, -59, 286, 94]$[-286, -59, 0, 94]$[-286, -103, 0, 50]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_seDMQKNpEeO6u8rQVgJGIA" id="(0.52,0.17)"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sd-TwqNpEeO6u8rQVgJGIA" points="[0, 0, 226, 86]$[-226, -86, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_seDMQKNpEeO6u8rQVgJGIA" id="(0.5714285714285714,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ifv_UMJ2EeSNo_szDTpM6A" id="(0.76,0.9)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_s08pUKNpEeO6u8rQVgJGIA" type="4002" source="_n9KbAKNpEeO6u8rQVgJGIA" target="_ksPSQKNoEeO6u8rQVgJGIA" lineColor="0">
       <children xmi:type="notation:DecorationNode" xmi:id="_s09QYaNpEeO6u8rQVgJGIA" type="6007">
@@ -504,8 +509,8 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_XHepwaOJEeO6u8rQVgJGIA" fontName="Segoe UI"/>
       <element xmi:type="uml:Association" href="Model-ANT.uml#_XHdboKOJEeO6u8rQVgJGIA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XHepwqOJEeO6u8rQVgJGIA" points="[-8, 50, 30, -197]$[-43, 233, -5, -14]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f9XsYKOJEeO6u8rQVgJGIA" id="(0.32407407407407407,0.98)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XHreEKOJEeO6u8rQVgJGIA" id="(0.38,0.14)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f9XsYKOJEeO6u8rQVgJGIA" id="(0.2550335570469799,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XHreEKOJEeO6u8rQVgJGIA" id="(0.39,0.0)"/>
     </edges>
   </notation:Diagram>
   <notation:Diagram xmi:id="_-TwF4KOSEeO6u8rQVgJGIA" type="PapyrusUMLClassDiagram" name="D2-ANT Type Model" measurementUnit="Pixel">
