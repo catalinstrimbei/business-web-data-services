@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <ant antfile="/home/catalin/Professional/MSD/Projects/BuildDemo/NumberGeneratorMVN/build.xml">
-    <target name="test"/>
-  </ant>
+  <echo message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;ANT ECHO: Hello, maven &gt;&gt;&gt;&gt;&gt;&gt;&gt;"/>
+  <echo message="JAVA_HOME = /usr/lib/jvm/java-8-oracle"></echo>
 </target>
 </project>
