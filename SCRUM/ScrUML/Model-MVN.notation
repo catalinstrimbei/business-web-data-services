@@ -865,7 +865,7 @@
       </eAnnotations>
       <children xmi:type="notation:DecorationNode" xmi:id="_kf83kpy2EeOdVbFTC9_hIw" type="5038"/>
       <element xmi:type="uml:Comment" href="Model-MVN.uml#_kf50QJy2EeOdVbFTC9_hIw"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kf7pcZy2EeOdVbFTC9_hIw" x="575" y="185"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kf7pcZy2EeOdVbFTC9_hIw" x="575" y="184"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_fnEAkJy3EeOdVbFTC9_hIw" type="2008" fontName="Segoe UI" lineColor="0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fnEnoJy3EeOdVbFTC9_hIw" source="ShadowFigure">
