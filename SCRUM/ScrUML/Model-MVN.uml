@@ -242,11 +242,21 @@ jar</body>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_triA4Jy3EeOdVbFTC9_hIw" name="repositories">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_we7VkJy3EeOdVbFTC9_hIw" name="pluginRepositories"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_yQeLsJy3EeOdVbFTC9_hIw" name="dependencies"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zltgUJy3EeOdVbFTC9_hIw" name="reporting"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_0-AwAJy3EeOdVbFTC9_hIw" name="dependencyManagement"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_2MANIJy3EeOdVbFTC9_hIw" name="distributionManagement"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_we7VkJy3EeOdVbFTC9_hIw" name="pluginRepositories">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yQeLsJy3EeOdVbFTC9_hIw" name="dependencies">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_zltgUJy3EeOdVbFTC9_hIw" name="reporting">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_0-AwAJy3EeOdVbFTC9_hIw" name="dependencyManagement">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2MANIJy3EeOdVbFTC9_hIw" name="distributionManagement">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_59jzMJy3EeOdVbFTC9_hIw" name="project_profile_1" memberEnd="_59jzMZy3EeOdVbFTC9_hIw _59jMIJy3EeOdVbFTC9_hIw">
     <ownedEnd xmi:type="uml:Property" xmi:id="_59jzMZy3EeOdVbFTC9_hIw" name="project" type="_RbHSgJynEeOdVbFTC9_hIw" association="_59jzMJy3EeOdVbFTC9_hIw">
@@ -345,7 +355,6 @@ jar</body>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R2H4MKBEEeO4q7kujO7h8g" name="phase">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_U3kP8KBEEeO4q7kujO7h8g"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_alNvQKBEEeO4q7kujO7h8g" name="goals" type="_ZlKngKBEEeO4q7kujO7h8g" association="_alNvQ6BEEeO4q7kujO7h8g">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_alNvQaBEEeO4q7kujO7h8g" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_alNvQqBEEeO4q7kujO7h8g" value="*"/>
@@ -371,5 +380,32 @@ jar</body>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Xbvgo6C3EeOUK8X9enNUaw" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Activity" xmi:id="_TCPrYKFoEeOs5Jt2aE6Erw" name="MVN Build Process"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_TCPrYKFoEeOs5Jt2aE6Erw" name="MVN Build Process" node="_QBtuEMP5EeS63_F9V-kqQA _Q4GjgMP5EeS63_F9V-kqQA _RBa3kMP5EeS63_F9V-kqQA _RI8b4MP5EeS63_F9V-kqQA _RN0U0MP5EeS63_F9V-kqQA _RSNFkMP5EeS63_F9V-kqQA _Rg5o4MP5EeS63_F9V-kqQA _qISOUMP5EeS63_F9V-kqQA _2mtBYMP6EeS63_F9V-kqQA _6vhQ4MP6EeS63_F9V-kqQA _647EgMP6EeS63_F9V-kqQA _7Dgj4MP6EeS63_F9V-kqQA _7IETwMP6EeS63_F9V-kqQA _7NCTUMP6EeS63_F9V-kqQA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QQ49EMP6EeS63_F9V-kqQA" target="_Q4GjgMP5EeS63_F9V-kqQA" source="_QBtuEMP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Qvp8sMP6EeS63_F9V-kqQA" target="_RBa3kMP5EeS63_F9V-kqQA" source="_Q4GjgMP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_RFUqsMP6EeS63_F9V-kqQA" target="_RI8b4MP5EeS63_F9V-kqQA" source="_RBa3kMP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_RtL78MP6EeS63_F9V-kqQA" target="_RN0U0MP5EeS63_F9V-kqQA" source="_RI8b4MP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SVstcMP6EeS63_F9V-kqQA" target="_RSNFkMP5EeS63_F9V-kqQA" source="_RN0U0MP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_S49ykMP6EeS63_F9V-kqQA" target="_Rg5o4MP5EeS63_F9V-kqQA" source="_RSNFkMP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_VNn80MP6EeS63_F9V-kqQA" target="_qISOUMP5EeS63_F9V-kqQA" source="_Rg5o4MP5EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_o8En8MP7EeS63_F9V-kqQA" target="_6vhQ4MP6EeS63_F9V-kqQA" source="_2mtBYMP6EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_p6eJ4MP7EeS63_F9V-kqQA" target="_647EgMP6EeS63_F9V-kqQA" source="_6vhQ4MP6EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_sFQmcMP7EeS63_F9V-kqQA" target="_7NCTUMP6EeS63_F9V-kqQA" source="_647EgMP6EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_sbWyQMP7EeS63_F9V-kqQA" target="_7IETwMP6EeS63_F9V-kqQA" source="_7NCTUMP6EeS63_F9V-kqQA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_tKUxEMP7EeS63_F9V-kqQA" target="_7Dgj4MP6EeS63_F9V-kqQA" source="_7IETwMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_QBtuEMP5EeS63_F9V-kqQA" name="process-resources" outgoing="_QQ49EMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Q4GjgMP5EeS63_F9V-kqQA" name="compile" incoming="_QQ49EMP6EeS63_F9V-kqQA" outgoing="_Qvp8sMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RBa3kMP5EeS63_F9V-kqQA" name="process-classes" incoming="_Qvp8sMP6EeS63_F9V-kqQA" outgoing="_RFUqsMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RI8b4MP5EeS63_F9V-kqQA" name="process-test-resources" incoming="_RFUqsMP6EeS63_F9V-kqQA" outgoing="_RtL78MP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RN0U0MP5EeS63_F9V-kqQA" name="test-compile" incoming="_RtL78MP6EeS63_F9V-kqQA" outgoing="_SVstcMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RSNFkMP5EeS63_F9V-kqQA" name="test" incoming="_SVstcMP6EeS63_F9V-kqQA" outgoing="_S49ykMP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Rg5o4MP5EeS63_F9V-kqQA" name="prepare-package" incoming="_S49ykMP6EeS63_F9V-kqQA" outgoing="_VNn80MP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_qISOUMP5EeS63_F9V-kqQA" name="package" incoming="_VNn80MP6EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_2mtBYMP6EeS63_F9V-kqQA" name="resources:resources" outgoing="_o8En8MP7EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_6vhQ4MP6EeS63_F9V-kqQA" name="compiler:compile" incoming="_o8En8MP7EeS63_F9V-kqQA" outgoing="_p6eJ4MP7EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_647EgMP6EeS63_F9V-kqQA" name="resources:testResources" incoming="_p6eJ4MP7EeS63_F9V-kqQA" outgoing="_sFQmcMP7EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_7Dgj4MP6EeS63_F9V-kqQA" name="jar:jar" incoming="_tKUxEMP7EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_7IETwMP6EeS63_F9V-kqQA" name="surefire:test" incoming="_sbWyQMP7EeS63_F9V-kqQA" outgoing="_tKUxEMP7EeS63_F9V-kqQA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_7NCTUMP6EeS63_F9V-kqQA" name="compiler:testCompile" incoming="_sFQmcMP7EeS63_F9V-kqQA" outgoing="_sbWyQMP7EeS63_F9V-kqQA"/>
+  </packagedElement>
 </uml:Model>
