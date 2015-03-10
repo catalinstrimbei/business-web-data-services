@@ -2,6 +2,5 @@
 <project name="maven-antrun-" default="main"  >
 <target name="main">
   <echo message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;ANT ECHO: Hello, maven &gt;&gt;&gt;&gt;&gt;&gt;&gt;"/>
-  <echo message="JAVA_HOME = /usr/lib/jvm/java-8-oracle"></echo>
 </target>
 </project>
