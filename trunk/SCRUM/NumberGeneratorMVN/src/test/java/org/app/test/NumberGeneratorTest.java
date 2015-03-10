@@ -11,7 +11,9 @@ public class NumberGeneratorTest {
 		System.out.println("Running Test 2 ... ... ...");
 		NumberGeneratorApp obj = new NumberGeneratorApp();
 		Assert.assertEquals(36, obj.generateUniqueKey().length());
+		System.out.println("Result: obj.generateUniqueKey() = " + obj.generateUniqueKey());
 		Assert.assertNotNull(obj.generateUniqueKey2());
-		
+		System.out.println("Result: obj.generateUniqueKey2() = " + obj.generateUniqueKey2());
+		System.out.println("End Running Test 2 ... ... ...");
 	}
 }
