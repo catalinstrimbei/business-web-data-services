@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_w5nwMMfTEeSIn--m3Mlxvg" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_w5nwMcfTEeSIn--m3Mlxvg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_xIyNkMfTEeSIn--m3Mlxvg" name="IE Curriculum (part)" node="_PQ0YIMfUEeSIn--m3Mlxvg _RiOaEMfUEeSIn--m3Mlxvg _UZ_4cMfUEeSIn--m3Mlxvg _Xf22IMfUEeSIn--m3Mlxvg _ZcJjsMfUEeSIn--m3Mlxvg _a8riUMfUEeSIn--m3Mlxvg _dEsXsMfUEeSIn--m3Mlxvg _irzxMMfUEeSIn--m3Mlxvg _k3NRwMfUEeSIn--m3Mlxvg _pgSVsMfUEeSIn--m3Mlxvg _7-VlYMfUEeSIn--m3Mlxvg _SS2JQMfVEeSIn--m3Mlxvg _WPmSsMfVEeSIn--m3Mlxvg _lXiiMMfVEeSIn--m3Mlxvg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_BrQr8MfVEeSIn--m3Mlxvg" target="_Xf22IMfUEeSIn--m3Mlxvg" source="_7-VlYMfUEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_EYyCIMfVEeSIn--m3Mlxvg" target="_7-VlYMfUEeSIn--m3Mlxvg" source="_PQ0YIMfUEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_acctoMfVEeSIn--m3Mlxvg" target="_SS2JQMfVEeSIn--m3Mlxvg" source="_RiOaEMfUEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_a6_q0MfVEeSIn--m3Mlxvg" target="_WPmSsMfVEeSIn--m3Mlxvg" source="_UZ_4cMfUEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_bl_IkMfVEeSIn--m3Mlxvg" target="_Xf22IMfUEeSIn--m3Mlxvg" source="_SS2JQMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_cGd_cMfVEeSIn--m3Mlxvg" target="_Xf22IMfUEeSIn--m3Mlxvg" source="_WPmSsMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uygn0MfVEeSIn--m3Mlxvg" target="_lXiiMMfVEeSIn--m3Mlxvg" source="_Xf22IMfUEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_xI_XAMfVEeSIn--m3Mlxvg" target="_ZcJjsMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_xzUGYMfVEeSIn--m3Mlxvg" target="_irzxMMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_yWvjkMfVEeSIn--m3Mlxvg" target="_k3NRwMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1_-7IMfVEeSIn--m3Mlxvg" target="_a8riUMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_7GDdEMfVEeSIn--m3Mlxvg" target="_dEsXsMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_74HzMMfVEeSIn--m3Mlxvg" target="_pgSVsMfUEeSIn--m3Mlxvg" source="_lXiiMMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_PQ0YIMfUEeSIn--m3Mlxvg" name="Programare I" outgoing="_EYyCIMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RiOaEMfUEeSIn--m3Mlxvg" name="Baze de date" outgoing="_acctoMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_UZ_4cMfUEeSIn--m3Mlxvg" name="Aplicatii Web!" outgoing="_a6_q0MfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Xf22IMfUEeSIn--m3Mlxvg" name="Programare II" incoming="_BrQr8MfVEeSIn--m3Mlxvg _bl_IkMfVEeSIn--m3Mlxvg _cGd_cMfVEeSIn--m3Mlxvg" outgoing="_uygn0MfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ZcJjsMfUEeSIn--m3Mlxvg" name="Proiectare SI" incoming="_xI_XAMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_a8riUMfUEeSIn--m3Mlxvg" name="Aplicatii multi-strat" incoming="_1_-7IMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_dEsXsMfUEeSIn--m3Mlxvg" name="Sisteme orientate pe servicii" incoming="_7GDdEMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_irzxMMfUEeSIn--m3Mlxvg" name="Arhitecturi Informationale" incoming="_xzUGYMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_k3NRwMfUEeSIn--m3Mlxvg" name="APOO" incoming="_yWvjkMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_pgSVsMfUEeSIn--m3Mlxvg" name="Integrare&amp;Web-Of-Data" incoming="_74HzMMfVEeSIn--m3Mlxvg"/>
+    <node xmi:type="uml:CentralBufferNode" xmi:id="_7-VlYMfUEeSIn--m3Mlxvg" name="TAD, Clase, Structuri-de-control" incoming="_EYyCIMfVEeSIn--m3Mlxvg" outgoing="_BrQr8MfVEeSIn--m3Mlxvg">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_7-evUMfUEeSIn--m3Mlxvg" value="1"/>
+    </node>
+    <node xmi:type="uml:CentralBufferNode" xmi:id="_SS2JQMfVEeSIn--m3Mlxvg" name="SQL" incoming="_acctoMfVEeSIn--m3Mlxvg" outgoing="_bl_IkMfVEeSIn--m3Mlxvg">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_SS2JQcfVEeSIn--m3Mlxvg" value="1"/>
+    </node>
+    <node xmi:type="uml:CentralBufferNode" xmi:id="_WPmSsMfVEeSIn--m3Mlxvg" name="HTML, JS" incoming="_a6_q0MfVEeSIn--m3Mlxvg" outgoing="_cGd_cMfVEeSIn--m3Mlxvg">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_WPmSscfVEeSIn--m3Mlxvg" value="1"/>
+    </node>
+    <node xmi:type="uml:CentralBufferNode" xmi:id="_lXiiMMfVEeSIn--m3Mlxvg" name="Model Obiectual, Mostenire, Subtipizare, Polimorfism, Interfete, JPA, Arhitectura-Web-MVC" incoming="_uygn0MfVEeSIn--m3Mlxvg" outgoing="_xI_XAMfVEeSIn--m3Mlxvg _xzUGYMfVEeSIn--m3Mlxvg _yWvjkMfVEeSIn--m3Mlxvg _1_-7IMfVEeSIn--m3Mlxvg _7GDdEMfVEeSIn--m3Mlxvg _74HzMMfVEeSIn--m3Mlxvg">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_lXiiMcfVEeSIn--m3Mlxvg" value="1"/>
+    </node>
+  </packagedElement>
+</uml:Model>

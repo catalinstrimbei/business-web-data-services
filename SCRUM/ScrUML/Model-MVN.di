@@ -35,6 +35,9 @@
         <children>
           <emfPageIdentifier href="Model-MVN.notation#_LJj04JynEeOdVbFTC9_hIw"/>
         </children>
+        <children>
+          <emfPageIdentifier href="Model-MVN.notation#_5BtPsMclEeSUx-KF-0lc7Q"/>
+        </children>
       </children>
     </windows>
   </sashModel>
