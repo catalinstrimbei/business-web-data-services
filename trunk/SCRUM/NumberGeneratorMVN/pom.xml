@@ -39,7 +39,7 @@
 				<executions>
 					<execution>
 						<id>test</id>
-						<phase>test</phase>
+						<phase>integration-test</phase>
 						<configuration>
 							<tasks>
 								<echo message=">>>>>>>ANT ECHO: Hello, maven >>>>>>>" />
@@ -49,7 +49,6 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
-
 				</executions>
 			</plugin>
 
