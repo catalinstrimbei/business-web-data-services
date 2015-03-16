@@ -16,7 +16,7 @@
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 		</properties>
 
 	</persistence-unit>
@@ -38,7 +38,7 @@
 			<property name="javax.persistence.jdbc.password" value="agile"/>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-         	<property name="hibernate.hbm2ddl.auto" value="none"/>			
+         	<property name="hibernate.hbm2ddl.auto" value="validate"/>			
 		</properties>		
 	</persistence-unit>		
 	 -->
