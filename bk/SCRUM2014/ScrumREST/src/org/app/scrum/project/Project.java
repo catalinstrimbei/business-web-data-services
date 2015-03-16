@@ -33,7 +33,7 @@ import org.app.scrum.team.ProjectManager;
 public class Project implements Serializable{
 	/* internal stucture: member fields*/
 	@Id 
-	@GeneratedValue
+//	@GeneratedValue
 	private Integer projectNo;
 	private String name;
 	@Temporal(TemporalType.DATE)

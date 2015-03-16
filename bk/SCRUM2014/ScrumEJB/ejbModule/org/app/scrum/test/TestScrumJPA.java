@@ -51,24 +51,23 @@ public class TestScrumJPA {
 		</properties>		
 	</persistence-unit>	
 
-<!-- 
-<persistence-unit name="ScrumEJB">
-	<jta-data-source>java:/ORCLFeaaScrum</jta-data-source>
-	<class>org.app.scrum.BusinessFeature</class>
-	<class>org.app.scrum.Feature</class>
-	<class>org.app.scrum.Project</class>
-	<class>org.app.scrum.Release</class>
-	<class>org.app.scrum.TechnicalFeature</class>
-	<class>org.app.scrum.team.Member</class>
-	<class>org.app.scrum.team.ProjectManager</class>
-	<class>org.app.scrum.team.Team</class>
-	<class>org.app.scrum.team.TeamLeader</class>
-	
-  <properties>
-     <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-     <property name="hibernate.hbm2ddl.auto" value="update"/>
-  </properties>		
-  		
-</persistence-unit>
- -->
+	<persistence-unit name="ScrumEJB">
+		<jta-data-source>java:/ORCLFeaaScrum</jta-data-source>
+		<class>org.app.scrum.BusinessFeature</class>
+		<class>org.app.scrum.Feature</class>
+		<class>org.app.scrum.Project</class>
+		<class>org.app.scrum.Release</class>
+		<class>org.app.scrum.TechnicalFeature</class>
+		<class>org.app.scrum.team.Member</class>
+		<class>org.app.scrum.team.ProjectManager</class>
+		<class>org.app.scrum.team.Team</class>
+		<class>org.app.scrum.team.TeamLeader</class>
+		
+	  <properties>
+	     <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+	     <property name="hibernate.hbm2ddl.auto" value="update"/>
+	  </properties>		
+	  		
+	</persistence-unit>
+
 */

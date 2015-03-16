@@ -13,6 +13,9 @@ import org.app.scrum.services.ProjectSprintDataService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/*
+ * JUnit test for EJB: ProjectSprintDataServiceEJB
+ */
 public class TestScrumProjectDataService {
 	private static Logger logger = Logger.getLogger(TestScrumProjectDataService.class.getName());
 	private static ProjectSprintDataService service;

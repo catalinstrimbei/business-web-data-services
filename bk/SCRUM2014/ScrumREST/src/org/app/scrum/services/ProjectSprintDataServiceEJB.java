@@ -94,10 +94,4 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		Release release = releaseRepository.getById(releaseid);
 		return release.toDTO();
 	}
-
-	@Override
-	public String check() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

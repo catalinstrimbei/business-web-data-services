@@ -58,13 +58,6 @@ public class ProjectSprintDataServiceRest extends EntityRepositoryBase<Project>
 		return Project.toDTOs(super.toCollection());
 	}	
 	
-	@Override
-	@GET 	@Path("/check")				/* scrum/projects 		REST-resource: projects-collection*/
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public String check() {
-		return "200-OK";
-	}	
-	
 	@POST 					/* scrum/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	

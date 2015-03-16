@@ -187,12 +187,6 @@ public class ProjectSprintDataServiceRestOld
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public String check() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }

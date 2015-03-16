@@ -40,8 +40,6 @@ public class ProjectSprintDataServiceEJBFactory {
         final Context context = new InitialContext(jndiProperties);
         
         String lookUpURL =  "ejb:/" + MODULE_NAME + "/" + SERVICE_NAME + "!" + REMOTE_INTERFACE_NAME;
-//        String lookUpURL = "ejb:/ScrumEJB/ProjectSprintDataServiceEJB!org.app.scrum.services.ProjectSprintDataService";
-//      String lookUpURL = "ejb:/ScrumREST/ProjectSprintDataServiceEJB!org.app.scrum.services.ProjectSprintDataService";        
         
         logger.info("!DEBUG: lookUpURL =  " + lookUpURL + "\n");
         return (T) context.lookup(lookUpURL);

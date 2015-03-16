@@ -19,8 +19,7 @@ public class TestScrumJPAQL {
 
 		List<Project> pList01 = em.createQuery("SELECT p FROM Project p").getResultList();
 		for(Project p: pList01)
-			System.out.println("Project: " + p);		
-		
+			System.out.println("Project: " + p);
 		
 		/* Bug Eclipse */
 		List<Project> pList02 = em.createNativeQuery("SELECT p.PROJECTNO, p.NAME, p.STARTDATE FROM project p", Project.class)
@@ -31,7 +30,7 @@ public class TestScrumJPAQL {
 		/* OK */
 		List<Object[]> pList03 = em.createNativeQuery("SELECT p.PROJECTNO, p.NAME FROM project p").getResultList();
 		for(Object[] p: pList03)
-			System.out.println("Project[]: " + p[0] + " - " + p[1]);		
+			System.out.println("Project[]: " + p[0] + " - " + p[1]);
 
 		/* OK */
 		BigDecimal nrProiecte = (BigDecimal) em.createNativeQuery("SELECT COUNT(*) FROM project p").getSingleResult();
@@ -39,7 +38,7 @@ public class TestScrumJPAQL {
 		
 		List<ProjectView> pList04 = em.createQuery("SELECT NEW org.app.patterns.ProjectView(p.projectNo, p.name) FROM Project p").getResultList();
 		for(ProjectView p: pList04)
-			System.out.println("ProjectView: " + p);		
+			System.out.println("ProjectView: " + p);
 		
 		System.out.println("End");
 	}

@@ -13,5 +13,4 @@ public interface ProjectSprintDataService
 	public String getMessage();
 	public Project createNewProject(Integer id);
 	public Release getReleaseById(Integer releaseid);
-	public String check();
 }
