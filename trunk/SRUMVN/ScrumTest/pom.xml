@@ -12,7 +12,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         
         <version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
-        <version.wildfly>8.2.0Final</version.wildfly>
+        <version.wildfly>8.2.0.Final</version.wildfly>
     </properties>
  
     <repositories>
@@ -23,6 +23,12 @@
     </repositories>
     
     <dependencies>
+         <!-- Import the ScrumREST -->
+         <dependency>
+			<groupId>org.feaa.scrum</groupId>
+  			<artifactId>scrum-rest</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+         </dependency>    
         <!-- Import the JAX-RS API: Resteasy implementation -->
 		<dependency>
 	        <groupId>org.jboss.resteasy</groupId>
@@ -35,7 +41,7 @@
 	        <artifactId>resteasy-jackson-provider</artifactId>
 	        <version>3.0.10.Final</version>
 	    </dependency>
-	    
+	    <!-- Import the JUnit 4 -->
 		<dependency>
 		  <groupId>junit</groupId>
 		  <artifactId>junit</artifactId>
@@ -58,7 +64,7 @@
             <type>pom</type>
             <scope>import</scope>
          </dependency>
-
+		 <!-- Import the JBoss EJB Client -->
          <dependency>
              <groupId>org.wildfly</groupId>
              <artifactId>wildfly-ejb-client-bom</artifactId>
@@ -66,7 +72,7 @@
              <type>pom</type>
              <scope>import</scope>
          </dependency>
-         		
+    		
     </dependencies>
   
   

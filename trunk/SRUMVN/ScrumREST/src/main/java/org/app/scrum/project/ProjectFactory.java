@@ -1,14 +1,15 @@
-package org.app.patterns;
+package org.app.scrum.project;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.app.scrum.Project;
-import org.app.scrum.Release;
+import javax.ejb.Singleton;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-
-public class ProjectBuilder implements EntityFactory{
+@Singleton
+public class ProjectFactory{
 	public static Project buildProiect(Integer projectID, String name, Integer releaseCount){
 		
 		Project project = new Project(projectID, name + "." + projectID , new Date());

@@ -117,7 +117,7 @@ public class TestRestProjectResource {
 		
 	}	
 
-	@Test
+//	@Test
 	public void testDELETEProjectsResource() throws Exception{
 		RESTfullResource<Collection<Project>> resourceProjects = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",
