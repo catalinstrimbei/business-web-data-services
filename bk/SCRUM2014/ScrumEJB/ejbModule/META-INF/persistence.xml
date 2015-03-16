@@ -20,7 +20,7 @@
 		</properties>
 
 	</persistence-unit>
-	
+	<!-- 
  	<persistence-unit name="ScrumJPA" transaction-type="RESOURCE_LOCAL">
 		<class>org.app.scrum.BusinessFeature</class>
 		<class>org.app.scrum.Feature</class>
@@ -41,5 +41,5 @@
          	<property name="hibernate.hbm2ddl.auto" value="none"/>			
 		</properties>		
 	</persistence-unit>		
-
+	 -->
 </persistence>
