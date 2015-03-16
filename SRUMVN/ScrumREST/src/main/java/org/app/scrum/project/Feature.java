@@ -1,10 +1,12 @@
-package org.app.scrum;
+package org.app.scrum.project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -18,9 +20,9 @@ import org.app.scrum.team.Member;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Feature implements Comparable<Feature>
+public class Feature implements Comparable<Feature>, Serializable
 {
-	@Id
+	@Id @GeneratedValue
 	protected Integer featureID;
 	private String name;
 	private String description;

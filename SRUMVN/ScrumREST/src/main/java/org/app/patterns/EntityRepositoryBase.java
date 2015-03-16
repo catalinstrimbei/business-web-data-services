@@ -3,9 +3,12 @@ package org.app.patterns;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -13,16 +16,30 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.ManagedType;
+import javax.persistence.metamodel.Metamodel;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  * 
  * @author catalin
  */
 public class EntityRepositoryBase<T extends Object> implements EntityRepository<T> {
-
+	
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@PersistenceContext(unitName="ScrumEJB")
@@ -30,35 +47,29 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	
 	protected Class<T> repositoryType;
 	protected String genericSQL;
+	private Boolean isIDGeneratedValue = false;
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#setEm(javax.persistence.EntityManager)
-	 */
 	@Override
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
 	
-	// Empty constructor
 	public EntityRepositoryBase() {
 
 		logger.info("START DEFAULT INIT: ENTITY REPOSITORY ... ");
 		
-		this.repositoryType = returnedClass();
+		this.repositoryType = getEntityParametrizedType();
 		logger.info("init repositoryType: " + repositoryType.getSimpleName());
 		
 		this.genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("init generic JPAQL: " + genericSQL);		
 		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);
+		
 		logger.info("... END DEFAULT INIT: ENTITY REPOSITORY!");
 	}
-
-	private Class returnedClass() {
-	      ParameterizedType parameterizedType =
-	        (ParameterizedType) getClass().getGenericSuperclass();
-	     return (Class) parameterizedType.getActualTypeArguments()[0];
-	}	
 	
 	public EntityRepositoryBase(EntityManager em, Class<T> t) {
 		this.em = em;
@@ -66,6 +77,9 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("generic JPAQL: " + genericSQL);
+		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);		
 	}
 
 	public EntityRepositoryBase(Class<T> t) {
@@ -73,21 +87,17 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		genericSQL = "SELECT o FROM " + repositoryType.getName().substring(repositoryType.getName().lastIndexOf('.') + 1)
 				+ " o";
 		logger.info("generic JPAQL: " + genericSQL);
+		
+		this.isIDGeneratedValue = isIDGeneratedValue();
+		logger.info("isIDGeneratedValue: " + isIDGeneratedValue);		
 	}	
 	
-	// Repository query implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
-	 */
 	@Override
 	public T getById(Object id) {
 		return (T) em.find(repositoryType, id);
 	}
-
+	
 	// QBExample
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#get(T)
-	 */
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection<T> get(T entitySample) {
@@ -147,9 +157,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toCollection()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<T> toCollection() {
@@ -158,9 +165,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return em.createQuery(genericSQL).getResultList();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toArray()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
@@ -175,89 +179,82 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	}
 
 	// Repository transaction implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#add(T)
-	 */
-	@Override
+	@Override @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T add(T entity) {
-		// em.getTransaction().begin();
 		try {
-//			provideUri(entity);
-			em.merge(entity);
-			// em.getTransaction().commit();
+			Object id = em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
+			
+			logger.info("ADD entity: ID is " + id);
+			logger.info("ADD entity: em.contains(entity) is " + em.contains(entity));
+			logger.info("ADD entity: em.find(repositoryType, id) " + em.find(repositoryType, id));
+			logger.info("ADD entity: isIDGeneratedValue " + this.isIDGeneratedValue);
+			
+			// if ID GeneratedValue and is not new instance
+//			if (id != null && this.isIDGeneratedValue && em.find(repositoryType, id) == null) 
+				
+			// if ID is null entity could have GenerateValue for ID
+//			if (id == null || em.find(repositoryType, id) == null )
+			if (id == null && this.isIDGeneratedValue)
+				em.persist(entity);
+			else
+				em.merge(entity);
+			em.flush();
+			
+			
+			
 			return entity;
 		} catch (Exception e) {
+			logger.info("ERROR: " + " not able to ADD " + entity + "!");
 			e.printStackTrace();
-			// em.getTransaction().rollback();
 			return null;
 		} finally {
-			// em.close();
+			
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#addAll(java.util.Collection)
-	 */
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
-//		em.getTransaction().begin();
+
 		try {
 			for (T entity : entities) {
-//				provideUri(entity);
-				em.merge(entity);
+				add(entity);
 			}
-//			em.getTransaction().commit();
 			return entities;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return null;
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#remove(T)
-	 */
 	@Override
 	public boolean remove(T entity) {
-//		em.getTransaction().begin();
 		try {
 			entity = em.merge(entity);
 			em.remove(entity);
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		} finally {
-			// em.close();
+
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#removeAll(java.util.Collection)
-	 */
 	@Override
 	public boolean removeAll(Collection<T> entities) {
-//		em.getTransaction().begin();
+
 		try {
 			for (Object c : entities) {
 				em.remove(c);
 			}
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		}
 	}
 
 	// Others
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#size()
-	 */
 	@Override
 	public int size() {
 		String sqlCount = "SELECT count(o) FROM "
@@ -269,22 +266,53 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return size.intValue();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#refresh(T)
-	 */
 	@Override
 	public T refresh(T entity) {
 		entity = em.merge(entity);
 		em.refresh(entity);
 		return entity;
 	}
+	
+	
+	private Class<?> extractClassFromType(Type t) throws ClassCastException {
+	    if (t instanceof Class<?>) {
+	        return (Class<?>)t;
+	    }
+	    return (Class<?>)((ParameterizedType)t).getRawType();
+	}
 
-	// Private
-//	protected void provideUri(T entity) {
-//		if (entity.getUri() != null && !entity.getUri().isEmpty()) {
-//			return;
-//		}
-//		String uri = entity.getClass().getSimpleName().concat("/").concat(entity.getIdentifier());
-//		entity.setUri(uri);
-//	}
+	public Class<T> getEntityParametrizedType() throws ClassCastException {
+	    Class<?> superClass = getClass(); // initial value
+	    Type superType;
+	    do {
+	        superType = superClass.getGenericSuperclass();
+	        superClass = extractClassFromType(superType);
+	    } while (! (superClass.equals(EntityRepositoryBase.class)));
+
+	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
+	    return (Class<T>)extractClassFromType(actualArg);
+	}
+	
+	private Boolean isIDGeneratedValue(){
+		if (this.repositoryType == null)
+			return false;
+		
+		Field[] entityFields = this.repositoryType.getDeclaredFields();
+		Boolean isId = false;
+		Boolean isGeneratedValue = false;
+		for(Field field: entityFields){
+			Annotation[] annotations = field.getDeclaredAnnotations();
+			for(Annotation annotation : annotations){
+				if(annotation instanceof Id)
+					isId = true;
+				if(annotation instanceof GeneratedValue)
+					isGeneratedValue = true;
+				
+//				logger.info("isIDGeneratedValue -- isId_isGeneratedValue = " + isId + "..."  + isGeneratedValue);
+			}
+			if (isId && isGeneratedValue)
+				return true;
+		}
+		return false;
+	}
 }

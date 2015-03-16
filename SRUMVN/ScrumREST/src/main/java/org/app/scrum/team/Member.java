@@ -3,18 +3,34 @@ package org.app.scrum.team;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Member 
 	implements Comparable<Member>, Serializable{
 	
-	@Id
+	@Id @GeneratedValue
 	private Integer memberID;
 	
 	private String name;
 	private Role role;
+	
+	private String userName;
+	private String password;
 		
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Integer getMemberID() {
 		return memberID;
 	}
@@ -47,6 +63,16 @@ public class Member
 		this.memberID = memberID;
 		this.name = name;
 		this.role = role;
+	}
+
+
+	public Member(Integer memberID, String name, String userName,
+			String password) {
+		super();
+		this.memberID = memberID;
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
 	}
 
 
@@ -96,7 +122,8 @@ public class Member
 	}
 	@Override
 	public String toString() {
-		return "Member [memberID=" + memberID + ", name=" + name + "]";
+		return "Member [memberID=" + memberID + ", name=" + name
+				+ ", userName=" + userName + ", password=" + password + "]";
 	}	
 	
 	public enum Role{

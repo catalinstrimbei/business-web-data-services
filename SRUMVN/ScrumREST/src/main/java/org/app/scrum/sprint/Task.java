@@ -1,27 +1,49 @@
 package org.app.scrum.sprint;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import org.app.scrum.team.Member;
 
-public class Task {
+@Entity
+public class Task implements Serializable{
+	@Id @GeneratedValue
 	private Integer taskID;
 	private String name;
 	private String description;
 	
 	// timing
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	
 	private Integer estimatedTime; // initial, exprimat in ore
 	private Integer remainingTime; // actualizat, exprimat in ore
 	private Integer realTime;	
+	
 	private TaskStatus taskStatus;
+	
 	// assessment
+	@ManyToOne
 	private Member responsible;
+	
 	private TaskCategory taskCategory;
+	
 	// Burn down
+	@Transient
 	private Map<Date, Integer> burnDownRecords = new HashMap<>();
+	
+	
 	public Integer getTaskID() {
 		return taskID;
 	}
@@ -118,4 +140,31 @@ public class Task {
 		this.estimatedTime = estimatedTime;
 		this.responsible = responsible;
 	}
+	public Task() {
+		super();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((taskID == null) ? 0 : taskID.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		if (taskID == null) {
+			if (other.taskID != null)
+				return false;
+		} else if (!taskID.equals(other.taskID))
+			return false;
+		return true;
+	}
+	
 }

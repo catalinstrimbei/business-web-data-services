@@ -3,34 +3,37 @@ package org.app.patterns;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
+import javax.ws.rs.PathParam;
 
+//public interface EntityRepository<T extends Object, Z extends Object> {
 public interface EntityRepository<T extends Object> {
-
-	public abstract void setEm(EntityManager em);
+	public void setEm(EntityManager em);
 
 	// Repository query implementation
-	public abstract T getById(Object id);
-
+//	public T getById(Z id);
+//	public <E> T getById(@PathParam("id") E id);
+	public T getById(Object id);
+	
 	// QBExample
-	public abstract Collection<T> get(T entitySample);
+	public Collection<T> get(T entitySample);
 
-	public abstract Collection<T> toCollection();
+	public Collection<T> toCollection();
 
-	public abstract T[] toArray();
+	public T[] toArray();
 
 	// Repository transaction implementation
 	
-	public abstract T add(T entity);
+	public T add(T entity);
 
-	public abstract Collection<T> addAll(Collection<T> entities);
+	public Collection<T> addAll(Collection<T> entities);
 
-	public abstract boolean remove(T entity);
+	public boolean remove(T entity);
 
-	public abstract boolean removeAll(Collection<T> entities);
+	public boolean removeAll(Collection<T> entities);
 
 	// Others
-	public abstract int size();
+	public int size();
 
-	public abstract T refresh(T entity);
+	public T refresh(T entity);
 
 }
