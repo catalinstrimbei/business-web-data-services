@@ -27,7 +27,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testGetMessage: " + message);		
 	}
 	
-//	@Test
+	@Test
 	public void testGetProjects() throws Exception{
 		RESTfullResource<Collection<Project>> resource = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",
@@ -117,7 +117,7 @@ public class TestRestProjectResource {
 		
 	}	
 
-	@Test
+//	@Test
 	public void testDELETEProjectsResource() throws Exception{
 		RESTfullResource<Collection<Project>> resourceProjects = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",
