@@ -17,8 +17,8 @@ import org.jboss.resteasy.spi.Failure;
 import org.jboss.resteasy.spi.HttpRequest;
 import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
 
-@Provider
-@ServerInterceptor
+//@Provider
+//@ServerInterceptor
 public class AuthorizationRestInterceptor implements PreProcessInterceptor, Serializable {
     Logger logger = Logger.getLogger(AuthorizationRestInterceptor.class);
 
