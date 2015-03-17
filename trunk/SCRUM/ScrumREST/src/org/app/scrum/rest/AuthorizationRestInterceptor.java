@@ -17,10 +17,15 @@ import org.jboss.resteasy.spi.Failure;
 import org.jboss.resteasy.spi.HttpRequest;
 import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
 
-@Provider
-@ServerInterceptor
+//@Provider
+//@ServerInterceptor
 public class AuthorizationRestInterceptor implements PreProcessInterceptor, Serializable {
-    Logger logger = Logger.getLogger(AuthorizationRestInterceptor.class);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Logger logger = Logger.getLogger(AuthorizationRestInterceptor.class);
 
     @Context
     HttpServletRequest servletRequest;
