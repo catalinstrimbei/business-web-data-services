@@ -19,7 +19,7 @@ import org.jboss.resteasy.util.GenericType;
 */
 public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
-	@Test
+//	@Test
 	public void testGetMessage() throws Exception{
 		RESTfullResource<String> resource = new RESTfullResource("http://localhost:8080/ScrumREST/projects/test");
 		String message = resource.get();
@@ -27,7 +27,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testGetMessage: " + message);		
 	}
 	
-//	@Test
+	@Test
 	public void testGetProjects() throws Exception{
 		RESTfullResource<Collection<Project>> resource = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/ScrumREST/projects/",

@@ -23,6 +23,18 @@
     </repositories>
     
     <dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1.2</version>
+		</dependency>    
+		<dependency>
+		
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+    
          <!-- Import the ScrumREST -->
          <dependency>
 			<groupId>org.feaa.scrum</groupId>
@@ -33,13 +45,13 @@
 		<dependency>
 	        <groupId>org.jboss.resteasy</groupId>
 	        <artifactId>resteasy-jaxrs</artifactId>
-	        <version>3.0.10.Final</version>
+	        <version>2.3.2.Final</version>
 	    </dependency>
 	    <!-- Import the JAXB API: Resteasy implementation -->
 	    <dependency>
 	        <groupId>org.jboss.resteasy</groupId>
 	        <artifactId>resteasy-jackson-provider</artifactId>
-	        <version>3.0.10.Final</version>
+	        <version>2.3.2.Final</version>
 	    </dependency>
 	    <!-- Import the JUnit 4 -->
 		<dependency>

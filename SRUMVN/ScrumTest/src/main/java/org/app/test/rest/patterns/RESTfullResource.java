@@ -117,7 +117,7 @@ public class RESTfullResource <T extends Object> {
 		    if (response.getEntity(this.entityResourceClass) != null)
 		    	return (T) response.getEntity(this.entityResourceClass);
 	    }catch(Exception ex){
-	    	// ex.printStackTrace();
+	    	ex.printStackTrace();
 	    	logger.info("DEBUG resource request ERROR PARSING RESPONSE " + ex.getMessage());
 	    }
 	    return null;		
