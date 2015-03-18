@@ -31,7 +31,7 @@ public class TestEJBServices {
 	}
 
 	// Test simplu invocare EJB
-	@Test
+//	@Test
 	public void testEJBService() throws Exception{
 		logger.info("Begin test: ..." );
 		
