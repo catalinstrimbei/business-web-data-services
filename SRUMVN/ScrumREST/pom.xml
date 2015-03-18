@@ -14,6 +14,9 @@
         
         <version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
         <version.wildfly>8.2.0.Final</version.wildfly>
+        
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
  
     <repositories>
@@ -157,7 +160,15 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.0.Beta1</version>              
+                <version>1.0.0.Beta1</version>    
+				<executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>                          
             </plugin>
 			<plugin>
 			    <artifactId>maven-war-plugin</artifactId>
@@ -165,10 +176,31 @@
 			    <configuration>
 			        <failOnMissingWebXml>false</failOnMissingWebXml>
 			    </configuration>
-			</plugin>            
+			</plugin> 
+			<!-- 
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+		        <configuration>
+		          <skipTests>true</skipTests>
+		        </configuration>
+		     </plugin>	
+		      -->   	
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+				<executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+		     </plugin>			      	        
         </plugins>
     </build>
   
-  	<!-- wildfly:deploy-only THEN test-->
+  	<!-- wildfly:deploy-only THEN surefire:test-->
   
 </project>
