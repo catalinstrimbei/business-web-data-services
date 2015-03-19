@@ -17,6 +17,10 @@
         
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.test.skip>false</maven.test.skip>
+        
+        <!-- Add properties/variables to control deploy-test process -->
+        <!-- Add development profile to control deploy-test process -->
+        <!-- Check strategy: ejb-inject in JUnitTest -->
     </properties>
  
     <repositories>
