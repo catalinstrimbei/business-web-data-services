@@ -51,6 +51,7 @@ public class TestScrumProjectDataServiceArquilian {
                 .addPackage(Sprint.class.getPackage())
                 .addPackage(Team.class.getPackage())
                 .addPackage(ProjectSprintDataService.class.getPackage())
+                .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }	
 	
@@ -58,6 +59,7 @@ public class TestScrumProjectDataServiceArquilian {
 	/* CHECK EJB live test*/
 	@Test
 	public void testGetMessage(){
+		System.out.println("########## TEST ARQUILLIAN ######################");
 		String message = service.getMessage();
 		assertNotNull("Message not returned from service!", message);
 		logger.info("DEBUG testGetMessage: " + message);
@@ -96,7 +98,7 @@ public class TestScrumProjectDataServiceArquilian {
 	}	
 	
 	/* READ Test (read-collection) */
-//	@Test
+	@Test
 	public void testToCollection(){
 		Collection<Project> projects = service.toCollection();
 		assertTrue("Fail to read projects from repository!", projects != null);
