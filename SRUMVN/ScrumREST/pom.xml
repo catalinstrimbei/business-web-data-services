@@ -70,37 +70,18 @@
 			    <type>pom</type>
 			    <scope>import</scope>
 			 </dependency>
-			 <!-- this is container adapter for wildfly-->
-			<dependency>
-			   <groupId>org.wildfly</groupId>
-			   <artifactId>wildfly-arquillian-container-embedded</artifactId>
-			   <version>${arquillian-wildfly-version}</version>
-			</dependency>
-			<!-- this is the wildfly emb.container - BUT eventually it is not a fully blown emb.container-->
-	         <dependency>
-	            <groupId>org.wildfly</groupId>
-	            <artifactId>wildfly-embedded</artifactId>
-	            <version>${arquillian-wildfly-version}</version>
-	        </dependency>       
-			<dependency>
-				<groupId>org.wildfly</groupId>
-				<artifactId>wildfly-arquillian-container-remote</artifactId>
-			   	<version>${arquillian-wildfly-version}</version>
-			</dependency>
-	        <!-- Test Dependencies -->		
-        </dependencies>
-      
+			 <!-- Test Dependencies -->	
+			 <dependency>
+			    <groupId>sun.jdk</groupId>
+			    <artifactId>jconsole</artifactId>
+			    <version>jdk</version>
+			    <scope>system</scope>
+			    <systemPath>${jdk.system.path}\lib\jconsole.jar</systemPath>
+			 </dependency>	        
+        </dependencies>      
     </dependencyManagement>
     
     <dependencies>
-		<dependency>
-		    <groupId>sun.jdk</groupId>
-		    <artifactId>jconsole</artifactId>
-		    <version>jdk</version>
-		    <scope>system</scope>
-		    <systemPath>${jdk.system.path}\lib\jconsole.jar</systemPath>
-		</dependency>
-		     
     	<!-- JEE-EJB-JAX-RS Main project dependencies =============================-->
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
@@ -201,22 +182,10 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.wildfly</groupId>
-		    <artifactId>wildfly-arquillian-container-embedded</artifactId>
-		    <scope>test</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.wildfly</groupId>
-		    <artifactId>wildfly-embedded</artifactId>
-		    <scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-arquillian-container-remote</artifactId>
-		    <scope>test</scope>
-		</dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet</artifactId>
+			<scope>test</scope>
+		</dependency>		
     </dependencies>
 	
 	<!-- Default life-cycle customization --> 
@@ -338,6 +307,14 @@
 		<!-- Test with Arquillian -->
 		<profile>
 			<id>TESTARQ</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-remote</artifactId>
+				   	<version>${arquillian-wildfly-version}</version>
+				   	<scope>test</scope>
+				</dependency>
+			</dependencies>
 			<build>
 		        <plugins>
 		        	<!-- Skip resources phase -->
@@ -369,30 +346,20 @@
 					</plugin>
 					<plugin>
 					     <groupId>org.apache.maven.plugins</groupId>
-					      <artifactId>maven-surefire-plugin</artifactId>
-					      <configuration>
-					        <!-- Fork every test because it will launch a separate AS instance -->
-					         <forkMode>always</forkMode>
-					         <systemPropertyVariables>
-					            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-					            <jboss.home>${wildfly.server.path}</jboss.home>
-					           <module.path>${wildfly.server.path}/modules</module.path>
-					          </systemPropertyVariables>
-					          <redirectTestOutputToFile>false</redirectTestOutputToFile>				          
-					     </configuration>
-						<executions>
-		                    <execution>
-		                    	<id>default-test</id>
-		                        <phase>test</phase>
-								<configuration>
-						          <skip>false</skip>
-								  <excludes>
-						            <exclude>**/TestScrumProjectDataService.java</exclude>
-						            <exclude>**/TestRestProjectResource.java</exclude>
-						          </excludes>						          
-						        </configuration>                        
-		                </execution>				
-		                </executions>					     
+					     	<artifactId>maven-surefire-plugin</artifactId>
+							<executions>
+			                    <execution>
+			                    	<id>default-test</id>
+			                        <phase>test</phase>
+									<configuration>
+							          <skip>false</skip>
+									  <excludes>
+							            <exclude>**/TestScrumProjectDataService.java</exclude>
+							            <exclude>**/TestRestProjectResource.java</exclude>
+							          </excludes>						          
+							        </configuration>                        
+			                	</execution>				
+			                </executions>					     
 					 </plugin>				     
 				     		      	        
 		        </plugins>
