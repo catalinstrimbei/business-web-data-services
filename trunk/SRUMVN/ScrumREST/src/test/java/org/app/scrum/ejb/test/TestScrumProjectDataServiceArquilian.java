@@ -62,7 +62,7 @@ public class TestScrumProjectDataServiceArquilian {
 		System.out.println("########## TEST ARQUILLIAN ######################");
 		String message = service.getMessage();
 		assertNotNull("Message not returned from service!", message);
-		logger.info("DEBUG testGetMessage: " + message);
+		logger.info("########## DEBUG testGetMessage: " + message);
 	}
 
 	/* CREATE Test 1 (create-read)*/
@@ -102,7 +102,7 @@ public class TestScrumProjectDataServiceArquilian {
 	public void testToCollection(){
 		Collection<Project> projects = service.toCollection();
 		assertTrue("Fail to read projects from repository!", projects != null);
-		logger.info("DEBUG testToCollection:" + projects.size());
+		logger.info("########## DEBUG testToCollection:" + projects.size());
 		assertTrue("Fail to read any project from repository!", projects.size() > 0);
 	}
 	
