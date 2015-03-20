@@ -26,7 +26,6 @@
         <arquillian-wildfly-version>8.2.0.Final</arquillian-wildfly-version>
         <arquillian-transaction-version>1.0.1.Final</arquillian-transaction-version>
         <jdk.system.path>C:\Program Files\Java\jdk1.8.0_31</jdk.system.path>
-        <wildfly.server.path>D:\Professional\MSD\Kits\wildfly-8.2.0.Final.Maven</wildfly.server.path>
         
         <!-- Check JUnit tests: update Resteasy client to Resteasy 3.0 API -->
     </properties>
