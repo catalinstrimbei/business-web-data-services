@@ -13,6 +13,7 @@ import org.app.patterns.EntityRepository;
 import org.app.scrum.project.Project;
 import org.app.scrum.project.Release;
 import org.app.scrum.services.ProjectSprintDataService;
+import org.app.scrum.services.ProjectSprintDataServiceEJB;
 import org.app.scrum.sprint.Sprint;
 import org.app.scrum.team.Team;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -50,7 +51,9 @@ public class TestScrumProjectDataServiceArquilian {
                 .addPackage(Project.class.getPackage())
                 .addPackage(Sprint.class.getPackage())
                 .addPackage(Team.class.getPackage())
-                .addPackage(ProjectSprintDataService.class.getPackage())
+                //.addPackage(ProjectSprintDataService.class.getPackage())
+                .addClass(ProjectSprintDataService.class)
+                .addClass(ProjectSprintDataServiceEJB.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }	
