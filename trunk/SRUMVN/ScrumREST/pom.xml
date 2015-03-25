@@ -25,7 +25,10 @@
         <arquillian-version>1.1.4.Final</arquillian-version>
         <arquillian-wildfly-version>8.2.0.Final</arquillian-wildfly-version>
         <arquillian-transaction-version>1.0.1.Final</arquillian-transaction-version>
-        <jdk.system.path>C:\Program Files\Java\jdk1.8.0_31</jdk.system.path>
+        <!-- <jdk.system.path>C:\Program Files\Java\jdk1.8.0_31</jdk.system.path> -->
+        <!-- <jdk.system.path>${java.home}</jdk.system.path>  -->
+        <jdk.system.path>/usr/lib/jvm/java-8-oracle</jdk.system.path>
+        
         
         <!-- Check JUnit tests: update Resteasy client to Resteasy 3.0 API -->
     </properties>
@@ -75,7 +78,7 @@
 			    <artifactId>jconsole</artifactId>
 			    <version>jdk</version>
 			    <scope>system</scope>
-			    <systemPath>${jdk.system.path}\lib\jconsole.jar</systemPath>
+			    <systemPath>${jdk.system.path}/lib/jconsole.jar</systemPath>
 			 </dependency>	        
         </dependencies>      
     </dependencyManagement>
