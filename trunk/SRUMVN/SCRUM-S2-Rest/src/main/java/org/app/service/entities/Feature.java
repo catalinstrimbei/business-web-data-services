@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Entity @Inheritance(strategy=InheritanceType.JOINED)
+@XmlRootElement(name="feature") 
 public class Feature implements Serializable
 {
 	@Id @GeneratedValue

@@ -1,5 +1,6 @@
 package org.app.service.ejb;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -21,7 +22,7 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.service.entities.EntityBase;
 import org.app.service.entities.Feature;
 
-@Path("service")
+@Path("features")
 // 1. Remote interface: FeatureService
 @Stateless
 @LocalBean // to be referenced locally: e.g. by Arquillian-client
@@ -35,33 +36,24 @@ public class FeatureServiceEJB implements FeatureService{
     @PostConstruct
 	public void init(){
 		logger.info("Initialized :");
-		logger.info("INIT DEF CONSTRUCTOR : " + this.em);
+		logger.info("POSTCONSTRUCT-INIT : " + this.em);
 	}	
 
 	public FeatureServiceEJB() {
 		super();
-		logger.info("INIT DEF CONSTRUCTOR : " + this.em);		
+		logger.info("CONSTRUCTOR-INIT : " + this.em);		
 	}
-
-	
-	/********************************************************************/
-	@GET
-	@Produces("text/html")
-	public String sayRest() {
-		return "Feature Service is On... ";
-	}	
-	/********************************************************************/
 	
 	@Override
-	@GET @Path("/features")
+	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<Feature> getFeatures(){
+	public Collection<Feature> getFeatures(){
 		List<Feature> features = em.createQuery("SELECT f FROM Feature f", Feature.class).getResultList();
 		return features;
 	}
 	
 	@Override
-	@POST @Path("/features/add")
+	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Feature addFeature(Feature featureToAdd){
@@ -73,12 +65,30 @@ public class FeatureServiceEJB implements FeatureService{
 	}
 	
 	@Override
-	@DELETE @Path("/features/delete")
+	@DELETE
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public String deleteFeature(Feature featureToDelete){
-		em.remove(featureToDelete);
-		em.flush();
+	public String removeFeature(Feature featureToDelete){
+		// 1. Use remove 
+//		featureToDelete = em.find(Feature.class,featureToDelete.getFeatureID());
+//		em.remove(featureToDelete);
+//		em.flush();
+		
+		// 2. Use JPQL-DELETE
+		String jpqlDELETE = "DELETE FROM Feature f WHERE f.id = :id";
+		logger.info("DEBUG removeFeature :" + jpqlDELETE);
+		em.createQuery(jpqlDELETE).setParameter("id", featureToDelete.getFeatureID()).executeUpdate();
+		
 		// transactions are managed by default by container
 		return "True";
 	}
+	
+	
+	
+	/********************************************************************/
+	@GET @Path("/test")
+	@Produces("text/html")
+	public String sayRest() {
+		return "Feature Service is On... ";
+	}	
+	/********************************************************************/	
 }

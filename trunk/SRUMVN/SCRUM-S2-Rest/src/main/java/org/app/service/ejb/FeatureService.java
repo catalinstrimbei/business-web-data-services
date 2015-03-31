@@ -1,5 +1,6 @@
 package org.app.service.ejb;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -21,10 +22,10 @@ public interface FeatureService{
 
 	String sayRest();
 
-	public abstract String deleteFeature(Feature featureToDelete);
+	public abstract String removeFeature(Feature featureToDelete);
 
 	public abstract Feature addFeature(Feature featureToAdd);
 
-	public abstract List<Feature> getFeatures();
+	public abstract Collection<Feature> getFeatures();
 
 }

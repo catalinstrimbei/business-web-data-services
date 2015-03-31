@@ -1,45 +1,27 @@
 package org.app.service.ejb.test;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
 import org.app.service.ejb.FeatureService;
-import org.app.service.ejb.FeatureServiceEJB;
 import org.app.service.entities.Feature;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(Arquillian.class)
-public class TestFeatureServiceEJBArq {
-	private static Logger logger = Logger.getLogger(TestFeatureServiceEJBArq.class.getName());
-	// Arquilian infrastructure
+public class TestFeatureServiceEJB {
+	private static Logger logger = Logger.getLogger(TestFeatureServiceEJB.class.getName());
+	
 	@EJB
 	private static FeatureService service;
 	
-	@Deployment
-	public static Archive<?> createDeployment() {
-	        return ShrinkWrap
-	                .create(WebArchive.class, "SCRUM-S2-test.war")
-	                .addClass(Feature.class)
-	                .addClass(FeatureService.class)
-	                .addClass(FeatureServiceEJB.class)
-	                .addAsResource("META-INF/persistence.xml")
-	                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-	}
-	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		service = FeatureServiceEJBFactory.getService();
+	}	
 	
 	@Test
 	public void testSayRest() {

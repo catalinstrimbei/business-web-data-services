@@ -19,7 +19,7 @@
         
         <!-- To disable regular deploy phase and disable or enable execution of surfire:test goal on deploy phase -->
         <maven.deploy.skip>true</maven.deploy.skip>
-        <maven.skip.test.after.deploy>false</maven.skip.test.after.deploy>
+        <maven.skip.test.after.deploy>true</maven.skip.test.after.deploy>
         
         <!-- Arquilian maven plugin -->
         <arquillian-version>1.1.4.Final</arquillian-version>
@@ -360,10 +360,12 @@
 									  <excludes>
 							            <exclude>**/TestScrumProjectDataService.java</exclude>
 							            <exclude>**/TestRestProjectResource.java</exclude>
-							          </excludes>	
+							          </excludes>
+							          
+							          <include>**/TestDataServiceEJBArq.java</include>	
 							          -->
 									  <includes>
-							            <include>**/TestDataServiceEJBArq.java</include>
+							          		<include>**/TestFeatureServiceEJBArq.java</include>  
 							          </includes>
 							        </configuration>
 			                	</execution>				
