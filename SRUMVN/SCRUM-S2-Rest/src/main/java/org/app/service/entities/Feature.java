@@ -20,7 +20,7 @@ public class Feature implements Serializable
 	private String description;
 	
 	@Enumerated
-	protected FeatureCategory category;
+	protected FeatureCategory category = FeatureCategory.BUSINESS;
 	
 	public Integer getFeatureID() {
 		return featureID;

@@ -68,15 +68,16 @@ public class FeatureServiceEJB implements FeatureService{
 	@DELETE
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public String removeFeature(Feature featureToDelete){
-		// 1. Use remove 
+		// 1. Use remove
+		featureToDelete = em.merge(featureToDelete);
 //		featureToDelete = em.find(Feature.class,featureToDelete.getFeatureID());
-//		em.remove(featureToDelete);
-//		em.flush();
+		em.remove(featureToDelete);
+		em.flush();
 		
 		// 2. Use JPQL-DELETE
-		String jpqlDELETE = "DELETE FROM Feature f WHERE f.id = :id";
-		logger.info("DEBUG removeFeature :" + jpqlDELETE);
-		em.createQuery(jpqlDELETE).setParameter("id", featureToDelete.getFeatureID()).executeUpdate();
+//		String jpqlDELETE = "DELETE FROM Feature f WHERE f.id = :id";
+//		logger.info("DEBUG removeFeature :" + jpqlDELETE);
+//		em.createQuery(jpqlDELETE).setParameter("id", featureToDelete.getFeatureID()).executeUpdate();
 		
 		// transactions are managed by default by container
 		return "True";
