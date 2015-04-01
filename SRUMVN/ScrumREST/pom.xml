@@ -85,6 +85,12 @@
     </dependencyManagement>
     
     <dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.2</version>
+			<scope>provided</scope>
+		</dependency>    
     	<!-- JEE-EJB-JAX-RS Main project dependencies =============================-->
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
