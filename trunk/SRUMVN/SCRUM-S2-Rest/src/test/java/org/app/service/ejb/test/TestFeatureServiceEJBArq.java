@@ -82,3 +82,4 @@ public class TestFeatureServiceEJBArq {
 		assertTrue("Fail to read features!", featuresAfterDelete.size() == 0);
 	}	
 }
+/* http://localhost:8080/SCRUM-S2/data/features */
