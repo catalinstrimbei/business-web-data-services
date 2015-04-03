@@ -18,7 +18,7 @@ public class TestRestResource {
 	private static Logger logger = Logger.getLogger(TestRestResource.class.getName());
 	@Test
 	public void testGetMessage() throws Exception{
-		RESTfullResource<String> resource = new RESTfullResource("http://localhost:8080/SCRUM-S2/service");
+		RESTfullResource<String> resource = new RESTfullResource("http://localhost:8080/SCRUM-S2/data/service");
 		String message = resource.get();
 		assertNotNull("Message not returned from service!", message);
 		logger.info("DEBUG testGetMessage: " + message);		
