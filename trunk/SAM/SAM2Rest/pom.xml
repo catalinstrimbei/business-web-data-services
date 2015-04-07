@@ -19,13 +19,13 @@
         
         <!-- To disable regular deploy phase and disable or enable execution of surfire:test goal on deploy phase -->
         <maven.deploy.skip>true</maven.deploy.skip>
-        <maven.skip.test.after.deploy>false</maven.skip.test.after.deploy>
+        <maven.skip.test.after.deploy>true</maven.skip.test.after.deploy>
         
         <!-- Arquilian maven plugin -->
         <arquillian-version>1.1.4.Final</arquillian-version>
         <arquillian-wildfly-version>8.2.0.Final</arquillian-wildfly-version>
         <arquillian-transaction-version>1.0.1.Final</arquillian-transaction-version>
-        <jdk.system.path>C:\Program Files\Java\jdk1.8.0_31</jdk.system.path>
+        <jdk.system.path>C:\Program Files\Java\jdk1.8.0_40</jdk.system.path>
         
         <!-- Check JUnit tests: update Resteasy client to Resteasy 3.0 API -->
     </properties>
