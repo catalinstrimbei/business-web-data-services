@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 //abstract 
 
@@ -18,7 +19,7 @@ import javax.persistence.Transient;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Feature implements Comparable<Feature>, Serializable
 {
-	@Id @GeneratedValue
+	@Id @GeneratedValue @NotNull
 	protected Integer featureID;
 	private String name;
 	private String description;
