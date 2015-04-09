@@ -8,8 +8,9 @@
 <body>
 
 	<div ng-app="myApp" ng-controller="mainController">
-		<p><b>Search for feature:</b></p>
-		<p><input type="text" ng-model="featurePattern"></p>
+		<p><b>Search for features:</b></p>
+		<p><input type="text" ng-model="feature
+		Pattern"></p>
 		<ul>
 			<li ng-repeat="x in features | filter:featurePattern | orderBy:'featureID'">
 				{{ (x.name | uppercase) + ', ' + x.category}}
