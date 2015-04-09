@@ -13,7 +13,7 @@ public class TestDataServiceEJB {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		service = DataServiceEJBFactory.getScrumProjectRepositoryService();
+		service = DataServiceEJBFactory.getService();
 	}
 	
 	@Test

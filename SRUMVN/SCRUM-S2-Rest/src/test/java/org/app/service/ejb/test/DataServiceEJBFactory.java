@@ -13,7 +13,7 @@ import org.app.service.ejb.DataServiceEJB;
 public class DataServiceEJBFactory {
 	private static Logger logger = Logger.getLogger(DataServiceEJBFactory.class.getName());
 	
-	public static DataService getScrumProjectRepositoryService() throws Exception{
+	public static DataService getService() throws Exception{
 		return lookupEJBService();
 	}
 	
