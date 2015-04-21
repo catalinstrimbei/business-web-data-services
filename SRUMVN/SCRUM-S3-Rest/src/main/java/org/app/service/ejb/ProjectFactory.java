@@ -1,10 +1,13 @@
-package org.app.service.entities;
+package org.app.service.ejb;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Singleton;
+
+import org.app.service.entities.Project;
+import org.app.service.entities.Release;
 
 @Singleton
 public class ProjectFactory{
@@ -24,5 +27,10 @@ public class ProjectFactory{
 		project.setReleases(releasesProject);
 		
 		return project;
+	}
+
+	@Override
+	public String toString() {
+		return "ProjectFactory-instance";
 	}
 }

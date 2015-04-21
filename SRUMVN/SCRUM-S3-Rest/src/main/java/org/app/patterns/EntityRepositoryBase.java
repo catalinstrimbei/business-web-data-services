@@ -67,18 +67,12 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	}	
 	
 	// Repository query implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#getById(java.lang.Object)
-	 */
 	@Override
 	public T getById(Object id) {
 		return (T) em.find(repositoryType, id);
 	}
 
 	// QBExample
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#get(T)
-	 */
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection<T> get(T entitySample) {
@@ -138,9 +132,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toCollection()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<T> toCollection() {
@@ -149,9 +140,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return em.createQuery(genericSQL).getResultList();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#toArray()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
@@ -166,89 +154,63 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 	}
 
 	// Repository transaction implementation
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#add(T)
-	 */
 	@Override
 	public T add(T entity) {
-		// em.getTransaction().begin();
 		try {
 //			provideUri(entity);
 			em.merge(entity);
-			// em.getTransaction().commit();
 			return entity;
 		} catch (Exception e) {
 			e.printStackTrace();
-			// em.getTransaction().rollback();
 			return null;
 		} finally {
-			// em.close();
+
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#addAll(java.util.Collection)
-	 */
 	@Override
 	public Collection<T> addAll(Collection<T> entities) {
-//		em.getTransaction().begin();
 		try {
 			for (T entity : entities) {
 //				provideUri(entity);
 				em.merge(entity);
 			}
-//			em.getTransaction().commit();
 			return entities;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return null;
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#remove(T)
-	 */
 	@Override
 	public boolean remove(T entity) {
-//		em.getTransaction().begin();
 		try {
 			entity = em.merge(entity);
 			em.remove(entity);
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		} finally {
-			// em.close();
+
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#removeAll(java.util.Collection)
-	 */
 	@Override
 	public boolean removeAll(Collection<T> entities) {
-//		em.getTransaction().begin();
+
 		try {
 			for (Object c : entities) {
 				em.remove(c);
 			}
-//			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-//			em.getTransaction().rollback();
 			return false;
 		}
 	}
 
 	// Others
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#size()
-	 */
 	@Override
 	public int size() {
 		String sqlCount = "SELECT count(o) FROM "
@@ -260,9 +222,6 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 		return size.intValue();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.app.patterns.EntityRepositoryService#refresh(T)
-	 */
 	@Override
 	public T refresh(T entity) {
 		entity = em.merge(entity);
@@ -288,5 +247,10 @@ public class EntityRepositoryBase<T extends Object> implements EntityRepository<
 
 	    Type actualArg = ((ParameterizedType)superType).getActualTypeArguments()[0];
 	    return (Class<T>)extractClassFromType(actualArg);
-	}		
+	}
+
+	@Override
+	public String toString() {
+		return "EntityRepositoryBase [repositoryType=" + repositoryType + "]";
+	}
 }

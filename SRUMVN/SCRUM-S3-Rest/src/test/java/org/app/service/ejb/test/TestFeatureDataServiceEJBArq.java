@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
-import org.app.service.ejb.FeatureService;
-import org.app.service.ejb.FeatureServiceEJB;
+import org.app.service.ejb.FeatureDataService;
+import org.app.service.ejb.FeatureDataServiceEJB;
 import org.app.service.entities.Feature;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -23,19 +23,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class TestFeatureServiceEJBArq {
-	private static Logger logger = Logger.getLogger(TestFeatureServiceEJBArq.class.getName());
+public class TestFeatureDataServiceEJBArq {
+	private static Logger logger = Logger.getLogger(TestFeatureDataServiceEJBArq.class.getName());
 	// Arquilian infrastructure
 	@EJB
-	private static FeatureService service;
+	private static FeatureDataService service;
 	
 	@Deployment
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
 	                .create(WebArchive.class, "SCRUM-S2-test.war")
 	                .addClass(Feature.class)
-	                .addClass(FeatureService.class)
-	                .addClass(FeatureServiceEJB.class)
+	                .addClass(FeatureDataService.class)
+	                .addClass(FeatureDataServiceEJB.class)
 	                .addAsResource("META-INF/persistence.xml")
 	                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 	}

@@ -16,16 +16,23 @@ import org.app.patterns.EntityRepository;
 import org.app.service.entities.EntityBase;
 import org.app.service.entities.Feature;
 
-
+// Implement simple CRUD Operations
 @Remote
-public interface FeatureService{
+public interface FeatureDataService{
+	// CREATE or UPDATE
+	Feature addFeature(Feature featureToAdd);
 
-	String sayRest();
+	// DELETE
+	String removeFeature(Feature featureToDelete);
 
-	public abstract String removeFeature(Feature featureToDelete);
-
-	public abstract Feature addFeature(Feature featureToAdd);
-
-	public abstract Collection<Feature> getFeatures();
-
+	// READ
+	Feature getFeatureByID(Integer featureID);
+	Collection<Feature> getFeatures();
+	
+	// Custom READ: custom query
+	Feature getFeatureByName(String featureName);
+	
+	// Others
+	String getMessage();
 }
+

@@ -7,19 +7,19 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.app.service.ejb.FeatureService;
-import org.app.service.ejb.FeatureServiceEJB;
+import org.app.service.ejb.ProjectDataService;
+import org.app.service.ejb.ProjectDataServiceEJB;
 
-public class FeatureServiceEJBFactory {
-	private static Logger logger = Logger.getLogger(FeatureServiceEJBFactory.class.getName());
+public class ProjectDataServiceEJBFactory {
+	private static Logger logger = Logger.getLogger(ProjectDataServiceEJBFactory.class.getName());
 	
-	public static FeatureService getService() throws Exception{
+	public static ProjectDataService getService() throws Exception{
 		return lookupEJBService();
 	}
 	
-	private static String MODULE_NAME = "SCRUM-S2";
-	private static String SERVICE_NAME = FeatureServiceEJB.class.getSimpleName();
-	private static String REMOTE_INTERFACE_NAME = FeatureService.class.getName();
+	private static String MODULE_NAME = "SCRUM-S3";
+	private static String SERVICE_NAME = ProjectDataServiceEJB.class.getSimpleName();
+	private static String REMOTE_INTERFACE_NAME = ProjectDataService.class.getName();
 	
 	
     private static <T> T lookupEJBService() throws NamingException {

@@ -7,25 +7,24 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
-import org.app.service.ejb.FeatureService;
+import org.app.service.ejb.FeatureDataService;
 import org.app.service.entities.Feature;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestFeatureServiceEJB {
-	private static Logger logger = Logger.getLogger(TestFeatureServiceEJB.class.getName());
+public class TestFeatureDataServiceEJB {
+	private static Logger logger = Logger.getLogger(TestFeatureDataServiceEJB.class.getName());
 	
-	@EJB
-	private static FeatureService service;
+	private static FeatureDataService service;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		service = FeatureServiceEJBFactory.getService();
+		service = FeatureDataServiceEJBFactory.getService();
 	}	
 	
 	@Test
-	public void testSayRest() {
-		logger.info("DEBUG: Junit TESTING: testSayRest ...");
+	public void testGetMessage() {
+		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
 		
 //		String response = service.sayRest();
 //		assertNotNull("Data Service failed!", response);
@@ -35,7 +34,6 @@ public class TestFeatureServiceEJB {
 	@Test
 	public void testGetFeatures() {
 		logger.info("DEBUG: Junit TESTING: testGetFeatures ...");
-		
 		Collection<Feature> features = service.getFeatures();
 		assertTrue("Fail to read features!", features.size() > 0);
 	}
@@ -54,7 +52,7 @@ public class TestFeatureServiceEJB {
 	}
 
 	@Test
-	public void tesDeleteFeature() {
+	public void testDeleteFeature() {
 		logger.info("DEBUG: Junit TESTING: testDeleteFeature ...");
 		
 		Collection<Feature> features = service.getFeatures();
