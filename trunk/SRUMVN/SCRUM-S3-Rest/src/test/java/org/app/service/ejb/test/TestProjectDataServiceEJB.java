@@ -1,6 +1,6 @@
 package org.app.service.ejb.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -27,19 +27,19 @@ public class TestProjectDataServiceEJB {
 	public void testGetMessage() {
 		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
 		
-//		String response = service.sayRest();
-//		assertNotNull("Data Service failed!", response);
-//		logger.info("DEBUG: EJB Response ..." + response);
+		String response = service.getMessage();
+		assertNotNull("Data Service failed!", response);
+		logger.info("DEBUG: EJB Response ..." + response);
 	}
 
-	@Test
+//	@Test
 	public void testGetProjects() {
 		logger.info("DEBUG: Junit TESTING: testGetProjects ...");
 		Collection<Project> Projects = service.toCollection();
 		assertTrue("Fail to read Projects!", Projects.size() > 0);
 	}
 
-	@Test
+//	@Test
 	public void testAddProject() {
 		logger.info("DEBUG: Junit TESTING: testAddProject ...");
 		
@@ -51,7 +51,7 @@ public class TestProjectDataServiceEJB {
 		assertTrue("Fail to add Projects!", projects.size() == projectsToAdd);
 	}
 
-	@Test
+//	@Test
 	public void testDeleteProject() {
 		logger.info("DEBUG: Junit TESTING: testDeleteProject ...");
 		
