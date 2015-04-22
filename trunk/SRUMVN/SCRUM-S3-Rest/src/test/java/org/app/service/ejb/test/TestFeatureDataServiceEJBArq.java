@@ -32,8 +32,8 @@ public class TestFeatureDataServiceEJBArq {
 	@Deployment
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
-	                .create(WebArchive.class, "SCRUM-S2-test.war")
-	                .addClass(Feature.class)
+	                .create(WebArchive.class, "SCRUM-S3-test.war")
+	                .addPackage(Feature.class.getPackage())
 	                .addClass(FeatureDataService.class)
 	                .addClass(FeatureDataServiceEJB.class)
 	                .addAsResource("META-INF/persistence.xml")
