@@ -9,6 +9,7 @@ import org.app.service.ejb.DataService;
 import org.app.service.ejb.DataServiceEJB;
 import org.app.service.entities.EntityBase;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.TargetsContainer;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -34,7 +35,7 @@ public class TestDataServiceEJBArq {
 	@Deployment
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
-	                .create(WebArchive.class, "SCRUM-S2-test.war")
+	                .create(WebArchive.class, "SCRUM-S3-test.war")
 	                .addPackage(EntityRepository.class.getPackage())
 	                .addPackage(DataService.class.getPackage())
 	                .addPackage(EntityBase.class.getPackage())
