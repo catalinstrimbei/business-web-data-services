@@ -18,10 +18,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- * 
- * @author catalin
- */
 public class EntityRepositoryBase<T extends Object> implements EntityRepository<T> {
 
 	private Logger logger = Logger.getLogger(this.getClass().getName());

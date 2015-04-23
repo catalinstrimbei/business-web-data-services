@@ -24,9 +24,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-@RunWith(Arquillian.class) @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(Arquillian.class) 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFeatureDataServiceEJBArq {
-	private static Logger logger = Logger.getLogger(TestFeatureDataServiceEJBArq.class.getName());
+	private static Logger logger = 
+			Logger.getLogger(TestFeatureDataServiceEJBArq.class.getName());
 	
 	@EJB // EJB DataService Ref
 	private static FeatureDataService service;
@@ -45,11 +47,10 @@ public class TestFeatureDataServiceEJBArq {
 	
 	@Test
 	public void test1_GetMessage() {
-		logger.info("DEBUG: Junit TESTING: testSayRest ...");
-		
-//		String response = service.sayRest();
-//		assertNotNull("Data Service failed!", response);
-//		logger.info("DEBUG: EJB Response ..." + response);
+		logger.info("DEBUG: Junit TESTING: getMessage ...");
+		String response = service.getMessage();
+		assertNotNull("Data Service failed!", response);
+		logger.info("DEBUG: EJB Response ..." + response);
 	}
 
 	@Test
