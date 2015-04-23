@@ -19,17 +19,19 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
-@RunWith(Arquillian.class)
+@RunWith(Arquillian.class) @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFeatureDataServiceEJBArq {
 	private static Logger logger = Logger.getLogger(TestFeatureDataServiceEJBArq.class.getName());
-	// Arquilian infrastructure
-	@EJB
+	
+	@EJB // EJB DataService Ref
 	private static FeatureDataService service;
 	
-	@Deployment
+	@Deployment // Arquilian infrastructure
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
 	                .create(WebArchive.class, "SCRUM-S3-test.war")
@@ -42,7 +44,7 @@ public class TestFeatureDataServiceEJBArq {
 	
 	
 	@Test
-	public void testSayRest() {
+	public void test1_GetMessage() {
 		logger.info("DEBUG: Junit TESTING: testSayRest ...");
 		
 //		String response = service.sayRest();
@@ -51,7 +53,7 @@ public class TestFeatureDataServiceEJBArq {
 	}
 
 	@Test
-	public void testGetFeatures() {
+	public void test4_GetFeatures() {
 		logger.info("DEBUG: Junit TESTING: testGetFeatures ...");
 		
 		Collection<Feature> features = service.getFeatures();
@@ -59,7 +61,7 @@ public class TestFeatureDataServiceEJBArq {
 	}
 
 	@Test
-	public void testAddFeature() {
+	public void test3_AddFeature() {
 		logger.info("DEBUG: Junit TESTING: testAddFeature ...");
 		
 		Integer featuresToAdd = 3;
@@ -72,7 +74,7 @@ public class TestFeatureDataServiceEJBArq {
 	}
 
 	@Test
-	public void tesDeleteFeature() {
+	public void test2_DeleteFeature() {
 		logger.info("DEBUG: Junit TESTING: testDeleteFeature ...");
 		
 		Collection<Feature> features = service.getFeatures();

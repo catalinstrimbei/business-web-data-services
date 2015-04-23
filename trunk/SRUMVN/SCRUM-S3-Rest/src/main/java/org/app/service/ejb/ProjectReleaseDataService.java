@@ -7,6 +7,8 @@ import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
 @Remote
-public interface ProjectDataService extends EntityRepository<Project>{
+public interface ProjectReleaseDataService extends EntityRepository<Project>{
+	Project createNewProject(Integer id);
+	Release getReleaseById(Integer releaseid);
 	String getMessage();
 }

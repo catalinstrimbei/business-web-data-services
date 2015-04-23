@@ -17,37 +17,15 @@ import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
 @Stateless @LocalBean
-public class ProjectDataServiceEJB extends EntityRepositoryBase<Project>
-		implements ProjectDataService, Serializable {
-	private static Logger logger = Logger.getLogger(ProjectDataServiceEJB.class.getName());
-
-	private EntityRepository<Release> releaseRepository;
+public class ProjectDataServiceEJB 
+		extends EntityRepositoryBase<Project>
+		implements ProjectDataService {
 	
-	@EJB
-	private FeatureDataService featureDataService; 
-
-	@Inject 
-	private ProjectFactory projectFactory;
+	private static Logger logger = Logger.getLogger(ProjectDataServiceEJB.class.getName());
 	
 	@PostConstruct
 	public void init() {
-		releaseRepository = new EntityRepositoryBase<Release>(this.em,
-				Release.class);
-		logger.info("POSTCONSTRUCT-INIT releaseRepository: " + this.releaseRepository);
-		logger.info("POSTCONSTRUCT-INIT featureDataService: " + this.featureDataService);
-		logger.info("POSTCONSTRUCT-INIT projectFactory: " + this.projectFactory);
-	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public Project createNewProject(Integer id){
-		Project project = projectFactory.buildProiect(id, "NEW Project", 3);
-		this.add(project);
-		return project;
-	}
-		
-	
-	public Release getReleaseById(Integer releaseid) {
-		return releaseRepository.getById(releaseid);
+		logger.info("POSTCONSTRUCT-INIT injected EntityManager: " + this.em);
 	}
 
 	public String getMessage() {
