@@ -24,7 +24,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-@RunWith(Arquillian.class) @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(Arquillian.class) 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProjectDataServiceEJBArq {
 	private static Logger logger = Logger.getLogger(TestProjectDataServiceEJBArq.class.getName());
 	
@@ -47,7 +48,6 @@ public class TestProjectDataServiceEJBArq {
 	@Test
 	public void test1_GetMessage() {
 		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
-		
 		String response = service.getMessage();
 		assertNotNull("Data Service failed!", response);
 		logger.info("DEBUG: EJB Response ..." + response);
