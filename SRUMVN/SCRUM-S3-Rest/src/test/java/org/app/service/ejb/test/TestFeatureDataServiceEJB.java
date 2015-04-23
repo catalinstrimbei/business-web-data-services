@@ -24,7 +24,7 @@ public class TestFeatureDataServiceEJB {
 	}	
 
 	@Test
-	public void test0GetMessage() {
+	public void test1_GetMessage() {
 		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
 		
 //		String response = service.sayRest();
@@ -33,7 +33,7 @@ public class TestFeatureDataServiceEJB {
 	}
 	
 	@Test
-	public void test1DeleteFeature() {
+	public void test2_DeleteFeature() {
 		logger.info("DEBUG: Junit TESTING: testDeleteFeature ...");
 		
 		Collection<Feature> features = service.getFeatures();
@@ -44,7 +44,7 @@ public class TestFeatureDataServiceEJB {
 	}	
 	
 	@Test
-	public void test2AddFeature() {
+	public void test3_AddFeature() {
 		logger.info("DEBUG: Junit TESTING: testAddFeature ...");
 		
 		Integer featuresToAdd = 3;
@@ -57,7 +57,7 @@ public class TestFeatureDataServiceEJB {
 	}	
 
 	@Test
-	public void test3GetFeatures() {
+	public void test4_GetFeatures() {
 		logger.info("DEBUG: Junit TESTING: testGetFeatures ...");
 		Collection<Feature> features = service.getFeatures();
 		assertTrue("Fail to read features!", features.size() > 0);
