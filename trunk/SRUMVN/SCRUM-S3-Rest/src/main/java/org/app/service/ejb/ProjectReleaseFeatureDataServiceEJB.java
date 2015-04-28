@@ -17,9 +17,9 @@ import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
 @Stateless @LocalBean
-public class ProjectReleaseDataServiceEJB extends EntityRepositoryBase<Project>
+public class ProjectReleaseFeatureDataServiceEJB extends EntityRepositoryBase<Project>
 		implements ProjectDataService, Serializable {
-	private static Logger logger = Logger.getLogger(ProjectReleaseDataServiceEJB.class.getName());
+	private static Logger logger = Logger.getLogger(ProjectReleaseFeatureDataServiceEJB.class.getName());
 
 	private EntityRepository<Release> releaseRepository;
 	
@@ -37,7 +37,6 @@ public class ProjectReleaseDataServiceEJB extends EntityRepositoryBase<Project>
 		logger.info("POSTCONSTRUCT-INIT projectFactory: " + this.projectFactory);
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public Project createNewProject(Integer id){
 		Project project = projectFactory.buildProiect(id, "NEW Project", 3);
 		this.add(project);
