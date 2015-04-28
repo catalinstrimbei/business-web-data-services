@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Singleton;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
 @Singleton
 public class ProjectFactory{
+	@TransactionAttribute(TransactionAttributeType.SUPPORTS) // propagate transaction
 	public static Project buildProiect(Integer projectID, String name, Integer releaseCount){
 		
 		Project project = new Project(projectID, name + "." + projectID , new Date());
