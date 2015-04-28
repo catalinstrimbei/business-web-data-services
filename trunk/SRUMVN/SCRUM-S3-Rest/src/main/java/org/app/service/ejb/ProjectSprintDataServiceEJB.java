@@ -52,7 +52,7 @@ public class ProjectSprintDataServiceEJB extends EntityRepositoryBase<Project>
 		return project;
 	}
 		
-	@TransactionAttribute(TransactionAttributeType.SUPPORTS) // accept transactions
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED) // out-of-transaction
 	public Release getReleaseById(Integer releaseid) {
 		return releaseRepository.getById(releaseid);
 	}

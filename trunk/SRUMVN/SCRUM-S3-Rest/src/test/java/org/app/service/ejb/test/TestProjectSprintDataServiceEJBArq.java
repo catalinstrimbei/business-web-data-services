@@ -36,8 +36,8 @@ import org.junit.runners.MethodSorters;
  */
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestScrumProjectDataServiceEJBArq {
-	private static Logger logger = Logger.getLogger(TestScrumProjectDataServiceEJBArq.class.getName());
+public class TestProjectSprintDataServiceEJBArq {
+	private static Logger logger = Logger.getLogger(TestProjectSprintDataServiceEJBArq.class.getName());
 	//private static ProjectSprintDataService service;
 	
 	@BeforeClass
