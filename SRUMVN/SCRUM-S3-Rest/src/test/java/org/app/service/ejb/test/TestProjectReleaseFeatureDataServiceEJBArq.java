@@ -12,8 +12,8 @@ import org.app.patterns.EntityRepository;
 import org.app.service.ejb.FeatureDataService;
 import org.app.service.ejb.FeatureDataServiceEJB;
 import org.app.service.ejb.ProjectFactory;
-import org.app.service.ejb.ProjectSprintDataService;
-import org.app.service.ejb.ProjectSprintDataServiceEJB;
+import org.app.service.ejb.ProjectReleaseFeatureDataService;
+import org.app.service.ejb.ProjectReleaseFeatureDataServiceEJB;
 import org.app.service.ejb.SprintDataService;
 import org.app.service.ejb.SprintDataServiceEJB;
 import org.app.service.ejb.ValidatorInterceptor;
@@ -25,62 +25,46 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
 /*
- * JUnit test for EJB: ProjectSprintDataServiceEJB TestProjectSprintDataServiceEJBArq
+ * JUnit test for EJB: TestProjectReleaseFeatureDataServiceEJBArq
  */
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestProjectSprintDataServiceEJBArq {
-	private static Logger logger = Logger.getLogger(TestProjectSprintDataServiceEJBArq.class.getName());	
+public class TestProjectReleaseFeatureDataServiceEJBArq {
+	private static Logger logger = Logger.getLogger(TestProjectReleaseFeatureDataServiceEJBArq.class.getName());
 	// Arquilian infrastructure
 	@Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap
                 .create(WebArchive.class, "scrum-test-ejb.war")
-                .addPackage(EntityRepository.class.getPackage())
-                .addPackage(Project.class.getPackage())
-                .addClass(SprintDataService.class).addClass(SprintDataServiceEJB.class)
+                .addPackage(EntityRepository.class.getPackage()).addPackage(Project.class.getPackage())
                 .addClass(FeatureDataService.class).addClass(FeatureDataServiceEJB.class)
-                .addClass(ProjectFactory.class)
-                .addClass(ProjectSprintDataService.class).addClass(ProjectSprintDataServiceEJB.class)
-                .addClass(ValidatorInterceptor.class)
+                .addClass(ProjectReleaseFeatureDataService.class).addClass(ProjectReleaseFeatureDataServiceEJB.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-	@EJB
-	private static ProjectSprintDataService service;
-	
+	@EJB // Test EJB Data Service Reference is injected
+	private static ProjectReleaseFeatureDataService service;	
+	// JUnit test methods
 	@Test
-	public void test1_GetMessage() {
-		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
-		String response = service.getMessage();
-		assertNotNull("Data Service failed!", response);
-		logger.info("DEBUG: EJB Response ..." + response);
-	}
-
-	@Test
-	public void test4_GetProjects() {
+	public void test4_GetProject() {
 		logger.info("DEBUG: Junit TESTING: testGetProject 7002 ...");
 		Project project = service.getById(7002);
 		assertNotNull("Fail to Get Project 7002!", project);
 	}
-	
 	/* CREATE Test 2: create aggregate*/
 	@Test
 	public void test3_CreateNewProject(){
 		Project project = service.createNewProject(7002);
-//		Project project = service.createNewProject(null);
 		assertNotNull("Fail to create new project in repository!", project);
 		// update project
 		project.setName(project.getName() + " - changed by test client");		
 		List<Release> releases = project.getReleases();
-		// update project components
 		for(Release r: releases)
 			r.setIndicative(r.getIndicative() + " - changed by test client");
 		project = service.add(project);
@@ -95,14 +79,18 @@ public class TestProjectSprintDataServiceEJBArq {
 	@Test
 	public void test2_DeleteProject() {
 		logger.info("DEBUG: Junit TESTING: testDeleteProject 7002...");
-		
 		Project project = service.getById(7002);  // !!!
 		if (project != null)
 			service.remove(project);
-		
 		project = service.getById(7002);  // !!!
 		assertNull("Fail to delete Project 7002!", project);
-		
+	}	
+	@Test
+	public void test1_GetMessage() {
+		logger.info("DEBUG: Junit TESTING: testGetMessage ...");
+		String response = service.getMessage();
+		assertNotNull("Data Service failed!", response);
+		logger.info("DEBUG: EJB Response ..." + response);
 	}	
 }
 
