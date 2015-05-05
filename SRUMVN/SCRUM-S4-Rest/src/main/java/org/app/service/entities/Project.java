@@ -67,8 +67,8 @@ public class Project implements Serializable{
 	public void setProjectManager(ProjectManager projectManager) {
 		this.projectManager = projectManager;
 	}
-//	@XmlElements({ @XmlElement(name = "release_s", type = Release.class) })
 	
+//	@XmlElements({ @XmlElement(name = "release_s", type = Release.class) })
 	@XmlElementWrapper(name = "releases") @XmlElement(name = "release")
 	public List<Release> getReleases() {
 		return releases;
@@ -84,7 +84,7 @@ public class Project implements Serializable{
 	}	
 	
 	/* Rest Resource URL*/
-	public static String BASE_URL = "http://localhost:8080/ScrumREST/projects/";
+	public static String BASE_URL = "http://localhost:8080/SCRUM/data/projects/";
 	@XmlElement(name = "link")
     public AtomLink getLink() throws Exception {
 		String restUrl = BASE_URL + this.getProjectNo();

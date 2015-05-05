@@ -12,9 +12,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
-//abstract 
-
+@XmlRootElement
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Feature implements Comparable<Feature>, Serializable

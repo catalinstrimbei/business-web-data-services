@@ -1,6 +1,7 @@
 package org.app.service.ejb;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -9,12 +10,18 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
 import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
+@Path("projects") /* http://localhost:8080/SCRUM/data/projects */
 @Stateless @LocalBean
 public class ProjectDataServiceEJB 
 		extends EntityRepositoryBase<Project>
@@ -60,4 +67,23 @@ public class ProjectDataServiceEJB
 		return "ProjectSprint DataService is working...";
 	}
 
+	@Override
+	@GET 					/* scrum/data/projects 		REST-resource: projects-collection*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+//	@Produces({ MediaType.APPLICATION_JSON })
+	public Collection<Project> toCollection() {
+		logger.info("**** DEBUG REST toCollection()");
+		return super.toCollection();
+		//return Project.toDTOs(super.toCollection());
+	}	
+	
+	
+	@GET @Path("/{id}") 	/* scrum/projects/data/{id} 	REST-resource: project-entity*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	public Project getById(@PathParam("id") Integer id){ 
+		Project project = super.getById(id);
+		logger.info("**** DEBUG REST getById(" + id +") = " + project);
+		return project;
+//		return Project.toDTOAggregate(project);
+	}	
 }
