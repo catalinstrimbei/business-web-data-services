@@ -53,7 +53,7 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testGetProject: queried project" + project);
 	}
 	
-	@Test
+//	@Test
 	public void test3_PUTUpdatedProjectResource() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/SCRUM/data/projects/2", 
@@ -68,24 +68,24 @@ public class TestRestProjectResource {
 	}
 	
 //	@Test
-	public void testPUTNewProjectResource() throws Exception{
+	public void test4_PUTNewProjectResource() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/SCRUM/data/projects/7001", 
 				Project.class, "application/xml");
 		
 		Project project = new Project();
-		project.setProjectNo(7001);
+		project.setProjectNo(7007);
 		project.setName("NEW Project");
 		project.setName(project.getName() + "_REST");
 		logger.info("DEBUG testPUTNewProjectResource: " +  project);
 		
 		Project result = resource.put(project);
 		logger.info("DEBUG testPUTNewProjectResource: " +  result);
-		assertNotNull("Resource created [/projects/7001] not returned from service!", result);
+		assertNotNull("Resource created [/projects/7007] not returned from service!", result);
 	}
 	
-//	@Test
-	public void testPOSTNewProjectResource() throws Exception{
+	@Test
+	public void test4_POSTNewProjectResource() throws Exception{
 		RESTfullResource<Collection<Project>> resource = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/SCRUM/data/projects/",
 				"application/xml",
@@ -106,7 +106,7 @@ public class TestRestProjectResource {
 	}	
 	
 //	@Test
-	public void testDELETEProjectResource() throws Exception{
+	public void test5_DELETEProjectResource() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/SCRUM/data/projects/2", 
 				Project.class, "application/xml");
@@ -120,7 +120,7 @@ public class TestRestProjectResource {
 	}	
 
 //	@Test
-	public void testDELETEProjectsResource() throws Exception{
+	public void test6_DELETEProjectsResource() throws Exception{
 		RESTfullResource<Collection<Project>> resourceProjects = new RESTfullResource<Collection<Project>>(
 				"http://localhost:8080/SCRUM/data/projects/",
 				"application/xml",
@@ -128,11 +128,11 @@ public class TestRestProjectResource {
 		Collection<Project> projects = resourceProjects.get();
 		logger.info("DEBUG testDELETEProjectsResource: queried projects count: " + projects.size());	
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
-				"http://localhost:8080/SCRUM/data/projects/7001", 
+				"http://localhost:8080/SCRUM/data/projects/7007", 
 				Project.class, "application/xml");
 		Project project = resource.get();
 		logger.info("DEBUG testDELETEProjectsResource: " +  project);
-		assertNotNull("DEBUG testDELETEProjectsResource: Resource queried [/projects/7001] not returned from service!", project);
+		assertNotNull("DEBUG testDELETEProjectsResource: Resource queried [/projects/7007] not returned from service!", project);
 		resourceProjects.delete(project);
 		projects = resourceProjects.get();
 		logger.info("DEBUG testDELETEProjectsResource: queried projects count: " + projects.size());		

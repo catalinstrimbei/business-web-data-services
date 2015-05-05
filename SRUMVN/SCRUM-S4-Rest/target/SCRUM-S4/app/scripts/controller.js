@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', []);
-var projectsRestURL = 'http://localhost:8080/SCRUM-S2/data/features';
+var projectsRestURL = 'http://localhost:8080/SCRUM/data/features';
 
 myApp.controller('namesCtrl', function($scope, dataService) {
     $scope.names = dataService.getNames();
