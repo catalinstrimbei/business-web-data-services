@@ -1,6 +1,6 @@
 //http://localhost:8080/ScrumWeb/Start.html
 var app = angular.module('App', ['ngGrid', 'ngRoute', 'ngResource']);
-var projectsRestURL = 'http://localhost:8080/ScrumREST/projects';
+var projectsRestURL = 'http://localhost:8080/SCRUM/data/projects';
 
 //App navigation control
 app.config(
