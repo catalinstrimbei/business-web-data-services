@@ -1,5 +1,6 @@
 package org.app.service.ejb;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,6 +22,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
@@ -49,7 +54,7 @@ public class ProjectDataServiceEJB
 	/******** REST MAPPING IMPLEMENTATION ************************************************/
 
 	@Override
-	@GET 					/* scrum/data/projects 		REST-resource: projects-collection*/
+	@GET 					/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Collection<Project> toCollection() {
 		logger.info("**** DEBUG REST toCollection()");
@@ -57,7 +62,7 @@ public class ProjectDataServiceEJB
 	}	
 	
 	
-	@GET @Path("/{id}") 	/* scrum/data/projects/data/{id} 	REST-resource: project-entity*/
+	@GET @Path("/{id}") 	/* SCRUM/data/projects/data/{id} 	REST-resource: project-entity*/
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Project getById(@PathParam("id") Integer id){ 
 		Project project = super.getById(id);
@@ -65,15 +70,15 @@ public class ProjectDataServiceEJB
 		return project;
 	}	
 	
-	@POST 					/* scrum/data/projects 		REST-resource: projects-collection*/
+	@POST 					/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Collection<Project> addNew(Project project) {
 		super.add(project);
-		return Project.toDTOs(super.toCollection());
+		return super.toCollection();
 	}
 	
-	@PUT @Path("/{id}") 	/* scrum/data/projects/{id} 	REST-resource: project-entity*/	
+	@PUT @Path("/{id}") 	/* SCRUM/data/projects/{id} 	REST-resource: project-entity*/	
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
@@ -81,11 +86,10 @@ public class ProjectDataServiceEJB
 	public Project add(Project project) {
 		project = super.add(project);
 		return project;
-		//return Project.toDTOAggregate(project);
 	}	
 	
 	@Override
-	@DELETE 				/* scrum/data/projects 		REST-resource: projects-collection*/
+	@DELETE 				/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public boolean remove(Project project) {
@@ -93,7 +97,7 @@ public class ProjectDataServiceEJB
 		return super.remove(project);
 	}
 	
-	@DELETE @Path("/{id}") 	/* scrum/data/projects/{id} 	REST-resource: project-entity*/	
+	@DELETE @Path("/{id}") 	/* SCRUM/data/projects/{id} 	REST-resource: project-entity*/	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	public void remove(@PathParam("id")Integer id) {
 		logger.info("DEBUG: called REMOVE - ById() for projects >>>>>>>>>>>>>> simplified ! + id");
@@ -109,7 +113,6 @@ public class ProjectDataServiceEJB
 		logger.info("DEBUG: called getReleaseById() for projects >>>>>>>>>>>>>> simplified !");
 		Release release = releaseRepository.getById(releaseid);
 		return release;
-		// return release.toDTO();
 	}
 	
 	/* Other test-proposal methods ************************************************************/
@@ -138,6 +141,27 @@ public class ProjectDataServiceEJB
 	@GET @Path("/test") // Check if resource is up ...
 	@Produces({ MediaType.TEXT_PLAIN})
 	public String getMessage(){
-		return "ProjectSprint DataService is working...";
+		return "Project DataService is working...";
 	}	
+	
+	// dummy XML marshall Rest: http://localhost:8080/SCRUM/data/projects/projectdata
+	@GET @Path("/projectdata")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Response getProjectData() throws Exception{
+		Project dto = new Project(1111, "Pro 1111");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Project.class);
+		Marshaller marshaller = jaxbContext.createMarshaller();
+		
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		marshaller.marshal(dto, os);
+		String aString = new String(os.toByteArray(),"UTF-8");
+		
+		Response response = Response
+				.status(Status.OK)
+				.type(MediaType.TEXT_PLAIN)
+				.entity(aString)
+				.build();
+		
+		return response;
+	}
 }
