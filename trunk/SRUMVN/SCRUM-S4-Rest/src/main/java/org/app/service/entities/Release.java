@@ -83,7 +83,7 @@ public class Release implements Serializable{
 		this.publishDate = publishDate;
 	}
 	
-	@XmlElement
+//	@XmlElement
 	public Project getProject() {
 		return project;
 	}

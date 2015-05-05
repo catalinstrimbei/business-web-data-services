@@ -9,9 +9,20 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.app.service.entities.Feature;
 
+/*
+ * SCRUM: 		src/main/webapp/WEB-INF/jboss-web.xml
+ * data	: 		org.app.service.rest.ApplicationConfig
+ * features: 	@Path
+ */
+@Path("features") /* http://localhost:8080/SCRUM/data/features */
 @Stateless @LocalBean
 public class FeatureDataServiceEJB implements FeatureDataService{
 	private static Logger logger = Logger.getLogger(FeatureDataServiceEJB.class.getName());
@@ -39,14 +50,21 @@ public class FeatureDataServiceEJB implements FeatureDataService{
 		em.refresh(featureToAdd);
 		return featureToAdd;
 	}	
+	
 	// READ
+	@GET @Path("/{id}")		/* SCRUM/data/features 		REST-resource: features-collection*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })		
 	@Override
-	public Feature getFeatureByID(Integer featureID) {
+	public Feature getFeatureByID(@PathParam("id")Integer featureID) {
+		logger.info("**** DEBUG REST getFeatureByID(): id = " + featureID);
 		return em.find(Feature.class, featureID);
 	}	
+	@GET 					/* SCRUM/data/features 		REST-resource: features-collection*/
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Collection<Feature> getFeatures(){
 		List<Feature> features = em.createQuery("SELECT f FROM Feature f", Feature.class)
 				.getResultList();
+		logger.info("**** DEBUG REST features.size()= " + features.size());
 		return features;
 	}
 	// REMOVE
