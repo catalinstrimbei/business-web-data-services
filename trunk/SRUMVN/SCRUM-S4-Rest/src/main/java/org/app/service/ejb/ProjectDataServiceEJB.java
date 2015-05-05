@@ -32,6 +32,24 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
+
+/*
+---------------------------------------------------------------------------------------------------------------------------------
+URL											HTTP Req.		CRUD									Mapping						|
+---------------------------------------------------------------------------------------------------------------------------------
+/SCRUM/data/projects						GET			 	read project collection					toCollection()				|
+/SCRUM/data/projects						POST			add/save new project					add(Project)				|
+/SCRUM/data/projects						DELETE			remove existing project					remove(Project)				|
+---------------------------------------------------------------------------------------------------------------------------------
+/SCRUM/data/projects/{id}					GET				read existing project					getById(Integer)			|
+/SCRUM/data/projects/{id}					PUT				save new or existing project			add(Project)				|
+/SCRUM/data/projects/{id}					DELETE			delete existing project					remove(Integer)				|
+---------------------------------------------------------------------------------------------------------------------------------
+/SCRUM/data/projects/{id}/releases/{id}		GET				read existing release					getReleaseById(Integer)		|
+/SCRUM/data/projects/create/{id}			GET				Create new project aggregate			createNewProject(Integer)	|		|
+---------------------------------------------------------------------------------------------------------------------------------
+*/
+
 @Path("projects") /* http://localhost:8080/SCRUM/data/projects */
 @Stateless @LocalBean
 public class ProjectDataServiceEJB 
