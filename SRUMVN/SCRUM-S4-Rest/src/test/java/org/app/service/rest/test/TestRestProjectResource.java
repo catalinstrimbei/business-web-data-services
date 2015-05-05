@@ -19,6 +19,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestRestProjectResource {
 	private static Logger logger = Logger.getLogger(TestRestProjectResource.class.getName());
+	
 	@Test
 	public void test1_GetMessage() throws Exception{
 		RESTfullResource<String> resource = new RESTfullResource(
@@ -41,8 +42,8 @@ public class TestRestProjectResource {
 			logger.info("DEBUG testGetProjects: queried project" + projects);
 	}
 	
-//	@Test 
-	public void testGetProject() throws Exception{
+	@Test 
+	public void test4_GetProject() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/SCRUM/data/projects/2", 
 				Project.class, "application/xml");
@@ -52,8 +53,8 @@ public class TestRestProjectResource {
 		logger.info("DEBUG testGetProject: queried project" + project);
 	}
 	
-//	@Test
-	public void testPUTUpdatedProjectResource() throws Exception{
+	@Test
+	public void test3_PUTUpdatedProjectResource() throws Exception{
 		RESTfullResource<Project> resource = new RESTfullResource<Project>(
 				"http://localhost:8080/SCRUM/data/projects/2", 
 				Project.class, "application/xml");
