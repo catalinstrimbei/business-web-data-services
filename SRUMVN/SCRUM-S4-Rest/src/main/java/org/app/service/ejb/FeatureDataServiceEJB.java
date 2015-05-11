@@ -9,7 +9,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,6 +45,9 @@ public class FeatureDataServiceEJB implements FeatureDataService{
 
 	/* CRUD operations implementation */
 	// CREATE or UPDATE
+	@PUT @Path("/{id}") 	/* SCRUM/data/features/{id} 	REST-resource: Feature-entity */	
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })		
 	@Override
 	public Feature addFeature(Feature featureToAdd){
 		em.persist(featureToAdd);
@@ -52,14 +58,14 @@ public class FeatureDataServiceEJB implements FeatureDataService{
 	}	
 	
 	// READ
-	@GET @Path("/{id}")		/* SCRUM/data/features 		REST-resource: features-collection*/
+	@GET @Path("/{id}")		/* SCRUM/data/features 		REST-resource: Feature-entity */
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })		
 	@Override
 	public Feature getFeatureByID(@PathParam("id")Integer featureID) {
 		logger.info("**** DEBUG REST getFeatureByID(): id = " + featureID);
 		return em.find(Feature.class, featureID);
 	}	
-	@GET 					/* SCRUM/data/features 		REST-resource: features-collection*/
+	@GET 					/* SCRUM/data/features 		REST-resource: Features-collection */
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Collection<Feature> getFeatures(){
 		List<Feature> features = em.createQuery("SELECT f FROM Feature f", Feature.class)
@@ -68,6 +74,8 @@ public class FeatureDataServiceEJB implements FeatureDataService{
 		return features;
 	}
 	// REMOVE
+	@DELETE 					/* SCRUM/data/features		REST-resource: Feature-entity */
+	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
 	public String removeFeature(Feature featureToDelete){
 		featureToDelete = em.merge(featureToDelete);
@@ -77,8 +85,10 @@ public class FeatureDataServiceEJB implements FeatureDataService{
 	}
 	
 	// Custom READ: custom query
+	@GET @Path("/{name}")		/* SCRUM/data/features 		REST-resource: Feature-entity */
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })		
 	@Override
-	public Feature getFeatureByName(String name) {
+	public Feature getFeatureByName(@PathParam("name")String name) {
 		return em.createQuery("SELECT f FROM Feature f WHERE f.name = :name", Feature.class)
 				.setParameter("name", name)
 				.getSingleResult();
