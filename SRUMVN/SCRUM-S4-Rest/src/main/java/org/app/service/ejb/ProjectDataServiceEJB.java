@@ -90,7 +90,7 @@ public class ProjectDataServiceEJB
 	@POST 					/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
-	public Collection<Project> addNew(Project project) {
+	public Collection<Project> addIntoCollection(Project project) {
 		super.add(project);
 		return super.toCollection();
 	}
@@ -110,7 +110,7 @@ public class ProjectDataServiceEJB
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public Collection<Project> removeResourceFromCollection(Project project) {
+	public Collection<Project> removeFromCollection(Project project) {
 		logger.info("DEBUG: called REMOVE - project: " + project);
 		super.remove(project);
 		return super.toCollection();
