@@ -2,8 +2,10 @@ package org.app.service.rest.test;
 
 import java.io.StringWriter;
 import java.util.logging.Logger;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.util.GenericType;
