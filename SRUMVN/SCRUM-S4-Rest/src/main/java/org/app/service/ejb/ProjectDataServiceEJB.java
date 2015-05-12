@@ -105,13 +105,13 @@ public class ProjectDataServiceEJB
 		return project;
 	}	
 	
-	@Override
+//	@Override
 	@DELETE 				/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public boolean remove(Project project) {
+	public void removeResource(Project project) {
 		logger.info("DEBUG: called REMOVE - project: " + project);
-		return super.remove(project);
+		super.remove(project);
 	}
 	
 	@DELETE @Path("/{id}") 	/* SCRUM/data/projects/{id} 	REST-resource: project-entity*/	
@@ -133,7 +133,7 @@ public class ProjectDataServiceEJB
 	}
 	
 	/* Other test-proposal methods ************************************************************/
-	@GET @Path("/new/{id}")
+	@POST @Path("/new/{id}")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	// Aggregate factory method

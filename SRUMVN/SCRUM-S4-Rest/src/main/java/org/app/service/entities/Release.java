@@ -171,15 +171,15 @@ public class Release implements Serializable{
 	public void setLink(AtomLink link){}
 
 	/* DTO Logic*/
-	public Release toDTO(){
-		return new Release(releaseId, indicative, publishDate, project.toDTO());
-	}
-	
-	public static List<Release> toDTOList(List<Release> releases){
-		List<Release> releaseDTOList = new ArrayList<>();
-		for(Release r: releases){
-			releaseDTOList.add(r.toDTO());
-		}
-		return releaseDTOList;
-	}	
+//	public Release toDTO(){
+//		return new Release(releaseId, indicative, publishDate, project.toDTO());
+//	}
+//	
+//	public static List<Release> toDTOList(List<Release> releases){
+//		List<Release> releaseDTOList = new ArrayList<>();
+//		for(Release r: releases){
+//			releaseDTOList.add(r.toDTO());
+//		}
+//		return releaseDTOList;
+//	}	
 }

@@ -139,39 +139,39 @@ public class Project implements Serializable{
 	}
 
 	/* DTO Logic*/
-	public Project toDTO(){
-		Project projectDTO =new Project(projectNo, name, startDate); 
-//		projectDTO.setReleases(null);
-//		projectDTO.setProjectManager(null);
-//		projectDTO.setCurrentRelease(null);
-		return projectDTO;
-	}
-	
-	public static Project toDTOAggregate(Project project){
-		if (project == null)
-			return null;
-		Project projectDTO = project.toDTO();
-		List<Release> releasesDTO = Release.toDTOList(project.getReleases());
-		projectDTO.setReleases(releasesDTO);
-		
-		return projectDTO;
-	}
-	
-	public static Project[] toDTOList(Collection<Project> projects){
-		List<Project> projectDTOList = new ArrayList<>();
-		for(Project p: projects){
-			projectDTOList.add(p.toDTO());
-		}
-		return projectDTOList.toArray(new Project[0]);
-	}	
-	
-	public static Collection<Project> toDTOs(Collection<Project> projects){
-		List<Project> projectDTOList = new ArrayList<>();
-		for(Project p: projects){
-			projectDTOList.add(p.toDTO());
-		}
-		//return projectDTOList.toArray(new Project[0]);
-		return projectDTOList;
-	}	
+//	public Project toDTO(){
+//		Project projectDTO =new Project(projectNo, name, startDate); 
+////		projectDTO.setReleases(null);
+////		projectDTO.setProjectManager(null);
+////		projectDTO.setCurrentRelease(null);
+//		return projectDTO;
+//	}
+//	
+//	public static Project toDTOAggregate(Project project){
+//		if (project == null)
+//			return null;
+//		Project projectDTO = project.toDTO();
+//		List<Release> releasesDTO = Release.toDTOList(project.getReleases());
+//		projectDTO.setReleases(releasesDTO);
+//		
+//		return projectDTO;
+//	}
+//	
+//	public static Project[] toDTOList(Collection<Project> projects){
+//		List<Project> projectDTOList = new ArrayList<>();
+//		for(Project p: projects){
+//			projectDTOList.add(p.toDTO());
+//		}
+//		return projectDTOList.toArray(new Project[0]);
+//	}	
+//	
+//	public static Collection<Project> toDTOs(Collection<Project> projects){
+//		List<Project> projectDTOList = new ArrayList<>();
+//		for(Project p: projects){
+//			projectDTOList.add(p.toDTO());
+//		}
+//		//return projectDTOList.toArray(new Project[0]);
+//		return projectDTOList;
+//	}	
 	
 }
