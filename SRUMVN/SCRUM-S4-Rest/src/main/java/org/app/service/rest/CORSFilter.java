@@ -1,5 +1,6 @@
 package org.app.service.rest;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -37,7 +38,8 @@ public class CORSFilter implements Filter{
 		if(null != reqHead){
 			httpResponse.addHeader("Access-Control-Allow-Headers", reqHead);
         }
-		logger.info("**** DEBUG: CORSFilter added headers");
+//		logger.info("**** DEBUG: CORSFilter added headers. " + getRequestBody(httpRequest));
+		logger.info("**** DEBUG: CORSFilter added headers. ");
 		filterChain.doFilter(servletRequest, servletResponse);
 	}
 
@@ -46,4 +48,38 @@ public class CORSFilter implements Filter{
 		logger.info("**** DEBUG: CORSFilter init");
 	}
 
+	
+	private String getRequestBody(HttpServletRequest request) {
+		StringBuffer sb = new StringBuffer();
+	    BufferedReader bufferedReader = null;
+	    String content = "";
+
+	    try {
+	        //InputStream inputStream = request.getInputStream();
+	        //inputStream.available();
+	        //if (inputStream != null) {
+	        bufferedReader =  request.getReader() ; //new BufferedReader(new InputStreamReader(inputStream));
+	        char[] charBuffer = new char[128];
+	        int bytesRead;
+	        while ( (bytesRead = bufferedReader.read(charBuffer)) != -1 ) {
+	            sb.append(charBuffer, 0, bytesRead);
+	        }
+	        //} else {
+	        //        sb.append("");
+	        //}
+	        return sb.toString();
+	    } catch (IOException ex) {
+	        //throw ex;
+	    } finally {
+	        if (bufferedReader != null) {
+	            try {
+	                bufferedReader.close();
+	            } catch (IOException ex) {
+	                //throw ex;
+	            }
+	        }
+	    }
+
+	    return null;
+	}
 }

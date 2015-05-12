@@ -108,10 +108,12 @@ public class ProjectDataServiceEJB
 //	@Override
 	@DELETE 				/* SCRUM/data/projects 		REST-resource: projects-collection*/
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
-	public void removeResource(Project project) {
+	public Collection<Project> removeResourceFromCollection(Project project) {
 		logger.info("DEBUG: called REMOVE - project: " + project);
 		super.remove(project);
+		return super.toCollection();
 	}
 	
 	@DELETE @Path("/{id}") 	/* SCRUM/data/projects/{id} 	REST-resource: project-entity*/	
