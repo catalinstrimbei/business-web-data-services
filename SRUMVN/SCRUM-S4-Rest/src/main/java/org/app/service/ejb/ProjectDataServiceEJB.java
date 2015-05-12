@@ -32,7 +32,6 @@ import org.app.patterns.EntityRepositoryBase;
 import org.app.service.entities.Project;
 import org.app.service.entities.Release;
 
-
 /*
 ---------------------------------------------------------------------------------------------------------------------------------
 URL											HTTP Req.		CRUD									Mapping						|
