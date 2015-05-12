@@ -34,18 +34,18 @@ import org.app.service.entities.Release;
 
 /*
 ---------------------------------------------------------------------------------------------------------------------------------
-URL											HTTP Req.		CRUD									Mapping						|
+URL											HTTP Req.		CRUD									Mapping						 |
 ---------------------------------------------------------------------------------------------------------------------------------
-/SCRUM/data/projects						GET			 	read project collection					toCollection()				|
-/SCRUM/data/projects						POST			add/save new project					add(Project)				|
-/SCRUM/data/projects						DELETE			remove existing project					remove(Project)				|
+/SCRUM/data/projects						GET			 	read project collection					toCollection()				 |
+/SCRUM/data/projects						POST			add/save new project					addIntoCollection(Project)   |
+/SCRUM/data/projects						DELETE			remove existing project					removeFromCollection(Project)|
 ---------------------------------------------------------------------------------------------------------------------------------
-/SCRUM/data/projects/{id}					GET				read existing project					getById(Integer)			|
-/SCRUM/data/projects/{id}					PUT				save new or existing project			add(Project)				|
-/SCRUM/data/projects/{id}					DELETE			delete existing project					remove(Integer)				|
+/SCRUM/data/projects/{id}					GET				read existing project					getById(Integer)			 |
+/SCRUM/data/projects/{id}					PUT				save new or existing project			add(Project)				 |
+/SCRUM/data/projects/{id}					DELETE			delete existing project					remove(Integer)				 |
 ---------------------------------------------------------------------------------------------------------------------------------
-/SCRUM/data/projects/{id}/releases/{id}		GET				read existing release					getReleaseById(Integer)		|
-/SCRUM/data/projects/create/{id}			GET				Create new project aggregate			createNewProject(Integer)	|		|
+/SCRUM/data/projects/{id}/releases/{id}		GET				read existing release					getReleaseById(Integer)		 |
+/SCRUM/data/projects/create/{id}			GET				Create new project aggregate			createNewProject(Integer)	 |
 ---------------------------------------------------------------------------------------------------------------------------------
 */
 
@@ -139,7 +139,7 @@ public class ProjectDataServiceEJB
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	// Aggregate factory method
-	public Project createNewProject(Integer id){
+	public Project createNewProject(@PathParam("id")Integer id){
 		// create project aggregate
 		Project project = new Project(id, "NEW Project" + "." + id , new Date());
 		List<Release> releasesProject = new ArrayList<>();
