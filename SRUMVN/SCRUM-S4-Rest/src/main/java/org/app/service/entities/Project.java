@@ -69,8 +69,8 @@ public class Project implements Serializable{
 		this.projectManager = projectManager;
 	}
 	
-//	@XmlElements({ @XmlElement(name = "release_s", type = Release.class) })
-	@XmlElementWrapper(name = "releases") @XmlElement(name = "release")
+//	@XmlElements({ @XmlElement(name = "release", type = Release.class) })
+	@XmlElementWrapper(name = "releases") @XmlElement(name = "releases")
 	public List<Release> getReleases() {
 		return releases;
 	}

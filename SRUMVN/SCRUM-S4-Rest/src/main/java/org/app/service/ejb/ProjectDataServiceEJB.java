@@ -91,7 +91,10 @@ public class ProjectDataServiceEJB
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })	
 	public Collection<Project> addIntoCollection(Project project) {
+		// save aggregate
 		super.add(project);
+		logger.info("**** DEBUG REST save aggregate POST");
+		// return updated collection
 		return super.toCollection();
 	}
 	
@@ -101,7 +104,14 @@ public class ProjectDataServiceEJB
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) // autonomous transaction
 	@Override
 	public Project add(Project project) {
+		// restore aggregation-relation
+		for (Release r: project.getReleases())
+			r.setProject(project);
+		logger.info("**** DEBUG REST restore aggregation-relation PUT");
+		// save aggregate
+		logger.info("**** DEBUG REST save aggregate PUT");
 		project = super.add(project);
+		// return updated collection	
 		return project;
 	}	
 	
