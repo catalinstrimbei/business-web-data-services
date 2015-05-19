@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 @XmlRootElement(name="project") 
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity
@@ -70,7 +72,9 @@ public class Project implements Serializable{
 	}
 	
 //	@XmlElements({ @XmlElement(name = "release", type = Release.class) })
-	@XmlElementWrapper(name = "releases") @XmlElement(name = "releases")
+	@XmlElementWrapper(name = "releases") 
+	@XmlElement(name = "release")
+//	@JsonProperty("releases")
 	public List<Release> getReleases() {
 		return releases;
 	}
