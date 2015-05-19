@@ -73,7 +73,7 @@ public class Project implements Serializable{
 	
 //	@XmlElements({ @XmlElement(name = "release", type = Release.class) })
 	@XmlElementWrapper(name = "releases") 
-	@XmlElement(name = "release")
+	@XmlElement(name = "releases")
 //	@JsonProperty("releases")
 	public List<Release> getReleases() {
 		return releases;
