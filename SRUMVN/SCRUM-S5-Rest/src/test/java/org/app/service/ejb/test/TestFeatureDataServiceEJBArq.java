@@ -29,6 +29,9 @@ import org.junit.runners.MethodSorters;
 public class TestFeatureDataServiceEJBArq {
 	private static Logger logger = 
 			Logger.getLogger(TestFeatureDataServiceEJBArq.class.getName());
+	static{
+		logger.info(">>>>>>>>> TEST INIT STATIC");
+	}
 	
 	@EJB // EJB DataService Ref
 	private static FeatureDataService service;
@@ -36,7 +39,7 @@ public class TestFeatureDataServiceEJBArq {
 	@Deployment // Arquilian infrastructure
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
-	                .create(WebArchive.class, "SCRUM-S4-test.war")
+	                .create(WebArchive.class, "SCRUM-S5-test.war")
 	                .addPackage(Feature.class.getPackage())
 	                .addClass(FeatureDataService.class)
 	                .addClass(FeatureDataServiceEJB.class)
