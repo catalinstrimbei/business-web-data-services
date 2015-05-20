@@ -25,7 +25,7 @@ app.controller('view1Controller',
 		    filterText: ''
 	};
 	
-	$scope.gridOptions = { 
+	$scope.gridView1Definition = { 
 		      data: 'projectsList',
 		      selectedItems: $scope.projectsSelected,
 		      enablePaging: true,
@@ -60,7 +60,7 @@ app.controller('view2Controller',
   function($scope, $http, $timeout, $location, restResource) {	// implementation
 	console.log("view2Controller");
 	
-    $scope.gridOptions = { 
+    $scope.gridView2Definition = { 
       data: 'projectsList',
       selectedItems: $scope.projectsSelected,
       enablePaging: true,
@@ -159,7 +159,7 @@ app.controller('view3Controller',
   function($scope, $http, $timeout, $location, restResource) {	// implementation
 	console.log("view3Controller");
 	
-    $scope.detailGrid = { 
+    $scope.gridDetailView3Definition = { 
       data: 'releasesList',
       selectedItems: $scope.releaseSelected,
       enablePaging: true,

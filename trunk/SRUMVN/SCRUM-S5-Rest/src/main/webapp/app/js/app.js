@@ -1,4 +1,4 @@
-// WebClient URL is: 			http://localhost:8080/SCRUM/app/Start.html
+// WebClient URL is: 			http://localhost:8080/SCRUM/app
 // Rest Data Service URL is: 	http://localhost:8080/SCRUM/data/projects
 
 var app = angular.module('App', ['ngGrid', 'ngRoute', 'ngResource']);
