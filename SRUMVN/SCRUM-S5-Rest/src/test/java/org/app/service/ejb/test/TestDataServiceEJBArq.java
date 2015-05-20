@@ -35,7 +35,7 @@ public class TestDataServiceEJBArq {
 	@Deployment
 	public static Archive<?> createDeployment() {
 	        return ShrinkWrap
-	                .create(WebArchive.class, "SCRUM-S4-test.war")
+	                .create(WebArchive.class, "SCRUM-S5-test.war")
 	                .addPackage(EntityRepository.class.getPackage())
 	                .addPackage(DataService.class.getPackage())
 	                .addPackage(EntityBase.class.getPackage())

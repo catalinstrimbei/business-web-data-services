@@ -35,7 +35,7 @@ public class TestProjectDataServiceEJBArq {
 	// Arquilian infrastructure
 	@Deployment
 	public static Archive<?> createDeployment() {
-		return ShrinkWrap.create(WebArchive.class, "SCRUM-S4-test.war")
+		return ShrinkWrap.create(WebArchive.class, "SCRUM-S5-test.war")
 				.addPackage(EntityRepository.class.getPackage())
 				.addPackage(Project.class.getPackage())
 				.addClass(FeatureDataService.class)
