@@ -15,3 +15,4 @@ app.config(
 				.otherwise({redirectTo: '/'});
 		}
 );
+console.log(">>>> App Setted!");
