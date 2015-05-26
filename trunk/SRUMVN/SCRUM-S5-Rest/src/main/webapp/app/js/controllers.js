@@ -42,7 +42,7 @@ app.controller('view1Controller',
 	
 	$http.get(projectsRestURL)
 	.success(function(data){
-		console.log("view1Controller:GET URL : " + projectsRestURL);
+		console.log("view1Controller::GET URL : " + projectsRestURL);
 		$scope.projectsList = data;
 	})
 	.error(function(data){
